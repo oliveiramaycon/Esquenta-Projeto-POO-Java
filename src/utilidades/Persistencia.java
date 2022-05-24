@@ -8,16 +8,32 @@ import java.io.PrintWriter;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.security.NoTypePermission;
+import com.thoughtworks.xstream.security.NullPermission;
+import com.thoughtworks.xstream.security.PrimitiveTypePermission;
+
+import modelo.Canal;
+import modelo.ProgramaDeTv;
 
 public class Persistencia {
 
-	private XStream xstream = new XStream(new DomDriver("ISO-8859-1"));
+	private XStream xstream = new XStream(new DomDriver("UTF-8"));
+	
+	public Persistencia() {
+		xstream.addPermission(NoTypePermission.NONE); //forbid everything
+		xstream.addPermission(NullPermission.NULL);   // allow "null"
+		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES); // allow primitive types
+		
+		xstream.allowTypes( new Class[] {CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class, 
+				Canal.class, ProgramaDeTv.class});
+	}
+	
 	
 	public void salvarCentral(CentralDeInformacoes central, String nome) {
 
 		File arquivoPadrao = new File(nome + ".xml");
 
-		String xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>\n";
+		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 		xml += xstream.toXML(central);
 
 		try {
