@@ -17,12 +17,7 @@ public class Canal {
 	public void setTipoCanal(String tipoCanal) {
 		this.tipoCanal = tipoCanal;
 	}
-	
-	
-	
-	public Canal() {
-		
-	}
+
 	
 	public Canal(String nome, String tipoCanal) {
 		setNome(nome);

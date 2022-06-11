@@ -2,6 +2,11 @@ package utilidades;
 
 import java.util.ArrayList;
 
+import excecoes.FalhaNoCadastroException;
+import excecoes.RegistroExistenteException;
+import excecoes.RegistroNaoEncontradoException;
+import excecoes.SemProgramaNaDataAtualException;
+import excecoes.TipoDeProgramaNaoExisteException;
 import modelo.Canal;
 import modelo.ProgramaDeTv;
 import modelo.TipoPrograma;
@@ -32,17 +37,21 @@ public class CentralDeInformacoes {
 	 *  ---------------------------------------------- M…TODOS UTILIT¡RIOS RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
 	
-	public boolean AdicionarProgramaDeTv(ProgramaDeTv programa) {
+	public void AdicionarProgramaDeTv(ProgramaDeTv programa) throws FalhaNoCadastroException {
+		FalhaNoCadastroException falha = new FalhaNoCadastroException();
+		
 		if (recuperarProgramaDetvPeloId(programa.getId()) != null) {
-			return false;
+			String msg = "\nID duplicado!";
+			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
 		}
 
 		if (programa.getCanal() == null) {
-			return false;
+			String msg = "\n… necess·rio informar um canal";
+			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
 		}
 
 		programas.add(programa);
-		return true;
+		
 	}
 
 	public ProgramaDeTv recuperarProgramaDetvPeloId(long id) {
@@ -71,6 +80,7 @@ public class CentralDeInformacoes {
 				programasEncontrados.add(programa);
 			}
 		}
+		
 		return programasEncontrados;
 	}
 
@@ -99,16 +109,28 @@ public class CentralDeInformacoes {
 		for (TipoPrograma tipo : TipoPrograma.values()) {
 			tipos.add(tipo.toString());
 		}
+		
 		return tipos;
 	}
 
-	public ArrayList<ProgramaDeTv> obterProgramasComTransmiss„oNaDataAtual() {
+	public void hasTipoPrograma(TipoPrograma tipoPrograma) throws TipoDeProgramaNaoExisteException {
+		
+		if(!obterTiposDeProgramas().contains(tipoPrograma.toString())) {
+			throw new TipoDeProgramaNaoExisteException();			
+		} 
+	}
+	
+	public ArrayList<ProgramaDeTv> obterProgramasComTransmissaoNaDataAtual() throws SemProgramaNaDataAtualException {
 		ArrayList<ProgramaDeTv> programasDoDia = new ArrayList<ProgramaDeTv>();
 		String diaDaSemana = Datas.obterDiaDaSemana();
 		for (ProgramaDeTv programa : programas) {
+			
 			if (programa.getDiasDaSemana().contains(diaDaSemana)) {
 				programasDoDia.add(programa);
 			}
+		}
+		if(programasDoDia.isEmpty()) {
+			throw new SemProgramaNaDataAtualException();
 		}
 		return programasDoDia;
 	}
@@ -119,21 +141,23 @@ public class CentralDeInformacoes {
 	 *  ---------------------------------------------- M…TODOS UTILIT¡RIOS RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
 	
-	public boolean adicionarCanal(Canal canal) {
-		if (recuperarCanalPeloNome(canal.getNome()) != null) {
-			return false;
+	public void adicionarCanal(Canal canal) throws RegistroExistenteException {
+		try {
+			recuperarCanalPeloNome(canal.getNome());
+			throw new RegistroExistenteException();
+			
+		}catch(RegistroNaoEncontradoException e){
+			canais.add(canal);
 		}
-		canais.add(canal);
-		return true;
 	}
 
-	public Canal recuperarCanalPeloNome(String nomeDoCanal) {
+	public Canal recuperarCanalPeloNome(String nomeDoCanal) throws RegistroNaoEncontradoException {
 		for (Canal canal : canais) {
 			if (canal.getNome().equals(nomeDoCanal)) {
 				return canal;
 			}
 		}
-		return null;
+		throw new RegistroNaoEncontradoException();
 	}
 
 	public void exibirCanais() {

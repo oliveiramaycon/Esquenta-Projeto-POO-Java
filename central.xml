@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<utilidades.CentralDeInformacoes>
+  <programas>
+    <modelo.ProgramaDeTv>
+      <id>1654983423730</id>
+      <nome>mycas show</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal>
+        <nome>globo</nome>
+        <tipoCanal>adulto</tipoCanal>
+      </canal>
+      <diasDaSemana>
+        <string>segunda-feira</string>
+      </diasDaSemana>
+    </modelo.ProgramaDeTv>
+  </programas>
+  <canais>
+    <modelo.Canal reference="../../programas/modelo.ProgramaDeTv/canal"/>
+  </canais>
+</utilidades.CentralDeInformacoes>

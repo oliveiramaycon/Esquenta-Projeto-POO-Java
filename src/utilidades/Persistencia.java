@@ -32,11 +32,12 @@ public class Persistencia {
 	public void salvarCentral(CentralDeInformacoes central, String nome) {
 
 		File arquivoPadrao = new File(nome + ".xml");
-
+		
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 		xml += xstream.toXML(central);
 
 		try {
+			arquivoPadrao.createNewFile();
 			PrintWriter gravar = new PrintWriter(arquivoPadrao);
 			gravar.print(xml);
 			gravar.close();

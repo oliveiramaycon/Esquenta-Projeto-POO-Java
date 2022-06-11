@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import excecoes.FalhaNoCadastroException;
+import excecoes.RegistroExistenteException;
+import excecoes.RegistroNaoEncontradoException;
+import excecoes.SemProgramaNaDataAtualException;
+import excecoes.TipoDeProgramaNaoExisteException;
 import modelo.Canal;
 import modelo.ProgramaDeTv;
 import modelo.TipoPrograma;
@@ -20,7 +25,7 @@ public class ProjetoProgramaDeTv {
 
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
-		
+
 		boolean sair = false;
 
 		do {
@@ -47,67 +52,72 @@ public class ProjetoProgramaDeTv {
 
 					System.out.print("tipo do Programa: ");
 					central.exibirTiposDeProgramas();
+
 					System.out.print("\nOpção: ");
 					String tipoString = inputter.nextLine().toUpperCase();
-					TipoPrograma tipo = null;
-					
-					if(central.obterTiposDeProgramas().contains(tipoString)) {
-						tipo = TipoPrograma.valueOf(tipoString);
-					} else {
-						System.out.println("não existe esse tipo de programa : " + tipoString);
-						break;
+					TipoPrograma tipo = TipoPrograma.valueOf(tipoString);
+					try {
+						central.hasTipoPrograma(tipo);
+
+					} catch (TipoDeProgramaNaoExisteException e) {
+						System.out.println(e.getMessage());
 					}
-					
+
 					System.out.print("Canais: ");
 					central.exibirCanaisPeloNome();
+
 					System.out.print("\nCanal: ");
 					String nomeCanal = inputter.nextLine();
-					Canal canal = central.recuperarCanalPeloNome(nomeCanal);
-					
-					if(canal == null) {
-						System.out.println("não existe esse canal: " + nomeCanal);
+
+					Canal canal = null;
+
+					try {
+						canal = central.recuperarCanalPeloNome(nomeCanal);
+					} catch (RegistroNaoEncontradoException e) {
+						System.out.println(e.getMessage());
 						break;
 					}
-					
+
 					System.out.println("dias da Semana: [separados por ','. ex: segunda-feira...]");
 					System.out.print("dias escolhidos: ");
 					String[] dias = inputter.nextLine().split(",");
 
 					ArrayList<String> diasDaSemana = new ArrayList<>(Arrays.asList(dias));
 					ProgramaDeTv programa = new ProgramaDeTv(nome, tipo, canal, diasDaSemana);
-
-					if (central.AdicionarProgramaDeTv(programa)) {
-						System.out.println("Programa cadastrado com sucesso!");
+					try {
+						central.AdicionarProgramaDeTv(programa);
 						persistencia.salvarCentral(central, "central");
-					} else {
-						System.out.println("não foi possível cadastrar o programa!");
-						System.out.println("O programa já existe ou não possui um canal.");
+					} catch (FalhaNoCadastroException e) {
+						System.out.println(e.getMessage());
 					}
 				}
+
 				break;
+
 			case "2":
 				if (central.getProgramas().isEmpty()) {
 					System.out.println("Não há nenhum programa cadastrado.");
 				} else {
 					central.exibirProgramas();
 				}
-
 				break;
+
 			case "3":
-				System.out.print("tipo do Programa: ");
+				System.out.print("tipos de Programas: ");
 				central.exibirTiposDeProgramas();
+
 				System.out.print("\nOpção: ");
 				String tipoString = inputter.nextLine().toUpperCase();
-				TipoPrograma tipo = null;
-				
-				if(central.obterTiposDeProgramas().contains(tipoString)) {
-					tipo = TipoPrograma.valueOf(tipoString);
+				TipoPrograma tipo = TipoPrograma.valueOf(tipoString);
+				try {
+					central.hasTipoPrograma(tipo);
+
 					central.exibirProgramasPeloTipo(tipo);
-				} else {
-					System.out.println("não existe esse tipo de programa : " + tipoString);
-					break;
+				} catch (TipoDeProgramaNaoExisteException e) {
+					System.out.println(e.getMessage());
 				}
 				break;
+
 			case "4":
 				System.out.println("-- dados do canal --");
 				System.out.print("nome: ");
@@ -116,16 +126,17 @@ public class ProjetoProgramaDeTv {
 				String tipoCanal = inputter.nextLine();
 
 				Canal canal = new Canal(nomeCanal, tipoCanal);
-				
-				if (central.adicionarCanal(canal)) {
+
+				try {
+					central.adicionarCanal(canal);
 					System.out.println("Canal cadastrado com sucesso!\n");
 					persistencia.salvarCentral(central, "central");
-					
-				} else {
-					System.out.println("não foi possível cadastrar o canal!");
-					System.out.println("O canal já existe.");
+				} catch (RegistroExistenteException e) {
+					System.out.println(e.getMessage());
 				}
+
 				break;
+
 			case "5":
 				if (central.getCanais().isEmpty()) {
 					System.out.println("nenhum canal cadastrado.\n");
@@ -133,39 +144,38 @@ public class ProjetoProgramaDeTv {
 					central.exibirCanais();
 				}
 				break;
+
 			case "6":
 				System.out.print("Canais: ");
 				central.exibirCanaisPeloNome();
 				System.out.print("\nOpção: ");
 				String nomeDoCanal = inputter.nextLine();
-				
-				canal = central.recuperarCanalPeloNome(nomeDoCanal);
-	
-				if( canal != null) {
-					GeradorDePdf.ObterProgramacaoDeUmCanal(canal);	
-				} else {
-					System.out.println("Não foi encontrado um canal com esse nome");
+
+				try {
+					canal = central.recuperarCanalPeloNome(nomeDoCanal);
+					GeradorDePdf.ObterProgramacaoDeUmCanal(canal);
+				} catch (RegistroNaoEncontradoException e) {
+					System.out.println(e.getMessage());
 				}
 				break;
+
 			case "7":
-				
 				System.out.print("informe seu e-mail: ");
 				String destinatario = inputter.nextLine();
-				
-				ArrayList<ProgramaDeTv> programasDoDia = central.obterProgramasComTransmissãoNaDataAtual();
-				
-				String mensagem = null; 
-				
-				if(programasDoDia.isEmpty()) {
-					mensagem = "não há programas para hoje";
-				} else {
-					mensagem = programasDoDia.toString();
+
+				try {
+					ArrayList<ProgramaDeTv> programasDoDia = central.obterProgramasComTransmissaoNaDataAtual();
+
+					String mensagem = programasDoDia.toString();
+					System.out.println("enviando e-mail...");
+					Mensageiro.enviarProgramacaoDeHoje(destinatario, "programação do dia", mensagem);
+					System.out.println("e-mail enviado. cheque sua caixa de entrada ou spam");
+
+				} catch (SemProgramaNaDataAtualException e) {
+					System.out.println(e.getMessage());
 				}
-				
-				System.out.println("enviando e-mail...");
-				Mensageiro.enviarProgramacaoDeHoje(destinatario, "programação do dia", mensagem );
-				System.out.println("e-mail enviado. cheque sua caixa de entrada ou spam");
 				break;
+
 			case "s":
 			case "S":
 				System.out.println("saindo...");
@@ -175,6 +185,7 @@ public class ProjetoProgramaDeTv {
 				System.out.println("opção inválida.");
 				break;
 			}
+
 		} while (!sair);
 	}
 }
