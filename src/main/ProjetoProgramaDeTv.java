@@ -34,7 +34,7 @@ public class ProjetoProgramaDeTv {
 			System.out.println("[3] - Listar programas de um mesmo tipo");
 			System.out.println("[4] - Novo canal");
 			System.out.println("[5] - Listar canais");
-			System.out.println("[6] - Gerar relação dos programas de um mesmo canal");
+			System.out.println("[6] - Gerar relatório(PDF) dos programas de um mesmo canal");
 			System.out.println("[7] - Enviar programação de hoje");
 			System.out.println("[S] - Sair");
 
@@ -44,7 +44,7 @@ public class ProjetoProgramaDeTv {
 			switch (opcao) {
 			case "1":
 				if (central.getCanais().isEmpty()) {
-					System.out.println("para cadastrar um programa é necessário cadastrar um Canal(s) previamente.\n");
+					System.out.println("Para cadastrar um programa é necessário cadastrar um Canal(s) previamente.\n");
 				} else {
 					System.out.println("\n-- dados do Programa -- ");
 					System.out.print("Nome do Programa: ");
@@ -55,10 +55,18 @@ public class ProjetoProgramaDeTv {
 
 					System.out.print("\nOpção: ");
 					String tipoString = inputter.nextLine().toUpperCase();
-					TipoPrograma tipo = TipoPrograma.valueOf(tipoString);
+					
+					TipoPrograma tipo = null;
+					
+					try {
+						tipo = TipoPrograma.valueOf(tipoString);
+					}catch(Exception e) {
+						System.out.println(tipoString + " não é válido!\n");
+						break;
+					}
+					
 					try {
 						central.hasTipoPrograma(tipo);
-
 					} catch (TipoDeProgramaNaoExisteException e) {
 						System.out.println(e.getMessage());
 					}
@@ -84,6 +92,7 @@ public class ProjetoProgramaDeTv {
 
 					ArrayList<String> diasDaSemana = new ArrayList<>(Arrays.asList(dias));
 					ProgramaDeTv programa = new ProgramaDeTv(nome, tipo, canal, diasDaSemana);
+					
 					try {
 						central.AdicionarProgramaDeTv(programa);
 						persistencia.salvarCentral(central, "central");
@@ -96,19 +105,34 @@ public class ProjetoProgramaDeTv {
 
 			case "2":
 				if (central.getProgramas().isEmpty()) {
-					System.out.println("Não há nenhum programa cadastrado.");
-				} else {
-					central.exibirProgramas();
-				}
+					System.out.println("Não há nenhum programa cadastrado.\n");
+					break;
+				} 
+				
+				central.exibirProgramas();
 				break;
 
 			case "3":
-				System.out.print("tipos de Programas: ");
+				if (central.getProgramas().isEmpty()) {
+					System.out.println("Não há nenhum programa cadastrado.\n");
+					break;
+				}
+				
+				System.out.print("Tipos de Programas: ");
 				central.exibirTiposDeProgramas();
 
 				System.out.print("\nOpção: ");
 				String tipoString = inputter.nextLine().toUpperCase();
-				TipoPrograma tipo = TipoPrograma.valueOf(tipoString);
+				
+				TipoPrograma tipo = null;
+				
+				try {
+					tipo = TipoPrograma.valueOf(tipoString);
+				}catch(Exception e) {
+					System.out.println(tipoString + " não é válido!\n");
+					break;
+				}
+				
 				try {
 					central.hasTipoPrograma(tipo);
 
@@ -120,7 +144,7 @@ public class ProjetoProgramaDeTv {
 
 			case "4":
 				System.out.println("-- dados do canal --");
-				System.out.print("nome: ");
+				System.out.print("Nome: ");
 				String nomeCanal = inputter.nextLine();
 				System.out.print("Tipo do canal: ");
 				String tipoCanal = inputter.nextLine();
@@ -139,13 +163,19 @@ public class ProjetoProgramaDeTv {
 
 			case "5":
 				if (central.getCanais().isEmpty()) {
-					System.out.println("nenhum canal cadastrado.\n");
-				} else {
-					central.exibirCanais();
-				}
+					System.out.println("Nenhum canal cadastrado.\n");
+					break;
+				} 
+				
+				central.exibirCanais();
 				break;
 
 			case "6":
+				if (central.getProgramas().isEmpty()) {
+					System.out.println("Não há nenhum programa cadastrado.\n");
+					break;
+				}
+				
 				System.out.print("Canais: ");
 				central.exibirCanaisPeloNome();
 				System.out.print("\nOpção: ");
@@ -153,24 +183,27 @@ public class ProjetoProgramaDeTv {
 
 				try {
 					canal = central.recuperarCanalPeloNome(nomeDoCanal);
+					System.out.println("Gerando relatório...");
 					GeradorDePdf.ObterProgramacaoDeUmCanal(canal);
+					System.out.println("Relatório enviado!");
 				} catch (RegistroNaoEncontradoException e) {
 					System.out.println(e.getMessage());
 				}
 				break;
 
 			case "7":
-				System.out.print("informe seu e-mail: ");
-				String destinatario = inputter.nextLine();
-
+			
 				try {
 					ArrayList<ProgramaDeTv> programasDoDia = central.obterProgramasComTransmissaoNaDataAtual();
-
+					
+					System.out.print("Informe seu e-mail: ");
+					String destinatario = inputter.nextLine();
+					
 					String mensagem = programasDoDia.toString();
-					System.out.println("enviando e-mail...");
+					System.out.println("Enviando e-mail...");
+					
 					Mensageiro.enviarProgramacaoDeHoje(destinatario, "programação do dia", mensagem);
 					System.out.println("e-mail enviado. cheque sua caixa de entrada ou spam");
-
 				} catch (SemProgramaNaDataAtualException e) {
 					System.out.println(e.getMessage());
 				}
@@ -178,11 +211,11 @@ public class ProjetoProgramaDeTv {
 
 			case "s":
 			case "S":
-				System.out.println("saindo...");
+				System.out.println("Saindo...");
 				sair = true;
 				break;
 			default:
-				System.out.println("opção inválida.");
+				System.out.println("Opção inválida.");
 				break;
 			}
 

@@ -2,9 +2,9 @@
 <utilidades.CentralDeInformacoes>
   <programas>
     <modelo.ProgramaDeTv>
-      <id>1654983423730</id>
+      <id>1655256352620</id>
       <nome>mycas show</nome>
-      <tipo>SERIES_REGULARES</tipo>
+      <tipo>REALITY_SHOW</tipo>
       <canal>
         <nome>globo</nome>
         <tipoCanal>adulto</tipoCanal>

@@ -24,8 +24,16 @@ public class Persistencia {
 		xstream.addPermission(NullPermission.NULL);   // allow "null"
 		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES); // allow primitive types
 		
-		xstream.allowTypes( new Class[] {CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class, 
-				Canal.class, ProgramaDeTv.class});
+		//xstream.ignoreUnknownElements();
+		xstream.allowTypesByWildcard(new String[] { 
+		        "excecoes.**",
+		        "main.**",
+		        "modelo.**", 
+		        "utilidades.**"
+		        });
+		
+//		xstream.allowTypes(new Class[] {CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class, 
+//				Canal.class, ProgramaDeTv.class});
 	}
 	
 	
