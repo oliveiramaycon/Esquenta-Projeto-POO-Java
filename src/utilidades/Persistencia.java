@@ -5,9 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.security.AnyTypePermission;
 import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
@@ -23,8 +25,10 @@ public class Persistencia {
 		xstream.addPermission(NoTypePermission.NONE); //forbid everything
 		xstream.addPermission(NullPermission.NULL);   // allow "null"
 		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES); // allow primitive types
+		xstream.addPermission(AnyTypePermission.ANY);
 		
 		//xstream.ignoreUnknownElements();
+		xstream.allowTypeHierarchy(Collection.class);
 		xstream.allowTypesByWildcard(new String[] { 
 		        "excecoes.**",
 		        "main.**",
@@ -32,8 +36,9 @@ public class Persistencia {
 		        "utilidades.**"
 		        });
 		
-//		xstream.allowTypes(new Class[] {CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class, 
-//				Canal.class, ProgramaDeTv.class});
+		xstream.allowTypes(new Class[] {CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class, 
+				Canal.class, ProgramaDeTv.class});
+		
 	}
 	
 	

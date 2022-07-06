@@ -16,8 +16,8 @@ public class Mensageiro {
 
 	public static void enviarProgramacaoDeHoje(String destinario, String assunto, String msg) {
 		//DADOS DA CONTA DE EMAIL UTILIZADA PELO SISTEMA
-		String remetente = "EMAIL";
-		String senha = "SENHA";
+		String remetente = "mocagenda701@gmail.com";
+		String senha = "Batecocramunhao";
 
 		/** Parâmetros de conexão com servidor Gmail */	
 		Properties props = new Properties();
@@ -64,3 +64,4 @@ public class Mensageiro {
 		}
 	}
 }
+

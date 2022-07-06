@@ -7,35 +7,43 @@ import excecoes.RegistroExistenteException;
 import excecoes.RegistroNaoEncontradoException;
 import excecoes.SemProgramaNaDataAtualException;
 import excecoes.TipoDeProgramaNaoExisteException;
+import excecoes.UsuarioExistenteException;
 import modelo.Canal;
 import modelo.ProgramaDeTv;
 import modelo.TipoPrograma;
+import modelo.Usuario;
 
 public class CentralDeInformacoes {
 
 	private ArrayList<ProgramaDeTv> programas = new ArrayList<ProgramaDeTv>();
 	private ArrayList<Canal> canais = new ArrayList<Canal>();
+	private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
 
+	
+	
 	public ArrayList<ProgramaDeTv> getProgramas() {
 		return programas;
 	}
-
 	public void setProgramas(ArrayList<ProgramaDeTv> programas) {
 		this.programas = programas;
 	}
-
 	public ArrayList<Canal> getCanais() {
 		return canais;
 	}
-
 	public void setCanais(ArrayList<Canal> canais) {
 		this.canais = canais;
 	}
-
+	public ArrayList<Usuario> getUsuariosCadastrados() {
+		return usuariosCadastrados;
+	}
+	public void setUsuariosCadastrados(ArrayList<Usuario> usuariosCadastrados) {
+		this.usuariosCadastrados = usuariosCadastrados;
+	}
 	
 	/*
 	 *  ---------------------------------------------- MÉTODOS UTILITÁRIOS RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
+	
 	
 	public void AdicionarProgramaDeTv(ProgramaDeTv programa) throws FalhaNoCadastroException {
 		FalhaNoCadastroException falha = new FalhaNoCadastroException();
@@ -171,5 +179,18 @@ public class CentralDeInformacoes {
 			nomeDosCanais.add(canal.getNome());
 		}
 		System.out.print(nomeDosCanais.toString());
+	}
+	
+	
+	/*
+	 * ---------------------------------------
+	 */
+	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException{
+		for (Usuario u : usuariosCadastrados) {
+			if(u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
+				throw new UsuarioExistenteException();
+			}
+		}
+		usuariosCadastrados.add(usuario);
 	}
 }

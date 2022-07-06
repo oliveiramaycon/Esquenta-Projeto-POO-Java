@@ -1,10 +1,18 @@
 package utilidades;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Componentes {
@@ -31,5 +39,44 @@ public class Componentes {
 		field.setBounds(x, y, comprimento, altura);
 		tela.add(field);
 		return field;
+	}
+	
+	public static JMenuBar addJMenubar(JFrame janela,int x,int y, int comprimento, int altura) {
+		JMenuBar barraMenu = new JMenuBar();
+		barraMenu.setBounds(x, y, comprimento, altura);
+		barraMenu.setBackground(Color.BLACK);
+		barraMenu.setForeground(Color.black);
+		janela.add(barraMenu);
+		return barraMenu;
+	}
+	public static JMenu addJMenuComIcone(JMenuBar barraDeMenu,ImageIcon icone) {
+		JMenu menu = new JMenu();
+		menu.setIcon(icone);
+		barraDeMenu.add(menu);
+		return menu;
+	}
+	
+	public static JMenuItem addItemNoMenu(JMenu menu, String nome) {
+		JMenuItem item = new JMenuItem(nome);
+		menu.add(item);
+		return item;
+		
+	}
+	public static void msgFalha(JFrame janela, String msg) {
+		JOptionPane.showMessageDialog(janela, "Erro!",msg, JOptionPane.ERROR_MESSAGE);
+	}
+	
+	public static void msgSucesso(JFrame janela, String msg) {
+		JOptionPane.showMessageDialog(janela, "Sucesso!",msg, JOptionPane.OK_OPTION,Icones.ENGRENAGEM); ////mudar icone(setinha)
+	}
+	
+	public static JComboBox<String> inserirComboBox(JFrame tela, int x,int y, int comprimento, int altura) {
+		CentralDeInformacoes central = new CentralDeInformacoes();
+		Vector<String> tiposDeProgramas = new Vector<String>(central.obterTiposDeProgramas());
+		
+		JComboBox<String> cbTipos = new JComboBox<String>(tiposDeProgramas);
+		cbTipos.setBounds(x, y, comprimento, altura);
+		tela.add(cbTipos);
+		return cbTipos;
 	}
 }

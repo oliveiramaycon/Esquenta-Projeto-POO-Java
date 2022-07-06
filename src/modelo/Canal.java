@@ -24,8 +24,11 @@ public class Canal {
 		setTipoCanal(tipoCanal);
 	}
 	
+	
+	
+	@Override
 	public String toString() {
-		return "nome: " + nome;
+		return "Canal [nome=" + nome + ", tipoCanal=" + tipoCanal + "]";
 	}
 	
 	public boolean equals(Canal canal) {

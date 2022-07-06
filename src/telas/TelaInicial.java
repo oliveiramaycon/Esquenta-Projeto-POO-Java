@@ -1,13 +1,14 @@
 package telas;
 
-import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
+import telas.ouvintes.OuvintBotoesTelaInicial;
 import telas.ouvintes.OuvinteLabelLink;
 import utilidades.Componentes;
 import utilidades.Imagens;
@@ -36,15 +37,14 @@ public class TelaInicial extends TelaPadrao {
 
 	
 	public void adicionarBotoes() {
-//		JButton botaoCatalogo = new JButton("Catálogo");
-//		botaoCatalogo.setBounds(130, 360, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-//		add(botaoCatalogo);
+		JButton b = Componentes.addJButton(this, "Catálogo", 130, 360, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		//b.setFont(new Font("Arial", Font.BOLD, 20));
+		OuvintBotoesTelaInicial ouvinteBotoesTelaInicial = new OuvintBotoesTelaInicial(this);
 		
-	//toda essa lógica acima foi abstraída na classe Componentes
-		
-		Componentes.addJButton(this, "Catálogo", 130, 360, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJButton(this, "Entrar", 575, 310, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJButton(this, "Cadastre-se", 513, 415, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 575, 310, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		botaoEntrar.addActionListener(ouvinteBotoesTelaInicial);
+		JButton botaoCadastrese = Componentes.addJButton(this, "Cadastre-se", 513, 415, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		botaoCadastrese.addActionListener(ouvinteBotoesTelaInicial);
 	}
 	
 	
@@ -63,10 +63,7 @@ public class TelaInicial extends TelaPadrao {
 		Componentes.addJTextField(this, 450, 162,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		Componentes.addJTextField(this, 450, 232,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
-
-	
-	
-	
-	
+	//TODO: fazer as alterações necessárias
+			
 	
 }

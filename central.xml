@@ -2,19 +2,51 @@
 <utilidades.CentralDeInformacoes>
   <programas>
     <modelo.ProgramaDeTv>
-      <id>1655256352620</id>
-      <nome>mycas show</nome>
+      <id>1657054644834</id>
+      <nome>the noite</nome>
+      <tipo>PROGRAMA_CONTINUO</tipo>
+      <canal>
+        <nome>sbt</nome>
+        <tipoCanal>variado</tipoCanal>
+      </canal>
+      <diasDaSemana>
+        <string>segunda-feira</string>
+      </diasDaSemana>
+    </modelo.ProgramaDeTv>
+    <modelo.ProgramaDeTv>
+      <id>1657054704498</id>
+      <nome>bla bla</nome>
+      <tipo>REALITY_SHOW</tipo>
+      <canal reference="../../modelo.ProgramaDeTv/canal"/>
+      <diasDaSemana>
+        <string>quinta-feira</string>
+      </diasDaSemana>
+    </modelo.ProgramaDeTv>
+    <modelo.ProgramaDeTv>
+      <id>1657114347962</id>
+      <nome>myce</nome>
       <tipo>REALITY_SHOW</tipo>
       <canal>
-        <nome>globo</nome>
+        <nome>glbo</nome>
         <tipoCanal>adulto</tipoCanal>
       </canal>
       <diasDaSemana>
         <string>segunda-feira</string>
       </diasDaSemana>
     </modelo.ProgramaDeTv>
+    <modelo.ProgramaDeTv>
+      <id>1657114824074</id>
+      <nome>teste</nome>
+      <tipo>REALITY_SHOW</tipo>
+      <canal reference="../../modelo.ProgramaDeTv[3]/canal"/>
+      <diasDaSemana>
+        <string>quarta-feira</string>
+      </diasDaSemana>
+    </modelo.ProgramaDeTv>
   </programas>
   <canais>
     <modelo.Canal reference="../../programas/modelo.ProgramaDeTv/canal"/>
+    <modelo.Canal reference="../../programas/modelo.ProgramaDeTv[3]/canal"/>
   </canais>
+  <usuariosCadastrados/>
 </utilidades.CentralDeInformacoes>
