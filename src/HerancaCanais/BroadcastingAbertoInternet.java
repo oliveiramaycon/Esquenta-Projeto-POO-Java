@@ -1,0 +1,16 @@
+package HerancaCanais;
+
+import modelo.Canal;
+
+public class BroadcastingAbertoInternet extends Canal {
+	private String link;
+
+	public BroadcastingAbertoInternet(String indentificador, TipoCanal tipoCanal, String link) {
+		super(indentificador, TipoCanal.BROADCASTING_ABERTO_NA_INTERNET);
+		this.link = link;
+	}
+
+	public String getLink() {
+		return link;
+	}
+}
