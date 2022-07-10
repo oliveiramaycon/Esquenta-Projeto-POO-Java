@@ -5,11 +5,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import excecoes.FalhaNoCadastroException;
-import excecoes.RegistroNaoEncontradoException;
 import modelo.Canal;
 import modelo.ProgramaDeTv;
-import modelo.TipoPrograma;
+import modelo.exceptions.FalhaNoCadastroException;
+import modelo.exceptions.RegistroNaoEncontradoException;
+import modelo.programa.enums.TipoPrograma;
 import telas.TelaNovoPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
@@ -45,16 +45,17 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		String[] dias = diasDeTransmissao.split(",");
 		ArrayList<String> diasDaSemana = new ArrayList<>(Arrays.asList(dias));
 		
-		ProgramaDeTv programa = new ProgramaDeTv(nome, tipoEnum, canal, diasDaSemana);
+		//TODO: MUDAR DIASDASEMANA PARA O TIPO DAYOFWEEK
+		//ProgramaDeTv programa = new ProgramaDeTv(nome, tipoEnum, canal, diasDaSemana);
 		
-		try {
-			central.AdicionarProgramaDeTv(programa);
-			persistencia.salvarCentral(central, "central");
-			Componentes.msgSucesso(telaPrograma, "Canal cadastrado com sucesso!");
-		} catch (FalhaNoCadastroException exception) {
-			//System.out.println(exception.getMessage());
-			Componentes.msgFalha(telaPrograma, exception.getMessage());
-		}
+//		try {
+//			central.AdicionarProgramaDeTv(programa);
+//			persistencia.salvarCentral(central, "central");
+//			Componentes.msgSucesso(telaPrograma, "Canal cadastrado com sucesso!");
+//		} catch (FalhaNoCadastroException exception) {
+//			//System.out.println(exception.getMessage());
+//			Componentes.msgFalha(telaPrograma, exception.getMessage());
+//		}
 	}
 
 }

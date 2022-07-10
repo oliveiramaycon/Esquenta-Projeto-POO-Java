@@ -3,9 +3,9 @@ package modelo;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-import EnumsPrograma.EnumFavorito;
-import EnumsPrograma.Status;
-import EnumsPrograma.TipoPrograma;
+import modelo.programa.enums.EnumFavorito;
+import modelo.programa.enums.Status;
+import modelo.programa.enums.TipoPrograma;
 
 public abstract class ProgramaDeTv {
 
@@ -66,7 +66,7 @@ public abstract class ProgramaDeTv {
 	}
 
 	public ProgramaDeTv(String nome, Canal canal,
-			ArrayList<DayOfWeek> diasDaSemana, Status status, String horario) {
+		ArrayList<DayOfWeek> diasDaSemana, Status status, String horario) {
 		setNome(nome);
 		setDiasDaSemana(diasDaSemana);
 		setCanal(canal);

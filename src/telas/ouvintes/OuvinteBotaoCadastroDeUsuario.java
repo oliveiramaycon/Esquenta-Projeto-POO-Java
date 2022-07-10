@@ -3,8 +3,8 @@ package telas.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import excecoes.UsuarioExistenteException;
 import modelo.Usuario;
+import modelo.exceptions.UsuarioExistenteException;
 import telas.TelaCadastroDeUsuario;
 import telas.TelaInicial;
 import utilidades.CentralDeInformacoes;

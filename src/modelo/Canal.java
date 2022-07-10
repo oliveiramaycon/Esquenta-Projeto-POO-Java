@@ -1,6 +1,6 @@
 package modelo;
 
-import EnumCanal.TipoCanal;
+import modelo.canal.enums.TipoCanal;
 
 public abstract class Canal {
 

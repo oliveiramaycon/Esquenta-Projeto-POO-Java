@@ -2,9 +2,9 @@ package modelo;
 
 import java.util.ArrayList;
 
-import EnumsPrograma.EnumFavorito;
-import excecoes.ProgramaJaAdicionado;
-import excecoes.ProgramaNaoFavoritado;
+import modelo.programa.enums.EnumFavorito;
+import modelo.programa.exceptions.ProgramaJaAdicionado;
+import modelo.programa.exceptions.ProgramaNaoFavoritado;
 
 public class Usuario {
 

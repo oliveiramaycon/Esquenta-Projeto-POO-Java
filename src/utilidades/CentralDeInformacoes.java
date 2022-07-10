@@ -2,16 +2,16 @@ package utilidades;
 
 import java.util.ArrayList;
 
-import excecoes.FalhaNoCadastroException;
-import excecoes.RegistroExistenteException;
-import excecoes.RegistroNaoEncontradoException;
-import excecoes.SemProgramaNaDataAtualException;
-import excecoes.TipoDeProgramaNaoExisteException;
-import excecoes.UsuarioExistenteException;
 import modelo.Canal;
 import modelo.ProgramaDeTv;
-import modelo.TipoPrograma;
 import modelo.Usuario;
+import modelo.exceptions.FalhaNoCadastroException;
+import modelo.exceptions.RegistroExistenteException;
+import modelo.exceptions.RegistroNaoEncontradoException;
+import modelo.exceptions.UsuarioExistenteException;
+import modelo.programa.enums.TipoPrograma;
+import modelo.programa.exceptions.SemProgramaNaDataAtualException;
+import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
 
 public class CentralDeInformacoes {
 
@@ -19,35 +19,38 @@ public class CentralDeInformacoes {
 	private ArrayList<Canal> canais = new ArrayList<Canal>();
 	private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
 
-	
-	
 	public ArrayList<ProgramaDeTv> getProgramas() {
 		return programas;
 	}
+
 	public void setProgramas(ArrayList<ProgramaDeTv> programas) {
 		this.programas = programas;
 	}
+
 	public ArrayList<Canal> getCanais() {
 		return canais;
 	}
+
 	public void setCanais(ArrayList<Canal> canais) {
 		this.canais = canais;
 	}
+
 	public ArrayList<Usuario> getUsuariosCadastrados() {
 		return usuariosCadastrados;
 	}
+
 	public void setUsuariosCadastrados(ArrayList<Usuario> usuariosCadastrados) {
 		this.usuariosCadastrados = usuariosCadastrados;
 	}
-	
+
 	/*
-	 *  ---------------------------------------------- MÉTODOS UTILITÁRIOS RELACIONADO A ENTENDIDADE PROGRAMA
+	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
+	 * RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
-	
-	
+
 	public void AdicionarProgramaDeTv(ProgramaDeTv programa) throws FalhaNoCadastroException {
 		FalhaNoCadastroException falha = new FalhaNoCadastroException();
-		
+
 		if (recuperarProgramaDetvPeloId(programa.getId()) != null) {
 			String msg = "\nID duplicado!";
 			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
@@ -59,7 +62,7 @@ public class CentralDeInformacoes {
 		}
 
 		programas.add(programa);
-		
+
 	}
 
 	public ProgramaDeTv recuperarProgramaDetvPeloId(long id) {
@@ -75,7 +78,7 @@ public class CentralDeInformacoes {
 	public void exibirProgramas() {
 		System.out.println(programas.toString());
 	}
-	
+
 	public void exibirTiposDeProgramas() {
 		System.out.println(obterTiposDeProgramas().toString());
 	}
@@ -88,7 +91,7 @@ public class CentralDeInformacoes {
 				programasEncontrados.add(programa);
 			}
 		}
-		
+
 		return programasEncontrados;
 	}
 
@@ -100,7 +103,7 @@ public class CentralDeInformacoes {
 			System.out.println(programasDeMesmoTipo.toString());
 		}
 	}
-	
+
 	public ArrayList<ProgramaDeTv> buscarProgramasPorCanal(String nomeDoCanal) {
 		ArrayList<ProgramaDeTv> programasEncontrados = new ArrayList<ProgramaDeTv>();
 
@@ -111,50 +114,49 @@ public class CentralDeInformacoes {
 		}
 		return programasEncontrados;
 	}
-	
+
 	public ArrayList<String> obterTiposDeProgramas() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoPrograma tipo : TipoPrograma.values()) {
 			tipos.add(tipo.toString());
 		}
-		
+
 		return tipos;
 	}
 
 	public void hasTipoPrograma(TipoPrograma tipoPrograma) throws TipoDeProgramaNaoExisteException {
-		
-		if(!obterTiposDeProgramas().contains(tipoPrograma.toString())) {
-			throw new TipoDeProgramaNaoExisteException();			
-		} 
+
+		if (!obterTiposDeProgramas().contains(tipoPrograma.toString())) {
+			throw new TipoDeProgramaNaoExisteException();
+		}
 	}
-	
+
 	public ArrayList<ProgramaDeTv> obterProgramasComTransmissaoNaDataAtual() throws SemProgramaNaDataAtualException {
 		ArrayList<ProgramaDeTv> programasDoDia = new ArrayList<ProgramaDeTv>();
 		String diaDaSemana = Datas.obterDiaDaSemana();
 		for (ProgramaDeTv programa : programas) {
-			
+
 			if (programa.getDiasDaSemana().contains(diaDaSemana)) {
 				programasDoDia.add(programa);
 			}
 		}
-		if(programasDoDia.isEmpty()) {
+		if (programasDoDia.isEmpty()) {
 			throw new SemProgramaNaDataAtualException();
 		}
 		return programasDoDia;
 	}
-	
-	
 
 	/*
-	 *  ---------------------------------------------- MÉTODOS UTILITÁRIOS RELACIONADO A ENTENDIDADE PROGRAMA
+	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
+	 * RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
-	
+
 	public void adicionarCanal(Canal canal) throws RegistroExistenteException {
 		try {
 			recuperarCanalPeloNome(canal.getNome());
 			throw new RegistroExistenteException();
-			
-		}catch(RegistroNaoEncontradoException e){
+
+		} catch (RegistroNaoEncontradoException e) {
 			canais.add(canal);
 		}
 	}
@@ -180,14 +182,13 @@ public class CentralDeInformacoes {
 		}
 		System.out.print(nomeDosCanais.toString());
 	}
-	
-	
+
 	/*
 	 * ---------------------------------------
 	 */
-	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException{
+	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException {
 		for (Usuario u : usuariosCadastrados) {
-			if(u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
+			if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
 				throw new UsuarioExistenteException();
 			}
 		}
