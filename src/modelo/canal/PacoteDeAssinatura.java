@@ -1,6 +1,5 @@
 package modelo.canal;
 
-import modelo.Canal;
 import modelo.canal.enums.TipoCanal;
 
 public class PacoteDeAssinatura extends Canal {

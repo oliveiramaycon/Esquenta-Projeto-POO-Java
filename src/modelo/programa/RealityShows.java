@@ -3,7 +3,7 @@ package modelo.programa;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-import modelo.Canal;
+import modelo.canal.Canal;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
 

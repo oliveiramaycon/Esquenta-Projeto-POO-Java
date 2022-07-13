@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import modelo.Canal;
-import modelo.ProgramaDeTv;
+import modelo.canal.Canal;
 import modelo.exceptions.FalhaNoCadastroException;
 import modelo.exceptions.RegistroNaoEncontradoException;
+import modelo.programa.ProgramaDeTv;
 import modelo.programa.enums.TipoPrograma;
 import telas.TelaNovoPrograma;
 import utilidades.CentralDeInformacoes;

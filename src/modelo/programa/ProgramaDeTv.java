@@ -1,8 +1,9 @@
-package modelo;
+package modelo.programa;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
+import modelo.canal.Canal;
 import modelo.programa.enums.EnumFavorito;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;

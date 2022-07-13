@@ -2,16 +2,16 @@ package utilidades;
 
 import java.util.ArrayList;
 
-import modelo.Canal;
-import modelo.ProgramaDeTv;
-import modelo.Usuario;
+import modelo.canal.Canal;
 import modelo.exceptions.FalhaNoCadastroException;
 import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
 import modelo.exceptions.UsuarioExistenteException;
+import modelo.programa.ProgramaDeTv;
 import modelo.programa.enums.TipoPrograma;
 import modelo.programa.exceptions.SemProgramaNaDataAtualException;
 import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
+import modelo.usuario.Usuario;
 
 public class CentralDeInformacoes {
 

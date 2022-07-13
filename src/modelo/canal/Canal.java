@@ -1,4 +1,4 @@
-package modelo;
+package modelo.canal;
 
 import modelo.canal.enums.TipoCanal;
 

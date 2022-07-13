@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 import telas.ouvintes.OuvintBotoesTelaInicial;
 import telas.ouvintes.OuvinteLabelLink;
@@ -15,8 +16,9 @@ import utilidades.Imagens;
 import utilidades.Medidas;
 
 public class TelaInicial extends TelaPadrao {
-
-
+	private JTextField tfLogin;
+	// CRIAR ATRIBUTO SENHA
+	
 	public TelaInicial() {
 		super("Bem Vindo");		
 	}
@@ -60,10 +62,18 @@ public class TelaInicial extends TelaPadrao {
 	
 	
 	public void adicionarTextFields() {
-		Componentes.addJTextField(this, 450, 162,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+	tfLogin = Componentes.addJTextField(this, 450, 162,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		Componentes.addJTextField(this, 450, 232,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
 	//TODO: fazer as alterações necessárias
+
+	public JTextField getTfLogin() {
+		return tfLogin;
+	}
+
+	public void setTfLogin(JTextField tfLogin) {
+		this.tfLogin = tfLogin;
+	}
 			
 	
 }

@@ -3,8 +3,19 @@ package telas.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Usuario;
+import javax.swing.JOptionPane;
+
 import modelo.exceptions.UsuarioExistenteException;
+import modelo.usuario.Usuario;
+import modelo.usuario.exceptions.LoginComEspacosException;
+import modelo.usuario.exceptions.LoginComMenosCaracterisException;
+import modelo.usuario.exceptions.LoginComNumerosException;
+import modelo.usuario.exceptions.SenhaCurtaException;
+import modelo.usuario.exceptions.SenhaIgualALoginException;
+import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
+import modelo.usuario.exceptions.SenhaSemMinusculosException;
+import modelo.usuario.exceptions.SenhaSemNumerosException;
+import modelo.usuario.exceptions.ValidadorDeEmailExecption;
 import telas.TelaCadastroDeUsuario;
 import telas.TelaInicial;
 import utilidades.CentralDeInformacoes;
@@ -35,19 +46,43 @@ public class OuvinteBotaoCadastroDeUsuario implements ActionListener{
 		
 		Usuario usuario = new Usuario(nome, email,login, senha, confirmacaoDeSenha);
 		
+	//-----------------------------------------VAI FAZER A VALIDACAO DE USUARIO:
+		boolean usuarioEvalido = false;
+		
+		try {
+			usuario.validadorDeLogin(usuario.getLogin());
+			usuario.validadorDeSenha(usuario.getSenha());
+			usuario.validadorDeEmail(usuario.getEmail());
+			usuarioEvalido = true;
+			
+		}catch(LoginComEspacosException | LoginComMenosCaracterisException | LoginComNumerosException e1) {
+			JOptionPane.showMessageDialog(telaCadastro, e1.getMessage());
+		}
+		catch(SenhaCurtaException | SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption | SenhaSemNumerosException | SenhaIgualALoginException e2 ) {
+			JOptionPane.showMessageDialog(telaCadastro, e2.getMessage());
+		}
+		catch(ValidadorDeEmailExecption e3) {
+			JOptionPane.showMessageDialog(telaCadastro, e3.getMessage());
+		}
+		
+		//-----------------------------------------ADICAO DO USUARIO:
+		
+		
+		if(usuarioEvalido == true) {
 		try {
 			central.adicionarUsuario(usuario);
 			//System.out.println("Canal cadastrado com sucesso!\n");
 			persistencia.salvarCentral(central, "central");
 			Componentes.msgSucesso(telaCadastro, "Usuário cadastrado com sucesso!");
 			
-			new TelaInicial();
+			TelaInicial	telaInicia	= new TelaInicial();
+			telaInicia.getTfLogin().setText(usuario.getLogin());;
 			telaCadastro.dispose();
 		} catch (UsuarioExistenteException exception) {
 			//System.out.println(exception.getMessage());
 			Componentes.msgFalha(telaCadastro, exception.getMessage());
 		}
 	}
-	
+	}
 
 }

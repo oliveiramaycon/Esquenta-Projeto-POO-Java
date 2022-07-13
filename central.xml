@@ -1,52 +1,47 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <utilidades.CentralDeInformacoes>
-  <programas>
-    <modelo.ProgramaDeTv>
-      <id>1657054644834</id>
-      <nome>the noite</nome>
-      <tipo>PROGRAMA_CONTINUO</tipo>
-      <canal>
-        <nome>sbt</nome>
-        <tipoCanal>variado</tipoCanal>
-      </canal>
-      <diasDaSemana>
-        <string>segunda-feira</string>
-      </diasDaSemana>
-    </modelo.ProgramaDeTv>
-    <modelo.ProgramaDeTv>
-      <id>1657054704498</id>
-      <nome>bla bla</nome>
-      <tipo>REALITY_SHOW</tipo>
-      <canal reference="../../modelo.ProgramaDeTv/canal"/>
-      <diasDaSemana>
-        <string>quinta-feira</string>
-      </diasDaSemana>
-    </modelo.ProgramaDeTv>
-    <modelo.ProgramaDeTv>
-      <id>1657114347962</id>
-      <nome>myce</nome>
-      <tipo>REALITY_SHOW</tipo>
-      <canal>
-        <nome>glbo</nome>
-        <tipoCanal>adulto</tipoCanal>
-      </canal>
-      <diasDaSemana>
-        <string>segunda-feira</string>
-      </diasDaSemana>
-    </modelo.ProgramaDeTv>
-    <modelo.ProgramaDeTv>
-      <id>1657114824074</id>
-      <nome>teste</nome>
-      <tipo>REALITY_SHOW</tipo>
-      <canal reference="../../modelo.ProgramaDeTv[3]/canal"/>
-      <diasDaSemana>
-        <string>quarta-feira</string>
-      </diasDaSemana>
-    </modelo.ProgramaDeTv>
-  </programas>
-  <canais>
-    <modelo.Canal reference="../../programas/modelo.ProgramaDeTv/canal"/>
-    <modelo.Canal reference="../../programas/modelo.ProgramaDeTv[3]/canal"/>
-  </canais>
-  <usuariosCadastrados/>
+  <programas/>
+  <canais/>
+  <usuariosCadastrados>
+    <modelo.usuario.Usuario>
+      <nome>erick</nome>
+      <email>Erick@gmail.com</email>
+      <login>Ericke</login>
+      <senha>123Qop</senha>
+      <confirmacaoDeSenha>123Qop</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+    <modelo.usuario.Usuario>
+      <nome>netro</nome>
+      <email>netro@gmail.com</email>
+      <login>N</login>
+      <senha>123Poq</senha>
+      <confirmacaoDeSenha>123Poq</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+    <modelo.usuario.Usuario>
+      <nome>eduad</nome>
+      <email>edu@gmail.com</email>
+      <login></login>
+      <senha>123Edu</senha>
+      <confirmacaoDeSenha>123Edu</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+    <modelo.usuario.Usuario>
+      <nome>dudu</nome>
+      <email>dudu@gmail.com</email>
+      <login>Duduu</login>
+      <senha>123Dud</senha>
+      <confirmacaoDeSenha>123Dud</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+    <modelo.usuario.Usuario>
+      <nome>mara</nome>
+      <email>mara@gmail.com</email>
+      <login>Maraa</login>
+      <senha>123Mar</senha>
+      <confirmacaoDeSenha>123Mar</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+  </usuariosCadastrados>
 </utilidades.CentralDeInformacoes>

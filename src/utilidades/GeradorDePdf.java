@@ -10,8 +10,8 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import modelo.Canal;
-import modelo.ProgramaDeTv;
+import modelo.canal.Canal;
+import modelo.programa.ProgramaDeTv;
 
 public class GeradorDePdf {
 

@@ -3,8 +3,7 @@ package modelo.programa;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-import modelo.Canal;
-import modelo.ProgramaDeTv;
+import modelo.canal.Canal;
 import modelo.exceptions.ApresentadorJaCadastrado;
 import modelo.programa.enums.EnumFavorito;
 import modelo.programa.enums.Status;

@@ -14,8 +14,8 @@ import com.thoughtworks.xstream.security.NoTypePermission;
 import com.thoughtworks.xstream.security.NullPermission;
 import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
-import modelo.Canal;
-import modelo.ProgramaDeTv;
+import modelo.canal.Canal;
+import modelo.programa.ProgramaDeTv;
 
 public class Persistencia {
 

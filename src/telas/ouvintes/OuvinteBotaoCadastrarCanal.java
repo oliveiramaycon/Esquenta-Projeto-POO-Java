@@ -3,7 +3,7 @@ package telas.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import modelo.Canal;
+import modelo.canal.Canal;
 import modelo.canal.enums.TipoCanal;
 import modelo.exceptions.RegistroExistenteException;
 import telas.TelaNovoCanal;
