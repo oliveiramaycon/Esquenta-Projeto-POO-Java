@@ -3,6 +3,7 @@ package utilidades;
 import java.util.ArrayList;
 
 import modelo.canal.Canal;
+import modelo.canal.enums.TipoCanal;
 import modelo.exceptions.FalhaNoCadastroException;
 import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
@@ -148,7 +149,7 @@ public class CentralDeInformacoes {
 
 	/*
 	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
-	 * RELACIONADO A ENTENDIDADE PROGRAMA
+	 * RELACIONADO A ENTENDIDADE CANAL
 	 */
 
 	public void adicionarCanal(Canal canal) throws RegistroExistenteException {
@@ -181,6 +182,34 @@ public class CentralDeInformacoes {
 			nomeDosCanais.add(canal.getNome());
 		}
 		System.out.print(nomeDosCanais.toString());
+	}
+	public ArrayList<String> obterTiposDeCanais() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		for (TipoCanal tipo : TipoCanal.values()) {
+			tipos.add(tipo.toString());
+		}
+
+		return tipos;
+	}
+	public ArrayList<String> obterTiposDeCanaisTelevisivos() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		for (TipoCanal tipo : TipoCanal.values()) {
+			if (tipo.toString().endsWith("TELEVISAO")) {
+				tipos.add(tipo.toString());
+			}
+		}
+
+		return tipos;
+	}
+	public ArrayList<String> obterTiposDeCanaisBroadcasting() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		for (TipoCanal tipo : TipoCanal.values()) {
+			if (tipo.toString().endsWith("BROADCASTING")) {
+				tipos.add(tipo.toString());
+			}
+		}
+
+		return tipos;
 	}
 
 	/*

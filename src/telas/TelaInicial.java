@@ -17,6 +17,15 @@ import utilidades.Medidas;
 
 public class TelaInicial extends TelaPadrao {
 	private JTextField tfLogin;
+	
+	public JTextField getTfLogin() {
+		return tfLogin;
+	}
+
+	public void setTfLogin(JTextField tfLogin) {
+		this.tfLogin = tfLogin;
+	}
+		
 	// CRIAR ATRIBUTO SENHA
 	
 	public TelaInicial() {
@@ -67,13 +76,6 @@ public class TelaInicial extends TelaPadrao {
 	}
 	//TODO: fazer as alterações necessárias
 
-	public JTextField getTfLogin() {
-		return tfLogin;
-	}
-
-	public void setTfLogin(JTextField tfLogin) {
-		this.tfLogin = tfLogin;
-	}
-			
+		
 	
 }

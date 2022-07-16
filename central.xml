@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <utilidades.CentralDeInformacoes>
   <programas/>
-  <canais/>
+  <canais>
+    <modelo.canal.CanalDeTv>
+      <nome>a</nome>
+      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
+      <numeroCanal>2</numeroCanal>
+    </modelo.canal.CanalDeTv>
+  </canais>
   <usuariosCadastrados>
     <modelo.usuario.Usuario>
       <nome>erick</nome>

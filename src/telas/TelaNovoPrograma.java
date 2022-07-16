@@ -1,7 +1,5 @@
 package telas;
 
-import java.util.Vector;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -10,6 +8,7 @@ import telas.ouvintes.OuvinteBotaoCadastrarPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Medidas;
+import utilidades.Persistencia;
 
 public class TelaNovoPrograma extends TelaPadrao {
 
@@ -89,7 +88,8 @@ public class TelaNovoPrograma extends TelaPadrao {
 	}
 	
 	public void comboBoxTipoPrograma() {
-		tfTipo = Componentes.inserirComboBox(this, 220, 135,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		CentralDeInformacoes central = new CentralDeInformacoes();
+		tfTipo = Componentes.inserirComboBox(this,central.obterTiposDeProgramas(), 220, 135,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
 
 }
