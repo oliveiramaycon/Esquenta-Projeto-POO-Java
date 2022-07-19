@@ -9,6 +9,7 @@ public class Validador {
 			throws CamposIncompletosException, NumberFormatException {
 
 		String nome = telaNovoCanal.getTfNome().getText().trim();
+		String tipo = telaNovoCanal.obterTipoSelecionado().toString();
 		String numeroCanal = telaNovoCanal.getTfNumeroOuLink().getText().trim();
 		String link = telaNovoCanal.getLinkBroadcasting().getText().trim();
 
@@ -19,19 +20,19 @@ public class Validador {
 		if (numeroCanal.isEmpty() && link.isEmpty()) {
 			throw new CamposIncompletosException();
 		}
-		if (!numeroCanal.isEmpty() && !textoIsNumerico(numeroCanal)) {
+		
+		if (numeroCanal.isEmpty()) {
+			throw new CamposIncompletosException();
+		}
+		
+		if (tipo.toString().endsWith("TELEVISAO") && !textoIsNumerico(numeroCanal)) {
 			throw new NumberFormatException("informe um valor numérico ao campo Número do canal!");
 		}
 		
 		return true;
-
 	}
 
 	public static boolean textoIsNumerico(String texto) {
-		System.out.println(texto.chars().allMatch(Character::isDigit));
-
-        System.out.println(texto + "aaaaaaaaaaaaaaaaaaaaa");
 		return texto.chars().allMatch(Character::isDigit);
-
 	}
 }

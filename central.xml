@@ -3,51 +3,11 @@
   <programas/>
   <canais>
     <modelo.canal.CanalDeTv>
-      <nome>a</nome>
-      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
-      <numeroCanal>2</numeroCanal>
+      <nome>maycas edit 2</nome>
+      <tipoCanal>PACOTE_DE_ASSINATURA_TELEVISAO</tipoCanal>
+      <id>1658188107763</id>
+      <numeroCanal>17</numeroCanal>
     </modelo.canal.CanalDeTv>
   </canais>
-  <usuariosCadastrados>
-    <modelo.usuario.Usuario>
-      <nome>erick</nome>
-      <email>Erick@gmail.com</email>
-      <login>Ericke</login>
-      <senha>123Qop</senha>
-      <confirmacaoDeSenha>123Qop</confirmacaoDeSenha>
-      <programasFavoritos/>
-    </modelo.usuario.Usuario>
-    <modelo.usuario.Usuario>
-      <nome>netro</nome>
-      <email>netro@gmail.com</email>
-      <login>N</login>
-      <senha>123Poq</senha>
-      <confirmacaoDeSenha>123Poq</confirmacaoDeSenha>
-      <programasFavoritos/>
-    </modelo.usuario.Usuario>
-    <modelo.usuario.Usuario>
-      <nome>eduad</nome>
-      <email>edu@gmail.com</email>
-      <login></login>
-      <senha>123Edu</senha>
-      <confirmacaoDeSenha>123Edu</confirmacaoDeSenha>
-      <programasFavoritos/>
-    </modelo.usuario.Usuario>
-    <modelo.usuario.Usuario>
-      <nome>dudu</nome>
-      <email>dudu@gmail.com</email>
-      <login>Duduu</login>
-      <senha>123Dud</senha>
-      <confirmacaoDeSenha>123Dud</confirmacaoDeSenha>
-      <programasFavoritos/>
-    </modelo.usuario.Usuario>
-    <modelo.usuario.Usuario>
-      <nome>mara</nome>
-      <email>mara@gmail.com</email>
-      <login>Maraa</login>
-      <senha>123Mar</senha>
-      <confirmacaoDeSenha>123Mar</confirmacaoDeSenha>
-      <programasFavoritos/>
-    </modelo.usuario.Usuario>
-  </usuariosCadastrados>
+  <usuariosCadastrados/>
 </utilidades.CentralDeInformacoes>

@@ -161,10 +161,19 @@ public class CentralDeInformacoes {
 			canais.add(canal);
 		}
 	}
-
+	
 	public Canal recuperarCanalPeloNome(String nomeDoCanal) throws RegistroNaoEncontradoException {
 		for (Canal canal : canais) {
 			if (canal.getNome().equals(nomeDoCanal)) {
+				return canal;
+			}
+		}
+		throw new RegistroNaoEncontradoException();
+	}
+	
+	public Canal recuperarCanalPeloId(long id) throws RegistroNaoEncontradoException {
+		for (Canal canal : canais) {
+			if (canal.getId() == id) {
 				return canal;
 			}
 		}

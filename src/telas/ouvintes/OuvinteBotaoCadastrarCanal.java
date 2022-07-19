@@ -3,14 +3,13 @@ package telas.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.itextpdf.text.log.SysoCounter;
-
 import modelo.canal.Canal;
 import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
 import modelo.canal.enums.TipoCanal;
 import modelo.canal.exceptions.CamposIncompletosException;
 import modelo.exceptions.RegistroExistenteException;
+import modelo.exceptions.RegistroNaoEncontradoException;
 import telas.TelaNovoCanal;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
@@ -20,40 +19,81 @@ import utilidades.Validador;
 public class OuvinteBotaoCadastrarCanal implements ActionListener {
 
 	private TelaNovoCanal telaCanal;
+	private Persistencia persistencia = new Persistencia();
+	private CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
 	public OuvinteBotaoCadastrarCanal(TelaNovoCanal telaCanal) {
 		this.telaCanal = telaCanal;
 	}
 
-	Persistencia persistencia = new Persistencia();
-	CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// String nomeCanal = telaCanal.getTfNome().getText();
 		// TipoCanal tipoCanal = TipoCanal.valueOf(telaCanal.getTfTipo().getText());
 
-		boolean validacao;
+		
 		try {
-			validacao = Validador.validarPreenchimentoCanal(telaCanal);
+			Validador.validarPreenchimentoCanal(telaCanal);
 
-			boolean isTv = true;
-			Canal canal = null;
-
-			if (telaCanal.getRb1().isSelected()) {
-				canal = new CanalDeTv(telaCanal.getTfNome().getText(),
-						TipoCanal.valueOf((String) telaCanal.getCbTv().getSelectedItem()),
-						Integer.parseInt(telaCanal.getTfNumeroOuLink().getText()));
+			// obter valores dos campos da tela
+			
+			
+			String nome = telaCanal.getTfNome().getText();
+			TipoCanal tipo = telaCanal.obterTipoSelecionado();
+			String numeroOuLink = telaCanal.getTfNumeroOuLink().getText();
+			
+			
+			
+			
+			if(telaCanal.getCanal() == null) {
+				Canal canal = null;
+				
+				if (telaCanal.getRb1().isSelected()) {
+					canal = new CanalDeTv(nome, tipo, Integer.parseInt(numeroOuLink));
+				} else {
+					canal = new CanalBroadcasting(nome, tipo, numeroOuLink);
+				}
+				
+				central.adicionarCanal(canal);
+				Componentes.msgSucesso(telaCanal, "Canal cadastrado com sucesso!");
 			} else {
-				canal = new CanalBroadcasting(telaCanal.getTfNome().getText(),
-						TipoCanal.valueOf((String) telaCanal.getCbBroadcasting().getSelectedItem()),
-						telaCanal.getTfNumeroOuLink().getText());
-
+		
+				
+				Canal canalSalvo = central.recuperarCanalPeloId(telaCanal.getCanal().getId());
+				System.out.println("canal salvo: " + canalSalvo);
+				
+				System.out.println("----- canais salvos ---------");
+				System.out.println(central.getCanais().toString());
+				
+				
+				canalSalvo.setNome(nome);
+				canalSalvo.setTipoCanal(tipo);
+				
+				
+				if (telaCanal.getRb1().isSelected()) {
+					//numero
+					CanalDeTv canalDeTvSalvo = (CanalDeTv) canalSalvo;
+					
+					canalDeTvSalvo.setNumeroCanal(Integer.parseInt(numeroOuLink));
+					
+					canalSalvo = canalDeTvSalvo;
+				}
+				else {
+					//link
+					CanalBroadcasting canalBroadcastingSalvo = (CanalBroadcasting) canalSalvo;
+			
+					canalBroadcastingSalvo.setLink(numeroOuLink);
+					
+					canalSalvo = canalBroadcastingSalvo;
+				}
+				Componentes.msgSucesso(telaCanal, "Canal editado com sucesso!");
+				System.out.println(canalSalvo + "canal salvo");
+				persistencia.salvarCentral(central, "central");
 			}
-			central.adicionarCanal(canal);
-			persistencia.salvarCentral(central, "central");
-			Componentes.msgSucesso(telaCanal, "Canal cadastrado com sucesso!");
-		} catch (CamposIncompletosException | NumberFormatException | RegistroExistenteException exception) {
+			
+			
+		} catch (CamposIncompletosException | NumberFormatException | RegistroExistenteException | RegistroNaoEncontradoException exception) {
 			Componentes.msgFalha(telaCanal, exception.getMessage());
 		}
 	}
