@@ -142,6 +142,10 @@ public class TelaNovoCanal extends TelaPadrao {
 		super("Edição de Canal");
 		this.canal = canal;
 		preencherCampos();
+		if(!isTelevisao()) {
+			getNumeroCanal().setVisible(false);
+			getLinkBroadcasting().setVisible(true);
+		}
 		botaoCadastrar.setText("Salvar");
 	}
 
@@ -276,14 +280,14 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	
 	// main para teste da tela de edição
-//	public static void main(String[] args) {
-//
-//		TelaNovoCanal c1 = new TelaNovoCanal();
-//
-//		Canal canal = new CanalDeTv("maycas", TipoCanal.CANAL_ABERTO_DE_TELEVISAO, 1);
-//		canal.setId(1658188107763L);
-//		System.out.println(canal);
-//		TelaNovoCanal c2 = new TelaNovoCanal(canal);
-//	}
+	public static void main(String[] args) {
+
+		TelaNovoCanal c1 = new TelaNovoCanal();
+
+		Canal canal = new CanalDeTv("maycas", TipoCanal.ABERTO_NA_INTERNET_BROADCASTING, 1);
+		canal.setId(1658188107763L);
+		System.out.println(canal);
+		TelaNovoCanal c2 = new TelaNovoCanal(canal);
+	}
 
 }

@@ -89,8 +89,8 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 				}
 				Componentes.msgSucesso(telaCanal, "Canal editado com sucesso!");
 				System.out.println(canalSalvo + "canal salvo");
-				persistencia.salvarCentral(central, "central");
 			}
+			persistencia.salvarCentral(central, "central");
 			
 			
 		} catch (CamposIncompletosException | NumberFormatException | RegistroExistenteException | RegistroNaoEncontradoException exception) {

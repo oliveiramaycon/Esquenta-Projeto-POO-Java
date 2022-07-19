@@ -2,11 +2,17 @@
 <utilidades.CentralDeInformacoes>
   <programas/>
   <canais>
+    <modelo.canal.CanalBroadcasting>
+      <nome>emu</nome>
+      <tipoCanal>ASSINATURA_INDIVIDUAL_DE_BROADCASTING</tipoCanal>
+      <id>1658194249076</id>
+      <link>saa</link>
+    </modelo.canal.CanalBroadcasting>
     <modelo.canal.CanalDeTv>
-      <nome>maycas edit 2</nome>
+      <nome>eeaaa</nome>
       <tipoCanal>PACOTE_DE_ASSINATURA_TELEVISAO</tipoCanal>
-      <id>1658188107763</id>
-      <numeroCanal>17</numeroCanal>
+      <id>1658194262780</id>
+      <numeroCanal>44</numeroCanal>
     </modelo.canal.CanalDeTv>
   </canais>
   <usuariosCadastrados/>
