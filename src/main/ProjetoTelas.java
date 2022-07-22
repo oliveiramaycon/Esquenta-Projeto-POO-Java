@@ -1,6 +1,7 @@
 package main;
 
 import telas.TelaInicial;
+import telas.TelaNovoCanal;
 
 public class ProjetoTelas {
 
@@ -8,7 +9,7 @@ public class ProjetoTelas {
 		
 		TelaInicial telaInicio = new TelaInicial();
 		//TelaCadastroDeUsuario telaCadastroUsuario = new TelaCadastroDeUsuario();
-//		TelaNovoCanal novoCanal = new TelaNovoCanal();
+		TelaNovoCanal novoCanal = new TelaNovoCanal();
 		//TelaHome telaHome = new TelaHome();
 		//TelaListagemProgramas programas = new TelaListagemProgramas();
 		//TelaNovoPrograma novoPrograma = new TelaNovoPrograma();

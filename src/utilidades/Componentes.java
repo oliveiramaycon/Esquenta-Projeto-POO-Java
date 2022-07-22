@@ -2,6 +2,7 @@ package utilidades;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -13,6 +14,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class Componentes {
@@ -63,20 +65,28 @@ public class Componentes {
 		
 	}
 	public static void msgFalha(JFrame janela, String msg) {
-		JOptionPane.showMessageDialog(janela, "Erro!",msg, JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(janela, msg, "Erro", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public static void msgSucesso(JFrame janela, String msg) {
-		JOptionPane.showMessageDialog(janela, "Sucesso!",msg, JOptionPane.OK_OPTION,Icones.ENGRENAGEM); ////mudar icone(setinha)
+		JOptionPane.showMessageDialog(janela, msg, "Sucesso", JOptionPane.OK_OPTION,Icones.ENGRENAGEM); ////mudar icone(setinha)
 	}
 	
-	public static JComboBox<String> inserirComboBox(JFrame tela, int x,int y, int comprimento, int altura) {
-		CentralDeInformacoes central = new CentralDeInformacoes();
-		Vector<String> tiposDeProgramas = new Vector<String>(central.obterTiposDeProgramas());
+	public static JComboBox<String> inserirComboBox(JFrame tela, ArrayList<String> dados, int x,int y, int comprimento, int altura) {
+		
+		Vector<String> tiposDeProgramas = new Vector<String>(dados);
 		
 		JComboBox<String> cbTipos = new JComboBox<String>(tiposDeProgramas);
 		cbTipos.setBounds(x, y, comprimento, altura);
 		tela.add(cbTipos);
 		return cbTipos;
+	}
+	
+	public static JRadioButton addRadioButton(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
+		JRadioButton radioBotao = new JRadioButton(nome);
+		radioBotao.setBounds(x,y,comprimento,altura);
+		tela.add(radioBotao);
+		return radioBotao;
+		
 	}
 }

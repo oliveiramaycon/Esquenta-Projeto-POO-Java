@@ -1,7 +1,7 @@
 package modelo.canal;
 
 import modelo.canal.enums.TipoCanal;
-
+// ESSE FOI O CANAL QUE FICO MESMO COM O GIT PULL
 public class CanalAberto extends Canal {
 	private int numero;
 

@@ -6,6 +6,17 @@ public abstract class Canal {
 
 	private String nome;
 	private TipoCanal tipoCanal;
+	private long id;
+	
+	
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -26,14 +37,17 @@ public abstract class Canal {
 	public Canal(String nome, TipoCanal tipoCanal) {
 		setNome(nome);
 		setTipoCanal(tipoCanal);
+		id = System.currentTimeMillis();
 	}
+
+	
 
 	@Override
 	public String toString() {
-		return "Canal [nome=" + nome + ", tipoCanal=" + tipoCanal + "]";
+		return "Canal [nome=" + nome + ", tipoCanal=" + tipoCanal + ", id=" + id + "]";
 	}
 
 	public boolean equals(Canal canal) {
-		return canal.getNome().equals(this.nome);
+		return canal.getNome().equals(this.nome) || canal.getId() == this.id;
 	}
 }
