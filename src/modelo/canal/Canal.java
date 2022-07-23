@@ -1,14 +1,21 @@
 package modelo.canal;
 
+import java.util.ArrayList;
+
 import modelo.canal.enums.TipoCanal;
+import modelo.programa.ProgramaDeTv;
 
 public abstract class Canal {
 
 	private String nome;
 	private TipoCanal tipoCanal;
 	private long id;
+	private ArrayList<ProgramaDeTv> programas;
 	
 	
+	public ArrayList<ProgramaDeTv> getProgramas() {
+		return programas;
+	}
 	
 	public long getId() {
 		return id;
@@ -38,6 +45,7 @@ public abstract class Canal {
 		setNome(nome);
 		setTipoCanal(tipoCanal);
 		id = System.currentTimeMillis();
+		programas = new ArrayList<>();
 	}
 
 	

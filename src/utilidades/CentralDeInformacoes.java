@@ -192,14 +192,6 @@ public class CentralDeInformacoes {
 		}
 		System.out.print(nomeDosCanais.toString());
 	}
-	public ArrayList<String> obterTiposDeCanais() {
-		ArrayList<String> tipos = new ArrayList<String>();
-		for (TipoCanal tipo : TipoCanal.values()) {
-			tipos.add(tipo.toString());
-		}
-
-		return tipos;
-	}
 	public ArrayList<String> obterTiposDeCanaisTelevisivos() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoCanal tipo : TipoCanal.values()) {
@@ -212,6 +204,7 @@ public class CentralDeInformacoes {
 	}
 	public ArrayList<String> obterTiposDeCanais() {
 		ArrayList<String> tipos = new ArrayList<String>();
+		tipos.add("");
 		for (TipoCanal tipo : TipoCanal.values()) {
 			tipos.add(tipo.toString());
 		}
