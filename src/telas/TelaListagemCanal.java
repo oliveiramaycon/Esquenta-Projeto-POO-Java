@@ -106,7 +106,6 @@ public class TelaListagemCanal extends TelaPadrao {
 			filtro(combo.getSelectedItem());
 				
 				
-//			JOptionPane.showMessageDialog(null, "vai tomar no cu cleyton");
 		}
 
 	
