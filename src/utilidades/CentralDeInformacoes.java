@@ -45,7 +45,7 @@ public class CentralDeInformacoes {
 	}
 
 	/*
-	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
+	 * ---------------------------------------------- Mï¿½TODOS UTILITï¿½RIOS
 	 * RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
 
@@ -58,7 +58,7 @@ public class CentralDeInformacoes {
 		}
 
 		if (programa.getCanal() == null) {
-			String msg = "\nÉ necessário informar um canal";
+			String msg = "\nï¿½ necessï¿½rio informar um canal";
 			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
 		}
 
@@ -148,7 +148,7 @@ public class CentralDeInformacoes {
 	}
 
 	/*
-	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
+	 * ---------------------------------------------- Mï¿½TODOS UTILITï¿½RIOS
 	 * RELACIONADO A ENTENDIDADE CANAL
 	 */
 
@@ -210,6 +210,13 @@ public class CentralDeInformacoes {
 
 		return tipos;
 	}
+	public ArrayList<String> obterTiposDeCanais() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		for (TipoCanal tipo : TipoCanal.values()) {
+			tipos.add(tipo.toString());
+		}
+		return tipos;
+	}
 	public ArrayList<String> obterTiposDeCanaisBroadcasting() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoCanal tipo : TipoCanal.values()) {
@@ -236,7 +243,7 @@ public class CentralDeInformacoes {
 		return novo;
 	}
 	
-	// METODO SÓ SERVE PRA MODIFICAR A SENHA DO USUARIO:
+	// METODO Sï¿½ SERVE PRA MODIFICAR A SENHA DO USUARIO:
 	public void editarSenha(String novaSenha,String NovaConfirmacaoDeSenha, String login) {
 		validarEntrada(login).setSenha(novaSenha); 
 		validarEntrada(login).setConfirmacaoDeSenha(NovaConfirmacaoDeSenha);
