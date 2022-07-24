@@ -1,6 +1,7 @@
 package modelo.canal;
 
 import modelo.canal.enums.TipoCanal;
+import modelo.usuario.Usuario;
 
 public class CanalDeTv extends Canal {
 	
@@ -14,10 +15,10 @@ public class CanalDeTv extends Canal {
 		this.numeroCanal = numeroCanal;
 	}
 	
-	public CanalDeTv(String nome, TipoCanal tipoCanal, int numeroCanal) {
-		super(nome, tipoCanal);
+	public CanalDeTv(String nome, TipoCanal tipoCanal, int numeroCanal, Usuario dono) {
+		super(nome, tipoCanal, dono);
 		this.numeroCanal = numeroCanal;
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	

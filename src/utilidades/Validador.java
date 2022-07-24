@@ -10,22 +10,14 @@ public class Validador {
 
 		String nome = telaNovoCanal.getTfNome().getText().trim();
 		String tipo = telaNovoCanal.obterTipoSelecionado().toString();
-		String numeroCanal = telaNovoCanal.getTfNumeroOuLink().getText().trim();
-		String link = telaNovoCanal.getLinkBroadcasting().getText().trim();
-
-		if (nome.isEmpty()) {
-			throw new CamposIncompletosException();
-		}
-
-		if (numeroCanal.isEmpty() && link.isEmpty()) {
-			throw new CamposIncompletosException();
-		}
+		String numeroOuLink = telaNovoCanal.getTfNumeroOuLink().getText().trim();
 		
-		if (numeroCanal.isEmpty()) {
+
+		if (nome.isEmpty() || numeroOuLink.isEmpty()) {
 			throw new CamposIncompletosException();
 		}
-		
-		if (tipo.toString().endsWith("TELEVISAO") && !textoIsNumerico(numeroCanal)) {
+
+		if (tipo.toString().endsWith("TELEVISAO") && !textoIsNumerico(numeroOuLink)) {
 			throw new NumberFormatException("informe um valor numérico ao campo Número do canal!");
 		}
 		

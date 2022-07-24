@@ -77,7 +77,7 @@ public class Usuario {
 		this.login = login;
 		this.senha = senha;
 		this.confirmacaoDeSenha = confirmacaoDeSenha;
-		this.programasFavoritos = new ArrayList<>();
+		this.programasFavoritos = new ArrayList<ProgramaDeTv>();
 	}
 
 	/*
@@ -179,6 +179,18 @@ public class Usuario {
 		}
 		programasFavoritos.add(p);
 		return true;
+	}
+	
+	public int obterQuantidadeDeProgramasFavoritos(ArrayList<ProgramaDeTv> programas) {
+		int cont = 0;
+		if(programas.size() > 0) {
+			for(ProgramaDeTv programa : programas) {
+				if(this.programasFavoritos.contains(programa)) {
+					cont++;
+				}
+			}
+		}
+		return cont;
 	}
 
 	public String toString() {

@@ -1,5 +1,7 @@
 package telas;
 
+import java.awt.Color;
+
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -11,12 +13,14 @@ import modelo.canal.Canal;
 import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
 import modelo.canal.enums.TipoCanal;
+import modelo.usuario.Usuario;
 import telas.ouvintes.OuvinteBotaoCadastrarCanal;
 import telas.ouvintes.OuvinteRadioButton;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Imagens;
 import utilidades.Medidas;
+import utilidades.OutlineJLabel;
 
 public class TelaNovoCanal extends TelaPadrao {
 
@@ -30,9 +34,25 @@ public class TelaNovoCanal extends TelaPadrao {
 	private JLabel linkBroadcasting;
 	private JTextField tfNumeroOuLink;
 	private Canal canal;
-	private JLabel lbTitulo;
+	private OutlineJLabel lbTitulo;
 	private JButton botaoCadastrar;
+	private Usuario usuarioLogado;
+	
+	
+	public TelaNovoCanal(Usuario usuarioLogado) {
+		super("Novo Canal");
+		this.canal = null;
+		this.usuarioLogado = usuarioLogado;
+	}
 
+	public TelaNovoCanal(Canal canal,  Usuario usuarioLogado) {
+		super("Edição de Canal");
+		this.canal = canal;
+		this.usuarioLogado = usuarioLogado;
+		preencherCampos();
+	}
+	
+	
 	public JTextField getTfNome() {
 		return tfNome;
 	}
@@ -104,7 +124,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	public void setTfNumeroOuLink(JTextField tfNumeroOuLink) {
 		this.tfNumeroOuLink = tfNumeroOuLink;
 	}
-	
+
 	public Canal getCanal() {
 		return canal;
 	}
@@ -113,14 +133,14 @@ public class TelaNovoCanal extends TelaPadrao {
 		this.canal = canal;
 	}
 
-	public JLabel getLbTitulo() {
+	public OutlineJLabel getLbTitulo() {
 		return lbTitulo;
 	}
 
-	public void setLbTitulo(JLabel lbTitulo) {
+	public void setLbTitulo(OutlineJLabel lbTitulo) {
 		this.lbTitulo = lbTitulo;
 	}
-	
+
 	public JButton getBotaoCadastrar() {
 		return botaoCadastrar;
 	}
@@ -128,26 +148,18 @@ public class TelaNovoCanal extends TelaPadrao {
 	public void setBotaoCadastrar(JButton botaoCadastrar) {
 		this.botaoCadastrar = botaoCadastrar;
 	}
+	
+	
 
-	
-	
-	
-	public TelaNovoCanal() {
-		super("Novo Canal");
-		System.out.println("novo ");
-		this.canal = null;
+	public Usuario getUsuarioLogado() {
+		return usuarioLogado;
 	}
 
-	public TelaNovoCanal(Canal canal) {
-		super("Edição de Canal");
-		this.canal = canal;
-		preencherCampos();
-		if(!isTelevisao()) {
-			getNumeroCanal().setVisible(false);
-			getLinkBroadcasting().setVisible(true);
-		}
-		botaoCadastrar.setText("Salvar");
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
 	}
+
+	
 
 	@Override
 	public void adicionarComponentesGraficos() {
@@ -161,12 +173,12 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO_DE_CANAL);
+		//background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
-				Medidas.ALTURA_30);
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		// TODO:ouvinte voltar
 		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 310, 400, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
@@ -177,12 +189,13 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	private void adiconarLabels() {
 		lbTitulo = Componentes.addJLabel(this, "Novo Canal", 324, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		lbTitulo.setOutlineColor(Color.WHITE);
 		
-
 		Componentes.addJLabel(this, "Nome", 220, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Tipo", 220, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
-		numeroCanal = Componentes.addJLabel(this, "Número do Canal", 220, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		numeroCanal = Componentes.addJLabel(this, "Número do Canal", 220, 315, Medidas.COMPRIMENTO_255,
+				Medidas.ALTURA_30);
 		linkBroadcasting = Componentes.addJLabel(this, "Link", 220, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		linkBroadcasting.setVisible(false);
 	}
@@ -236,20 +249,25 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	public TipoCanal obterTipoSelecionado() {
 		TipoCanal tipo = null;
-		
+
 		if (getRb1().isSelected()) {
 			tipo = TipoCanal.valueOf((String) getCbTv().getSelectedItem());
-					
+
 		} else {
 			tipo = TipoCanal.valueOf((String) getCbBroadcasting().getSelectedItem());
 		}
-		
+
 		return tipo;
 	}
-	
+
 	public void preencherCampos() {
+
+		botaoCadastrar.setText("Salvar");
+		
 		lbTitulo.setVisible(false);
-		Componentes.addJLabel(this, "Edição de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Edição de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30).setOutlineColor(Color.WHITE);;
+		
+		tfNome.setText(canal.getNome());
 		String numeroOuLink = null;
 
 		if (this.canal instanceof CanalDeTv) {
@@ -259,8 +277,7 @@ public class TelaNovoCanal extends TelaPadrao {
 			CanalBroadcasting canal = (CanalBroadcasting) this.canal;
 			numeroOuLink = canal.getLink();
 		}
-		
-		tfNome.setText(canal.getNome());
+
 		tfNumeroOuLink.setText(numeroOuLink);
 
 		if (isTelevisao()) {
@@ -275,19 +292,9 @@ public class TelaNovoCanal extends TelaPadrao {
 			cbBroadcasting.setVisible(true);
 			cbTv.setVisible(false);
 			rb1.setEnabled(false);
+			getNumeroCanal().setVisible(false);
+			getLinkBroadcasting().setVisible(true);
 		}
-	}
-
-	
-	// main para teste da tela de edição
-	public static void main(String[] args) {
-
-		TelaNovoCanal c1 = new TelaNovoCanal();
-
-		Canal canal = new CanalDeTv("maycas", TipoCanal.ABERTO_NA_INTERNET_BROADCASTING, 1);
-		canal.setId(1658188107763L);
-		System.out.println(canal);
-		TelaNovoCanal c2 = new TelaNovoCanal(canal);
 	}
 
 }

@@ -50,9 +50,9 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 				Canal canal = null;
 				
 				if (telaCanal.getRb1().isSelected()) {
-					canal = new CanalDeTv(nome, tipo, Integer.parseInt(numeroOuLink));
+					canal = new CanalDeTv(nome, tipo, Integer.parseInt(numeroOuLink), telaCanal.getUsuarioLogado());
 				} else {
-					canal = new CanalBroadcasting(nome, tipo, numeroOuLink);
+					canal = new CanalBroadcasting(nome, tipo, numeroOuLink, telaCanal.getUsuarioLogado());
 				}
 				
 				central.adicionarCanal(canal);
@@ -61,12 +61,6 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 		
 				
 				Canal canalSalvo = central.recuperarCanalPeloId(telaCanal.getCanal().getId());
-				System.out.println("canal salvo: " + canalSalvo);
-				
-				System.out.println("----- canais salvos ---------");
-				System.out.println(central.getCanais().toString());
-				
-				
 				canalSalvo.setNome(nome);
 				canalSalvo.setTipoCanal(tipo);
 				
