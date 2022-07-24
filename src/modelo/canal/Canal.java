@@ -17,8 +17,6 @@ public abstract class Canal {
 	private LocalDateTime dataDeAtualizacao;
 	private Usuario dono;
 
-	
-	
 	public Canal(String nome, TipoCanal tipoCanal, Usuario dono) {
 		this.nome = nome;
 		this.tipoCanal = tipoCanal;
@@ -28,7 +26,6 @@ public abstract class Canal {
 		this.dono = dono;
 	}
 
-	
 	public String getNome() {
 		return nome;
 	}
@@ -76,12 +73,11 @@ public abstract class Canal {
 	public void setDataDeAtualizacao(LocalDateTime dataDeAtualizacao) {
 		this.dataDeAtualizacao = dataDeAtualizacao;
 	}
-	
 
 	public Usuario getDono() {
 		return dono;
 	}
-	
+
 	public void setDono(Usuario dono) {
 		this.dono = dono;
 	}
@@ -90,7 +86,6 @@ public abstract class Canal {
 		return canal.getNome().equals(this.nome) || canal.getId() == this.id;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Canal [nome=" + nome + ", tipoCanal=" + tipoCanal + ", id=" + id + ", programas=" + programas
@@ -98,7 +93,4 @@ public abstract class Canal {
 				+ "]";
 	}
 
-	
-	
-	
 }

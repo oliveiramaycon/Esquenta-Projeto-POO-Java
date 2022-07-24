@@ -66,12 +66,21 @@ public class Componentes {
 	}
 
 	public static JTextField addJTextField(JFrame tela, int x, int y, int comprimento, int altura) {
+		JTextField field = new JTextField();
+		field.setBounds(x, y, comprimento, altura);
+		tela.add(field);
+		return field;
+	}
+	
+	public static JTextField addJTextFieldComIcone(JFrame tela, int x, int y, int comprimento, int altura) {
 		IconJTextField field = new IconJTextField();
 		field.setIcon(Icones.LUPA);
 		field.setBounds(x, y, comprimento, altura);
 		tela.add(field);
 		return field;
 	}
+	
+	
 
 	public static JMenuBar addJMenubar(JFrame janela, int x, int y, int comprimento, int altura) {
 		JMenuBar barraMenu = new JMenuBar();

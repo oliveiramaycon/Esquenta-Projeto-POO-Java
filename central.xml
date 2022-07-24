@@ -27,6 +27,22 @@
       <dono reference="../../modelo.canal.CanalDeTv/dono"/>
       <link>linkbag.com</link>
     </modelo.canal.CanalBroadcasting>
+    <modelo.canal.CanalDeTv>
+      <nome>oo</nome>
+      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
+      <id>1658641077978</id>
+      <programas/>
+      <dataDeCadastro>2022-07-24T02:37:57.9781712</dataDeCadastro>
+      <dono>
+        <nome>manco</nome>
+        <email>manco@gmail.com</email>
+        <login>manco</login>
+        <senha>Mancones1</senha>
+        <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
+        <programasFavoritos/>
+      </dono>
+      <numeroCanal>3</numeroCanal>
+    </modelo.canal.CanalDeTv>
   </canais>
   <usuariosCadastrados/>
 </utilidades.CentralDeInformacoes>

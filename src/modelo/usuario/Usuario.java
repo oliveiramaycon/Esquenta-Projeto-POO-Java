@@ -13,6 +13,7 @@ import modelo.usuario.exceptions.LoginComMenosCaracterisException;
 import modelo.usuario.exceptions.LoginComNumerosException;
 import modelo.usuario.exceptions.SenhaCurtaException;
 import modelo.usuario.exceptions.SenhaIgualALoginException;
+import modelo.usuario.exceptions.SenhaNaoIgualAConfirmacao;
 import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
 import modelo.usuario.exceptions.SenhaSemMinusculosException;
 import modelo.usuario.exceptions.SenhaSemNumerosException;
@@ -79,11 +80,18 @@ public class Usuario {
 		this.confirmacaoDeSenha = confirmacaoDeSenha;
 		this.programasFavoritos = new ArrayList<ProgramaDeTv>();
 	}
+	//CRIEI PARA VALORES QUE NAO E PRECISO COLOCAR TODAS OS ATRIBUTOS:
+	public Usuario() {
+	}
+	
 
 	/*
 	 * ----------------------------------------------------EXCEPTIONS DE VALIDACAO
 	 * DE LOGIN E SENHA E E-MAIL:
 	 */
+	
+	
+	
 	public void validadorDeLogin(String login)
 			throws LoginComEspacosException, LoginComMenosCaracterisException, LoginComNumerosException {
 		if 	(login.contains(" ")) {
@@ -96,15 +104,17 @@ public class Usuario {
 //			throw new LoginComNumerosException();
 //	}
 		}
-	public void validadorDeSenha(String senha) throws SenhaCurtaException, SenhaSemMinusculosException,
-			SenhaSemCaracterMaiusculaExecption, SenhaSemNumerosException, SenhaIgualALoginException {
+	public void validadorDeSenha(String senha,String confirmado) throws SenhaCurtaException, SenhaSemMinusculosException,
+			SenhaSemCaracterMaiusculaExecption, SenhaSemNumerosException, SenhaNaoIgualAConfirmacao {
 		if (senha.length() < 5) {
 			throw new SenhaCurtaException();
 		}
 		verificarLetraMinuscula(senha);
 		verificarLetraMaiuscula(senha);
 		verificarNumeros(senha);
-	}
+		verificadorDeSenhaNaoIgual(senha, confirmado);
+}
+
 
 	public void validadorDeEmail(String Email) throws ValidadorDeEmailExecption {
 		verificaEmail(Email);
@@ -143,6 +153,14 @@ public class Usuario {
 		}
 		throw new SenhaSemNumerosException();
 	}
+	
+	public boolean verificadorDeSenhaNaoIgual(String senha, String confirmacao) throws SenhaNaoIgualAConfirmacao {
+		if(senha.equals(confirmacao)) {
+			return true;
+		}
+		throw new SenhaNaoIgualAConfirmacao();	
+	}
+
 // Refazer codigo para confirma a senha:
 //	//public boolean verificaIgualdade(String s) throws SenhaIgualALoginException {
 //		//boolean achei = false;

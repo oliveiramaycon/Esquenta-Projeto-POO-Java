@@ -12,6 +12,7 @@ import modelo.usuario.exceptions.LoginComMenosCaracterisException;
 import modelo.usuario.exceptions.LoginComNumerosException;
 import modelo.usuario.exceptions.SenhaCurtaException;
 import modelo.usuario.exceptions.SenhaIgualALoginException;
+import modelo.usuario.exceptions.SenhaNaoIgualAConfirmacao;
 import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
 import modelo.usuario.exceptions.SenhaSemMinusculosException;
 import modelo.usuario.exceptions.SenhaSemNumerosException;
@@ -51,14 +52,14 @@ public class OuvinteBotaoCadastroDeUsuario implements ActionListener{
 		
 		try {
 			usuario.validadorDeLogin(usuario.getLogin());
-			usuario.validadorDeSenha(usuario.getSenha());
+			usuario.validadorDeSenha(usuario.getSenha(), usuario.getConfirmacaoDeSenha());
 			usuario.validadorDeEmail(usuario.getEmail());
 			usuarioEvalido = true;
 			
 		}catch(LoginComEspacosException | LoginComMenosCaracterisException | LoginComNumerosException e1) {
 			JOptionPane.showMessageDialog(telaCadastro, e1.getMessage());
 		}
-		catch(SenhaCurtaException | SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption | SenhaSemNumerosException | SenhaIgualALoginException e2 ) {
+		catch(SenhaCurtaException | SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption | SenhaSemNumerosException | SenhaNaoIgualAConfirmacao e2 ) {
 			JOptionPane.showMessageDialog(telaCadastro, e2.getMessage());
 		}
 		catch(ValidadorDeEmailExecption e3) {

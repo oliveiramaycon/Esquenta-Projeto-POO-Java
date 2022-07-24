@@ -45,7 +45,7 @@ public class CentralDeInformacoes {
 	}
 
 	/*
-	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
+	 * ---------------------------------------------- Mï¿½TODOS UTILITï¿½RIOS
 	 * RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
 
@@ -58,7 +58,7 @@ public class CentralDeInformacoes {
 		}
 
 		if (programa.getCanal() == null) {
-			String msg = "\nÉ necessário informar um canal";
+			String msg = "\nï¿½ necessï¿½rio informar um canal";
 			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
 		}
 
@@ -148,7 +148,7 @@ public class CentralDeInformacoes {
 	}
 
 	/*
-	 * ---------------------------------------------- MÉTODOS UTILITÁRIOS
+	 * ---------------------------------------------- Mï¿½TODOS UTILITï¿½RIOS
 	 * RELACIONADO A ENTENDIDADE CANAL
 	 */
 
@@ -192,14 +192,6 @@ public class CentralDeInformacoes {
 		}
 		System.out.print(nomeDosCanais.toString());
 	}
-	public ArrayList<String> obterTiposDeCanais() {
-		ArrayList<String> tipos = new ArrayList<String>();
-		for (TipoCanal tipo : TipoCanal.values()) {
-			tipos.add(tipo.toString());
-		}
-
-		return tipos;
-	}
 	public ArrayList<String> obterTiposDeCanaisTelevisivos() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoCanal tipo : TipoCanal.values()) {
@@ -208,6 +200,14 @@ public class CentralDeInformacoes {
 			}
 		}
 
+		return tipos;
+	}
+	public ArrayList<String> obterTiposDeCanais() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		tipos.add("");
+		for (TipoCanal tipo : TipoCanal.values()) {
+			tipos.add(tipo.toString());
+		}
 		return tipos;
 	}
 	public ArrayList<String> obterTiposDeCanaisBroadcasting() {
@@ -222,8 +222,37 @@ public class CentralDeInformacoes {
 	}
 
 	/*
-	 * ---------------------------------------
+	 * ---------------------------------------ENTIDADE DO USUARIO ENTRADA E REMOCAO DE DADOS:
 	 */
+	
+	// CRIEI PARA A VERIFICACAO DE USUARIO NA ARRY
+	public Usuario validarEntrada(String login) {
+		Usuario novo = null;
+		for(Usuario u : usuariosCadastrados) {
+			if(u.getLogin().equals(login)){
+				novo = u;
+			}
+		}
+		return novo;
+	}
+	
+	// METODO Sï¿½ SERVE PRA MODIFICAR A SENHA DO USUARIO:
+	public void editarSenha(String novaSenha,String NovaConfirmacaoDeSenha, String login) {
+		validarEntrada(login).setSenha(novaSenha); 
+		validarEntrada(login).setConfirmacaoDeSenha(NovaConfirmacaoDeSenha);
+	}
+	
+	// SERVE PARA REMOCAO DE DADOS PELO NOME:
+	// METO PARA CASO SIRVA NA PARTE DE REMOVER FAVORITOS E SO EDITAR PARA UMA STRING ESPECIFICA. ASSIM SERVE PRA DELETA USUARIO DA ARRAYLIST:
+	public void removerDados(Usuario remover) {
+		for(Usuario u : usuariosCadastrados) {
+			if(u.getLogin().equals(remover.getLogin())) {
+				usuariosCadastrados.remove(remover);
+			}
+		}
+	}
+	
+	
 	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException {
 		for (Usuario u : usuariosCadastrados) {
 			if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
