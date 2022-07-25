@@ -1,10 +1,10 @@
-package telas.ouvintes;
+package telas.canal.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import telas.TelaListagemCanais;
-import telas.TelaNovoCanal;
+import telas.canal.TelaListagemCanais;
+import telas.canal.TelaNovoCanal;
 
 public class OuvinteBotaoAdicionarCanal implements ActionListener{
 

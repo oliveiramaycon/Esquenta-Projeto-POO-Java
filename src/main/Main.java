@@ -1,9 +1,9 @@
 package main;
 
 import modelo.usuario.Usuario;
-import telas.TelaListagemProgramas;
-import telas.TelaNovoCanal;
-import telas.TelaNovoPrograma;
+import telas.canal.TelaNovoCanal;
+import telas.programa.TelaListagemProgramas;
+import telas.programa.TelaNovoPrograma;
 
 public class Main {
 public static void main(String[] args) {

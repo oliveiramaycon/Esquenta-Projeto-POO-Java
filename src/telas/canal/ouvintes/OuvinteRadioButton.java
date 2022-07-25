@@ -1,9 +1,9 @@
-package telas.ouvintes;
+package telas.canal.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import telas.TelaNovoCanal;
+import telas.canal.TelaNovoCanal;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Medidas;

@@ -1,4 +1,4 @@
-package telas;
+package telas.programa;
 
 import java.awt.Color;
 
@@ -11,8 +11,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import modelo.usuario.Usuario;
-import telas.ouvintes.OuvinteBotaoAdicionarPrograma;
-import telas.ouvintes.OuvinteBotaoDetalhesPrograma;
+import telas.TelaPadrao;
+import telas.programa.ouvintes.OuvinteBotaoAdicionarPrograma;
+import telas.programa.ouvintes.OuvinteBotaoDetalhesPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Icones;

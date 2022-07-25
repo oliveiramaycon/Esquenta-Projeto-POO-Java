@@ -1,4 +1,4 @@
-package telas;
+package telas.programa;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -15,9 +15,9 @@ import javax.swing.text.MaskFormatter;
 
 import modelo.programa.ProgramaDeTv;
 import modelo.usuario.Usuario;
-import telas.ouvintes.OuvinteBotaoCadastrarPrograma;
-import telas.ouvintes.OuvinteRadioButton;
-
+import telas.TelaPadrao;
+import telas.canal.ouvintes.OuvinteRadioButton;
+import telas.programa.ouvintes.OuvinteBotaoCadastrarPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Imagens;

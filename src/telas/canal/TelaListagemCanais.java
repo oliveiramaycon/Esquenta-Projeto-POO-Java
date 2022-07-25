@@ -1,4 +1,4 @@
-package telas;
+package telas.canal;
 
 import java.awt.Color;
 
@@ -8,8 +8,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import modelo.usuario.Usuario;
-import telas.ouvintes.OuvinteBotaoAdicionarCanal;
-import telas.ouvintes.OuvinteBotaoDetalhes;
+import telas.TelaPadrao;
+import telas.canal.ouvintes.OuvinteBotaoAdicionarCanal;
+import telas.canal.ouvintes.OuvinteBotaoDetalhes;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Icones;

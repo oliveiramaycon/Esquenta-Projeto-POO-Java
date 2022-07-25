@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import telas.TelaCadastroDeUsuario;
 import telas.TelaHome;
+import telas.usuario.TelaCadastroDeUsuario;
 
 public class OuvintBotoesTelaInicial implements ActionListener {
 

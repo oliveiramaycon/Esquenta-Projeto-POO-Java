@@ -1,10 +1,10 @@
-package telas.ouvintes;
+package telas.programa.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import telas.TelaListagemProgramas;
-import telas.TelaNovoPrograma;
+import telas.programa.TelaListagemProgramas;
+import telas.programa.TelaNovoPrograma;
 
 public class OuvinteBotaoAdicionarPrograma implements ActionListener{
 

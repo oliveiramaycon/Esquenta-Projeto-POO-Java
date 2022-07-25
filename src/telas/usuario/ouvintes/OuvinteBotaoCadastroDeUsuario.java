@@ -1,4 +1,4 @@
-package telas.ouvintes;
+package telas.usuario.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +17,8 @@ import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
 import modelo.usuario.exceptions.SenhaSemMinusculosException;
 import modelo.usuario.exceptions.SenhaSemNumerosException;
 import modelo.usuario.exceptions.ValidadorDeEmailExecption;
-import telas.TelaCadastroDeUsuario;
 import telas.TelaInicial;
+import telas.usuario.TelaCadastroDeUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Persistencia;

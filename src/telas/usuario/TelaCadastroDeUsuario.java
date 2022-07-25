@@ -1,9 +1,10 @@
-package telas;
+package telas.usuario;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import telas.ouvintes.OuvinteBotaoCadastroDeUsuario;
+import telas.TelaPadrao;
+import telas.usuario.ouvintes.OuvinteBotaoCadastroDeUsuario;
 import utilidades.Componentes;
 import utilidades.Medidas;
 

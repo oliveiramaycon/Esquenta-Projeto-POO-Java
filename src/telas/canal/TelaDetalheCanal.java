@@ -1,4 +1,6 @@
-package telas;
+package telas.canal;
+
+import telas.TelaPadrao;
 
 public class TelaDetalheCanal extends TelaPadrao{
 	

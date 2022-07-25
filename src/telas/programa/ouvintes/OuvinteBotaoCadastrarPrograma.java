@@ -1,4 +1,4 @@
-package telas.ouvintes;
+package telas.programa.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +12,7 @@ import modelo.exceptions.FalhaNoCadastroException;
 import modelo.exceptions.RegistroNaoEncontradoException;
 import modelo.programa.ProgramaDeTv;
 import modelo.programa.enums.TipoPrograma;
-import telas.TelaNovoPrograma;
+import telas.programa.TelaNovoPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Persistencia;

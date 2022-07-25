@@ -1,5 +1,6 @@
-package telas;
+package telas.programa;
 
+import telas.TelaPadrao;
 
 public class TelaDetalhePrograma extends TelaPadrao{
 	

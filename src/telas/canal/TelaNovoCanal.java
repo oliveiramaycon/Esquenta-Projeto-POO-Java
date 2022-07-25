@@ -1,4 +1,4 @@
-package telas;
+package telas.canal;
 
 import java.awt.Color;
 
@@ -14,8 +14,9 @@ import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
 import modelo.canal.enums.TipoCanal;
 import modelo.usuario.Usuario;
-import telas.ouvintes.OuvinteBotaoCadastrarCanal;
-import telas.ouvintes.OuvinteRadioButton;
+import telas.TelaPadrao;
+import telas.canal.ouvintes.OuvinteBotaoCadastrarCanal;
+import telas.canal.ouvintes.OuvinteRadioButton;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Imagens;

@@ -1,4 +1,4 @@
-package telas.ouvintes;
+package telas.canal.ouvintes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,7 @@ import modelo.canal.enums.TipoCanal;
 import modelo.canal.exceptions.CamposIncompletosException;
 import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
-import telas.TelaNovoCanal;
+import telas.canal.TelaNovoCanal;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Persistencia;
