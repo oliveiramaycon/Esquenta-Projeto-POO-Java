@@ -10,6 +10,7 @@ import modelo.exceptions.RegistroNaoEncontradoException;
 import modelo.exceptions.UsuarioExistenteException;
 import modelo.programa.ProgramaDeTv;
 import modelo.programa.enums.TipoPrograma;
+import modelo.programa.enums.*;
 import modelo.programa.exceptions.SemProgramaNaDataAtualException;
 import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
 import modelo.usuario.Usuario;
@@ -115,7 +116,19 @@ public class CentralDeInformacoes {
 		}
 		return programasEncontrados;
 	}
-
+	
+	public ArrayList<String> obterTiposDeStatus(){
+		ArrayList<String> tipos  = new ArrayList<>();
+		for(Status status: Status.values())
+			tipos.add(status.toString());
+		return tipos;
+				}
+	public ArrayList<String> obterGeneroDePrograma(){
+		ArrayList<String> generos  = new ArrayList<>();
+		
+		return generos;
+	}
+	
 	public ArrayList<String> obterTiposDeProgramas() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoPrograma tipo : TipoPrograma.values()) {

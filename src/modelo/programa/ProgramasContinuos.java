@@ -13,9 +13,8 @@ public class ProgramasContinuos extends ProgramaDeTv {
 	private ArrayList<String> apresentadores;
 
 	public ProgramasContinuos(String nome, Canal canal, ArrayList<DayOfWeek> dia,
-			String horario, Status status) {
-		super(nome, canal, dia, status, horario);
-		setFavorito(EnumFavorito.NAO_FAVORITO);
+			String horario, Status status,String temporadas) {
+		super(nome, canal, dia, status, horario, temporadas);
 		setTipo(TipoPrograma.PROGRAMA_CONTINUO);
 	}
 

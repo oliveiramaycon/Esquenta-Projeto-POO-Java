@@ -90,7 +90,7 @@ public class TelaListagemCanais extends TelaPadrao {
 		super("Listagem de Canais");
 		this.usuarioLogado = usuarioLogado;
 		System.out.println("usuario: " + usuarioLogado);
-		adicionarTabela(); //está aqui por conta que é necessário informações do usuário logado
+		adicionarTabela(); //estï¿½ aqui por conta que ï¿½ necessï¿½rio informaï¿½ï¿½es do usuï¿½rio logado
 		
 	}
 

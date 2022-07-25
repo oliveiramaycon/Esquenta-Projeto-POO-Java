@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.JOptionPane;
+
 import modelo.canal.Canal;
 import modelo.exceptions.FalhaNoCadastroException;
 import modelo.exceptions.RegistroNaoEncontradoException;
@@ -46,8 +48,8 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		ArrayList<String> diasDaSemana = new ArrayList<>(Arrays.asList(dias));
 		
 		//TODO: MUDAR DIASDASEMANA PARA O TIPO DAYOFWEEK
-		//ProgramaDeTv programa = new ProgramaDeTv(nome, tipoEnum, canal, diasDaSemana);
-		
+//		ProgramaDeTv programa = new ProgramaDeTv(nome, tipoEnum, canal, diasDaSemana);
+//		
 //		try {
 //			central.AdicionarProgramaDeTv(programa);
 //			persistencia.salvarCentral(central, "central");

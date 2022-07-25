@@ -37,6 +37,10 @@ import javax.swing.table.TableRowSorter;
 import modelo.canal.Canal;
 import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
+import modelo.programa.ProgramaDeTv;
+import modelo.programa.RealityShows;
+import modelo.programa.SeriesRegulares;
+import modelo.programa.enums.Genero;
 import modelo.usuario.Usuario;
 
 public class Componentes {
@@ -183,12 +187,12 @@ public class Componentes {
 		ArrayList<Canal> canais = central.getCanais();
 	
 		if (canais.size() == 0) {
-			modelo.addColumn("Não há canais cadastrados!");
+			modelo.addColumn("Nï¿½o hï¿½ canais cadastrados!");
 		} else {
 			modelo.addColumn("ID");
 			modelo.addColumn("Nome");
 			modelo.addColumn("Tipo");
-			modelo.addColumn("Link ou Número");
+			modelo.addColumn("Link ou Nï¿½mero");
 			modelo.addColumn("Programas");
 			modelo.addColumn("Favoritos");
 			modelo.addColumn("Data de Cadastro");
@@ -233,4 +237,116 @@ public class Componentes {
 		return tabela;
 	}
 	
+	public static JTable addTabelaTodosProgramas(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x, int y, int comprimento, int altura) {
+			DefaultTableModel modelo = new DefaultTableModel() {
+				public boolean isCellEditable(int row, int column) {
+					return false;
+				}
+			};
+
+			JTable tabela = new JTable(modelo);
+			tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			
+			TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tabela.getModel());
+			tabela.setRowSorter(rowSorter);
+			
+			tfPesquisa.getDocument().addDocumentListener(new DocumentListener(){
+
+	            @Override
+	            public void insertUpdate(DocumentEvent e) {
+	                String text = tfPesquisa.getText();
+
+	                if (text.trim().length() == 0) {
+	                    rowSorter.setRowFilter(null);
+	                } else {
+	                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+	                }
+	            }
+
+	            @Override
+	            public void removeUpdate(DocumentEvent e) {
+	                String text = tfPesquisa.getText();
+
+	                if (text.trim().length() == 0) {
+	                    rowSorter.setRowFilter(null);
+	                } else {
+	                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+	                }
+	            }
+
+	            @Override
+	            public void changedUpdate(DocumentEvent e) {
+	                throw new UnsupportedOperationException("Not supported yet.");
+	            }
+
+	        });
+			
+			Persistencia persistencia = new Persistencia();
+			CentralDeInformacoes central = persistencia.recuperarCentral("central");
+			
+			ArrayList<ProgramaDeTv> programas = central.getProgramas();
+		
+			if (programas.size() == 0) {
+				modelo.addColumn("Nao ha programas cadastrados!");
+			} else {
+				modelo.addColumn("ID");
+				modelo.addColumn("Nome");
+				modelo.addColumn("Tipo");
+				modelo.addColumn("Preferencia");
+				modelo.addColumn("Genero ou Apresentadores");
+				modelo.addColumn("Estilo");
+				modelo.addColumn("Horario");
+				modelo.addColumn("Temporadas");
+				modelo.addColumn("Status do Programa");
+
+//				escondendo a coluna ID 
+				tabela.getColumnModel().getColumn(0).setMinWidth(0);
+				tabela.getColumnModel().getColumn(0).setMaxWidth(0);
+
+				Object[] linhas = new Object[programas.size()];
+
+				for (ProgramaDeTv programa : programas) {
+					System.out.println("programa: " + programa);
+					Object[] linha = new Object[7];
+
+					ArrayList<String> generoouApresentadores = new ArrayList<>();
+					String estilo = "";
+					String preferencia = String.valueOf(programa.getFavorito());
+					if (programa instanceof SeriesRegulares) {
+						SeriesRegulares programaModificado= (SeriesRegulares) programa; 
+						generoouApresentadores.add(String.valueOf(programaModificado.getGenero()));
+						estilo = String.valueOf(programaModificado.getEstilo());
+					} else{
+						RealityShows programaModificado = (RealityShows) programa;
+						generoouApresentadores = programaModificado.getApresentadores();
+					}
+
+					linha[0] = programa.getId();
+					linha[1] = programa.getNome();
+					linha[2] = programa.getTipo();
+					linha[3] = preferencia;
+					linha[4] = generoouApresentadores;
+					linha[5] = estilo;
+					linha[6] = programa.getHorario();
+					linha[7] = programa.getTemporadas();
+					linha[8] = programa.getStatus();
+					
+					
+					modelo.addRow(linha);
+				}
+				tabela.addRowSelectionInterval(0, 0);
+			}
+
+			JScrollPane scroll = new JScrollPane(tabela);
+			scroll.setBounds(x, y, comprimento, altura);
+			tela.add(scroll);
+			return tabela;
+		}
+	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
+		ArrayList<String> ArrayConvertida = new ArrayList<>();
+		for(Canal c : array) {
+			ArrayConvertida.add(c.toString());
+		}
+		return ArrayConvertida;
+	}
 }
