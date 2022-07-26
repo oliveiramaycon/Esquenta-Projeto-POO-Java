@@ -18,6 +18,7 @@ public abstract class ProgramaDeTv {
 	private EnumFavorito favorito;
 	private String horario;
 	private String temporadas;
+	private String data;
 	private ArrayList<DayOfWeek> diasDaSemana;
 
 	public ProgramaDeTv(String nome, Canal canal,ArrayList<DayOfWeek> diasDaSemana,
@@ -32,7 +33,15 @@ public abstract class ProgramaDeTv {
 	public void setTipo(TipoPrograma tipo) {
 		this.tipo = tipo;
 	}
-
+	
+	public String getData() {
+		return data;
+	}
+	
+	public void setData(String data) {
+		this.data = data;
+	}
+	
 	public void setStatus(Status status) {
 		this.status = status;
 	}

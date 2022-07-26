@@ -125,8 +125,15 @@ public class CentralDeInformacoes {
 				}
 	public ArrayList<String> obterGeneroDePrograma(){
 		ArrayList<String> generos  = new ArrayList<>();
-		
+		for(Genero genero: Genero.values())
+			generos.add(genero.toString());
 		return generos;
+	}
+	public ArrayList<String> obterEstilosDePrograma() {
+		ArrayList<String> estilos = new ArrayList<>();
+		for(Estilo genero: Estilo.values())
+			estilos.add(genero.toString());
+		return estilos;
 	}
 	
 	public ArrayList<String> obterTiposDeProgramas() {

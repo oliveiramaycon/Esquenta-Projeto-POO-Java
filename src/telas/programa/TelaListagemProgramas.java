@@ -1,6 +1,8 @@
 package telas.programa;
 
 import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,11 +28,32 @@ public class TelaListagemProgramas extends TelaPadrao{
 	
 	private Usuario usuario;
 	private OutlineJLabel lbTitulo;
-	private JTable tabelaListagem;
-	private JTextField pesquisa;
 	private JButton botaoAddPrograma;
 	private JButton botaoDetalhes;
+	private JTextField pesquisa;	
+	private JTable tabelaListagem;
 	
+	
+	public OutlineJLabel getLbTitulo() {
+		return lbTitulo;
+	}
+
+	public JButton getBotaoAddPrograma() {
+		return botaoAddPrograma;
+	}
+
+	public JButton getBotaoDetalhes() {
+		return botaoDetalhes;
+	}
+
+	public JTextField getPesquisa() {
+		return pesquisa;
+	}
+
+	public JTable getTabelaListagem() {
+		return tabelaListagem;
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -51,12 +74,12 @@ public class TelaListagemProgramas extends TelaPadrao{
 
 	private void adicionarBotoes() {
 		
-		botaoAddPrograma = Componentes.addJButton(this, "", Icones.ADICIONAR, 645, 70, 30, Medidas.ALTURA_30);
+		botaoAddPrograma = Componentes.addJButton(this, "", Icones.ADICIONAR, 605, 70, 30, Medidas.ALTURA_30);
 		OuvinteBotaoAdicionarPrograma addPrograma = new OuvinteBotaoAdicionarPrograma(this);
 		botaoAddPrograma.addActionListener(addPrograma);
 		botaoAddPrograma.setToolTipText("Novo Programa");
 		
-		botaoDetalhes = Componentes.addJButton(this,"detalhes",Icones.ADICIONAR, 685, 70, 30, Medidas.ALTURA_30);
+		botaoDetalhes = Componentes.addJButton(this,"detalhes",Icones.ADICIONAR, 645, 70, 100, Medidas.ALTURA_30);
 		OuvinteBotaoDetalhesPrograma ouvinteDetalhes = new OuvinteBotaoDetalhesPrograma(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
 	}
@@ -69,7 +92,6 @@ public class TelaListagemProgramas extends TelaPadrao{
 	private void addTextField() {
 		pesquisa = Componentes.addJTextField(this, 30, 75, Medidas.COMPRIMENTO_310, 25);
 		pesquisa.setForeground(Color.GRAY);
-		pesquisa.setToolTipText("busque um programa");
 	}
 	
 	private void adicionarLabels() {

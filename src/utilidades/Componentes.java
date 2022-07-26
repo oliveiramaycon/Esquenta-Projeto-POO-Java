@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -59,6 +61,13 @@ public class Componentes {
 		botao.setBounds(x, y, comprimento, altura);
 		tela.add(botao);
 		return botao;
+	}
+	public static JCheckBox addCheckBox(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
+		JCheckBox checkBox = new JCheckBox(nome);
+		checkBox.setBounds(x,y,comprimento,altura);
+		tela.add(checkBox);
+	
+		return checkBox;
 	}
 
 	public static OutlineJLabel addJLabel(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
@@ -345,8 +354,15 @@ public class Componentes {
 	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
 		ArrayList<String> ArrayConvertida = new ArrayList<>();
 		for(Canal c : array) {
-			ArrayConvertida.add(c.toString());
+			ArrayConvertida.add(c.getNome());
 		}
 		return ArrayConvertida;
+	}
+	public void testandoData(Date d) {//TERMINAR O METODO PRA CHECAR SE TEM DATA INVALIDA
+		Date dia = null;
+		if(d.after(dia)) {
+			
+		}
+		
 	}
 }
