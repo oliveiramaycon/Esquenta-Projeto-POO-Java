@@ -72,15 +72,13 @@ public class OuvinteBotaoCadastroDeUsuario implements ActionListener{
 		if(usuarioEvalido == true) {
 		try {
 			central.adicionarUsuario(usuario);
-			//System.out.println("Canal cadastrado com sucesso!\n");
 			persistencia.salvarCentral(central, "central");
-			Componentes.msgSucesso(telaCadastro, "Usuário cadastrado com sucesso!");
+			Componentes.msgSucesso(telaCadastro, "Usuï¿½rio cadastrado com sucesso!");
 			
 			TelaInicial	telaInicia	= new TelaInicial();
 			telaInicia.getTfLogin().setText(usuario.getLogin());;
 			telaCadastro.dispose();
 		} catch (UsuarioExistenteException exception) {
-			//System.out.println(exception.getMessage());
 			Componentes.msgFalha(telaCadastro, exception.getMessage());
 		}
 	}

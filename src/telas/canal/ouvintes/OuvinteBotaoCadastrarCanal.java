@@ -78,7 +78,6 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 					canalSalvo = canalBroadcastingSalvo;
 				}
 				Componentes.msgSucesso(telaCanal, "Canal editado com sucesso!");
-				System.out.println(canalSalvo + "canal salvo");
 				new TelaDetalheCanal(telaCanal.getUsuarioLogado(), canalSalvo);
 			}
 			persistencia.salvarCentral(central, "central");

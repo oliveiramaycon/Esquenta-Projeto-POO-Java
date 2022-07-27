@@ -9,6 +9,8 @@ import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
 import modelo.exceptions.UsuarioExistenteException;
 import modelo.programa.ProgramaDeTv;
+import modelo.programa.enums.Estilo;
+import modelo.programa.enums.Genero;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
 import modelo.programa.exceptions.SemProgramaNaDataAtualException;
@@ -122,12 +124,21 @@ public class CentralDeInformacoes {
 		for (Status status : Status.values())
 			tipos.add(status.toString());
 		return tipos;
+
 	}
 
 	public ArrayList<String> obterGeneroDePrograma() {
 		ArrayList<String> generos = new ArrayList<>();
-
+		for (Genero genero : Genero.values())
+			generos.add(genero.toString());
 		return generos;
+	}
+
+	public ArrayList<String> obterEstilosDePrograma() {
+		ArrayList<String> estilos = new ArrayList<>();
+		for (Estilo genero : Estilo.values())
+			estilos.add(genero.toString());
+		return estilos;
 	}
 
 	public ArrayList<String> obterTiposDeProgramas() {

@@ -15,7 +15,7 @@ public class SeriesRegulares extends ProgramaDeTv {
 	private Estilo estilo;
 
 	public SeriesRegulares(String nome, ArrayList<DayOfWeek> dia, Canal canal,
-			Genero genero, int temporada, Status status, String horario, String temporadas) {
+			Genero genero, Status status, String horario, String temporadas) {
 		super(nome, canal, dia, status, horario, temporadas);
 		setTipo(TipoPrograma.SERIES_REGULARES);
 		this.genero = genero;
@@ -28,4 +28,5 @@ public class SeriesRegulares extends ProgramaDeTv {
 	public Estilo getEstilo() {
 		return estilo;
 	}
+	
 }
