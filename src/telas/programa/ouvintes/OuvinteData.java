@@ -28,6 +28,7 @@ public class OuvinteData implements FocusListener{
 		} catch (Exception e2) {
 			Componentes.msgFalha(tela, "Data inválida");
 		}
+		Componentes.testandoData(tela);
 	}
 	
 }

@@ -1,6 +1,8 @@
 package telas.programa;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -9,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -30,9 +33,9 @@ public class TelaListagemProgramas extends TelaPadrao{
 	private OutlineJLabel lbTitulo;
 	private JButton botaoAddPrograma;
 	private JButton botaoDetalhes;
+	private JButton botaoExcluir;
 	private JTextField pesquisa;	
 	private JTable tabelaListagem;
-	
 	
 	public OutlineJLabel getLbTitulo() {
 		return lbTitulo;
@@ -68,7 +71,6 @@ public class TelaListagemProgramas extends TelaPadrao{
 		adicionarBackground();
 		adicionarBotoes();
 		adicionarLabels();
-		adicionarBotoes();
 		addTextField();
 	}
 
@@ -83,14 +85,14 @@ public class TelaListagemProgramas extends TelaPadrao{
 		OuvinteBotaoDetalhesPrograma ouvinteDetalhes = new OuvinteBotaoDetalhesPrograma(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
 	}
-	
+
 	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTA_DE_CANAIS);
 		setContentPane(background);
 	}
 	
 	private void addTextField() {
-		pesquisa = Componentes.addJTextField(this, 30, 75, Medidas.COMPRIMENTO_310, 25);
+		pesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA,30, 75, Medidas.COMPRIMENTO_310, 25);
 		pesquisa.setForeground(Color.GRAY);
 	}
 	

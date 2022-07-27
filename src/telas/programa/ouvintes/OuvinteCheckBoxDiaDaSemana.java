@@ -9,31 +9,39 @@ import telas.programa.TelaNovoPrograma;
 
 public class OuvinteCheckBoxDiaDaSemana implements ActionListener{
 	TelaNovoPrograma tela;
-	ArrayList<DayOfWeek> dia = new ArrayList<>();
+	
+	public OuvinteCheckBoxDiaDaSemana(TelaNovoPrograma tela) {
+		this.tela = tela;
+	}
+	
+	DayOfWeek[] dia = new DayOfWeek[7];
 	public void actionPerformed(ActionEvent e) {
 		if(tela.getCBSegunda().isSelected()) {
-			dia.add(DayOfWeek.MONDAY);
+			dia[0] = DayOfWeek.MONDAY;
 		}
 		if(tela.getTerca().isSelected()) {
-			dia.add(DayOfWeek.TUESDAY);
+			dia[1] = DayOfWeek.TUESDAY;
 		}
 		if(tela.getQuarta().isSelected()) {
-			dia.add(DayOfWeek.WEDNESDAY);
+			dia[2] = DayOfWeek.WEDNESDAY;
 		}
 		if(tela.getQuinta().isSelected()) {
-			dia.add(DayOfWeek.THURSDAY);
+			dia[3] = DayOfWeek.THURSDAY;
 		}
 		if(tela.getSexta().isSelected()) {
-			dia.add(DayOfWeek.FRIDAY);
+			dia[4] = DayOfWeek.FRIDAY;
 		}		
 		if(tela.getSabado().isSelected()) {
-			dia.add(DayOfWeek.SATURDAY);
+			dia[5] = DayOfWeek.SATURDAY;
 		}
+		if(tela.getDomingo().isSelected())
+			dia[6] = DayOfWeek.SUNDAY;
+		
 
 		
 	}
-	public ArrayList<DayOfWeek> retornaArray() {
-		
+	public DayOfWeek[] retornaArray() {
+		actionPerformed(null);
 		return dia;
 		
 	}

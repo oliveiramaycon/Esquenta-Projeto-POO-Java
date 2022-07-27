@@ -1,5 +1,7 @@
 package telas.programa;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -58,7 +60,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	private JCheckBox sexta;
 	private JCheckBox sabado;
 	private JCheckBox domingo;
-	private ArrayList<DayOfWeek> dia;
+	private DayOfWeek[] dia;
 
 	public JLabel getData() {
 		return data;
@@ -68,10 +70,9 @@ public class TelaNovoPrograma extends TelaPadrao {
 		return dataRetorno;
 	}
 
-	public ArrayList<DayOfWeek> getDia() {
+	public DayOfWeek[] getDia() {
 		return dia;
 	}
-
 	public JTextField getTfApresentadores() {
 		return tfApresentadores;
 	}
@@ -183,6 +184,9 @@ public class TelaNovoPrograma extends TelaPadrao {
 		this.programa = programa;
 		usuarioAtivo = usuario;
 	}
+	public  TelaNovoPrograma() {
+		super("Detalhes Programa");
+	}
 
 	@Override
 	public void adicionarComponentesGraficos() {
@@ -203,7 +207,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		sexta = Componentes.addCheckBox(this, "Sexta-Feira", 310, 330, 120, Medidas.ALTURA_30);
 		sabado = Componentes.addCheckBox(this, "Sábado", 430, 330, 120, Medidas.ALTURA_30);
 		domingo = Componentes.addCheckBox(this, "Domingo", 190, 360, 360, Medidas.ALTURA_30);
-		OuvinteCheckBoxDiaDaSemana ouvinte = new OuvinteCheckBoxDiaDaSemana();
+		OuvinteCheckBoxDiaDaSemana ouvinte = new OuvinteCheckBoxDiaDaSemana(this);
 		cbSegunda.addActionListener(ouvinte);
 		terca.addActionListener(ouvinte);
 		quarta.addActionListener(ouvinte);
@@ -222,14 +226,22 @@ public class TelaNovoPrograma extends TelaPadrao {
 	private void adicionarBotoes() {
 		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
-		// TODO:ouvinte voltar
+		OuvinteBotaoVoltar ouvinteBotaoVoltar = new OuvinteBotaoVoltar();
+		botaoVoltar.addActionListener(ouvinteBotaoVoltar);
 
 		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 590, 400, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarPrograma ouvinteCadastrarPrograma = new OuvinteBotaoCadastrarPrograma(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarPrograma);
 	}
+	private class OuvinteBotaoVoltar implements ActionListener  {
 
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			new TelaListagemProgramas(usuarioAtivo);
+		}
+	}
+	
 	private void adicionarRadios() {
 		rb1 = Componentes.addRadioButton(this, "Series Regulares", 190, 135, 125, Medidas.ALTURA_30);
 		rb1.setSelected(true);
@@ -268,7 +280,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		apresentadores.setVisible(false);
 	}
 
-	public void adicionarTextFields() {
+	private void adicionarTextFields() {
 		try {
 			MaskFormatter mascaraHorario = new MaskFormatter("##:##");
 			mascaraHorario.setValidCharacters("0123456789");
@@ -288,10 +300,12 @@ public class TelaNovoPrograma extends TelaPadrao {
 			dataRetorno.setHorizontalAlignment(JLabel.CENTER);
 			OuvinteData ouvinteData = new OuvinteData(this);
 			dataRetorno.addFocusListener(ouvinteData);
+			
 		} catch (ParseException e) {
 		}
 		tfNome = Componentes.addJTextField(this, 190, 100, 370, Medidas.ALTURA_30);
-		tfTemporada = Componentes.addJTextField(this, 430, 245, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		tfTemporada = Componentes.addJTextField(this,430, 245, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		tfTemporada.setHorizontalAlignment(JLabel.CENTER);
 		tfApresentadores = Componentes.addJTextField(this, 190, 415, 360, Medidas.ALTURA_30);
 		OuvinteFocoApresentadores ouvinteFocoApresentadores = new OuvinteFocoApresentadores(this);
 		tfApresentadores.addFocusListener(ouvinteFocoApresentadores);

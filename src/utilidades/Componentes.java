@@ -2,6 +2,7 @@ package utilidades;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -30,13 +31,19 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import com.thoughtworks.xstream.converters.basic.DateConverter;
+
 import modelo.canal.Canal;
 import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
 import modelo.programa.ProgramaDeTv;
+import modelo.programa.ProgramasContinuos;
 import modelo.programa.RealityShows;
 import modelo.programa.SeriesRegulares;
+import modelo.programa.enums.Estilo;
+import modelo.programa.enums.TipoPrograma;
 import modelo.usuario.Usuario;
+import telas.programa.TelaNovoPrograma;
 
 public class Componentes {
 
@@ -311,18 +318,24 @@ public class Componentes {
 			Object[] linhas = new Object[programas.size()];
 
 			for (ProgramaDeTv programa : programas) {
-				Object[] linha = new Object[7];
+				Object[] linha = new Object[9];
 
-				ArrayList<String> generoouApresentadores = new ArrayList<>();
-				String estilo = "";
+				String estilo = null;
+				String generoouApresentadores = null;
 				String preferencia = String.valueOf(programa.getFavorito());
-				if (programa instanceof SeriesRegulares) {
+				if (programa.getTipo() == TipoPrograma.SERIES_REGULARES) {
 					SeriesRegulares programaModificado = (SeriesRegulares) programa;
-					generoouApresentadores.add(String.valueOf(programaModificado.getGenero()));
-					estilo = String.valueOf(programaModificado.getEstilo());
+					generoouApresentadores = String.valueOf(programaModificado.getGenero());
+					estilo = (String.valueOf(programaModificado.getEstilo()));
 				} else {
-					RealityShows programaModificado = (RealityShows) programa;
-					generoouApresentadores = programaModificado.getApresentadores();
+					ProgramasContinuos programaModificado = (ProgramasContinuos) programa;
+						
+					String apresentadores = "";
+					for(String concatenar:programaModificado.getApresentadores()) {
+						apresentadores +=  concatenar+",";
+					}
+					
+					generoouApresentadores = apresentadores;
 				}
 
 				linha[0] = programa.getId();
@@ -355,11 +368,17 @@ public class Componentes {
 		}
 		return ArrayConvertida;
 	}
-	public void testandoData(Date d) {//TERMINAR O METODO PRA CHECAR SE TEM DATA INVALIDA
-		Date dia = null;
-		if(d.after(dia)) {
-			
-		}
-		
+	
+	public static void testandoData(TelaNovoPrograma tela) {
+		String dataTxt = tela.getDataRetorno().getText();
+		SimpleDateFormat mascara = new SimpleDateFormat("dd/MM/yyyy");
+		Date d = new Date();
+		try {
+			d = mascara.parse(dataTxt);
+		} catch (ParseException e) {}
+		Date dia = new Date();
+		if(dia.after(d)) {
+			msgFalha(tela, "Data inválida");
+		}	
 	}
 }

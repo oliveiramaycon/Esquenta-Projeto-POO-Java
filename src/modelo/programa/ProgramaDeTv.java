@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import modelo.canal.Canal;
 import modelo.programa.enums.EnumFavorito;
+import modelo.programa.enums.Genero;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
 
@@ -22,18 +23,19 @@ public abstract class ProgramaDeTv {
 	private ArrayList<DayOfWeek> diasDaSemana;
 
 	public ProgramaDeTv(String nome, Canal canal,ArrayList<DayOfWeek> diasDaSemana,
-			Status status,String horario, String teporadas) {
+			Status status,String horario, String temporadas) {
 		setNome(nome);
-		setTemporadas(temporadas);
+		this.temporadas = temporadas;
 		setDiasDaSemana(diasDaSemana);
 		setCanal(canal);
+		setStatus(status);
 		this.id = System.currentTimeMillis();
 		this.horario = horario;
 	}
+	
 	public void setTipo(TipoPrograma tipo) {
 		this.tipo = tipo;
 	}
-	
 	public String getData() {
 		return data;
 	}
@@ -94,6 +96,7 @@ public abstract class ProgramaDeTv {
 	public String getTemporadas() {
 		return temporadas;
 	}
+	
 	public void setTemporadas(String temporadas) {
 		this.temporadas = temporadas;
 	}

@@ -14,19 +14,26 @@ public class SeriesRegulares extends ProgramaDeTv {
 	private Genero genero;
 	private Estilo estilo;
 
-	public SeriesRegulares(String nome, ArrayList<DayOfWeek> dia, Canal canal,
-			Genero genero, Status status, String horario, String temporadas) {
+	public SeriesRegulares(String nome, ArrayList<DayOfWeek> dia, Canal canal
+			, Status status, String horario, String temporadas, Genero genero, Estilo estilo) {
 		super(nome, canal, dia, status, horario, temporadas);
+		System.out.println(temporadas);
 		setTipo(TipoPrograma.SERIES_REGULARES);
-		this.genero = genero;
+		setGenero(genero);
+		setEstilo(estilo);
 	}
 
 	public Genero getGenero() {
 		return genero;
 	}
-
 	public Estilo getEstilo() {
 		return estilo;
 	}
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
 	
+	public void setEstilo(Estilo estilo) {
+		this.estilo = estilo;
+	}
 }

@@ -1,41 +1,155 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <utilidades.CentralDeInformacoes>
-  <programas/>
+  <programas>
+    <modelo.programa.SeriesRegulares>
+      <id>1658942614428</id>
+      <nome>jkfdsfkjdndks</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalDeTv">
+        <nome>bandidao157</nome>
+        <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
+        <id>1658885049630</id>
+        <programas/>
+        <dataDeCadastro>2022-07-26T22:24:09.6306135</dataDeCadastro>
+        <dataDeAtualizacao>2022-07-26T22:24:33.2848114</dataDeAtualizacao>
+        <dono>
+          <nome>manco</nome>
+          <email>manco@gmail.com</email>
+          <login>manco</login>
+          <senha>Mancones1</senha>
+          <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
+          <programasFavoritos/>
+        </dono>
+        <numeroCanal>25</numeroCanal>
+      </canal>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>20:04</horario>
+      <diasDaSemana>
+        <day-of-week>MONDAY</day-of-week>
+        <day-of-week>TUESDAY</day-of-week>
+        <day-of-week>WEDNESDAY</day-of-week>
+      </diasDaSemana>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658943347110</id>
+      <nome>Ndkfsdmfs</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting">
+        <nome>opopae</nome>
+        <tipoCanal>ABERTO_NA_INTERNET_BROADCASTING</tipoCanal>
+        <id>1658790516634</id>
+        <programas/>
+        <dataDeCadastro>2022-07-25T20:08:36.6385539</dataDeCadastro>
+        <dataDeAtualizacao>2022-07-26T22:19:49.7534907</dataDeAtualizacao>
+        <dono>
+          <nome>manco</nome>
+          <email>manco@gmail.com</email>
+          <login>manco</login>
+          <senha>Mancones1</senha>
+          <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
+          <programasFavoritos/>
+        </dono>
+        <link>pop.com</link>
+      </canal>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>20:26</horario>
+      <diasDaSemana>
+        <day-of-week>FRIDAY</day-of-week>
+        <day-of-week>SATURDAY</day-of-week>
+      </diasDaSemana>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658943559013</id>
+      <nome>Marcos</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares[2]/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>  :  </horario>
+      <diasDaSemana/>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658944034558</id>
+      <nome>knfkd</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares[2]/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>21:20</horario>
+      <diasDaSemana>
+        <day-of-week>TUESDAY</day-of-week>
+        <day-of-week>THURSDAY</day-of-week>
+      </diasDaSemana>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658944273671</id>
+      <nome>kfnkdsfndks</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares[2]/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>  :  </horario>
+      <diasDaSemana/>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658950358054</id>
+      <nome>Ndkfsdmfs</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares[2]/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>23:30</horario>
+      <temporadas>4</temporadas>
+      <diasDaSemana/>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658952594533</id>
+      <nome>The office</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares[2]/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>23:20</horario>
+      <temporadas>4</temporadas>
+      <diasDaSemana>
+        <day-of-week>MONDAY</day-of-week>
+        <day-of-week>WEDNESDAY</day-of-week>
+        <day-of-week>FRIDAY</day-of-week>
+      </diasDaSemana>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+    <modelo.programa.SeriesRegulares>
+      <id>1658952699577</id>
+      <nome>Teste</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares[2]/canal"/>
+      <status>HIATO</status>
+      <favorito>FAVORITO</favorito>
+      <horario>23:30</horario>
+      <temporadas>6</temporadas>
+      <diasDaSemana/>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+  </programas>
   <canais>
-    <modelo.canal.CanalBroadcasting>
-      <nome>opopae</nome>
-      <tipoCanal>ABERTO_NA_INTERNET_BROADCASTING</tipoCanal>
-      <id>1658790516634</id>
-      <programas/>
-      <dataDeCadastro>2022-07-25T20:08:36.6385539</dataDeCadastro>
-      <dataDeAtualizacao>2022-07-26T22:19:49.7534907</dataDeAtualizacao>
-      <dono>
-        <nome>manco</nome>
-        <email>manco@gmail.com</email>
-        <login>manco</login>
-        <senha>Mancones1</senha>
-        <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
-        <programasFavoritos/>
-      </dono>
-      <link>pop.com</link>
-    </modelo.canal.CanalBroadcasting>
-    <modelo.canal.CanalDeTv>
-      <nome>bandidao157</nome>
-      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
-      <id>1658885049630</id>
-      <programas/>
-      <dataDeCadastro>2022-07-26T22:24:09.6306135</dataDeCadastro>
-      <dataDeAtualizacao>2022-07-26T22:24:33.2848114</dataDeAtualizacao>
-      <dono>
-        <nome>manco</nome>
-        <email>manco@gmail.com</email>
-        <login>manco</login>
-        <senha>Mancones1</senha>
-        <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
-        <programasFavoritos/>
-      </dono>
-      <numeroCanal>25</numeroCanal>
-    </modelo.canal.CanalDeTv>
+    <modelo.canal.CanalBroadcasting reference="../../programas/modelo.programa.SeriesRegulares[2]/canal"/>
+    <modelo.canal.CanalDeTv reference="../../programas/modelo.programa.SeriesRegulares/canal"/>
   </canais>
   <usuariosCadastrados/>
 </utilidades.CentralDeInformacoes>
