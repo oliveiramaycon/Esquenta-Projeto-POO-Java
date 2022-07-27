@@ -2,26 +2,20 @@ package utilidades;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -40,7 +34,6 @@ import modelo.canal.CanalDeTv;
 import modelo.programa.ProgramaDeTv;
 import modelo.programa.RealityShows;
 import modelo.programa.SeriesRegulares;
-import modelo.programa.enums.Genero;
 import modelo.usuario.Usuario;
 
 public class Componentes {
@@ -75,16 +68,15 @@ public class Componentes {
 		tela.add(field);
 		return field;
 	}
-	
-	public static JTextField addJTextFieldComIcone(JFrame tela, int x, int y, int comprimento, int altura) {
+
+	public static JTextField addJTextFieldComIcone(JFrame tela, ImageIcon icone, int x, int y, int comprimento,
+			int altura) {
 		IconJTextField field = new IconJTextField();
-		field.setIcon(Icones.LUPA);
+		field.setIcon(icone);
 		field.setBounds(x, y, comprimento, altura);
 		tela.add(field);
 		return field;
 	}
-	
-	
 
 	public static JMenuBar addJMenubar(JFrame janela, int x, int y, int comprimento, int altura) {
 		JMenuBar barraMenu = new JMenuBar();
@@ -118,6 +110,10 @@ public class Componentes {
 																											//// icone(setinha)
 	}
 
+	public static int showConfirmDialog(JFrame janela, String msg, String titulo) {
+		return JOptionPane.showConfirmDialog(janela, msg, titulo, JOptionPane.YES_NO_OPTION);
+	}
+
 	public static JComboBox<String> inserirComboBox(JFrame tela, ArrayList<String> dados, int x, int y, int comprimento,
 			int altura) {
 
@@ -136,7 +132,8 @@ public class Componentes {
 		return radioBotao;
 	}
 
-	public static JTable addTabelaTodosCanais(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x, int y, int comprimento, int altura) {
+	public static JTable addTabelaTodosCanais(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x, int y,
+			int comprimento, int altura) {
 		DefaultTableModel modelo = new DefaultTableModel() {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -145,47 +142,47 @@ public class Componentes {
 
 		JTable tabela = new JTable(modelo);
 		tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
+
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tabela.getModel());
 		tabela.setRowSorter(rowSorter);
-		
-		//ADD LISTENER AO CAMPO DE PESQUISA
-		tfPesquisa.getDocument().addDocumentListener(new DocumentListener(){
 
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                String text = tfPesquisa.getText();
+		tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
 
-                if (text.trim().length() == 0) {
-                    rowSorter.setRowFilter(null);
-                } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				String text = tfPesquisa.getText();
 
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                String text = tfPesquisa.getText();
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
 
-                if (text.trim().length() == 0) {
-                    rowSorter.setRowFilter(null);
-                } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				String text = tfPesquisa.getText();
 
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
 
-        });
-		
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods,
+																				// choose Tools | Templates.
+			}
+
+		});
+
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
-		
+
 		ArrayList<Canal> canais = central.getCanais();
-	
+
 		if (canais.size() == 0) {
 			modelo.addColumn("N�o h� canais cadastrados!");
 		} else {
@@ -204,7 +201,6 @@ public class Componentes {
 			Object[] linhas = new Object[canais.size()];
 
 			for (Canal canal : canais) {
-				System.out.println("canal: " + canal);
 				Object[] linha = new Object[7];
 
 				String linkOuNumero = null;
@@ -221,11 +217,10 @@ public class Componentes {
 				linha[3] = linkOuNumero;
 				linha[4] = canal.getProgramas().size();
 				linha[5] = usuarioLogado.obterQuantidadeDeProgramasFavoritos(canal.getProgramas());
-				
-				
+
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				linha[6] = sdf.format(Date.from(canal.getDataDeCadastro().atZone(ZoneId.systemDefault()).toInstant()));
-				
+
 				modelo.addRow(linha);
 			}
 			tabela.addRowSelectionInterval(0, 0);
@@ -236,115 +231,115 @@ public class Componentes {
 		tela.add(scroll);
 		return tabela;
 	}
-	
-	public static JTable addTabelaTodosProgramas(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x, int y, int comprimento, int altura) {
-			DefaultTableModel modelo = new DefaultTableModel() {
-				public boolean isCellEditable(int row, int column) {
-					return false;
+
+	public static JTable addTabelaTodosProgramas(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x,
+			int y, int comprimento, int altura) {
+		DefaultTableModel modelo = new DefaultTableModel() {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		JTable tabela = new JTable(modelo);
+		tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tabela.getModel());
+		tabela.setRowSorter(rowSorter);
+
+		tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
+
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				String text = tfPesquisa.getText();
+
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
 				}
-			};
-
-			JTable tabela = new JTable(modelo);
-			tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-			
-			TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tabela.getModel());
-			tabela.setRowSorter(rowSorter);
-			
-			tfPesquisa.getDocument().addDocumentListener(new DocumentListener(){
-
-	            @Override
-	            public void insertUpdate(DocumentEvent e) {
-	                String text = tfPesquisa.getText();
-
-	                if (text.trim().length() == 0) {
-	                    rowSorter.setRowFilter(null);
-	                } else {
-	                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-	                }
-	            }
-
-	            @Override
-	            public void removeUpdate(DocumentEvent e) {
-	                String text = tfPesquisa.getText();
-
-	                if (text.trim().length() == 0) {
-	                    rowSorter.setRowFilter(null);
-	                } else {
-	                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-	                }
-	            }
-
-	            @Override
-	            public void changedUpdate(DocumentEvent e) {
-	                throw new UnsupportedOperationException("Not supported yet.");
-	            }
-
-	        });
-			
-			Persistencia persistencia = new Persistencia();
-			CentralDeInformacoes central = persistencia.recuperarCentral("central");
-			
-			ArrayList<ProgramaDeTv> programas = central.getProgramas();
-		
-			if (programas.size() == 0) {
-				modelo.addColumn("Nao ha programas cadastrados!");
-			} else {
-				modelo.addColumn("ID");
-				modelo.addColumn("Nome");
-				modelo.addColumn("Tipo");
-				modelo.addColumn("Preferencia");
-				modelo.addColumn("Genero ou Apresentadores");
-				modelo.addColumn("Estilo");
-				modelo.addColumn("Horario");
-				modelo.addColumn("Temporadas");
-				modelo.addColumn("Status do Programa");
-
-//				escondendo a coluna ID 
-				tabela.getColumnModel().getColumn(0).setMinWidth(0);
-				tabela.getColumnModel().getColumn(0).setMaxWidth(0);
-
-				Object[] linhas = new Object[programas.size()];
-
-				for (ProgramaDeTv programa : programas) {
-					System.out.println("programa: " + programa);
-					Object[] linha = new Object[7];
-
-					ArrayList<String> generoouApresentadores = new ArrayList<>();
-					String estilo = "";
-					String preferencia = String.valueOf(programa.getFavorito());
-					if (programa instanceof SeriesRegulares) {
-						SeriesRegulares programaModificado= (SeriesRegulares) programa; 
-						generoouApresentadores.add(String.valueOf(programaModificado.getGenero()));
-						estilo = String.valueOf(programaModificado.getEstilo());
-					} else{
-						RealityShows programaModificado = (RealityShows) programa;
-						generoouApresentadores = programaModificado.getApresentadores();
-					}
-
-					linha[0] = programa.getId();
-					linha[1] = programa.getNome();
-					linha[2] = programa.getTipo();
-					linha[3] = preferencia;
-					linha[4] = generoouApresentadores;
-					linha[5] = estilo;
-					linha[6] = programa.getHorario();
-					linha[7] = programa.getTemporadas();
-					linha[8] = programa.getStatus();
-					
-					
-					modelo.addRow(linha);
-				}
-				tabela.addRowSelectionInterval(0, 0);
 			}
 
-			JScrollPane scroll = new JScrollPane(tabela);
-			scroll.setBounds(x, y, comprimento, altura);
-			tela.add(scroll);
-			return tabela;
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+				String text = tfPesquisa.getText();
+
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
+
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				throw new UnsupportedOperationException("Not supported yet.");
+			}
+
+		});
+
+		Persistencia persistencia = new Persistencia();
+		CentralDeInformacoes central = persistencia.recuperarCentral("central");
+
+		ArrayList<ProgramaDeTv> programas = central.getProgramas();
+
+		if (programas.size() == 0) {
+			modelo.addColumn("Nao ha programas cadastrados!");
+		} else {
+			modelo.addColumn("ID");
+			modelo.addColumn("Nome");
+			modelo.addColumn("Tipo");
+			modelo.addColumn("Preferencia");
+			modelo.addColumn("Genero ou Apresentadores");
+			modelo.addColumn("Estilo");
+			modelo.addColumn("Horario");
+			modelo.addColumn("Temporadas");
+			modelo.addColumn("Status do Programa");
+
+//				escondendo a coluna ID 
+			tabela.getColumnModel().getColumn(0).setMinWidth(0);
+			tabela.getColumnModel().getColumn(0).setMaxWidth(0);
+
+			Object[] linhas = new Object[programas.size()];
+
+			for (ProgramaDeTv programa : programas) {
+				Object[] linha = new Object[7];
+
+				ArrayList<String> generoouApresentadores = new ArrayList<>();
+				String estilo = "";
+				String preferencia = String.valueOf(programa.getFavorito());
+				if (programa instanceof SeriesRegulares) {
+					SeriesRegulares programaModificado = (SeriesRegulares) programa;
+					generoouApresentadores.add(String.valueOf(programaModificado.getGenero()));
+					estilo = String.valueOf(programaModificado.getEstilo());
+				} else {
+					RealityShows programaModificado = (RealityShows) programa;
+					generoouApresentadores = programaModificado.getApresentadores();
+				}
+
+				linha[0] = programa.getId();
+				linha[1] = programa.getNome();
+				linha[2] = programa.getTipo();
+				linha[3] = preferencia;
+				linha[4] = generoouApresentadores;
+				linha[5] = estilo;
+				linha[6] = programa.getHorario();
+				linha[7] = programa.getTemporadas();
+				linha[8] = programa.getStatus();
+
+				modelo.addRow(linha);
+			}
+			tabela.addRowSelectionInterval(0, 0);
 		}
+
+		JScrollPane scroll = new JScrollPane(tabela);
+		scroll.setBounds(x, y, comprimento, altura);
+		tela.add(scroll);
+		return tabela;
+	}
+
 	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
 		ArrayList<String> ArrayConvertida = new ArrayList<>();
-		for(Canal c : array) {
+		for (Canal c : array) {
 			ArrayConvertida.add(c.toString());
 		}
 		return ArrayConvertida;

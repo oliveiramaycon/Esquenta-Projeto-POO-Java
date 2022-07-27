@@ -2,12 +2,13 @@
 <utilidades.CentralDeInformacoes>
   <programas/>
   <canais>
-    <modelo.canal.CanalDeTv>
-      <nome>globe</nome>
-      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
-      <id>1658624390241</id>
+    <modelo.canal.CanalBroadcasting>
+      <nome>opopae</nome>
+      <tipoCanal>ABERTO_NA_INTERNET_BROADCASTING</tipoCanal>
+      <id>1658790516634</id>
       <programas/>
-      <dataDeCadastro>2022-07-23T21:59:50.2444787</dataDeCadastro>
+      <dataDeCadastro>2022-07-25T20:08:36.6385539</dataDeCadastro>
+      <dataDeAtualizacao>2022-07-26T22:19:49.7534907</dataDeAtualizacao>
       <dono>
         <nome>manco</nome>
         <email>manco@gmail.com</email>
@@ -16,23 +17,15 @@
         <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
         <programasFavoritos/>
       </dono>
-      <numeroCanal>5</numeroCanal>
-    </modelo.canal.CanalDeTv>
-    <modelo.canal.CanalBroadcasting>
-      <nome>bag</nome>
-      <tipoCanal>ASSINATURA_INDIVIDUAL_DE_BROADCASTING</tipoCanal>
-      <id>1658624410133</id>
-      <programas/>
-      <dataDeCadastro>2022-07-23T22:00:10.1339902</dataDeCadastro>
-      <dono reference="../../modelo.canal.CanalDeTv/dono"/>
-      <link>linkbag.com</link>
+      <link>pop.com</link>
     </modelo.canal.CanalBroadcasting>
     <modelo.canal.CanalDeTv>
-      <nome>oo</nome>
+      <nome>bandidao157</nome>
       <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
-      <id>1658641077978</id>
+      <id>1658885049630</id>
       <programas/>
-      <dataDeCadastro>2022-07-24T02:37:57.9781712</dataDeCadastro>
+      <dataDeCadastro>2022-07-26T22:24:09.6306135</dataDeCadastro>
+      <dataDeAtualizacao>2022-07-26T22:24:33.2848114</dataDeAtualizacao>
       <dono>
         <nome>manco</nome>
         <email>manco@gmail.com</email>
@@ -41,7 +34,7 @@
         <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
         <programasFavoritos/>
       </dono>
-      <numeroCanal>3</numeroCanal>
+      <numeroCanal>25</numeroCanal>
     </modelo.canal.CanalDeTv>
   </canais>
   <usuariosCadastrados/>

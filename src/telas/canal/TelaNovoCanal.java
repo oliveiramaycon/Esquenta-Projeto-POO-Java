@@ -16,6 +16,7 @@ import modelo.canal.enums.TipoCanal;
 import modelo.usuario.Usuario;
 import telas.TelaPadrao;
 import telas.canal.ouvintes.OuvinteBotaoCadastrarCanal;
+import telas.canal.ouvintes.OuvinteBotaoVoltarListagem;
 import telas.canal.ouvintes.OuvinteRadioButton;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
@@ -38,22 +39,22 @@ public class TelaNovoCanal extends TelaPadrao {
 	private OutlineJLabel lbTitulo;
 	private JButton botaoCadastrar;
 	private Usuario usuarioLogado;
-	
-	
+
 	public TelaNovoCanal(Usuario usuarioLogado) {
 		super("Novo Canal");
 		this.canal = null;
 		this.usuarioLogado = usuarioLogado;
+		adicionarBotoes();
 	}
 
-	public TelaNovoCanal(Canal canal,  Usuario usuarioLogado) {
+	public TelaNovoCanal(Canal canal, Usuario usuarioLogado) {
 		super("Edição de Canal");
 		this.canal = canal;
 		this.usuarioLogado = usuarioLogado;
+		adicionarBotoes();
 		preencherCampos();
 	}
-	
-	
+
 	public JTextField getTfNome() {
 		return tfNome;
 	}
@@ -149,8 +150,6 @@ public class TelaNovoCanal extends TelaPadrao {
 	public void setBotaoCadastrar(JButton botaoCadastrar) {
 		this.botaoCadastrar = botaoCadastrar;
 	}
-	
-	
 
 	public Usuario getUsuarioLogado() {
 		return usuarioLogado;
@@ -160,12 +159,9 @@ public class TelaNovoCanal extends TelaPadrao {
 		this.usuarioLogado = usuarioLogado;
 	}
 
-	
-
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
-		adicionarBotoes();
 		adiconarLabels();
 		adicionarTextFields();
 		adicionarRadios();
@@ -174,13 +170,17 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO_DE_CANAL);
-		//background.setBounds(0,0,786, 524);
+		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		// TODO:ouvinte voltar
+		System.out.println("add butons: " + this.usuarioLogado);
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
+				Medidas.ALTURA_30);
+		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
+		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
+
 		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 310, 400, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarCanal ouvinteCadastrarCanal = new OuvinteBotaoCadastrarCanal(this);
@@ -191,7 +191,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	private void adiconarLabels() {
 		lbTitulo = Componentes.addJLabel(this, "Novo Canal", 324, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
-		
+
 		Componentes.addJLabel(this, "Nome", 220, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Tipo", 220, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
@@ -264,10 +264,12 @@ public class TelaNovoCanal extends TelaPadrao {
 	public void preencherCampos() {
 
 		botaoCadastrar.setText("Salvar");
-		
+
 		lbTitulo.setVisible(false);
-		Componentes.addJLabel(this, "Edição de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30).setOutlineColor(Color.WHITE);;
-		
+		Componentes.addJLabel(this, "Edição de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
+				.setOutlineColor(Color.WHITE);
+		;
+
 		tfNome.setText(canal.getNome());
 		String numeroOuLink = null;
 

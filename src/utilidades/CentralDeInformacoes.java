@@ -9,8 +9,8 @@ import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
 import modelo.exceptions.UsuarioExistenteException;
 import modelo.programa.ProgramaDeTv;
+import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
-import modelo.programa.enums.*;
 import modelo.programa.exceptions.SemProgramaNaDataAtualException;
 import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
 import modelo.usuario.Usuario;
@@ -116,19 +116,20 @@ public class CentralDeInformacoes {
 		}
 		return programasEncontrados;
 	}
-	
-	public ArrayList<String> obterTiposDeStatus(){
-		ArrayList<String> tipos  = new ArrayList<>();
-		for(Status status: Status.values())
+
+	public ArrayList<String> obterTiposDeStatus() {
+		ArrayList<String> tipos = new ArrayList<>();
+		for (Status status : Status.values())
 			tipos.add(status.toString());
 		return tipos;
-				}
-	public ArrayList<String> obterGeneroDePrograma(){
-		ArrayList<String> generos  = new ArrayList<>();
-		
+	}
+
+	public ArrayList<String> obterGeneroDePrograma() {
+		ArrayList<String> generos = new ArrayList<>();
+
 		return generos;
 	}
-	
+
 	public ArrayList<String> obterTiposDeProgramas() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoPrograma tipo : TipoPrograma.values()) {
@@ -174,7 +175,7 @@ public class CentralDeInformacoes {
 			canais.add(canal);
 		}
 	}
-	
+
 	public Canal recuperarCanalPeloNome(String nomeDoCanal) throws RegistroNaoEncontradoException {
 		for (Canal canal : canais) {
 			if (canal.getNome().equals(nomeDoCanal)) {
@@ -183,7 +184,7 @@ public class CentralDeInformacoes {
 		}
 		throw new RegistroNaoEncontradoException();
 	}
-	
+
 	public Canal recuperarCanalPeloId(long id) throws RegistroNaoEncontradoException {
 		for (Canal canal : canais) {
 			if (canal.getId() == id) {
@@ -191,6 +192,12 @@ public class CentralDeInformacoes {
 			}
 		}
 		throw new RegistroNaoEncontradoException();
+	}
+
+	public Canal excluirCanal(long id) throws RegistroNaoEncontradoException {
+		Canal canalRecuperado = recuperarCanalPeloId(id);
+		canais.remove(canalRecuperado);
+		return canalRecuperado;
 	}
 
 	public void exibirCanais() {
@@ -205,6 +212,7 @@ public class CentralDeInformacoes {
 		}
 		System.out.print(nomeDosCanais.toString());
 	}
+
 	public ArrayList<String> obterTiposDeCanaisTelevisivos() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoCanal tipo : TipoCanal.values()) {
@@ -215,6 +223,7 @@ public class CentralDeInformacoes {
 
 		return tipos;
 	}
+
 	public ArrayList<String> obterTiposDeCanais() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		tipos.add("");
@@ -223,6 +232,7 @@ public class CentralDeInformacoes {
 		}
 		return tipos;
 	}
+
 	public ArrayList<String> obterTiposDeCanaisBroadcasting() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoCanal tipo : TipoCanal.values()) {
@@ -235,37 +245,38 @@ public class CentralDeInformacoes {
 	}
 
 	/*
-	 * ---------------------------------------ENTIDADE DO USUARIO ENTRADA E REMOCAO DE DADOS:
+	 * ---------------------------------------ENTIDADE DO USUARIO ENTRADA E REMOCAO
+	 * DE DADOS:
 	 */
-	
+
 	// CRIEI PARA A VERIFICACAO DE USUARIO NA ARRY
 	public Usuario validarEntrada(String login) {
 		Usuario novo = null;
-		for(Usuario u : usuariosCadastrados) {
-			if(u.getLogin().equals(login)){
+		for (Usuario u : usuariosCadastrados) {
+			if (u.getLogin().equals(login)) {
 				novo = u;
 			}
 		}
 		return novo;
 	}
-	
+
 	// METODO S� SERVE PRA MODIFICAR A SENHA DO USUARIO:
-	public void editarSenha(String novaSenha,String NovaConfirmacaoDeSenha, String login) {
-		validarEntrada(login).setSenha(novaSenha); 
+	public void editarSenha(String novaSenha, String NovaConfirmacaoDeSenha, String login) {
+		validarEntrada(login).setSenha(novaSenha);
 		validarEntrada(login).setConfirmacaoDeSenha(NovaConfirmacaoDeSenha);
 	}
-	
+
 	// SERVE PARA REMOCAO DE DADOS PELO NOME:
-	// METO PARA CASO SIRVA NA PARTE DE REMOVER FAVORITOS E SO EDITAR PARA UMA STRING ESPECIFICA. ASSIM SERVE PRA DELETA USUARIO DA ARRAYLIST:
+	// METO PARA CASO SIRVA NA PARTE DE REMOVER FAVORITOS E SO EDITAR PARA UMA
+	// STRING ESPECIFICA. ASSIM SERVE PRA DELETA USUARIO DA ARRAYLIST:
 	public void removerDados(Usuario remover) {
-		for(Usuario u : usuariosCadastrados) {
-			if(u.getLogin().equals(remover.getLogin())) {
+		for (Usuario u : usuariosCadastrados) {
+			if (u.getLogin().equals(remover.getLogin())) {
 				usuariosCadastrados.remove(remover);
 			}
 		}
 	}
-	
-	
+
 	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException {
 		for (Usuario u : usuariosCadastrados) {
 			if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {

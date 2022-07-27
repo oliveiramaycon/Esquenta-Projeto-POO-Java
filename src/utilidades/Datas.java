@@ -32,4 +32,9 @@ public class Datas {
 		
 		
 	}
+	
+	public static String formatar(Date data) {
+		DateFormat formater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		return formater.format(data);
+	}
 }

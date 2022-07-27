@@ -9,8 +9,7 @@ import javax.swing.JTextField;
 
 import modelo.usuario.Usuario;
 import telas.TelaPadrao;
-import telas.canal.ouvintes.OuvinteBotaoAdicionarCanal;
-import telas.canal.ouvintes.OuvinteBotaoDetalhes;
+import telas.canal.ouvintes.OuvinteBotoesTelaListagem;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Icones;
@@ -28,7 +27,7 @@ public class TelaListagemCanais extends TelaPadrao {
 	private Usuario usuarioLogado;
 	private JTextField tfPesquisa;
 	private JTable tabelaListagem;
-	
+
 	public OutlineJLabel getLbTitulo() {
 		return lbTitulo;
 	}
@@ -76,7 +75,7 @@ public class TelaListagemCanais extends TelaPadrao {
 	public void setTfPesquisa(JTextField tfPesquisa) {
 		this.tfPesquisa = tfPesquisa;
 	}
-	
+
 	public JTable getTabelaListagem() {
 		return tabelaListagem;
 	}
@@ -85,21 +84,20 @@ public class TelaListagemCanais extends TelaPadrao {
 		this.tabelaListagem = tabelaListagem;
 	}
 
-	
-	
 	public TelaListagemCanais(Usuario usuarioLogado) {
 		super("Listagem de Canais");
 		this.usuarioLogado = usuarioLogado;
 		System.out.println("usuario: " + usuarioLogado);
-		adicionarTabela(); //est� aqui por conta que � necess�rio informa��es do usu�rio logado
-		
+		adicionarTabela(); // est� aqui por conta que � necess�rio informa��es do usu�rio
+							// logado
+
 	}
 
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
 		adiconarLabels();
-		adicionarBotao();
+		adicionarBotoes();
 		adicionarTextField();
 	}
 
@@ -123,21 +121,21 @@ public class TelaListagemCanais extends TelaPadrao {
 	}
 
 	public void adicionarTextField() {
-		tfPesquisa = Componentes.addJTextField(this, 30, 75, Medidas.COMPRIMENTO_310, 25);
+		tfPesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 75, Medidas.COMPRIMENTO_310, 25);
 		tfPesquisa.setForeground(Color.GRAY);
 		tfPesquisa.setToolTipText("Realize uma busca");
-		
+
 	}
 
-	public void adicionarBotao() {
-				
+	public void adicionarBotoes() {
+
 		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 685, 70, 30, Medidas.ALTURA_30);
-		OuvinteBotaoAdicionarCanal ouvinteAdd = new OuvinteBotaoAdicionarCanal(this);
+		OuvinteBotoesTelaListagem ouvinteAdd = new OuvinteBotoesTelaListagem(this);
 		botaoAddCanal.addActionListener(ouvinteAdd);
 		botaoAddCanal.setToolTipText("Novo Canal");
 
 		botaoDetalhes = Componentes.addJButton(this, "Detalhes", 585, 420, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		OuvinteBotaoDetalhes ouvinteDetalhes = new OuvinteBotaoDetalhes(this);
+		OuvinteBotoesTelaListagem ouvinteDetalhes = new OuvinteBotoesTelaListagem(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
 	}
 
