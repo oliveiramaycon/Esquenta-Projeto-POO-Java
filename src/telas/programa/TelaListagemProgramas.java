@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import modelo.usuario.Usuario;
+import telas.TelaHome;
 import telas.TelaPadrao;
 import telas.programa.ouvintes.OuvinteBotaoAdicionarPrograma;
 import telas.programa.ouvintes.OuvinteBotaoDetalhesPrograma;
@@ -33,7 +34,7 @@ public class TelaListagemProgramas extends TelaPadrao{
 	private OutlineJLabel lbTitulo;
 	private JButton botaoAddPrograma;
 	private JButton botaoDetalhes;
-	private JButton botaoExcluir;
+	private JRadioButton Favorito;
 	private JTextField pesquisa;	
 	private JTable tabelaListagem;
 	
@@ -84,8 +85,19 @@ public class TelaListagemProgramas extends TelaPadrao{
 		botaoDetalhes = Componentes.addJButton(this,"detalhes",Icones.ADICIONAR, 645, 70, 100, Medidas.ALTURA_30);
 		OuvinteBotaoDetalhesPrograma ouvinteDetalhes = new OuvinteBotaoDetalhesPrograma(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 580, 420, Medidas.COMPRIMENTO_130,
+				Medidas.ALTURA_30);
+		botaoVoltar.addActionListener(new OuvinteBotaoVoltar());
+	
 	}
+	private class OuvinteBotaoVoltar implements ActionListener{
 
+		public void actionPerformed(ActionEvent e) {
+			dispose();
+			new TelaHome();
+		}
+		
+	}
 	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTA_DE_CANAIS);
 		setContentPane(background);

@@ -303,7 +303,7 @@ public class Componentes {
 		} else {
 			modelo.addColumn("ID");
 			modelo.addColumn("Nome");
-			modelo.addColumn("Tipo");
+			modelo.addColumn("Canal");
 			modelo.addColumn("Preferencia");
 			modelo.addColumn("Genero ou Apresentadores");
 			modelo.addColumn("Estilo");
@@ -340,7 +340,7 @@ public class Componentes {
 
 				linha[0] = programa.getId();
 				linha[1] = programa.getNome();
-				linha[2] = programa.getTipo();
+				linha[2] = programa.getCanal().toString();
 				linha[3] = preferencia;
 				linha[4] = generoouApresentadores;
 				linha[5] = estilo;
@@ -377,8 +377,17 @@ public class Componentes {
 			d = mascara.parse(dataTxt);
 		} catch (ParseException e) {}
 		Date dia = new Date();
+		String[] dataSeparada = dataTxt.split("/");
+		int diaData =Integer.parseInt( dataSeparada[0]);
+		int mes = Integer.parseInt(dataSeparada[1]);
+		String msgErro = "Data inválida";
+		if(diaData > 31)
+			msgFalha(tela, msgErro);
+		else if(diaData > 29 && mes == 2 )
+			msgFalha(tela, msgErro);
 		if(dia.after(d)) {
-			msgFalha(tela, "Data inválida");
+			msgFalha(tela, msgErro);
+		
 		}	
 	}
 }

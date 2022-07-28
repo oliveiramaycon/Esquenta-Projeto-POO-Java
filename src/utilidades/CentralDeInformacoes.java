@@ -13,6 +13,7 @@ import modelo.programa.enums.Estilo;
 import modelo.programa.enums.Genero;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
+import modelo.programa.exceptions.ProgramaJaAdicionado;
 import modelo.programa.exceptions.SemProgramaNaDataAtualException;
 import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
 import modelo.usuario.Usuario;
@@ -78,7 +79,14 @@ public class CentralDeInformacoes {
 		}
 		return null;
 	}
-
+	public boolean buscarProgramaPeloNome(String buscar) throws ProgramaJaAdicionado {
+		for(ProgramaDeTv programa : programas) {
+			if(programa.getNome().equals(buscar)) {
+				throw new ProgramaJaAdicionado();
+			}
+		}
+		return false;
+	}
 	public void exibirProgramas() {
 		System.out.println(programas.toString());
 	}

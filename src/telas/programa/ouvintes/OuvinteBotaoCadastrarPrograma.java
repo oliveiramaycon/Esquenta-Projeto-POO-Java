@@ -19,6 +19,7 @@ import modelo.programa.enums.Estilo;
 import modelo.programa.enums.Genero;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
+import modelo.programa.exceptions.ProgramaJaAdicionado;
 import telas.programa.TelaNovoPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
@@ -54,18 +55,33 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		} catch (RegistroNaoEncontradoException e1) {
 			Componentes.msgFalha(telaPrograma, e1.getMessage());
 		}
-		
+		//TESTANDO SE HORA É VALIDA
+		String[] hora = horario.split(":");
+		int horas= Integer.parseInt(hora[0]);
+		int minutos = Integer.parseInt(hora[1]);
+		boolean validandoHorario= false;
+		if(horas < 24 && minutos <= 59)
+			validandoHorario = true;
+		else
+			Componentes.msgFalha(telaPrograma, "Horario Invalido");
 		EnumFavorito favoritado = EnumFavorito.NAO_FAVORITO;
 		if(telaPrograma.getFavoritado().isSelected()) {
 			favoritado = EnumFavorito.FAVORITO;
+		}
+		boolean achouPrograma = true;
+		try {
+			achouPrograma = central.buscarProgramaPeloNome(canalDeTransmissao);
+		} catch (ProgramaJaAdicionado e2) {
+			Componentes.msgFalha(telaPrograma, e2.getMessage());
 		}
 		
 		String[] apresentadoresArray = telaPrograma.getTfApresentadores().getText().split(", ");
 		for(String nome: apresentadoresArray)
 			apresentadores.add(nome);
-		
+		boolean temData = false;
 		String dataRetorno = telaPrograma.getDataRetorno().getText();
 		ProgramaDeTv programa = null;
+		boolean temDia = false;
 		DayOfWeek[] dia = telaPrograma.getDia();
 		ArrayList<DayOfWeek> dias = new ArrayList<>();
 		for(int c = 0; c < 7;c++) {
@@ -75,15 +91,29 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			if(dia[c] != null)
 				dias.add(dia[c]);
 		}
+		if(dias.size() > 0)
+			temDia= true;
+		Boolean campoPreenchido = false;
+		boolean apresentadorPreenchido = false;
+		if(!nomeDoPrograma.trim().isEmpty()|| !horario.trim().isEmpty()|| !temporada.trim().isEmpty()) {
+			campoPreenchido = true;
+		}
+		
 		if(telaPrograma.getRb1().isSelected()) {
 			tipoPrograma = TipoPrograma.SERIES_REGULARES;
 		 programa = new SeriesRegulares(nomeDoPrograma,
 				dias, canal, status, horario, temporada,genero,estilo);
+		 apresentadorPreenchido = true; 
+		 programa.setFavorito(favoritado); 
 		 }
-		else if(telaPrograma.getRb2().isSelected()) {
+		if(apresentadores.size()> 0) {
+			apresentadorPreenchido = true;			
+		}
+			else if(telaPrograma.getRb2().isSelected()) {
 			tipoPrograma = TipoPrograma.REALITY_SHOW;
 			programa = new RealityShows(nomeDoPrograma, dias, canal,
 					horario,status, temporada);
+			programa.setFavorito(favoritado); 
 		}
 		
 		else {
@@ -91,9 +121,14 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			System.out.println(temporada);
 			programa = new ProgramasContinuos (nomeDoPrograma, dias, canal,
 					horario,status, temporada);
-			System.out.println(programa.getTemporadas() +"programa temporada");
+			programa.setFavorito(favoritado); 
 		}
-		programa.setFavorito(favoritado);
+			
+		if(status == Status.HIATO && !dataRetorno.isEmpty())
+			temData = true;
+		else if(status != Status.HIATO)
+			temData = true;
+		
 		if(programa instanceof ProgramasContinuos|| programa instanceof RealityShows) {
 			for(String apresentador:apresentadores) {
 				try {
@@ -104,6 +139,8 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			
 			}
 		}
+		
+		if(temDia && apresentadorPreenchido && temData&& campoPreenchido && validandoHorario && !achouPrograma) {
 		try {
 			central.AdicionarProgramaDeTv(programa);
 			persistencia.salvarCentral(central, "central");
@@ -112,7 +149,11 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			new TelaNovoPrograma(telaPrograma.getUsuarioAtivo());
 		} catch (FalhaNoCadastroException exception) {
 			Componentes.msgFalha(telaPrograma, exception.getMessage());
+		}	
 		}
+		else {
+			Componentes.msgFalha(telaPrograma, "campos vazios, por favor adicione o texto");
+		}
+		
 	}
-
 }

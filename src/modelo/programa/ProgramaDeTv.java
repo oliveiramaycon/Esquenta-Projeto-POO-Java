@@ -100,7 +100,10 @@ public abstract class ProgramaDeTv {
 	public void setTemporadas(String temporadas) {
 		this.temporadas = temporadas;
 	}
-	
+	public String adquirindoOToStringDoCanal(Canal c) {
+		String nomeCanal = c.toString();
+		return nomeCanal;
+	}
 	public String toString() {
 		return "Nome do programa: " + this.nome;
 	}

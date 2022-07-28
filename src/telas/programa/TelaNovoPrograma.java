@@ -233,6 +233,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarPrograma ouvinteCadastrarPrograma = new OuvinteBotaoCadastrarPrograma(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarPrograma);
+		
 	}
 	private class OuvinteBotaoVoltar implements ActionListener  {
 
@@ -304,8 +305,16 @@ public class TelaNovoPrograma extends TelaPadrao {
 		} catch (ParseException e) {
 		}
 		tfNome = Componentes.addJTextField(this, 190, 100, 370, Medidas.ALTURA_30);
-		tfTemporada = Componentes.addJTextField(this,430, 245, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		tfTemporada.setHorizontalAlignment(JLabel.CENTER);
+		try {
+			MaskFormatter mascaraTemporada = new MaskFormatter("###");
+			mascaraTemporada.setValidCharacters("0123456789");
+			tfTemporada = new JFormattedTextField(mascaraTemporada);
+			tfTemporada.setBounds(430, 245, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+			add(tfTemporada);
+			tfTemporada.setHorizontalAlignment(JLabel.CENTER);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		tfApresentadores = Componentes.addJTextField(this, 190, 415, 360, Medidas.ALTURA_30);
 		OuvinteFocoApresentadores ouvinteFocoApresentadores = new OuvinteFocoApresentadores(this);
 		tfApresentadores.addFocusListener(ouvinteFocoApresentadores);

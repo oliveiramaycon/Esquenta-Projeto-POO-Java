@@ -88,9 +88,7 @@ public abstract class Canal {
 
 	@Override
 	public String toString() {
-		return "Canal [nome=" + nome + ", tipoCanal=" + tipoCanal + ", id=" + id + ", programas=" + programas
-				+ ", dataDeCadastro=" + dataDeCadastro + ", dataDeAtualizacao=" + dataDeAtualizacao + ", dono=" + dono
-				+ "]";
+		return nome;
 	}
 
 }
