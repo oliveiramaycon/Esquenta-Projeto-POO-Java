@@ -14,19 +14,18 @@ import modelo.programa.RealityShows;
 import modelo.programa.SeriesRegulares;
 import modelo.programa.enums.EnumFavorito;
 import modelo.usuario.Usuario;
+import telas.programa.ouvintes.OuvinteCheckBoxDiaDaSemana;
 
 public class TelaDetalhePrograma extends TelaNovoPrograma{
 
 	private int indexLinha;
 	private ProgramaDeTv programaSelecionado;
 	private Usuario usuarioAtivo;
+	
 	public int getIndexLinha() {
 		return indexLinha;
 	}
 	
-	/*
-	 * 
-	*/
 	public ProgramaDeTv getProgramaSelecionado() {
 		return programaSelecionado;
 	}
@@ -45,7 +44,7 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 		JTextField tfNome = getTfNome();
 		tfNome.setText(programaSelecionado.getNome());
 		JTextField tfhorario = getTfhorario();
-		tfhorario.setText(programaSelecionado.getNome());
+		tfhorario.setText(programaSelecionado.getHorario());
 		JTextField tftemporada = getTfTemporada();
 		tftemporada.setText(programaSelecionado.getTemporadas());
 		JTextField dataRetorno = getTfApresentadores();
@@ -69,20 +68,35 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 		JCheckBox sabado = getSabado();
 		JCheckBox domingo = getDomingo();
 		
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.MONDAY))
+		DayOfWeek[] dias = getDia();
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.MONDAY)) {
 			cbSegunda.setSelected(true);
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.TUESDAY))
+			dias[0] = DayOfWeek.MONDAY;
+		}
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.TUESDAY)) {
 			terca.setSelected(true);
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.WEDNESDAY))
+			dias[1] = DayOfWeek.TUESDAY;
+		}
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.WEDNESDAY)) {
 			quarta.setSelected(true);
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.THURSDAY))
+			dias[2] = DayOfWeek.WEDNESDAY;
+		}
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.THURSDAY)) {
 			quinta.setSelected(true);
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.FRIDAY))
+			dias[3] = DayOfWeek.THURSDAY;
+		}
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.FRIDAY)) {
 			sexta.setSelected(true);
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.SATURDAY))
+			dias[4] = DayOfWeek.FRIDAY;
+		}
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.SATURDAY)) {
 			sabado.setSelected(true);
-		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.SUNDAY))
+			dias[5] = DayOfWeek.SATURDAY;
+		}
+		if(programaSelecionado.getDiasDaSemana().contains(DayOfWeek.SUNDAY)) {
 			domingo.setSelected(true);
+			dias[6] = DayOfWeek.SUNDAY;
+		}
 		
 		if(programaSelecionado instanceof SeriesRegulares) {
 			JComboBox<String> generos = getGeneros();

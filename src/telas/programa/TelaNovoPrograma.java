@@ -69,10 +69,15 @@ public class TelaNovoPrograma extends TelaPadrao {
 	public JTextField getDataRetorno() {
 		return dataRetorno;
 	}
-
+	
+	public void setDia(DayOfWeek[] dia) {
+		this.dia = dia;
+	}
+	
 	public DayOfWeek[] getDia() {
 		return dia;
 	}
+	
 	public JTextField getTfApresentadores() {
 		return tfApresentadores;
 	}
@@ -177,15 +182,18 @@ public class TelaNovoPrograma extends TelaPadrao {
 		super("Novo Programa");
 		usuarioAtivo = usuario;
 		this.programa = null;
+		dia = new DayOfWeek[7];
 	}
 
 	public TelaNovoPrograma(ProgramaDeTv programa, Usuario usuario) {
 		super("Novo Programa");
 		this.programa = programa;
 		usuarioAtivo = usuario;
+		dia = new DayOfWeek[7];
 	}
 	public  TelaNovoPrograma() {
 		super("Detalhes Programa");
+		dia = new DayOfWeek[7];
 	}
 
 	@Override
@@ -215,7 +223,6 @@ public class TelaNovoPrograma extends TelaPadrao {
 		sexta.addActionListener(ouvinte);
 		sabado.addActionListener(ouvinte);
 		domingo.addActionListener(ouvinte);
-		dia = ouvinte.retornaArray();
 	}
 
 	private void adicionarBackground() {

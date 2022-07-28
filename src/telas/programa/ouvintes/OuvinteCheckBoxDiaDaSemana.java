@@ -9,41 +9,55 @@ import telas.programa.TelaNovoPrograma;
 
 public class OuvinteCheckBoxDiaDaSemana implements ActionListener{
 	TelaNovoPrograma tela;
-	
 	public OuvinteCheckBoxDiaDaSemana(TelaNovoPrograma tela) {
 		this.tela = tela;
-	}
+		}
 	
-	DayOfWeek[] dia = new DayOfWeek[7];
 	public void actionPerformed(ActionEvent e) {
-		if(tela.getCBSegunda().isSelected()) {
-			dia[0] = DayOfWeek.MONDAY;
-		}
-		if(tela.getTerca().isSelected()) {
-			dia[1] = DayOfWeek.TUESDAY;
-		}
-		if(tela.getQuarta().isSelected()) {
-			dia[2] = DayOfWeek.WEDNESDAY;
-		}
-		if(tela.getQuinta().isSelected()) {
-			dia[3] = DayOfWeek.THURSDAY;
-		}
-		if(tela.getSexta().isSelected()) {
-			dia[4] = DayOfWeek.FRIDAY;
-		}		
-		if(tela.getSabado().isSelected()) {
-			dia[5] = DayOfWeek.SATURDAY;
-		}
-		if(tela.getDomingo().isSelected())
-			dia[6] = DayOfWeek.SUNDAY;
-		
+		DayOfWeek[] diaCb = tela.getDia();
 
+		if(tela.getCBSegunda().isSelected()) {
+			diaCb[0] = DayOfWeek.MONDAY;
+		}
+		else
+			diaCb[0] = null;
 		
-	}
-	public DayOfWeek[] retornaArray() {
-		actionPerformed(null);
-		return dia;
+		if(tela.getTerca().isSelected()) {
+			diaCb[1] = DayOfWeek.TUESDAY;
+		}
+		else
+			diaCb[1] = null;
 		
+		if(tela.getQuarta().isSelected()) {
+			diaCb[2] = DayOfWeek.WEDNESDAY;
+		}
+		else
+			diaCb[2] = null;
+		
+		if(tela.getQuinta().isSelected()) {
+			diaCb[3] = DayOfWeek.THURSDAY;
+		}
+		else
+			diaCb[3] = null;
+		
+		if(tela.getSexta().isSelected()) {
+			diaCb[4] = DayOfWeek.FRIDAY;
+		}		
+		else
+			diaCb[4] = null;
+		
+		if(tela.getSabado().isSelected()) {
+			diaCb[5] = DayOfWeek.SATURDAY;
+		}
+		else
+			diaCb[5] = null;
+		
+		if(tela.getDomingo().isSelected())
+			diaCb[6] = DayOfWeek.SUNDAY;
+		
+		else
+			diaCb[6] = null;
+
 	}
 
 }

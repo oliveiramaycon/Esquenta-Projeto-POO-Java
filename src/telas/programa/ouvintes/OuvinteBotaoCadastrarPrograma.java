@@ -55,26 +55,22 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		} catch (RegistroNaoEncontradoException e1) {
 			Componentes.msgFalha(telaPrograma, e1.getMessage());
 		}
-		//TESTANDO SE HORA É VALIDA
-		String[] hora = horario.split(":");
-		int horas= Integer.parseInt(hora[0]);
-		int minutos = Integer.parseInt(hora[1]);
 		boolean validandoHorario= false;
-		if(horas < 24 && minutos <= 59)
-			validandoHorario = true;
-		else
-			Componentes.msgFalha(telaPrograma, "Horario Invalido");
+		
+		//TESTANDO SE HORA É VALIDA
+		if(!horario.trim().isEmpty()) {
+			String[] hora = horario.split(":");
+			int horas= Integer.parseInt(hora[0]);
+			int minutos = Integer.parseInt(hora[1]);
+			if(horas < 24 && minutos <= 59)
+				validandoHorario = true;
+			else
+				Componentes.msgFalha(telaPrograma, "Horario Invalido");
+			}
 		EnumFavorito favoritado = EnumFavorito.NAO_FAVORITO;
 		if(telaPrograma.getFavoritado().isSelected()) {
 			favoritado = EnumFavorito.FAVORITO;
 		}
-		boolean achouPrograma = true;
-		try {
-			achouPrograma = central.buscarProgramaPeloNome(canalDeTransmissao);
-		} catch (ProgramaJaAdicionado e2) {
-			Componentes.msgFalha(telaPrograma, e2.getMessage());
-		}
-		
 		String[] apresentadoresArray = telaPrograma.getTfApresentadores().getText().split(", ");
 		for(String nome: apresentadoresArray)
 			apresentadores.add(nome);
@@ -88,17 +84,20 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			if(dia[c] == null) {
 				continue;
 			}
-			if(dia[c] != null)
+			if(dia[c] != null){
 				dias.add(dia[c]);
 		}
-		if(dias.size() > 0)
+		if(dias.size() > 0) {
 			temDia= true;
+		}
 		Boolean campoPreenchido = false;
 		boolean apresentadorPreenchido = false;
 		if(!nomeDoPrograma.trim().isEmpty()|| !horario.trim().isEmpty()|| !temporada.trim().isEmpty()) {
 			campoPreenchido = true;
 		}
-		
+		if(apresentadores.size()> 0) {
+			apresentadorPreenchido = true;	
+		}
 		if(telaPrograma.getRb1().isSelected()) {
 			tipoPrograma = TipoPrograma.SERIES_REGULARES;
 		 programa = new SeriesRegulares(nomeDoPrograma,
@@ -106,10 +105,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		 apresentadorPreenchido = true; 
 		 programa.setFavorito(favoritado); 
 		 }
-		if(apresentadores.size()> 0) {
-			apresentadorPreenchido = true;			
-		}
-			else if(telaPrograma.getRb2().isSelected()) {
+		else if(telaPrograma.getRb2().isSelected()) {
 			tipoPrograma = TipoPrograma.REALITY_SHOW;
 			programa = new RealityShows(nomeDoPrograma, dias, canal,
 					horario,status, temporada);
@@ -123,6 +119,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 					horario,status, temporada);
 			programa.setFavorito(favoritado); 
 		}
+			
 			
 		if(status == Status.HIATO && !dataRetorno.isEmpty())
 			temData = true;
@@ -140,7 +137,8 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			}
 		}
 		
-		if(temDia && apresentadorPreenchido && temData&& campoPreenchido && validandoHorario && !achouPrograma) {
+		if(temDia && apresentadorPreenchido && temData && campoPreenchido && validandoHorario) {
+			
 		try {
 			central.AdicionarProgramaDeTv(programa);
 			persistencia.salvarCentral(central, "central");
@@ -157,3 +155,4 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		
 	}
 }
+	}

@@ -2,8 +2,8 @@
 <utilidades.CentralDeInformacoes>
   <programas>
     <modelo.programa.SeriesRegulares>
-      <id>1658950358054</id>
-      <nome>Ndkfsdmfs</nome>
+      <id>1659014142797</id>
+      <nome>fdksjfnds</nome>
       <tipo>SERIES_REGULARES</tipo>
       <canal class="modelo.canal.CanalBroadcasting">
         <nome>opopae</nome>
@@ -24,103 +24,30 @@
       </canal>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
-      <horario>23:30</horario>
-      <temporadas>4</temporadas>
-      <diasDaSemana/>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1658952594533</id>
-      <nome>The office</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>23:20</horario>
-      <temporadas>4</temporadas>
-      <diasDaSemana>
-        <day-of-week>MONDAY</day-of-week>
-        <day-of-week>WEDNESDAY</day-of-week>
-        <day-of-week>FRIDAY</day-of-week>
-      </diasDaSemana>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1658952699577</id>
-      <nome>Teste</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>HIATO</status>
-      <favorito>FAVORITO</favorito>
-      <horario>23:30</horario>
-      <temporadas>6</temporadas>
-      <diasDaSemana/>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1658994424893</id>
-      <nome>nskfdnkfs</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>56:02</horario>
-      <temporadas>2</temporadas>
-      <diasDaSemana/>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1658995197071</id>
-      <nome>fdsfdosofidsjoifs</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>HIATO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>02:01</horario>
-      <temporadas>2</temporadas>
+      <horario>23:00</horario>
+      <temporadas>044</temporadas>
       <diasDaSemana>
         <day-of-week>TUESDAY</day-of-week>
-        <day-of-week>FRIDAY</day-of-week>
       </diasDaSemana>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1658996907481</id>
-      <nome>TesteChecandoEspaco preenchido</nome>
-      <tipo>SERIES_REGULARES</tipo>
+    <modelo.programa.RealityShows>
+      <id>1659014274210</id>
+      <nome>fmdklsfndsk</nome>
+      <tipo>REALITY_SHOW</tipo>
       <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
-      <horario>02:20</horario>
-      <temporadas>4</temporadas>
-      <diasDaSemana>
-        <day-of-week>MONDAY</day-of-week>
-        <day-of-week>FRIDAY</day-of-week>
-      </diasDaSemana>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1658998277916</id>
-      <nome>xmkclxm</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>20:00</horario>
+      <horario>20:23</horario>
       <temporadas>004</temporadas>
       <diasDaSemana>
         <day-of-week>TUESDAY</day-of-week>
-        <day-of-week>FRIDAY</day-of-week>
       </diasDaSemana>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
+      <apresentadores>
+        <string>klfsdlkfs,fdskfndsk</string>
+      </apresentadores>
+    </modelo.programa.RealityShows>
   </programas>
   <canais>
     <modelo.canal.CanalBroadcasting reference="../../programas/modelo.programa.SeriesRegulares/canal"/>

@@ -126,7 +126,13 @@ public class CentralDeInformacoes {
 		}
 		return programasEncontrados;
 	}
-
+	public ArrayList<String> obterCanaisNome(){
+		ArrayList<String> nomes = new ArrayList<>();
+		for(Canal canal: getCanais()){
+			nomes.add(canal.toString());
+		}
+		return nomes;
+	}
 	public ArrayList<String> obterTiposDeStatus() {
 		ArrayList<String> tipos = new ArrayList<>();
 		for (Status status : Status.values())
