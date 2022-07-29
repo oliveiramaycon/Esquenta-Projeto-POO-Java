@@ -12,55 +12,38 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailAttachment;
+import org.apache.commons.mail.MultiPartEmail;
+
+import modelo.usuario.Usuario;
+
 public class Mensageiro {
 
-	public static void enviarProgramacaoDeHoje(String destinario, String assunto, String msg) {
-		//DADOS DA CONTA DE EMAIL UTILIZADA PELO SISTEMA
-		String remetente = "mocagenda701@gmail.com";
-		String senha = "Batecocramunhao";
-
-		/** Par‚metros de conex„o com servidor Gmail */	
-		Properties props = new Properties();
-		props.put("mail.smtp.user", remetente);
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "25");
-		props.put("mail.debug", "false");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.EnableSSL.enable", "true");
-
-		props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		props.setProperty("mail.smtp.socketFactory.fallback", "false");
-		props.setProperty("mail.smtp.port", "465");
-		props.setProperty("mail.smtp.socketFactory.port", "465");
-
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(remetente, senha);
-			}
-		});
-
-		/** Ativa Debug para sess„o */
-		session.setDebug(false);
-
+public static void enviarEmail(Usuario u) {
+		
+		String remetente = "projetoseriespoo@gmail.com";
+		String senha = "nchwpdgmrfccbxki";
+		
+		MultiPartEmail email = new MultiPartEmail();
+		email.setHostName("smtp.gmail.com");
+		email.setSmtpPort(465);
+		email.setAuthenticator(new DefaultAuthenticator(remetente, senha));
+		email.setSSLOnConnect(true);
 		try {
-
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(remetente));
-
-			Address[] toUser = InternetAddress 
-					.parse(destinario);
-
-			message.setRecipients(Message.RecipientType.TO, toUser);
-			message.setSubject(assunto);
-			message.setText(msg);
+			email.setFrom(remetente);
+			email.setSubject("Programa√ßao da semana");
+			email.setMsg("Segue anexo da programacao da semana");
+			email.addTo(u.getEmail());
 			
-			Transport.send(message);
-
-		} catch (MessagingException e) {
-			JOptionPane.showMessageDialog(null, "Ocorreu alguma falha no envio!", "falha no envio",
-					JOptionPane.ERROR_MESSAGE);
-			throw new RuntimeException(e);
+			EmailAttachment anexo = new EmailAttachment();
+			
+			anexo.setPath("relatorio.pdf");
+			email.attach(anexo);
+			email.send();
+			JOptionPane.showMessageDialog(null, "Envio Realizado com Sucesso", "", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

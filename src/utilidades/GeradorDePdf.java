@@ -14,11 +14,12 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import modelo.canal.Canal;
 import modelo.programa.ProgramaDeTv;
+import modelo.usuario.Usuario;
 
 public class GeradorDePdf {
 
-	public static void ObterProgramacaoDeUmCanal(Canal canal) {
-
+	public static void ObterProgramacao(Usuario usuarioAtivo) {
+		String nome = usuarioAtivo.getNome();
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
@@ -28,29 +29,42 @@ public class GeradorDePdf {
 			PdfWriter.getInstance(documento, new FileOutputStream("relatorio.pdf"));
 
 			documento.open();
-			PdfPTable tabela = new PdfPTable(2);
-			Paragraph p1 = new Paragraph("### Programas criados do canal " + canal + " ###\n");
-			Paragraph separador = new Paragraph("                                     ");
+			PdfPTable tabela = new PdfPTable(3);
+			Paragraph p1 = new Paragraph("### Programas favoritos do Usuario " +nome+ " ###");
+			Paragraph separador = new Paragraph("                                                  ");
 			documento.add(p1);
-
-			ArrayList<ProgramaDeTv> programas = central.buscarProgramasPorCanal(canal.getNome());
+			documento.add(separador);
+			ArrayList<ProgramaDeTv> programas = usuarioAtivo.getProgramasFavoritos();
 
 			if (programas.isEmpty()) {
-				Paragraph p = new Paragraph("O canal " + canal.getNome() + "nao possui programas");
+				Paragraph p = new Paragraph("O usuario: "+nome+" nao possui programas favoritos.");
 				documento.add(p);
 
 			} else {
 				tabela.addCell("Programas");
+				tabela.addCell("Dia da semana");
 				tabela.addCell("Horarios");
+				ArrayList<String> dias = null;
 				for (ProgramaDeTv programa : programas) {
+					dias = central.mudarDiaDaSemana(programa.getDiasDaSemana());
+					if(programa.getDiasDaSemana().size() >1 ) {
+						for(int c = 0; programa.getDiasDaSemana().size()> c;c++){
+							tabela.addCell(programa.getNome());
+							tabela.addCell(dias.get(c));
+							tabela.addCell(programa.getHorario());
+						}
+					}
+					else {
 					tabela.addCell(programa.getNome());
+					tabela.addCell(dias.get(0));
 					tabela.addCell(programa.getHorario());
+					}
 
 				}
 				documento.add(tabela);
 			}
 			documento.close();
-
+			
 		} catch (FileNotFoundException | DocumentException e) {
 			e.printStackTrace();
 		}

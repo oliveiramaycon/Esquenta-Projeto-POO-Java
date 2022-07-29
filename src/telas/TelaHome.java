@@ -14,11 +14,14 @@ import javax.swing.JPanel;
 
 import modelo.usuario.Usuario;
 import telas.ouvintes.OuvinteTelaHome;
+import telas.programa.TelaListagemProgramas;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
+import utilidades.GeradorDePdf;
 import utilidades.Icones;
 import utilidades.Imagens;
 import utilidades.Medidas;
+import utilidades.Mensageiro;
 import utilidades.Persistencia;
 
 public class TelaHome extends TelaPadrao {
@@ -56,7 +59,7 @@ public class TelaHome extends TelaPadrao {
 
 		JMenuBar barraMenu = Componentes.addJMenubar(this, 600, 0, 80, 80);
 		JMenu menu = Componentes.addJMenuComIcone(barraMenu, Icones.ENGRENAGEM);
-		menu.setToolTipText("opções");
+		menu.setToolTipText("opï¿½ï¿½es");
 
 		JMenuItem perfil = Componentes.addItemNoMenu(menu, "Sair");
 
@@ -69,19 +72,29 @@ public class TelaHome extends TelaPadrao {
 		JButton botaoCanais = Componentes.adicionarJButton(painel, "Canais", Imagens.BANNER_CANAL, 0, 0, 0, 0);
 		botaoCanais.addActionListener(ouvinteTelaHome);
 		
+		JButton botaoEnviarEmail = Componentes.addJButton(this, "Enviar E-mail", 130, 40, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		botaoEnviarEmail.addActionListener(new OuvinteBotaoEmail());
+		
 		painel.setBounds(130, 100, 528, 520);
 		add(painel);
 	}
+	private class OuvinteBotaoEmail implements ActionListener{
 
+		public void actionPerformed(ActionEvent e) {
+			GeradorDePdf geradorDePdf = new GeradorDePdf();
+			geradorDePdf.ObterProgramacao(usuarioLogado);
+			Mensageiro.enviarEmail(usuarioLogado);
+		}
+		
+	}
 	private class OuvinteBotaoPrograma implements ActionListener {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
 
 		public void actionPerformed(ActionEvent e) {
-			// Usuario usuarioAtivo = central.getUsuariosCadastrados().get(1);
 			// TODO: ACHAR UMA FORMA DE RESGATAR O USUARIO ATIVO
 			dispose();
-//			new TelaListagemProgramas(usuarioAtivo);
+			new TelaListagemProgramas(central.getUsuariosCadastrados().get(0));
 		}
 
 	}

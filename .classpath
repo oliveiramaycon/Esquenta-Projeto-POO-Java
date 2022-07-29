@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="xstream-benchmark-1.4.19.jar"/>
 	<classpathentry kind="lib" path="xstream-hibernate-1.4.19.jar"/>
 	<classpathentry kind="lib" path="xstream-jmh-1.4.19.jar"/>
+	<classpathentry kind="lib" path="commons-email-1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

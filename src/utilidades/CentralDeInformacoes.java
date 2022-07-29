@@ -1,5 +1,6 @@
 package utilidades;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 
 import modelo.canal.Canal;
@@ -310,4 +311,24 @@ public class CentralDeInformacoes {
 		}
 		usuariosCadastrados.add(usuario);
 	}
+
+	public ArrayList<String> mudarDiaDaSemana(ArrayList<DayOfWeek> dia){
+		ArrayList<String> diasPtBr = new ArrayList<>();
+		if(dia.contains(DayOfWeek.MONDAY))
+			diasPtBr.add("Segunda-Feira");
+		if(dia.contains(DayOfWeek.TUESDAY))
+			diasPtBr.add("Terca-Feira");
+		if(dia.contains(DayOfWeek.WEDNESDAY))
+			diasPtBr.add("Quarta-Feira");
+		if(dia.contains(DayOfWeek.THURSDAY))
+			diasPtBr.add("Quinta-Feira");
+		if(dia.contains(DayOfWeek.FRIDAY))
+			diasPtBr.add("Sexta-Feira");
+		if(dia.contains(DayOfWeek.SATURDAY))
+			diasPtBr.add("Sabado");
+		if(dia.contains(DayOfWeek.SUNDAY))
+			diasPtBr.add("Domingo");
+		return diasPtBr;
+	}
+	
 }
