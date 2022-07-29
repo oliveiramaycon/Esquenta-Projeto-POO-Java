@@ -14,7 +14,6 @@ public class ProgramasContinuos extends ProgramaDeTv {
 	public ProgramasContinuos(String nome, ArrayList<DayOfWeek> dia, Canal canal,
 			String horario, Status status,String temporadas) {
 		super(nome, canal, dia, status, horario, temporadas);
-		System.out.println(temporadas);
 		
 		setTipo(TipoPrograma.PROGRAMA_CONTINUO);
 		apresentadores = new ArrayList<>();

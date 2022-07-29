@@ -1,38 +1,19 @@
 package telas.programa;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
-import modelo.programa.ProgramaDeTv;
-import modelo.programa.ProgramasContinuos;
-import modelo.programa.SeriesRegulares;
-import modelo.programa.enums.TipoPrograma;
 import modelo.usuario.Usuario;
-import telas.TelaHome;
 import telas.TelaPadrao;
+import telas.ouvintes.OuvinteBotaoVoltarParaHome;
 import telas.programa.ouvintes.OuvinteBotaoAdicionarPrograma;
 import telas.programa.ouvintes.OuvinteBotaoDetalhesPrograma;
 import utilidades.CentralDeInformacoes;
@@ -85,11 +66,11 @@ public class TelaListagemProgramas extends TelaPadrao{
 		super("Listagem de programas");
 		this.usuario = usuario;
 		addTabela();
+		adicionarBotoes();
 	}
 	
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
-		adicionarBotoes();
 		adicionarLabels();
 		addTextField();
 		addRadioButton();
@@ -107,20 +88,13 @@ public class TelaListagemProgramas extends TelaPadrao{
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
 		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 580, 420, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
-		botaoVoltar.addActionListener(new OuvinteBotaoVoltar());
+		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuario));
 		
 	
 	}
-	private class OuvinteBotaoVoltar implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			dispose();
-			new TelaHome();
-		}
-		
-	}
+	
 	private void adicionarBackground() {
-		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTA_DE_CANAIS);
+		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTAGEM);
 		setContentPane(background);
 	}
 	
@@ -158,109 +132,5 @@ public class TelaListagemProgramas extends TelaPadrao{
 		favorito  = Componentes.addRadioButton(this, "favoritos", 430, 70, 80, Medidas.ALTURA_30);
 	}
 	private void addTabela() {
-		modelo = new DefaultTableModel() {
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-		
-
-		tabelaListagem = new JTable(modelo);
-		tabelaListagem.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tabelaListagem.getModel());
-		tabelaListagem.setRowSorter(rowSorter);
-
-		pesquisa.getDocument().addDocumentListener(new DocumentListener() {
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				String text = pesquisa.getText();
-
-				if (text.trim().length() == 0) {
-					rowSorter.setRowFilter(null);
-				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-				}
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				String text = pesquisa.getText();
-
-				if (text.trim().length() == 0) {
-					rowSorter.setRowFilter(null);
-				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-				}
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				throw new UnsupportedOperationException("Not supported yet.");
-			}
-
-		});
-
-		Persistencia persistencia = new Persistencia();
-		CentralDeInformacoes central = persistencia.recuperarCentral("central");
-
-		ArrayList<ProgramaDeTv> programas = central.getProgramas();
-
-		if (programas.size() == 0) {
-			modelo.addColumn("Nao ha programas cadastrados!");
-		} else {
-			modelo.addColumn("ID");
-			modelo.addColumn("Nome");
-			modelo.addColumn("Canal");
-			modelo.addColumn("Preferencia");
-			modelo.addColumn("Genero ou Apresentadores");
-			modelo.addColumn("Estilo");
-			modelo.addColumn("Horario");
-			modelo.addColumn("Temporadas");
-			modelo.addColumn("Status do Programa");
-
-//				escondendo a coluna ID 
-			tabelaListagem.getColumnModel().getColumn(0).setMinWidth(0);
-			tabelaListagem.getColumnModel().getColumn(0).setMaxWidth(0);
-
-			Object[] linhas = new Object[programas.size()];
-
-			for (ProgramaDeTv programa : programas) {
-				Object[] linha = new Object[9];
-
-				String estilo = null;
-				String generoouApresentadores = null;
-				String preferencia = String.valueOf(programa.getFavorito());
-				if (programa.getTipo() == TipoPrograma.SERIES_REGULARES) {
-					SeriesRegulares programaModificado = (SeriesRegulares) programa;
-					generoouApresentadores = String.valueOf(programaModificado.getGenero());
-					estilo = (String.valueOf(programaModificado.getEstilo()));
-				} else {
-					ProgramasContinuos programaModificado = (ProgramasContinuos) programa;
-						
-					String apresentadores = "";
-					for(String concatenar:programaModificado.getApresentadores()) {
-						apresentadores +=  concatenar+",";
-					}
-					
-					generoouApresentadores = apresentadores;
-				}
-
-				linha[0] = programa.getId();
-				linha[1] = programa.getNome();
-				linha[2] = programa.getCanal().toString();
-				linha[3] = preferencia;
-				linha[4] = generoouApresentadores;
-				linha[5] = estilo;
-				linha[6] = programa.getHorario();
-				linha[7] = programa.getTemporadas();
-				linha[8] = programa.getStatus();
-				}
-			}
-			tabelaListagem.addRowSelectionInterval(0, 0);
-			JScrollPane scroll = new JScrollPane(tabelaListagem);
-			scroll.setBounds(30, 105, 685, 305);
-			add(scroll);
-		}
+		this.tabelaListagem = Componentes.addTabelaTodosProgramas(this, this.usuario, this.pesquisa, 30, 105, 685, 305);		}
 	}	

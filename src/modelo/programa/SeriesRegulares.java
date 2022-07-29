@@ -17,7 +17,6 @@ public class SeriesRegulares extends ProgramaDeTv {
 	public SeriesRegulares(String nome, ArrayList<DayOfWeek> dia, Canal canal
 			, Status status, String horario, String temporadas, Genero genero, Estilo estilo) {
 		super(nome, canal, dia, status, horario, temporadas);
-		System.out.println(temporadas);
 		setTipo(TipoPrograma.SERIES_REGULARES);
 		setGenero(genero);
 		setEstilo(estilo);

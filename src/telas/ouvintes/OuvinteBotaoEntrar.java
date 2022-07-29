@@ -16,6 +16,7 @@ public class OuvinteBotaoEntrar implements ActionListener{
 	
 	private TelaInicial telaInicial;
 	
+	
 	public OuvinteBotaoEntrar( TelaInicial telaInicial) {
 		this.telaInicial = telaInicial;
 	}
@@ -33,7 +34,7 @@ public class OuvinteBotaoEntrar implements ActionListener{
 		
 		if(checkUser != null ) {
 			JOptionPane.showMessageDialog(telaInicial, "Seja bem Vindo" + login);
-			new TelaHome();
+//			new TelaHome();
 			telaInicial.dispose();
 		}else
 			JOptionPane.showMessageDialog(telaInicial, "Valor errado ou nada escrito");

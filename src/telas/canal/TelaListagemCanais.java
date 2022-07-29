@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import modelo.usuario.Usuario;
 import telas.TelaPadrao;
 import telas.canal.ouvintes.OuvinteBotoesTelaListagem;
+import telas.ouvintes.OuvinteBotaoVoltarParaHome;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Icones;
@@ -101,7 +102,7 @@ public class TelaListagemCanais extends TelaPadrao {
 	}
 
 	public void adicionarBackground() {
-		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTA_DE_CANAIS);
+		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTAGEM);
 		setContentPane(background);
 	}
 
@@ -128,6 +129,10 @@ public class TelaListagemCanais extends TelaPadrao {
 
 	public void adicionarBotoes() {
 
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
+				Medidas.ALTURA_30);
+		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuarioLogado));
+		
 		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 685, 70, 30, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteAdd = new OuvinteBotoesTelaListagem(this);
 		botaoAddCanal.addActionListener(ouvinteAdd);

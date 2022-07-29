@@ -8,7 +8,8 @@ public abstract class TelaPadrao extends JFrame {
 
 	public TelaPadrao(String titulo) {
 		setTitle(titulo);
-		setSize(766, 504);
+		setSize(890, 580);
+//		setSize(766, 504);
 		setLocationRelativeTo(null);
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

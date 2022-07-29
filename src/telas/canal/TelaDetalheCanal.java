@@ -176,7 +176,7 @@ public class TelaDetalheCanal extends TelaPadrao {
 	}
 
 	public void adicionarBackground() {
-		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO_DE_CANAL);
+		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
 		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}

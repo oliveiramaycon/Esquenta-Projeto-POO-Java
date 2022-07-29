@@ -22,7 +22,7 @@ public class OuvintBotoesTelaInicial implements ActionListener {
 		switch (e.getActionCommand()) {
 		case "Entrar":
 			// TODO: realizar validação
-			new TelaHome();
+//			new TelaHome();
 			tela.dispose();
 			break;
 		case "Cadastre-se":

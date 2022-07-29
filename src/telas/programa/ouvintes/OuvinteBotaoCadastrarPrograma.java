@@ -20,6 +20,7 @@ import modelo.programa.enums.Genero;
 import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
 import modelo.programa.exceptions.ProgramaJaAdicionado;
+import telas.canal.TelaListagemCanais;
 import telas.programa.TelaNovoPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
@@ -114,7 +115,6 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 		
 		else {
 			tipoPrograma = TipoPrograma.PROGRAMA_CONTINUO;
-			System.out.println(temporada);
 			programa = new ProgramasContinuos (nomeDoPrograma, dias, canal,
 					horario,status, temporada);
 			programa.setFavorito(favoritado); 
@@ -143,8 +143,9 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			central.AdicionarProgramaDeTv(programa);
 			persistencia.salvarCentral(central, "central");
 			Componentes.msgSucesso(telaPrograma, "Programa cadastrado com sucesso!");
+			new TelaListagemCanais(central.getUsuariosCadastrados().get(0));
 			telaPrograma.dispose();
-			new TelaNovoPrograma(telaPrograma.getUsuarioAtivo());
+//			new TelaNovoPrograma(telaPrograma.getUsuarioAtivo());
 		} catch (FalhaNoCadastroException exception) {
 			Componentes.msgFalha(telaPrograma, exception.getMessage());
 		}	

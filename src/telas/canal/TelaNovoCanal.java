@@ -48,7 +48,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	public TelaNovoCanal(Canal canal, Usuario usuarioLogado) {
-		super("Edição de Canal");
+		super("Ediï¿½ï¿½o de Canal");
 		this.canal = canal;
 		this.usuarioLogado = usuarioLogado;
 		adicionarBotoes();
@@ -169,13 +169,12 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	public void adicionarBackground() {
-		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO_DE_CANAL);
+		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
 		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
 
 	private void adicionarBotoes() {
-		System.out.println("add butons: " + this.usuarioLogado);
 		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
@@ -195,7 +194,7 @@ public class TelaNovoCanal extends TelaPadrao {
 		Componentes.addJLabel(this, "Nome", 220, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Tipo", 220, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
-		numeroCanal = Componentes.addJLabel(this, "Número do Canal", 220, 315, Medidas.COMPRIMENTO_255,
+		numeroCanal = Componentes.addJLabel(this, "Nï¿½mero do Canal", 220, 315, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
 		linkBroadcasting = Componentes.addJLabel(this, "Link", 220, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		linkBroadcasting.setVisible(false);
@@ -208,7 +207,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	public void adicionarRadios() {
-		rb1 = Componentes.addRadioButton(this, "Televisão", 220, 233, 170, Medidas.ALTURA_30);
+		rb1 = Componentes.addRadioButton(this, "Televisï¿½o", 220, 233, 170, Medidas.ALTURA_30);
 		rb1.setSelected(true);
 		rb2 = Componentes.addRadioButton(this, "Broadcasting", 390, 233, 140, Medidas.ALTURA_30);
 		OuvinteRadioButton ouvinteRadioBotao = new OuvinteRadioButton(this);
@@ -266,7 +265,7 @@ public class TelaNovoCanal extends TelaPadrao {
 		botaoCadastrar.setText("Salvar");
 
 		lbTitulo.setVisible(false);
-		Componentes.addJLabel(this, "Edição de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
+		Componentes.addJLabel(this, "Ediï¿½ï¿½o de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
 				.setOutlineColor(Color.WHITE);
 		;
 

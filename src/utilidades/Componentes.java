@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,30 +18,29 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import com.thoughtworks.xstream.converters.basic.DateConverter;
-
 import modelo.canal.Canal;
 import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
 import modelo.programa.ProgramaDeTv;
 import modelo.programa.ProgramasContinuos;
-import modelo.programa.RealityShows;
 import modelo.programa.SeriesRegulares;
-import modelo.programa.enums.Estilo;
 import modelo.programa.enums.TipoPrograma;
 import modelo.usuario.Usuario;
+import telas.ouvintes.OuvinteHandCursor;
 import telas.programa.TelaNovoPrograma;
 
 public class Componentes {
@@ -59,9 +57,30 @@ public class Componentes {
 		JButton botao = new JButton(nome);
 		botao.setIcon(icone);
 		botao.setBounds(x, y, comprimento, altura);
+		OuvinteHandCursor cursorHand = new OuvinteHandCursor(botao);
+		botao.addMouseListener(cursorHand);
 		tela.add(botao);
 		return botao;
 	}
+	
+	public static JButton adicionarJButton(JPanel painel, String texto, ImageIcon icone, int x, int y, int comprimento, int altura) {
+		JButton botao = new JButton();
+		botao.setToolTipText(texto);
+		botao.setIcon(icone);
+		botao.setVerticalTextPosition(SwingConstants.BOTTOM);
+		botao.setHorizontalTextPosition(SwingConstants.CENTER);
+		botao.setBorder(null);
+		botao.setBounds(x, y, comprimento, altura);
+		painel.add(botao);
+
+//		\/ faz um contorno suave no em cima do botão para indicar que ele está selecionado
+		botao.setFocusPainted(false);
+		OuvinteHandCursor cursorHand = new OuvinteHandCursor(botao);
+		botao.addMouseListener(cursorHand);
+		return botao;
+	}
+	
+	
 	public static JCheckBox addCheckBox(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
 		JCheckBox checkBox = new JCheckBox(nome);
 		checkBox.setBounds(x,y,comprimento,altura);
