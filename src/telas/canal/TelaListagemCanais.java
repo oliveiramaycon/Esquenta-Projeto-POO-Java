@@ -129,7 +129,7 @@ public class TelaListagemCanais extends TelaPadrao {
 
 	public void adicionarBotoes() {
 
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_130,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuarioLogado));
 		

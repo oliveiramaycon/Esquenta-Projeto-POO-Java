@@ -2,7 +2,7 @@
 <utilidades.CentralDeInformacoes>
   <programas>
     <modelo.programa.SeriesRegulares>
-      <id>1659053311893</id>
+      <id>1659078482998</id>
       <nome>eaeee</nome>
       <tipo>SERIES_REGULARES</tipo>
       <canal class="modelo.canal.CanalBroadcasting">
@@ -28,51 +28,22 @@
       <temporadas>004</temporadas>
       <diasDaSemana>
         <day-of-week>MONDAY</day-of-week>
-        <day-of-week>TUESDAY</day-of-week>
-        <day-of-week>THURSDAY</day-of-week>
-        <day-of-week>FRIDAY</day-of-week>
-        <day-of-week>SATURDAY</day-of-week>
-        <day-of-week>SUNDAY</day-of-week>
       </diasDaSemana>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
     <modelo.programa.SeriesRegulares>
-      <id>1659053312792</id>
-      <nome>eaeee</nome>
+      <id>1659078611845</id>
+      <nome>Programa 1</nome>
       <tipo>SERIES_REGULARES</tipo>
       <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
       <status>EXIBICAO</status>
-      <favorito>FAVORITO</favorito>
-      <horario>22:22</horario>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>20:00</horario>
       <temporadas>004</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1659053313247</id>
-      <nome>eaeee</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>FAVORITO</favorito>
-      <horario>22:22</horario>
-      <temporadas>004</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1659053313646</id>
-      <nome>eaeee</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>FAVORITO</favorito>
-      <horario>22:22</horario>
-      <temporadas>004</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
+      <diasDaSemana>
+        <day-of-week>WEDNESDAY</day-of-week>
+      </diasDaSemana>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>

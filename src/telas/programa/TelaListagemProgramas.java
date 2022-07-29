@@ -66,11 +66,11 @@ public class TelaListagemProgramas extends TelaPadrao{
 		super("Listagem de programas");
 		this.usuario = usuario;
 		addTabela();
-		adicionarBotoes();
 	}
 	
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
+		adicionarBotoes();
 		adicionarLabels();
 		addTextField();
 		addRadioButton();
@@ -79,18 +79,18 @@ public class TelaListagemProgramas extends TelaPadrao{
 
 	private void adicionarBotoes() {
 		
-		botaoAddPrograma = Componentes.addJButton(this, "Programa", Icones.ADICIONAR, 330, 420, 100, Medidas.ALTURA_30);
+		botaoAddPrograma = Componentes.addJButton(this, "Programa", Icones.ADICIONAR,  760, 490, 100, Medidas.ALTURA_30);
 		OuvinteBotaoAdicionarPrograma addPrograma = new OuvinteBotaoAdicionarPrograma(this);
 		botaoAddPrograma.addActionListener(addPrograma);
 		
-		botaoDetalhes = Componentes.addJButton(this,"detalhes",Icones.ADICIONAR, 450, 420, 100, Medidas.ALTURA_30);
+		botaoDetalhes = Componentes.addJButton(this,"detalhes",Icones.ADICIONAR,  600, 490, 100, Medidas.ALTURA_30);
 		OuvinteBotaoDetalhesPrograma ouvinteDetalhes = new OuvinteBotaoDetalhesPrograma(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 580, 420, Medidas.COMPRIMENTO_130,
+		
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuario));
 		
-	
 	}
 	
 	private void adicionarBackground() {
@@ -99,18 +99,17 @@ public class TelaListagemProgramas extends TelaPadrao{
 	}
 	
 	private void addTextField() {
-		pesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA,30, 75, Medidas.COMPRIMENTO_310, 25);
+		pesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 100, Medidas.COMPRIMENTO_310, 25);
 		pesquisa.setForeground(Color.GRAY);
 	}
 	
 	private void adicionarLabels() {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
-		lbTitulo = Componentes.addJLabel(this, "Programas", 330, 20, 
-				Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		lbTitulo = Componentes.addJLabel(this, "Programas", 390, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
 		Componentes.addJLabel(this, "Programas cadastrados: " + central.getProgramas().size(),
-				30, 420, 400,Medidas.ALTURA_30);
+				30, 490, 400,Medidas.ALTURA_30);
 	}
 	
 	private void addComboBox() {
@@ -119,18 +118,18 @@ public class TelaListagemProgramas extends TelaPadrao{
 		String espacoVazio = "";
 		ArrayList<String> statusTxt = central.obterTiposDeStatus();
 		statusTxt.add(0, espacoVazio);
-		status = Componentes.inserirComboBox(this,statusTxt, 530, 70, 80, Medidas.ALTURA_30);
+		status = Componentes.inserirComboBox(this,statusTxt, 520, 95 , 100, Medidas.ALTURA_30);
 		ArrayList<String> tiposTxt= central.obterTiposDeProgramas();
 		tiposTxt.add(0, espacoVazio);
-		tipo = Componentes.inserirComboBox(this, tiposTxt, 625, 70, 120, 30);
+		tipo = Componentes.inserirComboBox(this, tiposTxt, 635, 95, 120, 30);
 		ArrayList<String> canaisTxt= central.obterCanaisNome();
 		canaisTxt.add(0, espacoVazio);
-		canais = Componentes.inserirComboBox(this, canaisTxt, 625, 40, 120, 30);
+		canais = Componentes.inserirComboBox(this, canaisTxt, 635, 65, 120, 30);
 		
 	}
 	private void addRadioButton() {
-		favorito  = Componentes.addRadioButton(this, "favoritos", 430, 70, 80, Medidas.ALTURA_30);
+		favorito  = Componentes.addRadioButton(this, "favoritos", 430, 95, 80, Medidas.ALTURA_30);
 	}
 	private void addTabela() {
-		this.tabelaListagem = Componentes.addTabelaTodosProgramas(this, this.usuario, this.pesquisa, 30, 105, 685, 305);		}
+		this.tabelaListagem = Componentes.addTabelaTodosProgramas(this, this.usuario, this.pesquisa, 30, 130, 790, 305);		}
 	}	
