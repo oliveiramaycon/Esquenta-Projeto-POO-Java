@@ -165,12 +165,12 @@ public class TelaDetalheCanal extends TelaPadrao {
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
 		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
 
-		JButton botaoExcluir = Componentes.addJButton(this, "Excluir", 240, 400, Medidas.COMPRIMENTO_130,
+		JButton botaoExcluir = Componentes.addJButton(this, "Excluir", 310, 490, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotoesTelaDetalhes ouvinteTelaDetalhe = new OuvinteBotoesTelaDetalhes(this);
 		botaoExcluir.addActionListener(ouvinteTelaDetalhe);
 
-		JButton botaoEditar = Componentes.addJButton(this, "Editar", 380, 400, Medidas.COMPRIMENTO_130,
+		JButton botaoEditar = Componentes.addJButton(this, "Editar", 450, 490, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoEditar.addActionListener(ouvinteTelaDetalhe);
 	}
@@ -182,38 +182,38 @@ public class TelaDetalheCanal extends TelaPadrao {
 	}
 
 	private void adiconarLabels() {
-		lbTitulo = Componentes.addJLabel(this, "Detalhes do Canal", 315, 20, Medidas.COMPRIMENTO_255,
+		lbTitulo = Componentes.addJLabel(this, "Detalhes do Canal", 355, 25, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
 
-		Componentes.addJLabel(this, "Nome", 220, 90, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Tipo", 220, 155, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Nome", 240, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Tipo", 240, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
-		numeroCanal = Componentes.addJLabel(this, "Número do Canal", 220, 250, Medidas.COMPRIMENTO_255,
+		numeroCanal = Componentes.addJLabel(this, "Número do Canal", 240, 315, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
-		linkBroadcasting = Componentes.addJLabel(this, "Link", 220, 250, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		linkBroadcasting = Componentes.addJLabel(this, "Link", 240, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		linkBroadcasting.setVisible(false);
 
 		Date dataCadastro = Date.from(canal.getDataDeCadastro().atZone(ZoneId.systemDefault()).toInstant());
-		Componentes.addJLabel(this, "Cadastrado em " + Datas.formatar(dataCadastro), 220, 315, Medidas.COMPRIMENTO_310,
+		Componentes.addJLabel(this, "Cadastrado em " + Datas.formatar(dataCadastro), 240, 390, Medidas.COMPRIMENTO_310,
 				Medidas.ALTURA_30);
 		if (canal.getDataDeAtualizacao() != null) {
 			Date dataAtualizacao = Date.from(canal.getDataDeAtualizacao().atZone(ZoneId.systemDefault()).toInstant());
-			Componentes.addJLabel(this, "Atualizado em " + Datas.formatar(dataAtualizacao), 220, 345,
+			Componentes.addJLabel(this, "Atualizado em " + Datas.formatar(dataAtualizacao), 240, 425,
 					Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
 		}
 	}
 
 	private void adicionarTextFields() {
-		tfNome = Componentes.addJTextField(this, 220, 122, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
-		tfNumeroOuLink = Componentes.addJTextField(this, 220, 280, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		tfNome = Componentes.addJTextField(this, 240, 162, 400, Medidas.ALTURA_30);
+		tfNumeroOuLink = Componentes.addJTextField(this, 240, 350, 400, Medidas.ALTURA_30);
 
 	}
 
 	public void adicionarRadios() {
-		rb1 = Componentes.addRadioButton(this, "Televisão", 220, 185, 170, Medidas.ALTURA_30);
+		rb1 = Componentes.addRadioButton(this, "Televisao", 240, 233, 170, Medidas.ALTURA_30);
 		rb1.setSelected(true);
-		rb2 = Componentes.addRadioButton(this, "Broadcasting", 390, 185, 140, Medidas.ALTURA_30);
+		rb2 = Componentes.addRadioButton(this, "Broadcasting", 410, 233, 230, Medidas.ALTURA_30);
 //		OuvinteRadioButton ouvinteRadioBotao = new OuvinteRadioButton(this);
 
 //		rb1.addActionListener(ouvinteRadioBotao);
@@ -225,15 +225,15 @@ public class TelaDetalheCanal extends TelaPadrao {
 
 	public void addComboBoxCanaisTelevisao() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
-		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 220, 217,
-				Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 240, 270,
+				400, Medidas.ALTURA_30);
 
 	}
 
 	public void addComboBoxCanaisBroadcasting() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
-		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 220, 217,
-				Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 240, 270,
+				400, Medidas.ALTURA_30);
 		cbBroadcasting.setVisible(false);
 
 	}

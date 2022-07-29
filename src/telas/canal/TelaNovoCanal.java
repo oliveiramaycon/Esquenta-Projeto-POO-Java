@@ -175,12 +175,12 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 40, 20, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
 		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
 
-		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 310, 400, Medidas.COMPRIMENTO_130,
+		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 370, 490, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarCanal ouvinteCadastrarCanal = new OuvinteBotaoCadastrarCanal(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarCanal);
@@ -188,28 +188,28 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	private void adiconarLabels() {
-		lbTitulo = Componentes.addJLabel(this, "Novo Canal", 324, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		lbTitulo = Componentes.addJLabel(this, "Novo Canal", 390, 30, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
 
-		Componentes.addJLabel(this, "Nome", 220, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Tipo", 220, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Nome", 240, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Tipo", 240, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
-		numeroCanal = Componentes.addJLabel(this, "N�mero do Canal", 220, 315, Medidas.COMPRIMENTO_255,
+		numeroCanal = Componentes.addJLabel(this, "Numero do Canal", 240, 315, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
-		linkBroadcasting = Componentes.addJLabel(this, "Link", 220, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		linkBroadcasting = Componentes.addJLabel(this, "Link", 240, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		linkBroadcasting.setVisible(false);
 	}
 
 	private void adicionarTextFields() {
-		tfNome = Componentes.addJTextField(this, 220, 162, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
-		tfNumeroOuLink = Componentes.addJTextField(this, 220, 350, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		tfNome = Componentes.addJTextField(this, 240, 162, 400, Medidas.ALTURA_30);
+		tfNumeroOuLink = Componentes.addJTextField(this, 240, 350, 400, Medidas.ALTURA_30);
 
 	}
 
 	public void adicionarRadios() {
-		rb1 = Componentes.addRadioButton(this, "Televis�o", 220, 233, 170, Medidas.ALTURA_30);
+		rb1 = Componentes.addRadioButton(this, "Televisao", 240, 233, 170, Medidas.ALTURA_30);
 		rb1.setSelected(true);
-		rb2 = Componentes.addRadioButton(this, "Broadcasting", 390, 233, 140, Medidas.ALTURA_30);
+		rb2 = Componentes.addRadioButton(this, "Broadcasting", 410, 233, 230, Medidas.ALTURA_30);
 		OuvinteRadioButton ouvinteRadioBotao = new OuvinteRadioButton(this);
 
 		rb1.addActionListener(ouvinteRadioBotao);
@@ -221,15 +221,15 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	public void addComboBoxCanaisTelevisao() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
-		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 220, 270,
-				Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 240, 270,
+				400, Medidas.ALTURA_30);
 
 	}
 
 	public void addComboBoxCanaisBroadcasting() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
-		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 220, 270,
-				Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 240, 270,
+				400, Medidas.ALTURA_30);
 		cbBroadcasting.setVisible(false);
 
 	}
@@ -265,7 +265,7 @@ public class TelaNovoCanal extends TelaPadrao {
 		botaoCadastrar.setText("Salvar");
 
 		lbTitulo.setVisible(false);
-		Componentes.addJLabel(this, "Edi��o de Canal", 315, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
+		Componentes.addJLabel(this, "Edicao de Canal", 335, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
 				.setOutlineColor(Color.WHITE);
 		;
 

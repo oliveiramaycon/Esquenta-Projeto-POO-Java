@@ -33,7 +33,7 @@ public class OuvinteRadioButton implements ActionListener {
 			tela.getNumeroCanal().setVisible(false);
 			tela.getLinkBroadcasting().setVisible(true);
 			break;
-		case "Televisão":
+		case "Televisao":
 			tela.getCbTv().setVisible(true);
 			tela.getCbBroadcasting().setVisible(false);
 			tela.getNumeroCanal().setVisible(true);

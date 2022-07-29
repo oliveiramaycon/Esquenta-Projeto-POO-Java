@@ -219,12 +219,12 @@ public class Componentes {
 		ArrayList<Canal> canais = central.getCanais();
 
 		if (canais.size() == 0) {
-			modelo.addColumn("N�o h� canais cadastrados!");
+			modelo.addColumn("Nao ha canais cadastrados!");
 		} else {
 			modelo.addColumn("ID");
 			modelo.addColumn("Nome");
 			modelo.addColumn("Tipo");
-			modelo.addColumn("Link ou N�mero");
+			modelo.addColumn("Link ou Numero");
 			modelo.addColumn("Programas");
 			modelo.addColumn("Favoritos");
 			modelo.addColumn("Data de Cadastro");

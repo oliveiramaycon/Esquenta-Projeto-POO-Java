@@ -110,18 +110,18 @@ public class TelaListagemCanais extends TelaPadrao {
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
-		lbTitulo = Componentes.addJLabel(this, "Canais", 350, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		lbTitulo = Componentes.addJLabel(this, "Canais", 408, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
-		Componentes.addJLabel(this, "Canais cadastrados: " + central.getCanais().size(), 30, 420, 400,
+		Componentes.addJLabel(this, "Canais cadastrados: " + central.getCanais().size(), 30, 490, 400,
 				Medidas.ALTURA_30);
 	}
 
 	public void adicionarTabela() {
-		tabelaListagem = Componentes.addTabelaTodosCanais(this, this.usuarioLogado, tfPesquisa, 30, 105, 685, 305);
+		tabelaListagem = Componentes.addTabelaTodosCanais(this, this.usuarioLogado, tfPesquisa, 30, 130, 800, 350);
 	}
 
 	public void adicionarTextField() {
-		tfPesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 75, Medidas.COMPRIMENTO_310, 25);
+		tfPesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 100, Medidas.COMPRIMENTO_310, 25);
 		tfPesquisa.setForeground(Color.GRAY);
 		tfPesquisa.setToolTipText("Realize uma busca");
 
@@ -133,12 +133,12 @@ public class TelaListagemCanais extends TelaPadrao {
 				Medidas.ALTURA_30);
 		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuarioLogado));
 		
-		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 685, 70, 30, Medidas.ALTURA_30);
+		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 800, 95, 30, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteAdd = new OuvinteBotoesTelaListagem(this);
 		botaoAddCanal.addActionListener(ouvinteAdd);
 		botaoAddCanal.setToolTipText("Novo Canal");
 
-		botaoDetalhes = Componentes.addJButton(this, "Detalhes", 585, 420, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		botaoDetalhes = Componentes.addJButton(this, "Detalhes", 700, 490, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteDetalhes = new OuvinteBotoesTelaListagem(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
 	}

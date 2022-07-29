@@ -31,8 +31,7 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// String nomeCanal = telaCanal.getTfNome().getText();
-		// TipoCanal tipoCanal = TipoCanal.valueOf(telaCanal.getTfTipo().getText());
+
 
 		try {
 			Validador.validarPreenchimentoCanal(telaCanal);
