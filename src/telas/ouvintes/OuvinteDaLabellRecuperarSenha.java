@@ -29,10 +29,10 @@ public class OuvinteDaLabellRecuperarSenha implements MouseListener {
 		
 		Usuario estouValido = central.validarEntrada(login);
 		
-		if(estouValido != null) {
+		//if(estouValido != null) {
 		new TelaRecuperarSenha();
 	}
-}	
+//}	
 	
 //			String senha = JOptionPane.showInputDialog("Nova  senha");
 //			String ComfirmacaoSenha = JOptionPane.showInputDialog("Confirme a senha ");

@@ -286,22 +286,31 @@ public class CentralDeInformacoes {
 		return novo;
 	}
 
-	// METODO S� SERVE PRA MODIFICAR A SENHA DO USUARIO:
-	public void editarSenha(String novaSenha, String NovaConfirmacaoDeSenha, String login) {
-		validarEntrada(login).setSenha(novaSenha);
-		validarEntrada(login).setConfirmacaoDeSenha(NovaConfirmacaoDeSenha);
-	}
-
-	// SERVE PARA REMOCAO DE DADOS PELO NOME:
-	// METO PARA CASO SIRVA NA PARTE DE REMOVER FAVORITOS E SO EDITAR PARA UMA
-	// STRING ESPECIFICA. ASSIM SERVE PRA DELETA USUARIO DA ARRAYLIST:
-	public void removerDados(Usuario remover) {
-		for (Usuario u : usuariosCadastrados) {
-			if (u.getLogin().equals(remover.getLogin())) {
-				usuariosCadastrados.remove(remover);
-			}
+	public Usuario buscarDados(int buscador) {
+		return	usuariosCadastrados.get(buscador);
+			
 		}
-	}
+		
+		// METODO SO SERVE PRA MODIFICAR A SENHA DO USUARIO:
+		public void editarUsuario(int buscador, String novoLogin, String novoNome ) {
+			Usuario	 editor =	buscarDados(buscador);
+			editor.setLogin(novoLogin);  editor.setNome(novoNome);
+		}
+		public void  editarUsuario(int buscador, String novaSenha , String novaConfirmacao, String nadaFeito){
+			Usuario editor = buscarDados(buscador);
+		 	editor.setSenha(novaSenha); editor.setConfirmacaoDeSenha(novaConfirmacao);
+		}
+		public void editarUsuario(int buscador, String novoEmail){
+			Usuario editor = buscarDados(buscador);
+			editor.setEmail(novoEmail);	
+		}
+		//REMOCAO DO USUARIO:
+		public Usuario removerDados(int remover) {
+			Usuario novo =  buscarDados(remover);
+			usuariosCadastrados.remove(novo);
+			return novo;
+		}
+
 
 	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException {
 		for (Usuario u : usuariosCadastrados) {

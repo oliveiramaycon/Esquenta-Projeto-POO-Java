@@ -27,6 +27,7 @@ public class OuvintBotoesTelaInicial implements ActionListener {
 			break;
 		case "Cadastre-se":
 			//TODO: cadastrar usuário
+			
 			new TelaCadastroDeUsuario();
 			tela.dispose();
 			break;

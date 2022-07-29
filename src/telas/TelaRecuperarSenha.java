@@ -10,20 +10,17 @@ import telas.ouvintes.OuvinteDoButaoNovaSenha;
 import utilidades.Componentes;
 import utilidades.Medidas;
 
-public class TelaRecuperarSenha extends JFrame {
+public class TelaRecuperarSenha extends TelaPadrao {
 	TelaInicial tela;
 	private JTextField tfSenha;
 	private JTextField tfConfirmacaoSenha;
 	private JTextField tfTestarLogin;
 	
+	
 	// O FIZ ASSIM PARA SETAR O TAMANHO DA TELA DE FORMA DIFERENTE:
 	public TelaRecuperarSenha() {
-		setTitle("Tela de Recuperação de Senha");
+		super("Tela de Recuperar senha");
 		setSize(500, 400);
-		setLocationRelativeTo(null);
-		setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
 		addLookAndFeel();
 		adicionarComponentesGraficos();
 		setVisible(true);
@@ -56,7 +53,7 @@ public class TelaRecuperarSenha extends JFrame {
 	
 	public void addLookAndFeel() {
 		try {
-			// AQUI VOCÊ SETA O NOME DA CLASSE REFERENTE A CADA TEMA !
+			 //AQUI VOCÊ SETA O NOME DA CLASSE REFERENTE A CADA TEMA !
 
 			String tema = "com.jtattoo.plaf.mint.MintLookAndFeel";
 

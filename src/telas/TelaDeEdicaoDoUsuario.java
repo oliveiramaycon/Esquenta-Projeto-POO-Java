@@ -1,17 +1,16 @@
-package telas.usuario;
+package telas;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import telas.TelaPadrao;
-import telas.usuario.ouvintes.OuvinteBotaoCadastroDeUsuario;
+import telas.ouvintes.OuvinteDoBotaoMudarDados;
 import utilidades.Componentes;
 import utilidades.Imagens;
 import utilidades.Medidas;
 
-public class TelaCadastroDeUsuario extends TelaPadrao {
-
+public class TelaDeEdicaoDoUsuario extends TelaPadrao {
+	
 	private JTextField tfNome;
 	private JTextField tfEmail;
 	private JTextField tfLogin;
@@ -34,18 +33,18 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 	public JTextField getTfConfirmacaoDeSenha() {
 		return tfConfirmacaoDeSenha;
 	}
-	public TelaCadastroDeUsuario() {
-		super("Cadastro!");
+	
+	public TelaDeEdicaoDoUsuario() {
+		super("tela de edicao");
+		
 	}
-	
-	
-	
-	@Override
+
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
-		adicionarBotoes();
-		adiconarLabels();
 		adicionarTextFields();
+		adiconarLabels();
+		adicionarBotoes();
+		
 	}
 	
 	public void adicionarBackground() {
@@ -55,16 +54,14 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 	}
 	
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		//TODO: ouvinte voltar
-		JButton botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 280, 380, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		OuvinteBotaoCadastroDeUsuario ouvinteCadastrarUsuario = new OuvinteBotaoCadastroDeUsuario(this);
-		botaoCadastrar.addActionListener(ouvinteCadastrarUsuario);
-	
+		JButton AlterarDados = Componentes.addJButton(this, "Modificar Dados", 280, 380, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		OuvinteDoBotaoMudarDados ouveBotaoPerfio = new OuvinteDoBotaoMudarDados(this);
+		AlterarDados.addActionListener(ouveBotaoPerfio);
+		
 	}
 	
 	private void adiconarLabels() {
-		Componentes.addJLabel(this, "CADASTRO", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "PERFIOL", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Nome:", 220, 63, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Email:", 220, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Login:", 220, 200, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
@@ -73,8 +70,7 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 		Componentes.addJLabel(this, "Confirme a senha:", 220, 320, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		
 	}
-	
-	
+
 	private void adicionarTextFields() {
 		
 		tfNome= Componentes.addJTextField(this, 220, 98,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
@@ -84,7 +80,5 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 		tfSenha = Componentes.addJTextField(this, 220, 285,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		tfConfirmacaoDeSenha = Componentes.addJTextField(this, 220, 345,Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
-
-	
 
 }

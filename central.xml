@@ -112,14 +112,5 @@
       <numeroCanal>23</numeroCanal>
     </modelo.canal.CanalDeTv>
   </canais>
-  <usuariosCadastrados>
-    <modelo.usuario.Usuario>
-      <nome>dsadasd</nome>
-      <email>abcds@gmail.com</email>
-      <login>Abcd1234</login>
-      <senha>Abcd1234</senha>
-      <confirmacaoDeSenha>Abcd1234</confirmacaoDeSenha>
-      <programasFavoritos/>
-    </modelo.usuario.Usuario>
-  </usuariosCadastrados>
+  <usuariosCadastrados/>
 </utilidades.CentralDeInformacoes>

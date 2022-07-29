@@ -24,7 +24,18 @@ public class TelaInicial extends TelaPadrao {
 	}
 
 	// CRIAR ATRIBUTO SENHA
+private JTextField tfSenha;
+	
+	
+	public JTextField getTfSenha() {
+		return tfSenha;
+	}
 
+	public void setTfSenha(JTextField tfSenha) {
+		this.tfSenha = tfSenha;
+	}
+
+	
 	public TelaInicial() {
 		super("Bem Vindo");
 	}
@@ -60,14 +71,12 @@ public class TelaInicial extends TelaPadrao {
 
 		JLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 450, 267, 200, Medidas.ALTURA_30);
 		OuvinteLabelLink ouvinteLink = new OuvinteLabelLink(this, label);
-		OuvinteDaLabellRecuperarSenha entradaTelaNovaSenha = new OuvinteDaLabellRecuperarSenha(this);
 		label.addMouseListener(ouvinteLink);
-		label.addMouseListener(entradaTelaNovaSenha);
 	}
 
 	public void adicionarTextFields() {
 		tfLogin = Componentes.addJTextField(this, 450, 162, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		Componentes.addJTextField(this, 450, 232, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		tfSenha =	Componentes.addJTextField(this, 450, 232, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
 
 }

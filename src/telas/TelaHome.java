@@ -13,6 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import modelo.usuario.Usuario;
+import telas.ouvintes.OuvinteBotaoExcluirUsuario;
+import telas.ouvintes.OuvinteDoBotaoEditorPerfil;
 import telas.ouvintes.OuvinteTelaHome;
 import telas.programa.TelaListagemProgramas;
 import utilidades.CentralDeInformacoes;
@@ -63,6 +65,18 @@ public class TelaHome extends TelaPadrao {
 		menu.setToolTipText("opcoes");
 
 		JMenuItem perfil = Componentes.addItemNoMenu(menu, "Sair");
+		
+		
+		// MENU DE DELETACAO DO USUARIO:
+		JMenuItem deletar = Componentes.addItemNoMenu(menu, "Excluir Usuario");
+		OuvinteBotaoExcluirUsuario ouvinteBotaoExcluir = new OuvinteBotaoExcluirUsuario(this);
+		deletar.addActionListener(ouvinteBotaoExcluir);
+				
+		//
+		JMenuItem editarUsuario = Componentes.addItemNoMenu(menu, "Editar Perfil");
+		OuvinteDoBotaoEditorPerfil ouveBotaoPerfil = new OuvinteDoBotaoEditorPerfil(this);
+		editarUsuario.addActionListener(ouveBotaoPerfil);
+
 
 		JPanel painel = new JPanel(new GridLayout(2, 4, 1, 5));
 		painel.setBackground(Color.decode("#fff4e2"));
