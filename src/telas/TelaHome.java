@@ -75,15 +75,21 @@ public class TelaHome extends TelaPadrao {
 		
 		JButton botaoEnviarEmail = Componentes.addJButton(this, "Enviar E-mail", 130, 40, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		botaoEnviarEmail.addActionListener(new OuvinteBotaoEmail());
+		JButton botaoGerarPdf = Componentes.addJButton(this, "Gerar relacao", 0, 40, 130, Medidas.ALTURA_30);
 		
 		painel.setBounds(130, 100, 528, 520);
 		add(painel);
 	}
+	private class OuvinteBotaoRelacaoFavorito implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			GeradorDePdf.SeriesFavoritas(usuarioLogado);
+		}
+	}
 	private class OuvinteBotaoEmail implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
-			GeradorDePdf geradorDePdf = new GeradorDePdf();
-			geradorDePdf.ObterProgramacao(usuarioLogado);
+			GeradorDePdf.ObterProgramacao(usuarioLogado);
 			Mensageiro.enviarEmail(usuarioLogado);
 		}
 		
