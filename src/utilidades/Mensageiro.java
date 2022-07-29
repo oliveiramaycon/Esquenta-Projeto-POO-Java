@@ -10,8 +10,10 @@ import modelo.usuario.Usuario;
 
 public class Mensageiro {
 
-public static void enviarEmail(Usuario u) {
-		
+public static void enviarEmail() {
+		Persistencia p = new Persistencia();
+		CentralDeInformacoes centralDeInformacoes = p.recuperarCentral("central");
+		Usuario u = centralDeInformacoes.getUsuariosCadastrados().get(0);
 		String remetente = "projetoseriespoo@gmail.com";
 		String senha = "nchwpdgmrfccbxki";
 		

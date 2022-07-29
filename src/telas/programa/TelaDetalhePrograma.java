@@ -58,11 +58,18 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 		tftemporada.setText(programaSelecionado.getTemporadas());
 		JTextField dataRetorno = getTfApresentadores();
 		dataRetorno.setText(programaSelecionado.getData());
+		apresentadores = getTfApresentadores();
 		
 		JComboBox<String> status = getStatus();
 		status.setSelectedItem(programaSelecionado.getStatus());
 		JComboBox<String> canais = getCanais();
 		canais.setSelectedItem(programaSelecionado.getCanal());
+		apresentador = this.getApresentadores();
+		genero = getGenero();
+	    generos = getGeneros();
+		
+		estilos = getEstilos();
+		estilo = getEstilo();
 		JRadioButton rb1 = getRb1();
 		JRadioButton rb2 = getRb2();
 		JRadioButton rb3 = getRb3();
@@ -111,14 +118,15 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 			rb1.setSelected(true);
 			rb2.setEnabled(false);
 			rb3.setEnabled(false);
+			estilos.setSelectedItem(((SeriesRegulares)programaSelecionado).getEstilo());
+			generos.setSelectedItem(((SeriesRegulares)programaSelecionado).getGenero());
 			apresentador.setVisible(false);
 			apresentadores.setVisible(false);
-			genero = getGenero();
-		    generos = getGeneros();
-			generos.setSelectedItem(((SeriesRegulares)programaSelecionado).getGenero());
-			estilos = getEstilos();
-			estilos.setSelectedItem(((SeriesRegulares)programaSelecionado).getEstilo());
-			estilo = getEstilo();
+			genero.setVisible(true);
+			generos.setVisible(true);
+			estilo.setVisible(true);
+			estilos.setVisible(true);
+			
 		}
 		else {
 			if(programaSelecionado instanceof RealityShows) {
@@ -132,15 +140,14 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 				rb1.setEnabled(false);
 				rb2.setEnabled(false);
 			}
-			apresentador = getApresentadores();
+			apresentadores.setText(getTfApresentadores().getText());
 			genero.setVisible(false);
 			generos.setVisible(false);
 			estilo.setVisible(false);
 			estilos.setVisible(false);
-			apresentadores = getTfApresentadores();
-			apresentadores.setText(getTfApresentadores().getText());
 			apresentador.setVisible(true);
 			apresentadores.setVisible(true);
+			
 		}
 		
 	}

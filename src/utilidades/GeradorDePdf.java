@@ -19,10 +19,12 @@ import modelo.usuario.Usuario;
 
 public class GeradorDePdf {
 
-	public static void ObterProgramacao(Usuario usuarioAtivo) {
-		String nome = usuarioAtivo.getNome();
+	public static void ObterProgramacao() {
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
+		Usuario usuario = central.getUsuariosCadastrados().get(0);
+		String nome = usuario.getNome();
+		
 
 		Document documento = new Document(PageSize.A4, 72, 72, 72, 72);
 
@@ -35,7 +37,7 @@ public class GeradorDePdf {
 			Paragraph separador = new Paragraph("                                                  ");
 			documento.add(p1);
 			documento.add(separador);
-			ArrayList<ProgramaDeTv> programas = usuarioAtivo.getProgramasFavoritos();
+			ArrayList<ProgramaDeTv> programas = central.getProgramas();
 
 			if (programas.isEmpty()) {
 				Paragraph p = new Paragraph("O usuario: "+nome+" nao possui programas da semana.");
@@ -70,10 +72,11 @@ public class GeradorDePdf {
 			e.printStackTrace();
 		}
 	}
-	public static void SeriesFavoritas(Usuario usuarioAtivo) {
-		String nome = usuarioAtivo.getNome();
+	public static void SeriesFavoritas(){
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
+		Usuario usuario = central.getUsuariosCadastrados().get(0);
+		String nome = usuario.getNome();
 
 		Document documento = new Document(PageSize.A4, 72, 72, 72, 72);
 
@@ -86,13 +89,14 @@ public class GeradorDePdf {
 			Paragraph separador = new Paragraph("                                                  ");
 			documento.add(p1);
 			documento.add(separador);
-			ArrayList<ProgramaDeTv> programas = usuarioAtivo.getProgramasFavoritos();
-
-			if (programas.isEmpty()) {
-				Paragraph p = new Paragraph("O usuario: "+nome+" nao possui programas favoritos.");
-				documento.add(p);
-
-			} else {
+			ArrayList<ProgramaDeTv> programas = central.getProgramas();
+			ArrayList<ProgramaDeTv> programasFavoritos = new ArrayList<>();
+			for(ProgramaDeTv programa: programas) {
+				if(programa.getFavorito() == EnumFavorito.FAVORITO)
+					programasFavoritos.add(programa);
+			}
+				
+			 if(!programasFavoritos.isEmpty()) {
 				tabela.addCell("Programas");
 				tabela.addCell("Dia da semana");
 				tabela.addCell("Horarios");
@@ -115,6 +119,9 @@ public class GeradorDePdf {
 
 				}
 				documento.add(tabela);
+			}else{
+				Paragraph p3 = new Paragraph("O usuario "+ usuario.getNome()+" Não tem programas favoritos");
+				documento.add(p3);
 			}
 			documento.close();
 			
