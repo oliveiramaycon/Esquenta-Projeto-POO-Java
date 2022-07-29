@@ -25,16 +25,22 @@ public class OuvinteBotaoEntrar implements ActionListener{
 	CentralDeInformacoes central = persistencia.recuperarCentral("central");
    
 	public void actionPerformed(ActionEvent e) {
-		String senha = telaInicial.getTfSenha().getText();
+		char[] senhaChar = telaInicial.getTfSenha().getPassword();
 		String login = telaInicial.getTfLogin().getText();
 		Usuario entrado = new Usuario();
 		entrado.setLogin(login);
 		
+		String	senha = "";
+		
+		for(int c = 0; senhaChar.length > c; c++) {
+			senha += senhaChar[c];
+		}
+		
 		Usuario checkUser = central.validarEntrada(login);  
 		
-		if(checkUser != null && checkUser.getLogin().equals(senha) ) {
+		if(checkUser != null && !checkUser.getLogin().equals(senha) ) {
 			JOptionPane.showMessageDialog(telaInicial, "Seja bem Vindo" + login);
-//			new TelaHome();
+			new TelaHome(checkUser);
 			telaInicial.dispose();
 		}else
 			JOptionPane.showMessageDialog(telaInicial, "Valor errado ou nada escrito");

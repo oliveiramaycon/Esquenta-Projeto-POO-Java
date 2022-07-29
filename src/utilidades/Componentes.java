@@ -19,6 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -111,6 +112,13 @@ public class Componentes {
 		field.setBounds(x, y, comprimento, altura);
 		tela.add(field);
 		return field;
+	}
+	//SO PRA PASWORD FIELD:
+	public static JPasswordField addJPswordField(JFrame tela , int x, int y, int comprimento, int altura) {
+		JPasswordField paswordField = new JPasswordField();
+		paswordField.setBounds(x, y, comprimento, altura);
+		tela.add(paswordField);
+		return paswordField;
 	}
 
 	public static JMenuBar addJMenubar(JFrame janela, int x, int y, int comprimento, int altura) {

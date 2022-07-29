@@ -36,5 +36,30 @@ public static void enviarEmail(Usuario u) {
 			e.printStackTrace();
 		}
 	}
+
+	public static void enviarSenha(Usuario eMail) {
+		String remetente = "projetoseriespoo@gmail.com";
+		String senha = "nchwpdgmrfccbxki";
+		
+		MultiPartEmail email = new MultiPartEmail();
+		email.setHostName("smtp.gmail.com");
+		email.setSmtpPort(465);
+		email.setAuthenticator(new DefaultAuthenticator(remetente, senha));
+		email.setSSLOnConnect(true);
+		try {
+			email.setFrom(remetente);
+			email.setSubject("Segue sua senha");
+			email.setMsg(eMail.getSenha());
+			email.addTo(eMail.getEmail());
+			
+			
+			
+			email.send();
+			JOptionPane.showMessageDialog(null, "Envio Realizado com Sucesso", "", JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
 

@@ -3,12 +3,11 @@ package telas.ouvintes;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JOptionPane;
-
 import modelo.usuario.Usuario;
 import telas.TelaInicial;
-import telas.TelaRecuperarSenha;
 import utilidades.CentralDeInformacoes;
+import utilidades.Componentes;
+import utilidades.Mensageiro;
 import utilidades.Persistencia;
 
 public class OuvinteDaLabellRecuperarSenha implements MouseListener {
@@ -18,19 +17,24 @@ public class OuvinteDaLabellRecuperarSenha implements MouseListener {
 	public OuvinteDaLabellRecuperarSenha(TelaInicial telaInicial) {
 		this.telaInicial = telaInicial;
 	}
-	Persistencia persistencia = new Persistencia();
-	CentralDeInformacoes central = persistencia.recuperarCentral("central");
 	
 // METODO SO SERVE PARA ENTRAR NA NOVA TELA NAO FEITO NA CLASSE LINKlABEL POR CONFLITOS COM A CLASS:
 	
 	public void mouseClicked(MouseEvent e) {
+		Persistencia persistencia = new Persistencia();
+		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 		
-		String login = telaInicial.getTfLogin().getText();
 		
-		Usuario estouValido = central.validarEntrada(login);
+		Usuario estouValido = central.getUsuariosCadastrados().get(0);
+		
+		
+		if(estouValido != null) {
+			Mensageiro.enviarSenha(estouValido);
+			System.out.println("feito");
+		}else
+			Componentes.msgFalha(telaInicial, "Usuario esta invalido");
 		
 		//if(estouValido != null) {
-		new TelaRecuperarSenha();
 	}
 //}	
 	

@@ -1,87 +1,127 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <utilidades.CentralDeInformacoes>
   <programas>
-    <modelo.programa.SeriesRegulares>
-      <id>1659078482998</id>
-      <nome>eaeee</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting">
-        <nome>lasead</nome>
-        <tipoCanal>ASSINATURA_INDIVIDUAL_DE_BROADCASTING</tipoCanal>
-        <id>1659051943805</id>
+    <modelo.programa.ProgramasContinuos>
+      <id>1659116542767</id>
+      <nome>Domingao</nome>
+      <tipo>PROGRAMA_CONTINUO</tipo>
+      <canal class="modelo.canal.CanalDeTv">
+        <nome>Cbt</nome>
+        <tipoCanal>PACOTE_DE_ASSINATURA_TELEVISAO</tipoCanal>
+        <id>1659116003970</id>
         <programas/>
-        <dataDeCadastro>2022-07-28T20:45:43.8086677</dataDeCadastro>
-        <dataDeAtualizacao>2022-07-29T01:39:48.720602</dataDeAtualizacao>
+        <dataDeCadastro>2022-07-29T14:33:24.005344</dataDeCadastro>
         <dono>
-          <nome>manco</nome>
-          <email>manco@gmail.com</email>
-          <login>manco</login>
-          <senha>Mancones1</senha>
-          <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
+          <nome>Cunha</nome>
+          <email>gameslordebr@gmail.com</email>
+          <login>Cunha</login>
+          <senha>123Cun</senha>
+          <confirmacaoDeSenha>123Cun</confirmacaoDeSenha>
           <programasFavoritos/>
         </dono>
-        <link>las.com</link>
+        <numeroCanal>12</numeroCanal>
       </canal>
       <status>EXIBICAO</status>
       <favorito>FAVORITO</favorito>
-      <horario>22:22</horario>
-      <temporadas>004</temporadas>
+      <horario>05:55</horario>
+      <temporadas>001</temporadas>
       <diasDaSemana>
-        <day-of-week>MONDAY</day-of-week>
+        <day-of-week>SATURDAY</day-of-week>
+        <day-of-week>SUNDAY</day-of-week>
+      </diasDaSemana>
+      <apresentadores>
+        <string>001</string>
+      </apresentadores>
+    </modelo.programa.ProgramasContinuos>
+    <modelo.programa.SeriesRegulares>
+      <id>1659117884850</id>
+      <nome>Domingao</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.ProgramasContinuos/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>FAVORITO</favorito>
+      <horario>05:55</horario>
+      <temporadas>001</temporadas>
+      <diasDaSemana>
+        <day-of-week>SATURDAY</day-of-week>
+        <day-of-week>SUNDAY</day-of-week>
       </diasDaSemana>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
     <modelo.programa.SeriesRegulares>
-      <id>1659078611845</id>
-      <nome>Programa 1</nome>
+      <id>1659117886219</id>
+      <nome>Domingao</nome>
       <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalBroadcasting" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.ProgramasContinuos/canal"/>
       <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>20:00</horario>
-      <temporadas>004</temporadas>
-      <diasDaSemana>
-        <day-of-week>WEDNESDAY</day-of-week>
-      </diasDaSemana>
+      <favorito>FAVORITO</favorito>
+      <horario>05:55</horario>
+      <temporadas>001</temporadas>
+      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
   </programas>
   <canais>
-    <modelo.canal.CanalBroadcasting reference="../../programas/modelo.programa.SeriesRegulares/canal"/>
+    <modelo.canal.CanalDeTv reference="../../programas/modelo.programa.ProgramasContinuos/canal"/>
     <modelo.canal.CanalBroadcasting>
-      <nome>mamac</nome>
+      <nome>cbt</nome>
       <tipoCanal>ABERTO_NA_INTERNET_BROADCASTING</tipoCanal>
-      <id>1659051965027</id>
+      <id>1659116028334</id>
       <programas/>
-      <dataDeCadastro>2022-07-28T20:46:05.0273028</dataDeCadastro>
+      <dataDeCadastro>2022-07-29T14:33:48.3340694</dataDeCadastro>
       <dono>
-        <nome>manco</nome>
-        <email>manco@gmail.com</email>
-        <login>manco</login>
-        <senha>Mancones1</senha>
-        <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
+        <nome>Cunha</nome>
+        <email>gameslordebr@gmail.com</email>
+        <login>Cunha</login>
+        <senha>123Cun</senha>
+        <confirmacaoDeSenha>123Cun</confirmacaoDeSenha>
         <programasFavoritos/>
       </dono>
-      <link>ca.ocm</link>
+      <link>www.netflix.com</link>
     </modelo.canal.CanalBroadcasting>
     <modelo.canal.CanalDeTv>
-      <nome>orango</nome>
+      <nome>Curot</nome>
       <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
-      <id>1659068253959</id>
+      <id>1659116073038</id>
       <programas/>
-      <dataDeCadastro>2022-07-29T01:17:33.9596856</dataDeCadastro>
+      <dataDeCadastro>2022-07-29T14:34:33.0383959</dataDeCadastro>
       <dono>
-        <nome>manco</nome>
-        <email>manco@gmail.com</email>
-        <login>manco</login>
-        <senha>Mancones1</senha>
-        <confirmacaoDeSenha>Mancones1</confirmacaoDeSenha>
+        <nome>Cunha</nome>
+        <email>gameslordebr@gmail.com</email>
+        <login>Cunha</login>
+        <senha>123Cun</senha>
+        <confirmacaoDeSenha>123Cun</confirmacaoDeSenha>
         <programasFavoritos/>
       </dono>
-      <numeroCanal>23</numeroCanal>
+      <numeroCanal>13</numeroCanal>
+    </modelo.canal.CanalDeTv>
+    <modelo.canal.CanalDeTv>
+      <nome>duda</nome>
+      <tipoCanal>PACOTE_DE_ASSINATURA_TELEVISAO</tipoCanal>
+      <id>1659116090309</id>
+      <programas/>
+      <dataDeCadastro>2022-07-29T14:34:50.3098784</dataDeCadastro>
+      <dono>
+        <nome>Cunha</nome>
+        <email>gameslordebr@gmail.com</email>
+        <login>Cunha</login>
+        <senha>123Cun</senha>
+        <confirmacaoDeSenha>123Cun</confirmacaoDeSenha>
+        <programasFavoritos/>
+      </dono>
+      <numeroCanal>24</numeroCanal>
     </modelo.canal.CanalDeTv>
   </canais>
-  <usuariosCadastrados/>
+  <usuariosCadastrados>
+    <modelo.usuario.Usuario>
+      <nome>Cunha</nome>
+      <email>gameslordebr@gmail.com</email>
+      <login>Cunha</login>
+      <senha>123Cun</senha>
+      <confirmacaoDeSenha>123Cun</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+  </usuariosCadastrados>
 </utilidades.CentralDeInformacoes>

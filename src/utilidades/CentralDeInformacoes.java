@@ -277,13 +277,14 @@ public class CentralDeInformacoes {
 
 	// CRIEI PARA A VERIFICACAO DE USUARIO NA ARRY
 	public Usuario validarEntrada(String login) {
-		Usuario novo = null;
+		Usuario novoUsuario = null;
+		
 		for (Usuario u : usuariosCadastrados) {
 			if (u.getLogin().equals(login)) {
-				novo = u;
+				novoUsuario = u;
 			}
 		}
-		return novo;
+		return novoUsuario;
 	}
 
 	public Usuario buscarDados(int buscador) {

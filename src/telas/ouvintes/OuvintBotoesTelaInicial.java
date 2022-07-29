@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 
 import telas.TelaHome;
 import telas.usuario.TelaCadastroDeUsuario;
+import utilidades.CentralDeInformacoes;
+import utilidades.Persistencia;
 
 public class OuvintBotoesTelaInicial implements ActionListener {
 
@@ -15,6 +17,9 @@ public class OuvintBotoesTelaInicial implements ActionListener {
 	public OuvintBotoesTelaInicial(JFrame tela) {
 		this.tela = tela;
 	}
+	
+	Persistencia persistencia = new Persistencia();
+	CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -26,7 +31,6 @@ public class OuvintBotoesTelaInicial implements ActionListener {
 			tela.dispose();
 			break;
 		case "Cadastre-se":
-			//TODO: cadastrar usuário
 			
 			new TelaCadastroDeUsuario();
 			tela.dispose();

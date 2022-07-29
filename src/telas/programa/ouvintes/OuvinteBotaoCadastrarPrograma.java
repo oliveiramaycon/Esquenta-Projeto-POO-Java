@@ -21,6 +21,7 @@ import modelo.programa.enums.Status;
 import modelo.programa.enums.TipoPrograma;
 import modelo.programa.exceptions.ProgramaJaAdicionado;
 import telas.canal.TelaListagemCanais;
+import telas.programa.TelaListagemProgramas;
 import telas.programa.TelaNovoPrograma;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
@@ -143,7 +144,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			central.AdicionarProgramaDeTv(programa);
 			persistencia.salvarCentral(central, "central");
 			Componentes.msgSucesso(telaPrograma, "Programa cadastrado com sucesso!");
-			new TelaListagemCanais(central.getUsuariosCadastrados().get(0));
+			new TelaListagemProgramas(central.getUsuariosCadastrados().get(0));
 			telaPrograma.dispose();
 //			new TelaNovoPrograma(telaPrograma.getUsuarioAtivo());
 		} catch (FalhaNoCadastroException exception) {

@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
@@ -13,6 +14,7 @@ import modelo.programa.ProgramasContinuos;
 import modelo.programa.RealityShows;
 import modelo.programa.SeriesRegulares;
 import modelo.programa.enums.EnumFavorito;
+import modelo.programa.enums.Genero;
 import modelo.usuario.Usuario;
 import telas.programa.ouvintes.OuvinteCheckBoxDiaDaSemana;
 
@@ -21,6 +23,13 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 	private int indexLinha;
 	private ProgramaDeTv programaSelecionado;
 	private Usuario usuarioAtivo;
+	private JComboBox<String> generos;
+	private JComboBox<String> estilos;
+	private JLabel genero;
+	private JLabel estilo;
+	private JLabel apresentador;
+	private JTextField apresentadores;
+	
 	
 	public int getIndexLinha() {
 		return indexLinha;
@@ -99,26 +108,39 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 		}
 		
 		if(programaSelecionado instanceof SeriesRegulares) {
-			JComboBox<String> generos = getGeneros();
-			generos.setSelectedItem(((SeriesRegulares)programaSelecionado).getGenero());
-			JComboBox<String> estilo = getEstilos();
-			estilo.setSelectedItem(((SeriesRegulares)programaSelecionado).getEstilo());
 			rb1.setSelected(true);
 			rb2.setEnabled(false);
 			rb3.setEnabled(false);
+			apresentador.setVisible(false);
+			apresentadores.setVisible(false);
+			genero = getGenero();
+		    generos = getGeneros();
+			generos.setSelectedItem(((SeriesRegulares)programaSelecionado).getGenero());
+			estilos = getEstilos();
+			estilos.setSelectedItem(((SeriesRegulares)programaSelecionado).getEstilo());
+			estilo = getEstilo();
 		}
 		else {
-			if(programaSelecionado instanceof RealityShows)
-			rb2.setSelected(true);
-			rb1.setEnabled(false);
-			rb3.setEnabled(false);
-			
-			if(programaSelecionado instanceof ProgramasContinuos)
+			if(programaSelecionado instanceof RealityShows) {
+				rb2.setSelected(true);
+				rb1.setEnabled(false);
+				rb3.setEnabled(false);
+				
+			}
+			if(programaSelecionado instanceof ProgramasContinuos) {
 				rb3.setSelected(true);
 				rb1.setEnabled(false);
 				rb2.setEnabled(false);
-			JTextField tfApresentadores = getTfApresentadores();
-			tfApresentadores.setText(programaSelecionado.getTemporadas());
+			}
+			apresentador = getApresentadores();
+			genero.setVisible(false);
+			generos.setVisible(false);
+			estilo.setVisible(false);
+			estilos.setVisible(false);
+			apresentadores = getTfApresentadores();
+			apresentadores.setText(getTfApresentadores().getText());
+			apresentador.setVisible(true);
+			apresentadores.setVisible(true);
 		}
 		
 	}
