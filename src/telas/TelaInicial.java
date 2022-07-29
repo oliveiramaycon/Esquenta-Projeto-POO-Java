@@ -55,28 +55,29 @@ private JTextField tfSenha;
 
 	public void adicionarBotoes() {
 		OuvinteBotaoEntrar ouvinteBotaoEntrar = new OuvinteBotaoEntrar(this);
-		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 575, 310, Medidas.COMPRIMENTO_130,
+		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 575, 490, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoEntrar.addActionListener(ouvinteBotaoEntrar);
 
 		OuvintBotoesTelaInicial ouvinteBotoesTelaInicial = new OuvintBotoesTelaInicial(this);
-		JButton botaoCadastrese = Componentes.addJButton(this, "Cadastre-se", 513, 415, Medidas.COMPRIMENTO_130,
+		JButton botaoCadastrese = Componentes.addJButton(this, "Cadastre-se", 713, 410, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoCadastrese.addActionListener(ouvinteBotoesTelaInicial);
 	}
 
 	private void adicionarLabels() {
-		Componentes.addJLabel(this, "Login", 450, 125, 70, 30);
-		Componentes.addJLabel(this, "Senha", 450, 197, 70, 30);
+		Componentes.addJLabel(this, "Login", 550, 205, 70, 30);
+		Componentes.addJLabel(this, "Senha", 550, 297, 70, 30);
 
-		JLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 450, 267, 200, Medidas.ALTURA_30);
+		JLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 550, 367, 200, Medidas.ALTURA_30);
 		OuvinteLabelLink ouvinteLink = new OuvinteLabelLink(this, label);
 		label.addMouseListener(ouvinteLink);
 	}
 
 	public void adicionarTextFields() {
-		tfLogin = Componentes.addJTextField(this, 450, 162, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		tfSenha =	Componentes.addJTextField(this, 450, 232, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		tfLogin = Componentes.addJTextField(this, 550, 232, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		tfSenha =	Componentes.addJTextField(this, 550, 332, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
 
 }
+
