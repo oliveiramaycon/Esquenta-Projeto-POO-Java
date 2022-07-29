@@ -121,10 +121,17 @@ public class TelaHome extends TelaPadrao {
 	}
 
 	public void adiconarLabels() {
+<<<<<<< Updated upstream
 		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30).setOutlineColor(Color.WHITE);
 		OutlineJLabel lbUsuario = Componentes.addJLabel(this, usuarioLogado.getNome(), 318, 40, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
 		lbUsuario.setOutlineColor(Color.WHITE);
 		
+=======
+		String nomeUsuario = usuarioLogado.getNome();
+		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, nomeUsuario, 318, 40, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+
+>>>>>>> Stashed changes
 	}
 	// remover caso seja necess�rio e utilizar outro esquema
 
