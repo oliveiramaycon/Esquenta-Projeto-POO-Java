@@ -22,6 +22,7 @@ import utilidades.Icones;
 import utilidades.Imagens;
 import utilidades.Medidas;
 import utilidades.Mensageiro;
+import utilidades.OutlineJLabel;
 import utilidades.Persistencia;
 
 public class TelaHome extends TelaPadrao {
@@ -32,6 +33,7 @@ public class TelaHome extends TelaPadrao {
 		super("Home");
 		this.usuarioLogado = usuarioLogado;
 		setSize(770, 700);
+		adiconarLabels();
 	}
 
 	public Usuario getUsuarioLogado() {
@@ -46,7 +48,6 @@ public class TelaHome extends TelaPadrao {
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
 		adicionarBotoes();
-		adiconarLabels();
 
 	}
 
@@ -59,7 +60,7 @@ public class TelaHome extends TelaPadrao {
 
 		JMenuBar barraMenu = Componentes.addJMenubar(this, 600, 0, 80, 80);
 		JMenu menu = Componentes.addJMenuComIcone(barraMenu, Icones.ENGRENAGEM);
-		menu.setToolTipText("op��es");
+		menu.setToolTipText("opcoes");
 
 		JMenuItem perfil = Componentes.addItemNoMenu(menu, "Sair");
 
@@ -100,9 +101,10 @@ public class TelaHome extends TelaPadrao {
 	}
 
 	public void adiconarLabels() {
-		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "User Name Here", 318, 40, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
-
+		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30).setOutlineColor(Color.WHITE);
+		OutlineJLabel lbUsuario = Componentes.addJLabel(this, usuarioLogado.getNome(), 318, 40, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		lbUsuario.setOutlineColor(Color.WHITE);
+		
 	}
 	// remover caso seja necess�rio e utilizar outro esquema
 

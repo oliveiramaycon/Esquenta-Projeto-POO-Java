@@ -86,7 +86,7 @@ public class TelaListagemProgramas extends TelaPadrao{
 		botaoDetalhes = Componentes.addJButton(this,"detalhes",Icones.ADICIONAR, 450, 420, 100, Medidas.ALTURA_30);
 		OuvinteBotaoDetalhesPrograma ouvinteDetalhes = new OuvinteBotaoDetalhesPrograma(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 580, 420, Medidas.COMPRIMENTO_130,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 580, 420, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuario));
 		

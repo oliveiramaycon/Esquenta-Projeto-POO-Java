@@ -20,6 +20,7 @@ import telas.canal.ouvintes.OuvinteBotaoVoltarListagem;
 import telas.canal.ouvintes.OuvinteRadioButton;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
+import utilidades.Icones;
 import utilidades.Imagens;
 import utilidades.Medidas;
 import utilidades.OutlineJLabel;
@@ -175,8 +176,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 40, 20, Medidas.COMPRIMENTO_130,
-				Medidas.ALTURA_30);
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 40, 20, Medidas.COMPRIMENTO_130,Medidas.ALTURA_30);
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
 		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
 

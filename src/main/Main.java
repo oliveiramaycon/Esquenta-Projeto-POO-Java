@@ -3,8 +3,6 @@ package main;
 
 import modelo.usuario.Usuario;
 import telas.TelaHome;
-import telas.canal.TelaListagemCanais;
-import telas.programa.TelaListagemProgramas;
 
 
 public class Main {

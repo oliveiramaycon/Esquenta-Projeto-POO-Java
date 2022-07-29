@@ -8,4 +8,5 @@ public class Icones {
 	public static final ImageIcon ENGRENAGEM = new ImageIcon("icones/engrenagem.png");
 	public static final ImageIcon ADICIONAR = new ImageIcon("icones/adicionar.png");
 	public static final ImageIcon LUPA = new ImageIcon("icones/lupa.png");
+	public static final ImageIcon VOLTAR = new ImageIcon("icones/voltar.png");
 }
