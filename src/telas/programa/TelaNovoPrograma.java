@@ -285,7 +285,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Componentes.addJLabel(this, "Horario", 250, 270, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Status", 395, 195, 110, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Temporada", 510, 270, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Dias de Transmissão", 250, 330, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Dias de Transmissao", 250, 330, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		genero = Componentes.addJLabel(this, "Genero", 500, 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		estilo = Componentes.addJLabel(this, "Estilo", 250, 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		data = Componentes.addJLabel(this, "Data de retorno", 360, 270, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);

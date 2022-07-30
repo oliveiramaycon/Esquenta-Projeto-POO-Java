@@ -83,11 +83,11 @@ public class TelaInicial extends TelaPadrao {
 				Medidas.ALTURA_30);
 		botaoEntrar.addActionListener(ouvinteBotaoEntrar);
 
-		OuvinteTelaCadastro ouvinteTelaCadastro = new OuvinteTelaCadastro(this);
-		OuvintBotoesTelaInicial ouvinteBotoesTelaInicial = new OuvintBotoesTelaInicial(this);
-		JButton botaoCadastrese = Componentes.addJButton(this, "Cadastre-se", 713, 410, Medidas.COMPRIMENTO_130,
-				Medidas.ALTURA_30);
-		botaoCadastrese.addActionListener(ouvinteTelaCadastro);
+//		OuvinteTelaCadastro ouvinteTelaCadastro = new OuvinteTelaCadastro(this);
+//		OuvintBotoesTelaInicial ouvinteBotoesTelaInicial = new OuvintBotoesTelaInicial(this);
+//		JButton botaoCadastrese = Componentes.addJButton(this, "Cadastre-se", 713, 410, Medidas.COMPRIMENTO_130,
+//				Medidas.ALTURA_30);
+//		botaoCadastrese.addActionListener(ouvinteTelaCadastro);
 	}
 
 	private void adicionarLabels() {

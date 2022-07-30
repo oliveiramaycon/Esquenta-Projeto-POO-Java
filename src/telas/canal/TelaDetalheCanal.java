@@ -194,7 +194,7 @@ public class TelaDetalheCanal extends TelaPadrao {
 		Componentes.addJLabel(this, "Nome", 240, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Tipo", 240, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
-		numeroCanal = Componentes.addJLabel(this, "N�mero do Canal", 240, 315, Medidas.COMPRIMENTO_255,
+		numeroCanal = Componentes.addJLabel(this, "Numero do Canal", 240, 315, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
 		linkBroadcasting = Componentes.addJLabel(this, "Link", 240, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		linkBroadcasting.setVisible(false);
