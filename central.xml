@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <utilidades.CentralDeInformacoes>
   <programas>
-    <modelo.programa.SeriesRegulares>
-      <id>1659146966954</id>
-      <nome>aaaaaaa</nome>
-      <tipo>SERIES_REGULARES</tipo>
+    <modelo.programa.RealityShows>
+      <id>1659147058393</id>
+      <nome>ddsds</nome>
+      <tipo>REALITY_SHOW</tipo>
       <canal class="modelo.canal.CanalDeTv">
         <nome>popopo edicao</nome>
         <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
@@ -25,21 +25,6 @@
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
-      <temporadas>222</temporadas>
-      <diasDaSemana>
-        <day-of-week>TUESDAY</day-of-week>
-      </diasDaSemana>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.RealityShows>
-      <id>1659147058393</id>
-      <nome>ddsds</nome>
-      <tipo>REALITY_SHOW</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>22:22</horario>
       <temporadas>333</temporadas>
       <diasDaSemana>
         <day-of-week>TUESDAY</day-of-week>
@@ -52,7 +37,7 @@
       <id>1659147074954</id>
       <nome>dsadasa</nome>
       <tipo>PROGRAMA_CONTINUO</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
@@ -70,7 +55,7 @@
       <id>1659147076044</id>
       <nome>dsadasa</nome>
       <tipo>PROGRAMA_CONTINUO</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
@@ -84,7 +69,7 @@
       <id>1659147078728</id>
       <nome>dsadasa</nome>
       <tipo>PROGRAMA_CONTINUO</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
@@ -98,7 +83,7 @@
       <id>1659147118274</id>
       <nome>mamaca</nome>
       <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
@@ -115,12 +100,12 @@
       <id>1659147119383</id>
       <nome>mamaca</nome>
       <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
       <temporadas>222</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares[2]/diasDaSemana"/>
+      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
       <genero>DRAMA</genero>
       <estilo>ANIMADA</estilo>
     </modelo.programa.SeriesRegulares>
@@ -128,12 +113,12 @@
       <id>1659147120849</id>
       <nome>mamaca</nome>
       <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
       <horario>22:22</horario>
       <temporadas>222</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares[2]/diasDaSemana"/>
+      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
       <genero>DRAMA</genero>
       <estilo>ANIMADA</estilo>
     </modelo.programa.SeriesRegulares>
@@ -173,12 +158,12 @@
       <id>1659148910738</id>
       <nome>programa teste</nome>
       <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares[5]/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares[4]/canal"/>
       <status>HIATO</status>
       <favorito>FAVORITO</favorito>
       <horario>23:41</horario>
       <temporadas>007</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares[5]/diasDaSemana"/>
+      <diasDaSemana reference="../../modelo.programa.SeriesRegulares[4]/diasDaSemana"/>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
@@ -186,7 +171,7 @@
       <id>1659148956969</id>
       <nome>programa teste modificado</nome>
       <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.RealityShows/canal"/>
       <status>EXIBICAO</status>
       <favorito>FAVORITO</favorito>
       <horario>00:00</horario>
@@ -247,7 +232,7 @@
       </dono>
       <numeroCanal>55</numeroCanal>
     </modelo.canal.CanalDeTv>
-    <modelo.canal.CanalDeTv reference="../../programas/modelo.programa.SeriesRegulares[5]/canal"/>
+    <modelo.canal.CanalDeTv reference="../../programas/modelo.programa.SeriesRegulares[4]/canal"/>
     <modelo.canal.CanalDeTv>
       <nome>EW</nome>
       <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
