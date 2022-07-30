@@ -348,5 +348,14 @@ public class CentralDeInformacoes {
 			diasPtBr.add("Domingo");
 		return diasPtBr;
 	}
+	
+	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
+		ArrayList<String> ArrayConvertida = new ArrayList<>();
 
+		for (Canal c : array) {
+			ArrayConvertida.add(c.getNome());
+
+		}
+		return ArrayConvertida;
+	}
 }

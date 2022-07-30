@@ -7,6 +7,7 @@ import java.util.Date;
 
 import telas.programa.TelaNovoPrograma;
 import utilidades.Componentes;
+import utilidades.Datas;
 
 public class OuvinteData implements FocusListener {
 
@@ -29,7 +30,7 @@ public class OuvinteData implements FocusListener {
 		} catch (Exception e2) {
 			Componentes.msgFalha(tela, "Data inválida");
 		}
-		Componentes.testandoData(tela);
+		Datas.testandoData(tela);
 	}
 
 }

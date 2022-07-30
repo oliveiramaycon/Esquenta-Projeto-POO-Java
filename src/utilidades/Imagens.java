@@ -15,6 +15,6 @@ public class Imagens {
 	public static final ImageIcon BANNER_CANAL = new ImageIcon(Imagens.class.getResource("/imagens/banner-canal.jpg"));
 	public static final ImageIcon BANNER_PROGRAMA = new ImageIcon(
 			Imagens.class.getResource("/imagens/banner-programa.jpg"));
-	public static final ImageIcon LOGO = new ImageIcon(Imagens.class.getResource("/imagens/logo.jpeg"));
+	public static final ImageIcon LOGO = new ImageIcon(Imagens.class.getResource("/imagens/logo.png"));
 
 }

@@ -47,13 +47,57 @@ import telas.programa.TelaNovoPrograma;
 
 public class Componentes {
 
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return botao
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JButton addJButton(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
 		JButton botao = new JButton(nome);
 		botao.setBounds(x, y, comprimento, altura);
 		tela.add(botao);
 		return botao;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param texto
+	 * representa a mensagem exibida ao passar o mouse sobre o componente
+	 * 
+	 * @param icone
+	 * representa uma imagem associada ao componente
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return botao
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JButton addJButton(JFrame tela, String texto, ImageIcon icone, int x, int y, int comprimento,
 			int altura) {
 		JButton botao = new JButton();
@@ -65,7 +109,32 @@ public class Componentes {
 		tela.add(botao);
 		return botao;
 	}
-
+	/**
+	 * @param painel
+	 *representa a area onde estarao presentes um conjunto de botoes
+	 * 
+	 * @param texto
+	 * representa a mensagem exibida ao passar o mouse sobre o componente
+	 * 
+	 * @param icone
+	 * representa uma imagem associada ao componente
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return botao
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JButton adicionarJButton(JPanel painel, String texto, ImageIcon icone, int x, int y, int comprimento,
 			int altura) {
 		JButton botao = new JButton();
@@ -81,7 +150,29 @@ public class Componentes {
 		botao.addMouseListener(cursorHand);
 		return botao;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param nome
+	 * representa o nome exibido ao lado do componente
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return checkBox
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JCheckBox addCheckBox(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
 		JCheckBox checkBox = new JCheckBox(nome);
 		checkBox.setBounds(x, y, comprimento, altura);
@@ -89,7 +180,29 @@ public class Componentes {
 
 		return checkBox;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param nome
+	 * representa o nome do componente exibido na tela
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return label
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static OutlineJLabel addJLabel(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
 		OutlineJLabel label = new OutlineJLabel(nome);
 		label.setBounds(x, y, comprimento, altura);
@@ -97,14 +210,55 @@ public class Componentes {
 		tela.add(label);
 		return label;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return field
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JTextField addJTextField(JFrame tela, int x, int y, int comprimento, int altura) {
 		JTextField field = new JTextField();
 		field.setBounds(x, y, comprimento, altura);
 		tela.add(field);
 		return field;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 *@param icone
+	 *representa uma imagem associada ao componente
+	 *
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return field
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JTextField addJTextFieldComIcone(JFrame tela, ImageIcon icone, int x, int y, int comprimento,
 			int altura) {
 		IconJTextField field = new IconJTextField();
@@ -113,14 +267,52 @@ public class Componentes {
 		tela.add(field);
 		return field;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return paswordField
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JPasswordField addJPswordField(JFrame tela, int x, int y, int comprimento, int altura) {
 		JPasswordField paswordField = new JPasswordField();
 		paswordField.setBounds(x, y, comprimento, altura);
 		tela.add(paswordField);
 		return paswordField;
 	}
-
+	/**
+	 * @param janela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return barraMenu
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JMenuBar addJMenubar(JFrame janela, int x, int y, int comprimento, int altura) {
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(x, y, comprimento, altura);
@@ -129,7 +321,14 @@ public class Componentes {
 		janela.add(barraMenu);
 		return barraMenu;
 	}
-
+	/**
+	 * @param janela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @return barraMenu
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JMenuBar addMenuPadrao(JFrame janela) {
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(838, 0, 45, 30);
@@ -153,33 +352,102 @@ public class Componentes {
 		janela.add(barraMenu);
 		return barraMenu;
 	}
-
+	/**
+	 * @param barraDeMenu
+	 * representa a barra onde ficara o menu
+	 *  
+	 * @param icone
+	 * representa uma imagem associada ao componente
+	 * 
+	 * @return menu
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JMenu addJMenuComIcone(JMenuBar barraDeMenu, ImageIcon icone) {
 		JMenu menu = new JMenu();
 		menu.setIcon(icone);
 		barraDeMenu.add(menu);
 		return menu;
 	}
-
+	/**
+	 * @param menu
+	 * representa o locao onde ficarao os itens especificos
+	 *  
+	 * @param nome
+	 * representa o nome dos itens dentro do menu
+	 * 
+	 * @return item
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JMenuItem addItemNoMenu(JMenu menu, String nome) {
 		JMenuItem item = new JMenuItem(nome);
 		menu.add(item);
 		return item;
 
 	}
-
+	/**
+	 * @param janela
+	 * JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param msg
+	 * representa o texto exibido no componente
+	 * 
+	 * 
+	 */	
 	public static void msgFalha(JFrame janela, String msg) {
 		JOptionPane.showMessageDialog(janela, msg, "Erro", JOptionPane.ERROR_MESSAGE);
 	}
-
+	/**
+	 * @param janela
+	 * JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param msg
+	 * representa o texto exibido no componente
+	 * 
+	 * 
+	 */	
 	public static void msgSucesso(JFrame janela, String msg) {
 		JOptionPane.showMessageDialog(janela, msg, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 	}
-
+	/**
+	 * @param janela
+	 * JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param msg
+	 * representa o texto exibido no componente
+	 * 
+	 * @param titulo
+	 * representa o titulo com componente exibido
+	 * 
+	 * @return 
+	 * retorna um valor inteiro indicando a opcao escolhida pelo usuario
+	 */	
 	public static int showConfirmDialog(JFrame janela, String msg, String titulo) {
 		return JOptionPane.showConfirmDialog(janela, msg, titulo, JOptionPane.YES_NO_OPTION);
 	}
-
+	/**
+	 * @param tela
+	 * JFrame que representa a tela onde o componente sera exibido
+	 *  
+	 * @param dados
+	 * valores exibidos no componente
+	 * 
+	 * * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return cbTipos
+	 * representa o componente adicionado na tela
+	 */	
 	public static JComboBox<String> inserirComboBox(JFrame tela, ArrayList<String> dados, int x, int y, int comprimento,
 			int altura) {
 
@@ -190,14 +458,61 @@ public class Componentes {
 		tela.add(cbTipos);
 		return cbTipos;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param nome
+	 * representa o nome exibido ao lado do componente
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return radioBotao
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JRadioButton addRadioButton(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
 		JRadioButton radioBotao = new JRadioButton(nome);
 		radioBotao.setBounds(x, y, comprimento, altura);
 		tela.add(radioBotao);
 		return radioBotao;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param usuarioLogado
+	 * representa a referencia para o usuario logado
+	 * 
+	 * @param tfPesquisa
+	 * representa o campo onde devem-se fazer as buscas/pesquisas
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return tabela
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JTable addTabelaTodosCanais(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x, int y,
 			int comprimento, int altura) {
 		DefaultTableModel modelo = new DefaultTableModel() {
@@ -297,7 +612,32 @@ public class Componentes {
 		tela.add(scroll);
 		return tabela;
 	}
-
+	/**
+	 * @param tela
+	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param usuarioLogado
+	 * representa a referencia para o usuario logado
+	 * 
+	 * @param tfPesquisa
+	 * representa o campo onde devem-se fazer as buscas/pesquisas
+	 * 
+	 * @param x
+	 * representa a coordenada no eixo x
+	 * 
+	 * @param y
+	 * representa a coordenada no eixo y
+	 * 
+	 * @param comprimento
+	 * representa a dimensao de comprimento do componente
+	 * 
+	 * @param altura
+	 * representa a dimensao de altura do componente
+	 * 
+	 * @return tabela
+	 * representa o componente adicionado na tela
+	 * 
+	 */	
 	public static JTable addTabelaTodosProgramas(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x,
 			int y, int comprimento, int altura) {
 		DefaultTableModel modelo = new DefaultTableModel() {
@@ -407,38 +747,5 @@ public class Componentes {
 		scroll.setBounds(x, y, comprimento, altura);
 		tela.add(scroll);
 		return tabela;
-	}
-
-	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
-		ArrayList<String> ArrayConvertida = new ArrayList<>();
-
-		for (Canal c : array) {
-			ArrayConvertida.add(c.getNome());
-
-		}
-		return ArrayConvertida;
-	}
-
-	public static void testandoData(TelaNovoPrograma tela) {
-		String dataTxt = tela.getDataRetorno().getText();
-		SimpleDateFormat mascara = new SimpleDateFormat("dd/MM/yyyy");
-		Date d = new Date();
-		try {
-			d = mascara.parse(dataTxt);
-		} catch (ParseException e) {
-		}
-		Date dia = new Date();
-		String[] dataSeparada = dataTxt.split("/");
-		int diaData = Integer.parseInt(dataSeparada[0]);
-		int mes = Integer.parseInt(dataSeparada[1]);
-		String msgErro = "Data inválida";
-		if (diaData > 31)
-			msgFalha(tela, msgErro);
-		else if (diaData > 29 && mes == 2)
-			msgFalha(tela, msgErro);
-		if (dia.after(d)) {
-			msgFalha(tela, msgErro);
-
-		}
 	}
 }

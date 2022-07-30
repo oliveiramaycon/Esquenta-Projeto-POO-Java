@@ -350,7 +350,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
 
-		ArrayList<String> canaisTxt = Componentes.passandoArrayCanalParaString(central.getCanais());
+		ArrayList<String> canaisTxt = CentralDeInformacoes.passandoArrayCanalParaString(central.getCanais());
 		canais = Componentes.inserirComboBox(this, canaisTxt, 250, 225, 130, Medidas.ALTURA_30);
 
 		ArrayList<String> statusTxt = central.obterTiposDeStatus();
