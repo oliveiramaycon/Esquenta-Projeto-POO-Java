@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import utilidades.Imagens;
+
 public abstract class TelaPadrao extends JFrame {
 
 	public TelaPadrao(String titulo) {
@@ -14,6 +16,7 @@ public abstract class TelaPadrao extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		
+		this.setIconImage(Imagens.LOGO.getImage());
 		addLookAndFeel();
 		adicionarComponentesGraficos();
 		

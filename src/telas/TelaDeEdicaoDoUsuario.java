@@ -60,7 +60,7 @@ public class TelaDeEdicaoDoUsuario extends TelaPadrao {
 	}
 	
 	private void adiconarLabels() {
-		Componentes.addJLabel(this, "PERFIOL", 400, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "PERFIL", 400, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Nome:", 320, 150, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Email:", 320, 215, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Login:", 320, 270, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);

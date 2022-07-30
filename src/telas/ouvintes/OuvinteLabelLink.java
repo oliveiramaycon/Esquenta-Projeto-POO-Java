@@ -80,7 +80,6 @@ public class OuvinteLabelLink implements MouseListener {
         
 		label.setText("<html><u>"+labelTextFlag+"</u></html>");
 		label.setForeground(Color.BLUE.brighter());
-		label.setOutlineColor(Color.white);
 	}
 
 	
@@ -88,7 +87,6 @@ public class OuvinteLabelLink implements MouseListener {
 	public void mouseExited(MouseEvent e) {
 		Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
         tela.setCursor(cursor);
-        label.setOutlineColor(Color.GRAY.brighter());
         label.setForeground(Color.BLACK);
 		label.setText(labelTextFlag);
 	}

@@ -16,6 +16,7 @@ import modelo.usuario.exceptions.SenhaSemMinusculosException;
 import modelo.usuario.exceptions.SenhaSemNumerosException;
 import modelo.usuario.exceptions.ValidadorDeEmailExecption;
 import telas.TelaDeEdicaoDoUsuario;
+import telas.TelaInicial;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
@@ -74,16 +75,22 @@ if(senhaValida != true && loginValido != true) {
 			central.editarUsuario(0, login, nome);
 			persistencia.salvarCentral(central, "central");
 			JOptionPane.showMessageDialog(telaEditaUsuario, "Login e Nome editado com sucesso");
+			telaEditaUsuario.dispose();
+			new TelaInicial();
 		}
 		if(senhaValida = true && !senha.isEmpty() && !confirmacaoDeSenha.isEmpty() ) {
 			central.editarUsuario(0, senha, confirmacaoDeSenha, null);
 			persistencia.salvarCentral(central, "central");
 			JOptionPane.showMessageDialog(telaEditaUsuario, "Senha e confirmcao de senha editados com sucesso");
+			telaEditaUsuario.dispose();
+			new TelaInicial();
 		}
 		if(validarEmail = true && !email.isEmpty() ) {
 			central.editarUsuario(0, email);
 			persistencia.salvarCentral(central, "central");
 			JOptionPane.showMessageDialog(telaEditaUsuario, "Email editados com sucesso");
+			telaEditaUsuario.dispose();
+			new TelaInicial();
 		}
 			
 		}

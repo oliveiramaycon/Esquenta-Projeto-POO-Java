@@ -146,7 +146,6 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener{
 			Componentes.msgSucesso(telaPrograma, "Programa cadastrado com sucesso!");
 			new TelaListagemProgramas(central.getUsuariosCadastrados().get(0));
 			telaPrograma.dispose();
-//			new TelaNovoPrograma(telaPrograma.getUsuarioAtivo());
 		} catch (FalhaNoCadastroException exception) {
 			Componentes.msgFalha(telaPrograma, exception.getMessage());
 		}	
