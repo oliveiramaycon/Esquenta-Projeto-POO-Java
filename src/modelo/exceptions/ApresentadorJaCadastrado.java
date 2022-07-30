@@ -1,7 +1,7 @@
 package modelo.exceptions;
 
 public class ApresentadorJaCadastrado extends Exception {
-    public ApresentadorJaCadastrado() {
-        super("Apresentador ja cadastrado");
-    }
+	public ApresentadorJaCadastrado() {
+		super("Apresentador ja cadastrado");
+	}
 }

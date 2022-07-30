@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import modelo.usuario.Usuario;
 import telas.programa.TelaListagemProgramas;
 import utilidades.GeradorDePdf;
 import utilidades.Mensageiro;

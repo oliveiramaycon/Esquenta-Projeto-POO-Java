@@ -1,6 +1,5 @@
 package telas;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,9 +31,6 @@ public class TelaInicial extends TelaPadrao {
 		this.tfLogin = tfLogin;
 	}
 
-	
-	
-	
 	public JPasswordField getTfSenha() {
 		return tfSenha;
 	}
@@ -43,7 +39,6 @@ public class TelaInicial extends TelaPadrao {
 		this.tfSenha = tfSenha;
 	}
 
-	
 	public TelaInicial() {
 		super("Bem Vindo");
 	}
@@ -61,32 +56,27 @@ public class TelaInicial extends TelaPadrao {
 		setContentPane(background);
 	}
 
-	public class OuvinteTelaCadastro implements ActionListener{
+	public class OuvinteTelaCadastro implements ActionListener {
 		TelaInicial telaInicial;
-		
+
 		public OuvinteTelaCadastro(TelaInicial telaInicial) {
 			this.telaInicial = telaInicial;
-			
-		}
 
+		}
 
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
-		
-		
+
 		public void actionPerformed(ActionEvent e) {
-			
-			if(central.getUsuariosCadastrados().size() == 0) {
+
+			if (central.getUsuariosCadastrados().size() == 0) {
 				telaInicial.dispose();
 				new TelaCadastroDeUsuario();
 			}
-			}
-			
-		
-		
+		}
+
 	}
-	
-	
+
 	public void adicionarBotoes() {
 		OuvinteBotaoEntrar ouvinteBotaoEntrar = new OuvinteBotaoEntrar(this);
 		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 575, 490, Medidas.COMPRIMENTO_130,
@@ -107,15 +97,14 @@ public class TelaInicial extends TelaPadrao {
 		OutlineJLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 550, 367, 200, Medidas.ALTURA_30);
 		OuvinteLabelLink ouvinteLink = new OuvinteLabelLink(this, label);
 		label.addMouseListener(ouvinteLink);
-		
+
 	}
 
 	public void adicionarTextFields() {
-		
+
 		tfLogin = Componentes.addJTextField(this, 550, 232, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		
-		tfSenha  = Componentes.addJPswordField(this, 550, 332, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+
+		tfSenha = Componentes.addJPswordField(this, 550, 332, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
 
 }
-

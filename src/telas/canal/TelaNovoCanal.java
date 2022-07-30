@@ -174,12 +174,14 @@ public class TelaNovoCanal extends TelaPadrao {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
 		setContentPane(background);
 	}
-	
+
 	public void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
+
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 40, 20, Medidas.COMPRIMENTO_50,Medidas.ALTURA_30);
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 40, 20, Medidas.COMPRIMENTO_50,
+				Medidas.ALTURA_30);
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
 		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
 
@@ -224,15 +226,15 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	public void addComboBoxCanaisTelevisao() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
-		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 240, 270,
-				400, Medidas.ALTURA_30);
+		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 240, 270, 400,
+				Medidas.ALTURA_30);
 
 	}
 
 	public void addComboBoxCanaisBroadcasting() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
-		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 240, 270,
-				400, Medidas.ALTURA_30);
+		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 240, 270, 400,
+				Medidas.ALTURA_30);
 		cbBroadcasting.setVisible(false);
 
 	}

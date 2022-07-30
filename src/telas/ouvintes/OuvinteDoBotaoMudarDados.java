@@ -20,78 +20,75 @@ import telas.TelaInicial;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
-public class OuvinteDoBotaoMudarDados implements ActionListener{
+public class OuvinteDoBotaoMudarDados implements ActionListener {
 
 	TelaDeEdicaoDoUsuario telaEditaUsuario;
-	
-	
+
 	public OuvinteDoBotaoMudarDados(TelaDeEdicaoDoUsuario telaEditaUsuario) {
 		this.telaEditaUsuario = telaEditaUsuario;
 	}
-	
+
 	Persistencia persistencia = new Persistencia();
 	CentralDeInformacoes central = persistencia.recuperarCentral("central");
-	
+
 	public void actionPerformed(ActionEvent e) {
 		String nome = telaEditaUsuario.getTfNome().getText();
 		String email = telaEditaUsuario.getTfEmail().getText();
 		String login = telaEditaUsuario.getTfLogin().getText();
 		String senha = telaEditaUsuario.getTfSenha().getText();
 		String confirmacaoDeSenha = telaEditaUsuario.getTfConfirmacaoDeSenha().getText();
-		
+
 		Usuario usuario = new Usuario(nome, email, login, senha, confirmacaoDeSenha);
-		//-----------------------------------------------MODIFICAO DE EDICAO DOS DADOS:
+		// -----------------------------------------------MODIFICAO DE EDICAO DOS DADOS:
 		boolean loginValido = false;
 		boolean senhaValida = false;
 		boolean validarEmail = false;
-		
-	try {
-		usuario.validadorDeLogin(login);
-		loginValido = true;
-	}
-	catch (LoginComEspacosException| LoginComMenosCaracterisException|LoginComNumerosException e2) {
-		JOptionPane.showMessageDialog(telaEditaUsuario, e2.getMessage());
-		}
- if(loginValido != true && validarEmail != true) {
-	try {
-		usuario.validadorDeSenha(senha, confirmacaoDeSenha);
-		senhaValida = true;
-		}
-		catch(SenhaCurtaException | SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption | SenhaSemNumerosException | SenhaNaoIgualAConfirmacao e2 ) {
+
+		try {
+			usuario.validadorDeLogin(login);
+			loginValido = true;
+		} catch (LoginComEspacosException | LoginComMenosCaracterisException | LoginComNumerosException e2) {
 			JOptionPane.showMessageDialog(telaEditaUsuario, e2.getMessage());
 		}
- 	}
-if(senhaValida != true && loginValido != true) {	
-	try {			
-			usuario.validadorDeEmail(email);
-			validarEmail = true;
+		if (loginValido != true && validarEmail != true) {
+			try {
+				usuario.validadorDeSenha(senha, confirmacaoDeSenha);
+				senhaValida = true;
+			} catch (SenhaCurtaException | SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption
+					| SenhaSemNumerosException | SenhaNaoIgualAConfirmacao e2) {
+				JOptionPane.showMessageDialog(telaEditaUsuario, e2.getMessage());
+			}
 		}
-	catch(ValidadorDeEmailExecption e2 ) {
-			JOptionPane.showMessageDialog(telaEditaUsuario, e2.getMessage());	
+		if (senhaValida != true && loginValido != true) {
+			try {
+				usuario.validadorDeEmail(email);
+				validarEmail = true;
+			} catch (ValidadorDeEmailExecption e2) {
+				JOptionPane.showMessageDialog(telaEditaUsuario, e2.getMessage());
+			}
 		}
-}
 //--------------------------------EDICAO DE DADOS NA PERSISTENCIA:
-		if(loginValido = true && !login.isEmpty() && !nome.isEmpty()) {
+		if (loginValido = true && !login.isEmpty() && !nome.isEmpty()) {
 			central.editarUsuario(0, login, nome);
 			persistencia.salvarCentral(central, "central");
 			JOptionPane.showMessageDialog(telaEditaUsuario, "Login e Nome editado com sucesso");
 			telaEditaUsuario.dispose();
 			new TelaInicial();
 		}
-		if(senhaValida = true && !senha.isEmpty() && !confirmacaoDeSenha.isEmpty() ) {
+		if (senhaValida = true && !senha.isEmpty() && !confirmacaoDeSenha.isEmpty()) {
 			central.editarUsuario(0, senha, confirmacaoDeSenha, null);
 			persistencia.salvarCentral(central, "central");
 			JOptionPane.showMessageDialog(telaEditaUsuario, "Senha e confirmcao de senha editados com sucesso");
 			telaEditaUsuario.dispose();
 			new TelaInicial();
 		}
-		if(validarEmail = true && !email.isEmpty() ) {
+		if (validarEmail = true && !email.isEmpty()) {
 			central.editarUsuario(0, email);
 			persistencia.salvarCentral(central, "central");
 			JOptionPane.showMessageDialog(telaEditaUsuario, "Email editados com sucesso");
 			telaEditaUsuario.dispose();
 			new TelaInicial();
 		}
-			
-		}
+
+	}
 }

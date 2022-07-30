@@ -70,15 +70,15 @@ public class TelaNovoPrograma extends TelaPadrao {
 	public JTextField getDataRetorno() {
 		return dataRetorno;
 	}
-	
+
 	public void setDia(DayOfWeek[] dia) {
 		this.dia = dia;
 	}
-	
+
 	public DayOfWeek[] getDia() {
 		return dia;
 	}
-	
+
 	public JTextField getTfApresentadores() {
 		return tfApresentadores;
 	}
@@ -192,7 +192,8 @@ public class TelaNovoPrograma extends TelaPadrao {
 		usuarioAtivo = usuario;
 		dia = new DayOfWeek[7];
 	}
-	public  TelaNovoPrograma() {
+
+	public TelaNovoPrograma() {
 		super("Detalhes Programa");
 		dia = new DayOfWeek[7];
 	}
@@ -212,6 +213,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	public void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
+
 	private void adicionarCheckBox() {
 		cbSegunda = Componentes.addCheckBox(this, "Segunda-Feira", 250, 360, 120, Medidas.ALTURA_30);
 		terca = Componentes.addCheckBox(this, "Terca-Feira", 370, 360, 120, Medidas.ALTURA_30);
@@ -236,7 +238,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);
 		OuvinteBotaoVoltar ouvinteBotaoVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar.addActionListener(ouvinteBotaoVoltar);
@@ -245,16 +247,17 @@ public class TelaNovoPrograma extends TelaPadrao {
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarPrograma ouvinteCadastrarPrograma = new OuvinteBotaoCadastrarPrograma(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarPrograma);
-		
+
 	}
-	private class OuvinteBotaoVoltar implements ActionListener  {
+
+	private class OuvinteBotaoVoltar implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
 			dispose();
 			new TelaListagemProgramas(usuarioAtivo);
 		}
 	}
-	
+
 	private void adicionarRadios() {
 		rb1 = Componentes.addRadioButton(this, "Series Regulares", 250, 165, 125, Medidas.ALTURA_30);
 		rb1.setSelected(true);
@@ -282,9 +285,9 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Componentes.addJLabel(this, "Horario", 250, 270, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Status", 395, 195, 110, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Temporada", 510, 270, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Dias de Transmissão",250 , 330, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Dias de Transmissão", 250, 330, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		genero = Componentes.addJLabel(this, "Genero", 500, 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		estilo = Componentes.addJLabel(this, "Estilo", 250 , 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		estilo = Componentes.addJLabel(this, "Estilo", 250, 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		data = Componentes.addJLabel(this, "Data de retorno", 360, 270, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		data.setVisible(false);
 
@@ -313,7 +316,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 			dataRetorno.setHorizontalAlignment(JLabel.CENTER);
 			OuvinteData ouvinteData = new OuvinteData(this);
 			dataRetorno.addFocusListener(ouvinteData);
-			
+
 		} catch (ParseException e) {
 		}
 		tfNome = Componentes.addJTextField(this, 250, 130, 370, Medidas.ALTURA_30);
@@ -324,7 +327,8 @@ public class TelaNovoPrograma extends TelaPadrao {
 			tfTemporada.setBounds(510, 300, 100, Medidas.ALTURA_30);
 			add(tfTemporada);
 			tfTemporada.setHorizontalAlignment(JLabel.CENTER);
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 		tfApresentadores = Componentes.addJTextField(this, 250, 485, 360, Medidas.ALTURA_30);
 		OuvinteFocoApresentadores ouvinteFocoApresentadores = new OuvinteFocoApresentadores(this);
 		tfApresentadores.addFocusListener(ouvinteFocoApresentadores);
@@ -335,7 +339,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
 
-			ArrayList<String> canaisTxt = Componentes.passandoArrayCanalParaString(central.getCanais());
+		ArrayList<String> canaisTxt = Componentes.passandoArrayCanalParaString(central.getCanais());
 		canais = Componentes.inserirComboBox(this, canaisTxt, 250, 225, 130, Medidas.ALTURA_30);
 
 		ArrayList<String> statusTxt = central.obterTiposDeStatus();

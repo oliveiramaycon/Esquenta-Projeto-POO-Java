@@ -1,8 +1,6 @@
 package modelo.usuario;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import modelo.programa.ProgramaDeTv;
 import modelo.programa.enums.EnumFavorito;
@@ -12,7 +10,6 @@ import modelo.usuario.exceptions.LoginComEspacosException;
 import modelo.usuario.exceptions.LoginComMenosCaracterisException;
 import modelo.usuario.exceptions.LoginComNumerosException;
 import modelo.usuario.exceptions.SenhaCurtaException;
-import modelo.usuario.exceptions.SenhaIgualALoginException;
 import modelo.usuario.exceptions.SenhaNaoIgualAConfirmacao;
 import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
 import modelo.usuario.exceptions.SenhaSemMinusculosException;
@@ -80,30 +77,29 @@ public class Usuario {
 		this.confirmacaoDeSenha = confirmacaoDeSenha;
 		this.programasFavoritos = new ArrayList<ProgramaDeTv>();
 	}
-	
+
 	public Usuario() {
 	}
-	
 
 	/*
 	 * ----------------------------------------------------EXCEPTIONS DE VALIDACAO
 	 * DE LOGIN E SENHA E E-MAIL:
 	 */
-	
-	
-	
+
 	public void validadorDeLogin(String login)
 			throws LoginComEspacosException, LoginComMenosCaracterisException, LoginComNumerosException {
-		if 	(login.contains(" ")) {
+		if (login.contains(" ")) {
 			throw new LoginComEspacosException();
 		}
 		if (login.length() < 5) {
 			throw new LoginComMenosCaracterisException();
-		}	
-
 		}
-	public void validadorDeSenha(String senha,String confirmado) throws SenhaCurtaException, SenhaSemMinusculosException,
-			SenhaSemCaracterMaiusculaExecption, SenhaSemNumerosException, SenhaNaoIgualAConfirmacao {
+
+	}
+
+	public void validadorDeSenha(String senha, String confirmado)
+			throws SenhaCurtaException, SenhaSemMinusculosException, SenhaSemCaracterMaiusculaExecption,
+			SenhaSemNumerosException, SenhaNaoIgualAConfirmacao {
 		if (senha.length() < 5) {
 			throw new SenhaCurtaException();
 		}
@@ -111,23 +107,21 @@ public class Usuario {
 		verificarLetraMaiuscula(senha);
 		verificarNumeros(senha);
 		verificadorDeSenhaNaoIgual(senha, confirmado);
-}
-
+	}
 
 	public void validadorDeEmail(String Email) throws ValidadorDeEmailExecption {
 		verificaEmail(Email);
 	}
-	
+
 	/*
 	 * -----------------------------------------------------METODOS UTEIS PARA O
 	 * USUARIO:
 	 */
 
-
 	public boolean verificarLetraMinuscula(String s) throws SenhaSemMinusculosException {
 		for (int c = 0; c < s.length(); c++) {
 			if (Character.isLowerCase(s.charAt(c))) {
-				return  true;
+				return true;
 			}
 		}
 		throw new SenhaSemMinusculosException();
@@ -151,12 +145,12 @@ public class Usuario {
 		}
 		throw new SenhaSemNumerosException();
 	}
-	
+
 	public boolean verificadorDeSenhaNaoIgual(String senha, String confirmacao) throws SenhaNaoIgualAConfirmacao {
-		if(senha.equals(confirmacao)) {
+		if (senha.equals(confirmacao)) {
 			return true;
 		}
-		throw new SenhaNaoIgualAConfirmacao();	
+		throw new SenhaNaoIgualAConfirmacao();
 	}
 
 // Refazer codigo para confirma a senha:
@@ -196,12 +190,12 @@ public class Usuario {
 		programasFavoritos.add(p);
 		return true;
 	}
-	
+
 	public int obterQuantidadeDeProgramasFavoritos(ArrayList<ProgramaDeTv> programas) {
 		int cont = 0;
-		if(programas.size() > 0) {
-			for(ProgramaDeTv programa : programas) {
-				if(this.programasFavoritos.contains(programa)) {
+		if (programas.size() > 0) {
+			for (ProgramaDeTv programa : programas) {
+				if (this.programasFavoritos.contains(programa)) {
 					cont++;
 				}
 			}

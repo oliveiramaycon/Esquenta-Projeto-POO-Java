@@ -160,11 +160,11 @@ public class TelaDetalheCanal extends TelaPadrao {
 		adicionarRadios();
 		addComboBoxes();
 	}
-	
+
 	public void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
-	
+
 	private void adicionarBotoes() {
 		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);

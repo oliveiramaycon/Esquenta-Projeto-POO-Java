@@ -8,7 +8,7 @@ import java.util.Date;
 public class Datas {
 
 	public static String obterDiaDaSemana() {
-		
+
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 
@@ -16,10 +16,7 @@ public class Datas {
 		String dayOfWeekString = formatter.format(cal.getTime());
 		return dayOfWeekString;
 	}
-	
-	
-	
-	
+
 	public static String formatar(Date data) {
 		DateFormat formater = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		return formater.format(data);

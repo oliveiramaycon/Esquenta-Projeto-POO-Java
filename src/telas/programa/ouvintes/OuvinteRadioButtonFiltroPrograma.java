@@ -6,19 +6,18 @@ import java.awt.event.ActionListener;
 import telas.programa.TelaNovoPrograma;
 
 public class OuvinteRadioButtonFiltroPrograma implements ActionListener {
-	
+
 	private TelaNovoPrograma tela;
-	
+
 	public OuvinteRadioButtonFiltroPrograma(TelaNovoPrograma tela) {
 		this.tela = tela;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		String radioSelecionado = e.getActionCommand();
-		
-		
+
 		switch (radioSelecionado) {
-		
+
 		case "Series Regulares":
 			tela.getTfApresentadores().setVisible(false);
 			tela.getApresentadores().setVisible(false);

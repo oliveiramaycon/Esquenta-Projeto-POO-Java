@@ -4,7 +4,6 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 
 import modelo.canal.Canal;
-import modelo.programa.enums.EnumFavorito;
 import modelo.programa.enums.Estilo;
 import modelo.programa.enums.Genero;
 import modelo.programa.enums.Status;
@@ -14,8 +13,8 @@ public class SeriesRegulares extends ProgramaDeTv {
 	private Genero genero;
 	private Estilo estilo;
 
-	public SeriesRegulares(String nome, ArrayList<DayOfWeek> dia, Canal canal
-			, Status status, String horario, String temporadas, Genero genero, Estilo estilo) {
+	public SeriesRegulares(String nome, ArrayList<DayOfWeek> dia, Canal canal, Status status, String horario,
+			String temporadas, Genero genero, Estilo estilo) {
 		super(nome, canal, dia, status, horario, temporadas);
 		setTipo(TipoPrograma.SERIES_REGULARES);
 		setGenero(genero);
@@ -25,13 +24,15 @@ public class SeriesRegulares extends ProgramaDeTv {
 	public Genero getGenero() {
 		return genero;
 	}
+
 	public Estilo getEstilo() {
 		return estilo;
 	}
+
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
-	
+
 	public void setEstilo(Estilo estilo) {
 		this.estilo = estilo;
 	}

@@ -41,7 +41,6 @@ import modelo.programa.ProgramasContinuos;
 import modelo.programa.SeriesRegulares;
 import modelo.programa.enums.TipoPrograma;
 import modelo.usuario.Usuario;
-import telas.ouvintes.OuvinteDoBotaoEditorPerfil;
 import telas.ouvintes.OuvinteHandCursor;
 import telas.ouvintes.OuvinteMenu;
 import telas.programa.TelaNovoPrograma;
@@ -66,8 +65,9 @@ public class Componentes {
 		tela.add(botao);
 		return botao;
 	}
-	
-	public static JButton adicionarJButton(JPanel painel, String texto, ImageIcon icone, int x, int y, int comprimento, int altura) {
+
+	public static JButton adicionarJButton(JPanel painel, String texto, ImageIcon icone, int x, int y, int comprimento,
+			int altura) {
 		JButton botao = new JButton();
 		botao.setToolTipText(texto);
 		botao.setIcon(icone);
@@ -83,13 +83,12 @@ public class Componentes {
 		botao.addMouseListener(cursorHand);
 		return botao;
 	}
-	
-	
+
 	public static JCheckBox addCheckBox(JFrame tela, String nome, int x, int y, int comprimento, int altura) {
 		JCheckBox checkBox = new JCheckBox(nome);
-		checkBox.setBounds(x,y,comprimento,altura);
+		checkBox.setBounds(x, y, comprimento, altura);
 		tela.add(checkBox);
-	
+
 		return checkBox;
 	}
 
@@ -116,8 +115,8 @@ public class Componentes {
 		tela.add(field);
 		return field;
 	}
-	
-	public static JPasswordField addJPswordField(JFrame tela , int x, int y, int comprimento, int altura) {
+
+	public static JPasswordField addJPswordField(JFrame tela, int x, int y, int comprimento, int altura) {
 		JPasswordField paswordField = new JPasswordField();
 		paswordField.setBounds(x, y, comprimento, altura);
 		tela.add(paswordField);
@@ -132,30 +131,27 @@ public class Componentes {
 		janela.add(barraMenu);
 		return barraMenu;
 	}
-	
+
 	public static JMenuBar addMenuPadrao(JFrame janela) {
 		JMenuBar barraMenu = new JMenuBar();
 		barraMenu.setBounds(838, 0, 45, 30);
 		barraMenu.setBackground(Color.BLACK);
 		barraMenu.setForeground(Color.black);
-		
+
 		JMenu menu = addJMenuComIcone(barraMenu, Icones.ENGRENAGEM);
 		menu.setToolTipText("opcoes");
-		
+
 		OuvinteMenu ouvinteMenu = new OuvinteMenu(janela);
-		
+
 		JMenuItem sair = addItemNoMenu(menu, "Sair");
 		sair.addActionListener(ouvinteMenu);
-		
+
 		JMenuItem deletar = addItemNoMenu(menu, "Excluir Conta");
 		deletar.addActionListener(ouvinteMenu);
-		
 
 		JMenuItem editarUsuario = addItemNoMenu(menu, "Editar Perfil");
 		editarUsuario.addActionListener(ouvinteMenu);
-		
-		
-		
+
 		janela.add(barraMenu);
 		return barraMenu;
 	}
@@ -166,7 +162,6 @@ public class Componentes {
 		barraDeMenu.add(menu);
 		return menu;
 	}
-	
 
 	public static JMenuItem addItemNoMenu(JMenu menu, String nome) {
 		JMenuItem item = new JMenuItem(nome);
@@ -386,12 +381,12 @@ public class Componentes {
 					estilo = (String.valueOf(programaModificado.getEstilo()));
 				} else {
 					ProgramasContinuos programaModificado = (ProgramasContinuos) programa;
-						
+
 					String apresentadores = "";
-					for(String concatenar:programaModificado.getApresentadores()) {
-						apresentadores +=  concatenar+",";
+					for (String concatenar : programaModificado.getApresentadores()) {
+						apresentadores += concatenar + ",";
 					}
-					
+
 					generoouApresentadores = apresentadores;
 				}
 
@@ -419,32 +414,33 @@ public class Componentes {
 	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
 		ArrayList<String> ArrayConvertida = new ArrayList<>();
 
-		for(Canal c : array) {
+		for (Canal c : array) {
 			ArrayConvertida.add(c.getNome());
 
 		}
 		return ArrayConvertida;
 	}
-	
+
 	public static void testandoData(TelaNovoPrograma tela) {
 		String dataTxt = tela.getDataRetorno().getText();
 		SimpleDateFormat mascara = new SimpleDateFormat("dd/MM/yyyy");
 		Date d = new Date();
 		try {
 			d = mascara.parse(dataTxt);
-		} catch (ParseException e) {}
+		} catch (ParseException e) {
+		}
 		Date dia = new Date();
 		String[] dataSeparada = dataTxt.split("/");
-		int diaData =Integer.parseInt( dataSeparada[0]);
+		int diaData = Integer.parseInt(dataSeparada[0]);
 		int mes = Integer.parseInt(dataSeparada[1]);
 		String msgErro = "Data inválida";
-		if(diaData > 31)
+		if (diaData > 31)
 			msgFalha(tela, msgErro);
-		else if(diaData > 29 && mes == 2 )
+		else if (diaData > 29 && mes == 2)
 			msgFalha(tela, msgErro);
-		if(dia.after(d)) {
+		if (dia.after(d)) {
 			msgFalha(tela, msgErro);
-		
-		}	
+
+		}
 	}
 }

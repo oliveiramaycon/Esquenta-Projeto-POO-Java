@@ -9,14 +9,15 @@ import telas.programa.TelaListagemProgramas;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
-public class OuvinteBotaoDetalhesPrograma implements ActionListener{
-	
+public class OuvinteBotaoDetalhesPrograma implements ActionListener {
+
 	private TelaListagemProgramas tela;
+
 	public OuvinteBotaoDetalhesPrograma(TelaListagemProgramas tela) {
-		
+
 		this.tela = tela;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");

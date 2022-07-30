@@ -15,21 +15,20 @@ public abstract class TelaPadrao extends JFrame {
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		
+
 		this.setIconImage(Imagens.LOGO.getImage());
 		addLookAndFeel();
 		adicionarComponentesGraficos();
-		
+
 		setVisible(true);
-		
+
 	}
-	
+
 	public abstract void adicionarComponentesGraficos();
 
-	
 	public void addLookAndFeel() {
 		try {
-			
+
 			String tema = "com.jtattoo.plaf.mint.MintLookAndFeel";
 
 			UIManager.setLookAndFeel(tema);
@@ -38,8 +37,5 @@ public abstract class TelaPadrao extends JFrame {
 			System.out.println("Erro LAF : " + e.getMessage());
 		}
 	}
-	
-	
-	
-	
+
 }

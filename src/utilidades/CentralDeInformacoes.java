@@ -80,14 +80,16 @@ public class CentralDeInformacoes {
 		}
 		return null;
 	}
+
 	public boolean buscarProgramaPeloNome(String buscar) throws ProgramaJaAdicionado {
-		for(ProgramaDeTv programa : programas) {
-			if(programa.getNome().equals(buscar)) {
+		for (ProgramaDeTv programa : programas) {
+			if (programa.getNome().equals(buscar)) {
 				throw new ProgramaJaAdicionado();
 			}
 		}
 		return false;
 	}
+
 	public void exibirProgramas() {
 		System.out.println(programas.toString());
 	}
@@ -127,13 +129,15 @@ public class CentralDeInformacoes {
 		}
 		return programasEncontrados;
 	}
-	public ArrayList<String> obterCanaisNome(){
+
+	public ArrayList<String> obterCanaisNome() {
 		ArrayList<String> nomes = new ArrayList<>();
-		for(Canal canal: getCanais()){
+		for (Canal canal : getCanais()) {
 			nomes.add(canal.toString());
 		}
 		return nomes;
 	}
+
 	public ArrayList<String> obterTiposDeStatus() {
 		ArrayList<String> tipos = new ArrayList<>();
 		for (Status status : Status.values())
@@ -278,7 +282,7 @@ public class CentralDeInformacoes {
 	// CRIEI PARA A VERIFICACAO DE USUARIO NA ARRY
 	public Usuario validarEntrada(String login) {
 		Usuario novoUsuario = null;
-		
+
 		for (Usuario u : usuariosCadastrados) {
 			if (u.getLogin().equals(login)) {
 				novoUsuario = u;
@@ -288,30 +292,34 @@ public class CentralDeInformacoes {
 	}
 
 	public Usuario buscarDados(int buscador) {
-		return	usuariosCadastrados.get(buscador);
-			
-		}
-		
-		// METODO SO SERVE PRA MODIFICAR A SENHA DO USUARIO:
-		public void editarUsuario(int buscador, String novoLogin, String novoNome ) {
-			Usuario	 editor =	buscarDados(buscador);
-			editor.setLogin(novoLogin);  editor.setNome(novoNome);
-		}
-		public void  editarUsuario(int buscador, String novaSenha , String novaConfirmacao, String nadaFeito){
-			Usuario editor = buscarDados(buscador);
-		 	editor.setSenha(novaSenha); editor.setConfirmacaoDeSenha(novaConfirmacao);
-		}
-		public void editarUsuario(int buscador, String novoEmail){
-			Usuario editor = buscarDados(buscador);
-			editor.setEmail(novoEmail);	
-		}
-		//REMOCAO DO USUARIO:
-		public Usuario removerDados(int remover) {
-			Usuario novo =  buscarDados(remover);
-			usuariosCadastrados.remove(novo);
-			return novo;
-		}
+		return usuariosCadastrados.get(buscador);
 
+	}
+
+	// METODO SO SERVE PRA MODIFICAR A SENHA DO USUARIO:
+	public void editarUsuario(int buscador, String novoLogin, String novoNome) {
+		Usuario editor = buscarDados(buscador);
+		editor.setLogin(novoLogin);
+		editor.setNome(novoNome);
+	}
+
+	public void editarUsuario(int buscador, String novaSenha, String novaConfirmacao, String nadaFeito) {
+		Usuario editor = buscarDados(buscador);
+		editor.setSenha(novaSenha);
+		editor.setConfirmacaoDeSenha(novaConfirmacao);
+	}
+
+	public void editarUsuario(int buscador, String novoEmail) {
+		Usuario editor = buscarDados(buscador);
+		editor.setEmail(novoEmail);
+	}
+
+	// REMOCAO DO USUARIO:
+	public Usuario removerDados(int remover) {
+		Usuario novo = buscarDados(remover);
+		usuariosCadastrados.remove(novo);
+		return novo;
+	}
 
 	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException {
 		for (Usuario u : usuariosCadastrados) {
@@ -322,23 +330,23 @@ public class CentralDeInformacoes {
 		usuariosCadastrados.add(usuario);
 	}
 
-	public ArrayList<String> mudarDiaDaSemana(ArrayList<DayOfWeek> dia){
+	public ArrayList<String> mudarDiaDaSemana(ArrayList<DayOfWeek> dia) {
 		ArrayList<String> diasPtBr = new ArrayList<>();
-		if(dia.contains(DayOfWeek.MONDAY))
+		if (dia.contains(DayOfWeek.MONDAY))
 			diasPtBr.add("Segunda-Feira");
-		if(dia.contains(DayOfWeek.TUESDAY))
+		if (dia.contains(DayOfWeek.TUESDAY))
 			diasPtBr.add("Terca-Feira");
-		if(dia.contains(DayOfWeek.WEDNESDAY))
+		if (dia.contains(DayOfWeek.WEDNESDAY))
 			diasPtBr.add("Quarta-Feira");
-		if(dia.contains(DayOfWeek.THURSDAY))
+		if (dia.contains(DayOfWeek.THURSDAY))
 			diasPtBr.add("Quinta-Feira");
-		if(dia.contains(DayOfWeek.FRIDAY))
+		if (dia.contains(DayOfWeek.FRIDAY))
 			diasPtBr.add("Sexta-Feira");
-		if(dia.contains(DayOfWeek.SATURDAY))
+		if (dia.contains(DayOfWeek.SATURDAY))
 			diasPtBr.add("Sabado");
-		if(dia.contains(DayOfWeek.SUNDAY))
+		if (dia.contains(DayOfWeek.SUNDAY))
 			diasPtBr.add("Domingo");
 		return diasPtBr;
 	}
-	
+
 }

@@ -35,7 +35,6 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 		try {
 			Validador.validarPreenchimentoCanal(telaCanal);
 
-
 			String nome = telaCanal.getTfNome().getText();
 			TipoCanal tipo = telaCanal.obterTipoSelecionado();
 			String numeroOuLink = telaCanal.getTfNumeroOuLink().getText();

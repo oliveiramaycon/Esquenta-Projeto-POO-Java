@@ -20,31 +20,25 @@ import modelo.programa.ProgramaDeTv;
 public class Persistencia {
 
 	private XStream xstream = new XStream(new DomDriver("UTF-8"));
-	
+
 	public Persistencia() {
-		xstream.addPermission(NoTypePermission.NONE); 
-		xstream.addPermission(NullPermission.NULL);  
-		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES); 
+		xstream.addPermission(NoTypePermission.NONE);
+		xstream.addPermission(NullPermission.NULL);
+		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES);
 		xstream.addPermission(AnyTypePermission.ANY);
-		
-		xstream.allowTypeHierarchy(Collection.class); 
-		xstream.allowTypesByWildcard(new String[] { 
-		        "excecoes.**",
-		        "main.**",
-		        "modelo.**", 
-		        "utilidades.**"
-		        });
-		
-		xstream.allowTypes(new Class[] {CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class, 
-				Canal.class, ProgramaDeTv.class});
-		
+
+		xstream.allowTypeHierarchy(Collection.class);
+		xstream.allowTypesByWildcard(new String[] { "excecoes.**", "main.**", "modelo.**", "utilidades.**" });
+
+		xstream.allowTypes(new Class[] { CentralDeInformacoes.class, Persistencia.class, GeradorDePdf.class,
+				Canal.class, ProgramaDeTv.class });
+
 	}
-	
-	
+
 	public void salvarCentral(CentralDeInformacoes central, String nome) {
 
 		File arquivoPadrao = new File(nome + ".xml");
-		
+
 		String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 		xml += xstream.toXML(central);
 
