@@ -77,8 +77,6 @@ public class Componentes {
 		botao.setBounds(x, y, comprimento, altura);
 		painel.add(botao);
 
-//		\/ faz um contorno suave no em cima do botao para indicar que ele esta selecionado
-		botao.setFocusPainted(false);
 		OuvinteHandCursor cursorHand = new OuvinteHandCursor(botao);
 		botao.addMouseListener(cursorHand);
 		return botao;

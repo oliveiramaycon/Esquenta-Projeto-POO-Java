@@ -79,7 +79,7 @@ public class TelaInicial extends TelaPadrao {
 
 	public void adicionarBotoes() {
 		OuvinteBotaoEntrar ouvinteBotaoEntrar = new OuvinteBotaoEntrar(this);
-		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 575, 490, Medidas.COMPRIMENTO_130,
+		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 620, 490, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		botaoEntrar.addActionListener(ouvinteBotaoEntrar);
 
@@ -91,8 +91,8 @@ public class TelaInicial extends TelaPadrao {
 	}
 
 	private void adicionarLabels() {
-		Componentes.addJLabel(this, "Login", 550, 205, 70, 30);
-		Componentes.addJLabel(this, "Senha", 550, 297, 70, 30);
+		Componentes.addJLabel(this, "Login", 550, 202, 70, 30);
+		Componentes.addJLabel(this, "Senha", 550, 302, 70, 30);
 
 		OutlineJLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 550, 367, 200, Medidas.ALTURA_30);
 		OuvinteLabelLink ouvinteLink = new OuvinteLabelLink(this, label);

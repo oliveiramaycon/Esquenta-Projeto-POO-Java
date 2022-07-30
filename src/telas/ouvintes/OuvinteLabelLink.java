@@ -35,7 +35,8 @@ public class OuvinteLabelLink implements MouseListener {
 
 		if (estouValido != null) {
 			Mensageiro.enviarSenha(estouValido);
-			System.out.println("feito");
+			Componentes.msgSucesso(tela, "Sua senha foi enviada para o seu e-mail!");
+			
 		} else
 			Componentes.msgFalha(tela, "Usuario esta invalido");
 
@@ -66,16 +67,13 @@ public class OuvinteLabelLink implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 		Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
 		tela.setCursor(cursor);
-
 		label.setText("<html><u>" + labelTextFlag + "</u></html>");
-		label.setForeground(Color.BLUE.brighter());
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
 		tela.setCursor(cursor);
-		label.setForeground(Color.BLACK);
 		label.setText(labelTextFlag);
 	}
 

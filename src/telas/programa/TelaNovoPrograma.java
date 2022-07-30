@@ -184,25 +184,36 @@ public class TelaNovoPrograma extends TelaPadrao {
 		usuarioAtivo = usuario;
 		this.programa = null;
 		dia = new DayOfWeek[7];
+		Persistencia persistencia = new Persistencia();
+		CentralDeInformacoes central = persistencia.recuperarCentral("central");
+		usuarioAtivo = central.getUsuariosCadastrados().get(0);
+		System.out.println("Cadastro: " + usuarioAtivo);
+	
 	}
 
-	public TelaNovoPrograma(ProgramaDeTv programa, Usuario usuario) {
+	public TelaNovoPrograma(ProgramaDeTv programa) {
 		super("Novo Programa");
-		this.programa = programa;
-		usuarioAtivo = usuario;
+		Persistencia persistencia = new Persistencia();
+		CentralDeInformacoes central = persistencia.recuperarCentral("central");
+		usuarioAtivo = central.getUsuariosCadastrados().get(0);
 		dia = new DayOfWeek[7];
+		System.out.println("Cadastro: " + usuarioAtivo);
 	}
 
 	public TelaNovoPrograma() {
 		super("Detalhes Programa");
 		dia = new DayOfWeek[7];
+		Persistencia persistencia = new Persistencia();
+		CentralDeInformacoes central = persistencia.recuperarCentral("central");
+		usuarioAtivo = central.getUsuariosCadastrados().get(0);
+		System.out.println("Cadastro: " + usuarioAtivo);
 	}
 
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
-		adicionarMenu();
 		adicionarBotoes();
+		adicionarMenu();
 		adiconarLabels();
 		adicionarTextFields();
 		adicionarRadios();
@@ -220,7 +231,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		quarta = Componentes.addCheckBox(this, "Quarta-Feira", 490, 360, 120, Medidas.ALTURA_30);
 		quinta = Componentes.addCheckBox(this, "Quinta-Feira", 250, 390, 120, Medidas.ALTURA_30);
 		sexta = Componentes.addCheckBox(this, "Sexta-Feira", 370, 390, 120, Medidas.ALTURA_30);
-		sabado = Componentes.addCheckBox(this, "Sábado", 490, 390, 120, Medidas.ALTURA_30);
+		sabado = Componentes.addCheckBox(this, "Sabado", 490, 390, 120, Medidas.ALTURA_30);
 		domingo = Componentes.addCheckBox(this, "Domingo", 250, 420, 360, Medidas.ALTURA_30);
 		OuvinteCheckBoxDiaDaSemana ouvinte = new OuvinteCheckBoxDiaDaSemana(this);
 		cbSegunda.addActionListener(ouvinte);

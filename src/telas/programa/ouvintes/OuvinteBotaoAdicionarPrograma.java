@@ -16,8 +16,8 @@ public class OuvinteBotaoAdicionarPrograma implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		telaListagem.dispose();
 		new TelaNovoPrograma(telaListagem.getUsuario());
+		telaListagem.dispose();
 	}
 
 }

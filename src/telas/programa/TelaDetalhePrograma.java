@@ -27,7 +27,7 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 	private JLabel estilo;
 	private JLabel apresentador;
 	private JTextField apresentadores;
-
+	
 	public int getIndexLinha() {
 		return indexLinha;
 	}
@@ -40,13 +40,15 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 		return super.getUsuarioAtivo();
 	}
 
-	public TelaDetalhePrograma(int indexLinha, ProgramaDeTv programaSelecionado) {
+	public TelaDetalhePrograma(int indexLinha, ProgramaDeTv programaSelecionado, Usuario usuarioAtivo) {
 		this.indexLinha = indexLinha;
+		this.usuarioAtivo = usuarioAtivo;
 		usuarioAtivo = getUsuarioAtivo();
 		this.programaSelecionado = programaSelecionado;
 		deixarPreenchido();
 		adicionarMenu();
 		repaint();
+		System.out.println("Detalhe: " + usuarioAtivo);
 	}
 
 	public void adicionarMenu() {

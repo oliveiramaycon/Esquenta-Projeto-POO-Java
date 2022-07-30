@@ -26,7 +26,7 @@ public class OuvinteBotaoDetalhesPrograma implements ActionListener {
 		central.getProgramas().remove(indexLinha);
 		p.salvarCentral(central, "central");
 		tela.dispose();
-		new TelaDetalhePrograma(indexLinha, programa);
+		new TelaDetalhePrograma(indexLinha, programa, tela.getUsuario());
 	}
 
 }
