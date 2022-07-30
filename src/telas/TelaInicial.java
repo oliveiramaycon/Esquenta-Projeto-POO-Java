@@ -10,13 +10,13 @@ import javax.swing.JTextField;
 
 import telas.ouvintes.OuvintBotoesTelaInicial;
 import telas.ouvintes.OuvinteBotaoEntrar;
-import telas.ouvintes.OuvinteDaLabellRecuperarSenha;
 import telas.ouvintes.OuvinteLabelLink;
 import telas.usuario.TelaCadastroDeUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Imagens;
 import utilidades.Medidas;
+import utilidades.OutlineJLabel;
 import utilidades.Persistencia;
 
 public class TelaInicial extends TelaPadrao {
@@ -103,11 +103,9 @@ public class TelaInicial extends TelaPadrao {
 		Componentes.addJLabel(this, "Login", 550, 205, 70, 30);
 		Componentes.addJLabel(this, "Senha", 550, 297, 70, 30);
 
-		JLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 550, 367, 200, Medidas.ALTURA_30);
+		OutlineJLabel label = Componentes.addJLabel(this, "Esqueceu a senha?", 550, 367, 200, Medidas.ALTURA_30);
 		OuvinteLabelLink ouvinteLink = new OuvinteLabelLink(this, label);
-		OuvinteDaLabellRecuperarSenha ouvinteLabelRecupera = new OuvinteDaLabellRecuperarSenha(this);
 		label.addMouseListener(ouvinteLink);
-		label.addMouseListener(ouvinteLabelRecupera);
 		
 	}
 
