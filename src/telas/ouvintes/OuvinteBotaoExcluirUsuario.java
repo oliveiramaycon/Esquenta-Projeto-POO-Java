@@ -3,32 +3,33 @@ package telas.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import telas.TelaHome;
-import telas.TelaInicial;
+import javax.swing.JFrame;
+
+import telas.usuario.TelaCadastroDeUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Persistencia;
 
 public class OuvinteBotaoExcluirUsuario implements ActionListener {
-	
-	private TelaHome telaHome;
 
-	
-		public OuvinteBotaoExcluirUsuario(TelaHome telaHome) {
-			this.telaHome = telaHome;
-		}
-	
+	private JFrame tela;
+
+	public OuvinteBotaoExcluirUsuario(JFrame tela) {
+		super();
+		this.tela = tela;
+	}
+
+	public void actionPerformed(ActionEvent e) {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
-	
-	public void actionPerformed(ActionEvent e) {
-		
+
 		central.removerDados(0);
 		p.salvarCentral(central, "central");
-		Componentes.msgSucesso(telaHome, "Usuario Excluido com Sucesso!!");
-		telaHome.dispose();
-		new TelaInicial();
-	} 
-	
-	
+
+		Componentes.msgSucesso(tela, "Conta excluida com sucesso!");
+
+		tela.dispose();
+		new TelaCadastroDeUsuario();
+	}
+
 }

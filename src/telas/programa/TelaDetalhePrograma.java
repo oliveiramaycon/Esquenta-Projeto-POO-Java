@@ -17,6 +17,7 @@ import modelo.programa.enums.EnumFavorito;
 import modelo.programa.enums.Genero;
 import modelo.usuario.Usuario;
 import telas.programa.ouvintes.OuvinteCheckBoxDiaDaSemana;
+import utilidades.Componentes;
 
 public class TelaDetalhePrograma extends TelaNovoPrograma{
 
@@ -46,10 +47,14 @@ public class TelaDetalhePrograma extends TelaNovoPrograma{
 		usuarioAtivo = getUsuarioAtivo();
 		this.programaSelecionado = programaSelecionado;
 		deixarPreenchido();
+		adicionarMenu();
 		repaint();
 	}
+	
+	public void adicionarMenu() {
+		Componentes.addMenuPadrao(this);
+	}
 	private void deixarPreenchido() {
-		//SETANDO TEXTO
 		JTextField tfNome = getTfNome();
 		tfNome.setText(programaSelecionado.getNome());
 		JTextField tfhorario = getTfhorario();

@@ -37,7 +37,6 @@ public class OuvinteBotaoVoltarListagem implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		tela.dispose();
-		System.out.println("voltando: user -> " + usuarioLogado);
 
 		if (tela instanceof TelaNovoCanal) {
 			TelaNovoCanal telaNovoCanal = (TelaNovoCanal) tela;

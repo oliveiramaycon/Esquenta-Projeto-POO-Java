@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 import telas.TelaPadrao;
 import telas.usuario.ouvintes.OuvinteBotaoCadastroDeUsuario;
 import utilidades.Componentes;
+import utilidades.Icones;
 import utilidades.Imagens;
 import utilidades.Medidas;
 
@@ -50,13 +51,10 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 	
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
-		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
 	
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		//TODO: ouvinte voltar
 		JButton botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 390, 470, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		OuvinteBotaoCadastroDeUsuario ouvinteCadastrarUsuario = new OuvinteBotaoCadastroDeUsuario(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarUsuario);

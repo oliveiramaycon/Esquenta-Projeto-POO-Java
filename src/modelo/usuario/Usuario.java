@@ -80,7 +80,7 @@ public class Usuario {
 		this.confirmacaoDeSenha = confirmacaoDeSenha;
 		this.programasFavoritos = new ArrayList<ProgramaDeTv>();
 	}
-	//CRIEI PARA VALORES QUE NAO E PRECISO COLOCAR TODAS OS ATRIBUTOS:
+	
 	public Usuario() {
 	}
 	
@@ -100,9 +100,7 @@ public class Usuario {
 		if (login.length() < 5) {
 			throw new LoginComMenosCaracterisException();
 		}	
-//		} else if (verificarNumeros(loginUser))
-//			throw new LoginComNumerosException();
-//	}
+
 		}
 	public void validadorDeSenha(String senha,String confirmado) throws SenhaCurtaException, SenhaSemMinusculosException,
 			SenhaSemCaracterMaiusculaExecption, SenhaSemNumerosException, SenhaNaoIgualAConfirmacao {

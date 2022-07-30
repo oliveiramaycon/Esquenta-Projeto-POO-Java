@@ -21,6 +21,7 @@ import utilidades.Persistencia;
 
 public class TelaInicial extends TelaPadrao {
 	private JTextField tfLogin;
+	private JPasswordField tfSenha;
 
 	public JTextField getTfLogin() {
 		return tfLogin;
@@ -30,8 +31,7 @@ public class TelaInicial extends TelaPadrao {
 		this.tfLogin = tfLogin;
 	}
 
-	// CRIAR ATRIBUTO SENHA
-private JPasswordField tfSenha;
+	
 	
 	
 	public JPasswordField getTfSenha() {

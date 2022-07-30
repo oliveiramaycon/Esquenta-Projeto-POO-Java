@@ -22,13 +22,12 @@ public class Persistencia {
 	private XStream xstream = new XStream(new DomDriver("UTF-8"));
 	
 	public Persistencia() {
-		xstream.addPermission(NoTypePermission.NONE); //forbid everything
-		xstream.addPermission(NullPermission.NULL);   // allow "null"
-		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES); // allow primitive types
+		xstream.addPermission(NoTypePermission.NONE); 
+		xstream.addPermission(NullPermission.NULL);  
+		xstream.addPermission(PrimitiveTypePermission.PRIMITIVES); 
 		xstream.addPermission(AnyTypePermission.ANY);
 		
-		//xstream.ignoreUnknownElements();
-		xstream.allowTypeHierarchy(Collection.class);
+		xstream.allowTypeHierarchy(Collection.class); 
 		xstream.allowTypesByWildcard(new String[] { 
 		        "excecoes.**",
 		        "main.**",

@@ -25,7 +25,6 @@ public class OuvinteLabelLink implements MouseListener {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		//todo: lógica executada ao clicar no label
 		
 	}
 

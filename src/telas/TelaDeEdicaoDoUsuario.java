@@ -49,7 +49,6 @@ public class TelaDeEdicaoDoUsuario extends TelaPadrao {
 	
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
-		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
 	

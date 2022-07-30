@@ -32,16 +32,15 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-
 		try {
 			Validador.validarPreenchimentoCanal(telaCanal);
 
-			// obter valores dos campos da tela
 
 			String nome = telaCanal.getTfNome().getText();
 			TipoCanal tipo = telaCanal.obterTipoSelecionado();
 			String numeroOuLink = telaCanal.getTfNumeroOuLink().getText();
 
+			// cadastro
 			if (telaCanal.getCanal() == null) {
 				Canal canal = null;
 
@@ -52,9 +51,10 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 				}
 
 				central.adicionarCanal(canal);
+				persistencia.salvarCentral(central, "central");
 				Componentes.msgSucesso(telaCanal, "Canal cadastrado com sucesso!");
 				new TelaListagemCanais(telaCanal.getUsuarioLogado());
-			} else {
+			} else { // edicao
 
 				Canal canalSalvo = central.recuperarCanalPeloId(telaCanal.getCanal().getId());
 				canalSalvo.setNome(nome);
@@ -62,24 +62,19 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 				canalSalvo.setDataDeAtualizacao(LocalDateTime.now());
 
 				if (telaCanal.getRb1().isSelected()) {
-					// numero
 					CanalDeTv canalDeTvSalvo = (CanalDeTv) canalSalvo;
-
 					canalDeTvSalvo.setNumeroCanal(Integer.parseInt(numeroOuLink));
-
 					canalSalvo = canalDeTvSalvo;
 				} else {
-					// link
 					CanalBroadcasting canalBroadcastingSalvo = (CanalBroadcasting) canalSalvo;
-
 					canalBroadcastingSalvo.setLink(numeroOuLink);
-
 					canalSalvo = canalBroadcastingSalvo;
 				}
+				persistencia.salvarCentral(central, "central");
 				Componentes.msgSucesso(telaCanal, "Canal editado com sucesso!");
 				new TelaDetalheCanal(telaCanal.getUsuarioLogado(), canalSalvo);
 			}
-			persistencia.salvarCentral(central, "central");
+
 			telaCanal.dispose();
 
 		} catch (CamposIncompletosException | NumberFormatException | RegistroExistenteException

@@ -7,24 +7,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import modelo.usuario.Usuario;
-import telas.ouvintes.OuvinteBotaoExcluirUsuario;
-import telas.ouvintes.OuvinteDoBotaoEditorPerfil;
 import telas.ouvintes.OuvinteTelaHome;
 import telas.programa.TelaListagemProgramas;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
-import utilidades.GeradorDePdf;
-import utilidades.Icones;
 import utilidades.Imagens;
 import utilidades.Medidas;
-import utilidades.Mensageiro;
 import utilidades.OutlineJLabel;
 import utilidades.Persistencia;
 
@@ -50,6 +41,7 @@ public class TelaHome extends TelaPadrao {
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
+		adicionarMenu();
 		adicionarBotoes();
 
 	}
@@ -59,25 +51,11 @@ public class TelaHome extends TelaPadrao {
 		setContentPane(background);
 	}
 
+	public void adicionarMenu() {
+		Componentes.addMenuPadrao(this).setBounds(719, 0, 45, 30);
+	}
+
 	public void adicionarBotoes() {
-
-		JMenuBar barraMenu = Componentes.addJMenubar(this, 600, 0, 80, 80);
-		JMenu menu = Componentes.addJMenuComIcone(barraMenu, Icones.ENGRENAGEM);
-		menu.setToolTipText("opcoes");
-
-		JMenuItem perfil = Componentes.addItemNoMenu(menu, "Sair");
-		
-		
-		// MENU DE DELETACAO DO USUARIO:
-		JMenuItem deletar = Componentes.addItemNoMenu(menu, "Excluir Usuario");
-		OuvinteBotaoExcluirUsuario ouvinteBotaoExcluir = new OuvinteBotaoExcluirUsuario(this);
-		deletar.addActionListener(ouvinteBotaoExcluir);
-				
-		//
-		JMenuItem editarUsuario = Componentes.addItemNoMenu(menu, "Editar Perfil");
-		OuvinteDoBotaoEditorPerfil ouveBotaoPerfil = new OuvinteDoBotaoEditorPerfil(this);
-		editarUsuario.addActionListener(ouveBotaoPerfil);
-
 
 		JPanel painel = new JPanel(new GridLayout(2, 4, 1, 5));
 		painel.setBackground(Color.decode("#fff4e2"));
@@ -87,29 +65,11 @@ public class TelaHome extends TelaPadrao {
 		botaoProgramas.addActionListener(ouvinteTelaHome);
 		JButton botaoCanais = Componentes.adicionarJButton(painel, "Canais", Imagens.BANNER_CANAL, 0, 0, 0, 0);
 		botaoCanais.addActionListener(ouvinteTelaHome);
-		
-		JButton botaoEnviarEmail = Componentes.addJButton(this, "Enviar E-mail", 130, 40, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		botaoEnviarEmail.addActionListener(new OuvinteBotaoEmail());
-		JButton botaoGerarPdf = Componentes.addJButton(this, "Gerar relacao", 0, 40, 130, Medidas.ALTURA_30);
-		botaoGerarPdf.addActionListener(new OuvinteBotaoRelacaoFavorito());
+
 		painel.setBounds(130, 100, 528, 520);
 		add(painel);
 	}
-	private class OuvinteBotaoRelacaoFavorito implements ActionListener{
 
-		public void actionPerformed(ActionEvent e) {
-			GeradorDePdf.SeriesFavoritas();
-			JOptionPane.showMessageDialog(null, "Documento gerado com sucesso");
-		}
-	}
-	private class OuvinteBotaoEmail implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			GeradorDePdf.ObterProgramacao();
-			Mensageiro.enviarEmail();
-		}
-		
-	}
 	private class OuvinteBotaoPrograma implements ActionListener {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
@@ -124,15 +84,15 @@ public class TelaHome extends TelaPadrao {
 
 	public void adiconarLabels() {
 
-		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30).setOutlineColor(Color.WHITE);
-		OutlineJLabel lbUsuario = Componentes.addJLabel(this, usuarioLogado.getNome(), 318, 40, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30)
+				.setOutlineColor(Color.WHITE);
+		OutlineJLabel lbUsuario = Componentes.addJLabel(this, usuarioLogado.getNome(), 318, 40, Medidas.COMPRIMENTO_310,
+				Medidas.ALTURA_30);
 		lbUsuario.setOutlineColor(Color.WHITE);
-		
+
 		String nomeUsuario = usuarioLogado.getNome();
 		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, nomeUsuario, 318, 40, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
 
 	}
-	// remover caso seja necess�rio e utilizar outro esquema
-
 }

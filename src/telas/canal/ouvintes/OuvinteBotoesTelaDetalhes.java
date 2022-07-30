@@ -31,7 +31,7 @@ public class OuvinteBotoesTelaDetalhes implements ActionListener {
 			new TelaNovoCanal(telaDetalheCanal.getCanal(), telaDetalheCanal.getUsuarioLogado());
 
 		} else {
-			int opcao = Componentes.showConfirmDialog(telaDetalheCanal, "Tem certeza?", "Exlusão");
+			int opcao = Componentes.showConfirmDialog(telaDetalheCanal, "Tem certeza?", "Exlusao");
 			if (opcao == JOptionPane.YES_OPTION) {
 
 				Persistencia persistencia = new Persistencia();
@@ -39,7 +39,7 @@ public class OuvinteBotoesTelaDetalhes implements ActionListener {
 				try {
 					central.excluirCanal(telaDetalheCanal.getCanal().getId());
 					persistencia.salvarCentral(central, "central");
-					Componentes.msgSucesso(telaDetalheCanal, "Excluído com sucesso!");
+					Componentes.msgSucesso(telaDetalheCanal, "Excluido com sucesso!");
 					new TelaListagemCanais(telaDetalheCanal.getUsuarioLogado());
 				} catch (RegistroNaoEncontradoException e1) {
 

@@ -3,21 +3,23 @@ package telas.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+
 import telas.TelaDeEdicaoDoUsuario;
-import telas.TelaHome;
 
 public class OuvinteDoBotaoEditorPerfil implements ActionListener {
-	TelaHome telaHome;
-	
-	public OuvinteDoBotaoEditorPerfil(TelaHome telaHome) {
-		this.telaHome = telaHome;
-	
+
+	private JFrame tela;
+
+	public OuvinteDoBotaoEditorPerfil(JFrame tela) {
+		super();
+		this.tela = tela;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
-		telaHome.dispose();
+		tela.dispose();
 		new TelaDeEdicaoDoUsuario();
-		
+
 	}
 
 }

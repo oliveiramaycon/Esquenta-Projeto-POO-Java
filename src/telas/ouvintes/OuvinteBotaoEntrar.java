@@ -11,7 +11,7 @@ import telas.TelaInicial;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
-// CRIEI ESTE OUVINTE PARA VALIDACAO DE ENTRADA.
+
 public class OuvinteBotaoEntrar implements ActionListener{
 	
 	private TelaInicial telaInicial;
@@ -39,7 +39,6 @@ public class OuvinteBotaoEntrar implements ActionListener{
 		Usuario checkUser = central.validarEntrada(login);  
 		
 		if(checkUser != null && !checkUser.getLogin().equals(senha) ) {
-			JOptionPane.showMessageDialog(telaInicial, "Seja bem Vindo" + login);
 			new TelaHome(checkUser);
 			telaInicial.dispose();
 		}else

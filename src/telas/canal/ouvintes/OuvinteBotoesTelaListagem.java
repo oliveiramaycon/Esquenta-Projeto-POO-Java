@@ -41,7 +41,6 @@ public class OuvinteBotoesTelaListagem implements ActionListener {
 			try {
 				canalSelecionado = central.recuperarCanalPeloId(id);
 			} catch (RegistroNaoEncontradoException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			new TelaDetalheCanal(telaListagem.getUsuarioLogado(), canalSelecionado);

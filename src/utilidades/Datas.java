@@ -18,20 +18,7 @@ public class Datas {
 	}
 	
 	
-	//-----------------------
-	private void validarFormatoData(String data) {
-		
-		String[] arrayData = data.split("/");
-		
-		if(arrayData.length > 3) {
-			//TODO: EXCEÇÃO
-		}
-		if(arrayData[0].length() != 2 || arrayData[1].length() != 2 || arrayData[3].length() != 4) {
-			//TODO: exceção
-		}
-		
-		
-	}
+	
 	
 	public static String formatar(Date data) {
 		DateFormat formater = new SimpleDateFormat("dd/MM/yyyy HH:mm");

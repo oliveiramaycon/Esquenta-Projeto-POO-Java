@@ -17,7 +17,6 @@ public class CanalBroadcasting extends Canal{
 	public CanalBroadcasting(String nome, TipoCanal tipoCanal, String link, Usuario dono) {
 		super(nome, tipoCanal, dono);
 		this.link = link;
-		// TODO Auto-generated constructor stub
 	}
 
 	

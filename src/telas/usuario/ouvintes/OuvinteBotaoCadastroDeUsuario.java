@@ -73,7 +73,7 @@ public class OuvinteBotaoCadastroDeUsuario implements ActionListener{
 		try {
 			central.adicionarUsuario(usuario);
 			persistencia.salvarCentral(central, "central");
-			Componentes.msgSucesso(telaCadastro, "Usu�rio cadastrado com sucesso!");
+			Componentes.msgSucesso(telaCadastro, "Usuario cadastrado com sucesso!");
 			
 			TelaInicial	telaInicia	= new TelaInicial();
 			telaInicia.getTfLogin().setText(usuario.getLogin());;

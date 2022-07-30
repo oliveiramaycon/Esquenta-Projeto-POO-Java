@@ -41,7 +41,9 @@ import modelo.programa.ProgramasContinuos;
 import modelo.programa.SeriesRegulares;
 import modelo.programa.enums.TipoPrograma;
 import modelo.usuario.Usuario;
+import telas.ouvintes.OuvinteDoBotaoEditorPerfil;
 import telas.ouvintes.OuvinteHandCursor;
+import telas.ouvintes.OuvinteMenu;
 import telas.programa.TelaNovoPrograma;
 
 public class Componentes {
@@ -53,9 +55,10 @@ public class Componentes {
 		return botao;
 	}
 
-	public static JButton addJButton(JFrame tela, String nome, ImageIcon icone, int x, int y, int comprimento,
+	public static JButton addJButton(JFrame tela, String texto, ImageIcon icone, int x, int y, int comprimento,
 			int altura) {
-		JButton botao = new JButton(nome);
+		JButton botao = new JButton();
+		botao.setToolTipText(texto);
 		botao.setIcon(icone);
 		botao.setBounds(x, y, comprimento, altura);
 		OuvinteHandCursor cursorHand = new OuvinteHandCursor(botao);
@@ -74,7 +77,7 @@ public class Componentes {
 		botao.setBounds(x, y, comprimento, altura);
 		painel.add(botao);
 
-//		\/ faz um contorno suave no em cima do botão para indicar que ele está selecionado
+//		\/ faz um contorno suave no em cima do botao para indicar que ele esta selecionado
 		botao.setFocusPainted(false);
 		OuvinteHandCursor cursorHand = new OuvinteHandCursor(botao);
 		botao.addMouseListener(cursorHand);
@@ -113,7 +116,7 @@ public class Componentes {
 		tela.add(field);
 		return field;
 	}
-	//SO PRA PASWORD FIELD:
+	
 	public static JPasswordField addJPswordField(JFrame tela , int x, int y, int comprimento, int altura) {
 		JPasswordField paswordField = new JPasswordField();
 		paswordField.setBounds(x, y, comprimento, altura);
@@ -129,6 +132,33 @@ public class Componentes {
 		janela.add(barraMenu);
 		return barraMenu;
 	}
+	
+	public static JMenuBar addMenuPadrao(JFrame janela) {
+		JMenuBar barraMenu = new JMenuBar();
+		barraMenu.setBounds(838, 0, 45, 30);
+		barraMenu.setBackground(Color.BLACK);
+		barraMenu.setForeground(Color.black);
+		
+		JMenu menu = addJMenuComIcone(barraMenu, Icones.ENGRENAGEM);
+		menu.setToolTipText("opcoes");
+		
+		OuvinteMenu ouvinteMenu = new OuvinteMenu(janela);
+		
+		JMenuItem sair = addItemNoMenu(menu, "Sair");
+		sair.addActionListener(ouvinteMenu);
+		
+		JMenuItem deletar = addItemNoMenu(menu, "Excluir Conta");
+		deletar.addActionListener(ouvinteMenu);
+		
+
+		JMenuItem editarUsuario = addItemNoMenu(menu, "Editar Perfil");
+		editarUsuario.addActionListener(ouvinteMenu);
+		
+		
+		
+		janela.add(barraMenu);
+		return barraMenu;
+	}
 
 	public static JMenu addJMenuComIcone(JMenuBar barraDeMenu, ImageIcon icone) {
 		JMenu menu = new JMenu();
@@ -136,6 +166,7 @@ public class Componentes {
 		barraDeMenu.add(menu);
 		return menu;
 	}
+	
 
 	public static JMenuItem addItemNoMenu(JMenu menu, String nome) {
 		JMenuItem item = new JMenuItem(nome);
@@ -149,8 +180,7 @@ public class Componentes {
 	}
 
 	public static void msgSucesso(JFrame janela, String msg) {
-		JOptionPane.showMessageDialog(janela, msg, "Sucesso", JOptionPane.OK_OPTION, Icones.ENGRENAGEM); //// mudar
-																											//// icone(setinha)
+		JOptionPane.showMessageDialog(janela, msg, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static int showConfirmDialog(JFrame janela, String msg, String titulo) {

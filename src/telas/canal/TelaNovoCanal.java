@@ -49,7 +49,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	public TelaNovoCanal(Canal canal, Usuario usuarioLogado) {
-		super("Edi��o de Canal");
+		super("Edicao de Canal");
 		this.canal = canal;
 		this.usuarioLogado = usuarioLogado;
 		adicionarBotoes();
@@ -163,6 +163,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
+		adicionarMenu();
 		adiconarLabels();
 		adicionarTextFields();
 		adicionarRadios();
@@ -171,12 +172,14 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
-		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
-
+	
+	public void adicionarMenu() {
+		Componentes.addMenuPadrao(this);
+	}
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 40, 20, Medidas.COMPRIMENTO_130,Medidas.ALTURA_30);
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 40, 20, Medidas.COMPRIMENTO_50,Medidas.ALTURA_30);
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
 		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
 

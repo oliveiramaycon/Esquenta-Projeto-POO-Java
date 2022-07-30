@@ -3,17 +3,13 @@ package main;
 
 import modelo.usuario.Usuario;
 import telas.TelaHome;
-import telas.TelaInicial;
-import telas.canal.TelaListagemCanais;
-import telas.programa.TelaListagemProgramas;
-import telas.programa.TelaNovoPrograma;
 
 
 public class Main {
 public static void main(String[] args) {
 		
-		TelaInicial telaInicio = new TelaInicial();
-//		TelaHome telaHome = new TelaHome(new Usuario("manco", "manco@gmail.com", "manco", "Mancones1", "Mancones1"));
+//		TelaInicial telaInicio = new TelaInicial();
+		TelaHome telaHome = new TelaHome(new Usuario("manco", "manco@gmail.com", "manco", "Mancones1", "Mancones1"));
 //		TelaCadastroDeUsuario telaCadastroUsuario = new TelaCadastroDeUsuario();
 //		TelaNovoCanal novoCanal = new TelaNovoCanal(new Usuario("manco", "manco@gmail.com", "manco", "Mancones1", "Mancones1"));
 		

@@ -200,6 +200,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
+		adicionarMenu();
 		adicionarBotoes();
 		adiconarLabels();
 		adicionarTextFields();
@@ -208,6 +209,9 @@ public class TelaNovoPrograma extends TelaPadrao {
 		adicionarCheckBox();
 	}
 
+	public void adicionarMenu() {
+		Componentes.addMenuPadrao(this);
+	}
 	private void adicionarCheckBox() {
 		cbSegunda = Componentes.addCheckBox(this, "Segunda-Feira", 250, 360, 120, Medidas.ALTURA_30);
 		terca = Componentes.addCheckBox(this, "Terca-Feira", 370, 360, 120, Medidas.ALTURA_30);
@@ -232,7 +236,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_130,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar",Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);
 		OuvinteBotaoVoltar ouvinteBotaoVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar.addActionListener(ouvinteBotaoVoltar);

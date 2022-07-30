@@ -88,22 +88,26 @@ public class TelaListagemCanais extends TelaPadrao {
 	public TelaListagemCanais(Usuario usuarioLogado) {
 		super("Listagem de Canais");
 		this.usuarioLogado = usuarioLogado;
-		adicionarTabela(); // est� aqui por conta que � necess�rio informa��es do usu�rio
-							// logado
+		adicionarTabela();
+		adicionarBotoes();
 
 	}
 
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
+		adicionarMenu();
 		adiconarLabels();
-		adicionarBotoes();
 		adicionarTextField();
 	}
 
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTAGEM);
 		setContentPane(background);
+	}
+
+	public void adicionarMenu() {
+		Componentes.addMenuPadrao(this);
 	}
 
 	public void adiconarLabels() {
@@ -129,10 +133,10 @@ public class TelaListagemCanais extends TelaPadrao {
 
 	public void adicionarBotoes() {
 
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", 20, 20, Medidas.COMPRIMENTO_130,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);
 		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuarioLogado));
-		
+
 		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 800, 95, 30, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteAdd = new OuvinteBotoesTelaListagem(this);
 		botaoAddCanal.addActionListener(ouvinteAdd);

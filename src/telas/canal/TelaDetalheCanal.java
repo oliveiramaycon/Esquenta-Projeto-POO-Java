@@ -155,13 +155,18 @@ public class TelaDetalheCanal extends TelaPadrao {
 	@Override
 	public void adicionarComponentesGraficos() {
 		adicionarBackground();
+		adicionarMenu();
 		adicionarTextFields();
 		adicionarRadios();
 		addComboBoxes();
 	}
-
+	
+	public void adicionarMenu() {
+		Componentes.addMenuPadrao(this);
+	}
+	
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_130,
+		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);
 		OuvinteBotaoVoltarListagem ouvinteBotaoVoltarParaListagem = new OuvinteBotaoVoltarListagem(this, usuarioLogado);
 		botaoVoltar.addActionListener(ouvinteBotaoVoltarParaListagem);
@@ -178,7 +183,6 @@ public class TelaDetalheCanal extends TelaPadrao {
 
 	public void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
-		// background.setBounds(0,0,786, 524);
 		setContentPane(background);
 	}
 
@@ -190,7 +194,7 @@ public class TelaDetalheCanal extends TelaPadrao {
 		Componentes.addJLabel(this, "Nome", 240, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Tipo", 240, 200, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
-		numeroCanal = Componentes.addJLabel(this, "Número do Canal", 240, 315, Medidas.COMPRIMENTO_255,
+		numeroCanal = Componentes.addJLabel(this, "Nï¿½mero do Canal", 240, 315, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
 		linkBroadcasting = Componentes.addJLabel(this, "Link", 240, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		linkBroadcasting.setVisible(false);
@@ -215,10 +219,6 @@ public class TelaDetalheCanal extends TelaPadrao {
 		rb1 = Componentes.addRadioButton(this, "Televisao", 240, 233, 170, Medidas.ALTURA_30);
 		rb1.setSelected(true);
 		rb2 = Componentes.addRadioButton(this, "Broadcasting", 410, 233, 230, Medidas.ALTURA_30);
-//		OuvinteRadioButton ouvinteRadioBotao = new OuvinteRadioButton(this);
-
-//		rb1.addActionListener(ouvinteRadioBotao);
-//		rb2.addActionListener(ouvinteRadioBotao);
 		ButtonGroup group = new ButtonGroup();
 		group.add(rb1);
 		group.add(rb2);
