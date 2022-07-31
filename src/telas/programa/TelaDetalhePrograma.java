@@ -2,6 +2,7 @@ package telas.programa;
 
 import java.time.DayOfWeek;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -76,6 +77,8 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 
 		estilos = getEstilos();
 		estilo = getEstilo();
+		JButton botaoVoltar = getBotaoVoltar();
+		botaoVoltar.setVisible(false);
 		JRadioButton rb1 = getRb1();
 		JRadioButton rb2 = getRb2();
 		JRadioButton rb3 = getRb3();

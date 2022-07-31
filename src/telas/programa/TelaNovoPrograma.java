@@ -40,6 +40,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	private JTextField tfApresentadores;
 	private JTextField dataRetorno;
 	private JButton botaoCadastrar;
+	private JButton botaoVoltar;
 	private JLabel genero;
 	private JLabel estilo;
 	private JLabel apresentadores;
@@ -63,6 +64,10 @@ public class TelaNovoPrograma extends TelaPadrao {
 	private JCheckBox domingo;
 	private DayOfWeek[] dia;
 
+	public JButton getBotaoVoltar() {
+		return botaoVoltar;
+	}
+	
 	public JLabel getData() {
 		return data;
 	}
@@ -249,7 +254,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
+		botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);
 		OuvinteBotaoVoltar ouvinteBotaoVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar.addActionListener(ouvinteBotaoVoltar);

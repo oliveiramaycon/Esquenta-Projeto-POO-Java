@@ -39,10 +39,13 @@ import modelo.canal.CanalDeTv;
 import modelo.programa.ProgramaDeTv;
 import modelo.programa.ProgramasContinuos;
 import modelo.programa.SeriesRegulares;
+import modelo.programa.enums.EnumFavorito;
 import modelo.programa.enums.TipoPrograma;
+import modelo.programa.exceptions.ProgramaNaoFavoritado;
 import modelo.usuario.Usuario;
 import telas.ouvintes.OuvinteHandCursor;
 import telas.ouvintes.OuvinteMenu;
+import telas.programa.TelaListagemProgramas;
 import telas.programa.TelaNovoPrograma;
 
 public class Componentes {
@@ -638,114 +641,4 @@ public class Componentes {
 	 * representa o componente adicionado na tela
 	 * 
 	 */	
-	public static JTable addTabelaTodosProgramas(JFrame tela, Usuario usuarioLogado, JTextField tfPesquisa, int x,
-			int y, int comprimento, int altura) {
-		DefaultTableModel modelo = new DefaultTableModel() {
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			}
-		};
-
-		JTable tabela = new JTable(modelo);
-		tabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(tabela.getModel());
-		tabela.setRowSorter(rowSorter);
-
-		tfPesquisa.getDocument().addDocumentListener(new DocumentListener() {
-
-			@Override
-			public void insertUpdate(DocumentEvent e) {
-				String text = tfPesquisa.getText();
-
-				if (text.trim().length() == 0) {
-					rowSorter.setRowFilter(null);
-				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-				}
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e) {
-				String text = tfPesquisa.getText();
-
-				if (text.trim().length() == 0) {
-					rowSorter.setRowFilter(null);
-				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-				}
-			}
-
-			@Override
-			public void changedUpdate(DocumentEvent e) {
-				throw new UnsupportedOperationException("Not supported yet.");
-			}
-
-		});
-
-		Persistencia persistencia = new Persistencia();
-		CentralDeInformacoes central = persistencia.recuperarCentral("central");
-
-		ArrayList<ProgramaDeTv> programas = central.getProgramas();
-
-		if (programas.size() == 0) {
-			modelo.addColumn("Nao ha programas cadastrados!");
-		} else {
-			modelo.addColumn("ID");
-			modelo.addColumn("Nome");
-			modelo.addColumn("Canal");
-			modelo.addColumn("Preferencia");
-			modelo.addColumn("Genero ou Apresentadores");
-			modelo.addColumn("Estilo");
-			modelo.addColumn("Horario");
-			modelo.addColumn("Temporadas");
-			modelo.addColumn("Status do Programa");
-
-//				escondendo a coluna ID 
-			tabela.getColumnModel().getColumn(0).setMinWidth(0);
-			tabela.getColumnModel().getColumn(0).setMaxWidth(0);
-
-			Object[] linhas = new Object[programas.size()];
-
-			for (ProgramaDeTv programa : programas) {
-				Object[] linha = new Object[9];
-
-				String estilo = null;
-				String generoouApresentadores = null;
-				String preferencia = String.valueOf(programa.getFavorito());
-				if (programa.getTipo() == TipoPrograma.SERIES_REGULARES) {
-					SeriesRegulares programaModificado = (SeriesRegulares) programa;
-					generoouApresentadores = String.valueOf(programaModificado.getGenero());
-					estilo = (String.valueOf(programaModificado.getEstilo()));
-				} else {
-					ProgramasContinuos programaModificado = (ProgramasContinuos) programa;
-
-					String apresentadores = "";
-					for (String concatenar : programaModificado.getApresentadores()) {
-						apresentadores += concatenar + ",";
-					}
-
-					generoouApresentadores = apresentadores;
-				}
-
-				linha[0] = programa.getId();
-				linha[1] = programa.getNome();
-				linha[2] = programa.getCanal().toString();
-				linha[3] = preferencia;
-				linha[4] = generoouApresentadores;
-				linha[5] = estilo;
-				linha[6] = programa.getHorario();
-				linha[7] = programa.getTemporadas();
-				linha[8] = programa.getStatus();
-
-				modelo.addRow(linha);
-			}
-			tabela.addRowSelectionInterval(0, 0);
-		}
-
-		JScrollPane scroll = new JScrollPane(tabela);
-		scroll.setBounds(x, y, comprimento, altura);
-		tela.add(scroll);
-		return tabela;
-	}
 }

@@ -2,8 +2,8 @@
 <utilidades.CentralDeInformacoes>
   <programas>
     <modelo.programa.SeriesRegulares>
-      <id>1659164138469</id>
-      <nome>asdda</nome>
+      <id>1659295077940</id>
+      <nome>sdiofdsoifjs</nome>
       <tipo>SERIES_REGULARES</tipo>
       <canal class="modelo.canal.CanalDeTv">
         <nome>sbt</nome>
@@ -23,25 +23,12 @@
       </canal>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
-      <horario>13:23</horario>
-      <temporadas>233</temporadas>
+      <horario>20:00</horario>
+      <temporadas>001</temporadas>
       <diasDaSemana>
         <day-of-week>TUESDAY</day-of-week>
         <day-of-week>FRIDAY</day-of-week>
       </diasDaSemana>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1659164139755</id>
-      <nome>asdda</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>13:23</horario>
-      <temporadas>233</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
