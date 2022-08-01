@@ -145,6 +145,11 @@ public class TelaListagemProgramas extends TelaPadrao {
 		botaoDeletar = Componentes.addJButton(this, "Excluir",500, 490, 100, Medidas.ALTURA_30);
 		OuvinteBotaoExcluirPrograma ouvinteBotaoExcluirPrograma = new OuvinteBotaoExcluirPrograma(this);
 		botaoDeletar.addActionListener(ouvinteBotaoExcluirPrograma);
+		
+		if(tabelaListagem.getModel().getRowCount() == 0){
+			botaoDetalhes.setEnabled(false);
+			botaoDeletar.setEnabled(false);
+		}
 	}
 
 	private void adicionarBackground() {

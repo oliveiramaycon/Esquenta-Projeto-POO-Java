@@ -29,7 +29,6 @@ public class OuvinteBotoesTelaListagem implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String txtBotao = e.getActionCommand();
-
 		telaListagem.dispose();
 		if (txtBotao.equals("Detalhes")) {
 			Persistencia persistencia = new Persistencia();

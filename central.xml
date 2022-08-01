@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<utilidades.CentralDeInformacoes>
+  <programas/>
+  <canais>
+    <modelo.canal.CanalDeTv>
+      <nome>sada</nome>
+      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
+      <id>1659328189976</id>
+      <programas/>
+      <dataDeCadastro>2022-08-01T01:29:49.979204</dataDeCadastro>
+      <dono>
+        <nome>mamaco</nome>
+        <email>a@gmail.com</email>
+        <login>mamaco</login>
+        <senha>Mamaco1</senha>
+        <confirmacaoDeSenha>Mamaco1</confirmacaoDeSenha>
+        <programasFavoritos/>
+      </dono>
+      <numeroCanal>2</numeroCanal>
+    </modelo.canal.CanalDeTv>
+  </canais>
+  <usuariosCadastrados>
+    <modelo.usuario.Usuario>
+      <nome>mamaco</nome>
+      <email>a@gmail.com</email>
+      <login>mamaco</login>
+      <senha>Mamaco1</senha>
+      <confirmacaoDeSenha>Mamaco1</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+  </usuariosCadastrados>
+</utilidades.CentralDeInformacoes>

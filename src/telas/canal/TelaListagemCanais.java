@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import com.itextpdf.text.log.SysoCounter;
+
 import modelo.usuario.Usuario;
 import telas.TelaPadrao;
 import telas.canal.ouvintes.OuvinteBotoesTelaListagem;
@@ -122,6 +124,8 @@ public class TelaListagemCanais extends TelaPadrao {
 
 	private void adicionarTabela() {
 		tabelaListagem = Componentes.addTabelaTodosCanais(this, this.usuarioLogado, tfPesquisa, 30, 130, 800, 350);
+		
+		
 	}
 
 	private void adicionarTextField() {
@@ -145,6 +149,9 @@ public class TelaListagemCanais extends TelaPadrao {
 		botaoDetalhes = Componentes.addJButton(this, "Detalhes", 700, 490, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteDetalhes = new OuvinteBotoesTelaListagem(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
+		if(tabelaListagem.getModel().getRowCount() == 0){
+			botaoDetalhes.setEnabled(false);
+		}
 	}
 
 }
