@@ -11,9 +11,8 @@ import modelo.canal.enums.TipoCanal;
 import modelo.canal.exceptions.CamposIncompletosException;
 import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
-import telas.canal.TelaDetalheCanal;
+import telas.canal.TelaCanal;
 import telas.canal.TelaListagemCanais;
-import telas.canal.TelaNovoCanal;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Persistencia;
@@ -21,11 +20,11 @@ import utilidades.Validador;
 
 public class OuvinteBotaoCadastrarCanal implements ActionListener {
 
-	private TelaNovoCanal telaCanal;
+	private TelaCanal telaCanal;
 	private Persistencia persistencia = new Persistencia();
 	private CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
-	public OuvinteBotaoCadastrarCanal(TelaNovoCanal telaCanal) {
+	public OuvinteBotaoCadastrarCanal(TelaCanal telaCanal) {
 		this.telaCanal = telaCanal;
 	}
 
@@ -71,7 +70,7 @@ public class OuvinteBotaoCadastrarCanal implements ActionListener {
 				}
 				persistencia.salvarCentral(central, "central");
 				Componentes.msgSucesso(telaCanal, "Canal editado com sucesso!");
-				new TelaDetalheCanal(telaCanal.getUsuarioLogado(), canalSalvo);
+				new TelaCanal(telaCanal.getUsuarioLogado(), canalSalvo, true);
 			}
 
 			telaCanal.dispose();

@@ -3,11 +3,11 @@ package telas.canal.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import telas.canal.TelaDetalheCanal;
+import telas.canal.TelaCanal;
 import telas.canal.TelaListagemCanais;
 
 public class OuvinteBotaoDetalhes implements ActionListener {
-	private TelaDetalheCanal telaDetalhes;
+	private TelaCanal tela;
 
 	private TelaListagemCanais TelaListagemCanais;
 
@@ -26,7 +26,7 @@ public class OuvinteBotaoDetalhes implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		TelaListagemCanais.dispose();
-		new TelaDetalheCanal(telaDetalhes.getUsuarioLogado(), telaDetalhes.getCanal());
+		new TelaCanal(tela.getUsuarioLogado(), tela.getCanal(), true);
 
 	}
 

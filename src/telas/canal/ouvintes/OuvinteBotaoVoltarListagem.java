@@ -5,9 +5,8 @@ import java.awt.event.ActionListener;
 
 import modelo.usuario.Usuario;
 import telas.TelaPadrao;
-import telas.canal.TelaDetalheCanal;
+import telas.canal.TelaCanal;
 import telas.canal.TelaListagemCanais;
-import telas.canal.TelaNovoCanal;
 
 public class OuvinteBotaoVoltarListagem implements ActionListener {
 
@@ -38,12 +37,15 @@ public class OuvinteBotaoVoltarListagem implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		tela.dispose();
 
-		if (tela instanceof TelaNovoCanal) {
-			TelaNovoCanal telaNovoCanal = (TelaNovoCanal) tela;
+		if (tela instanceof TelaCanal) {
+			TelaCanal telaNovoCanal = (TelaCanal) tela;
 			if (telaNovoCanal.getCanal() == null) {
 				new TelaListagemCanais(usuarioLogado);
-			} else {
-				new TelaDetalheCanal(usuarioLogado, telaNovoCanal.getCanal());
+			} else if(telaNovoCanal.isDetalhe()) {
+				new TelaListagemCanais(usuarioLogado);				
+			}
+			else {
+				new TelaCanal(usuarioLogado, telaNovoCanal.getCanal(), true);
 			}
 		} else {
 			new TelaListagemCanais(usuarioLogado);

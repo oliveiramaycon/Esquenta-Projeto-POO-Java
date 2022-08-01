@@ -3,21 +3,21 @@ package telas.canal.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import telas.canal.TelaNovoCanal;
+import telas.canal.TelaCanal;
 
 public class OuvinteRadioButton implements ActionListener {
 
-	private TelaNovoCanal tela;
+	private TelaCanal tela;
 
-	public TelaNovoCanal getTela() {
+	public TelaCanal getTela() {
 		return tela;
 	}
 
-	public void setTela(TelaNovoCanal tela) {
+	public void setTela(TelaCanal tela) {
 		this.tela = tela;
 	}
 
-	public OuvinteRadioButton(TelaNovoCanal tela) {
+	public OuvinteRadioButton(TelaCanal tela) {
 		this.tela = tela;
 	}
 

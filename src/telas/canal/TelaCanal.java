@@ -1,6 +1,8 @@
 package telas.canal;
 
 import java.awt.Color;
+import java.time.ZoneId;
+import java.util.Date;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -17,15 +19,17 @@ import modelo.usuario.Usuario;
 import telas.TelaPadrao;
 import telas.canal.ouvintes.OuvinteBotaoCadastrarCanal;
 import telas.canal.ouvintes.OuvinteBotaoVoltarListagem;
+import telas.canal.ouvintes.OuvinteBotoesTelaDetalhes;
 import telas.canal.ouvintes.OuvinteRadioButton;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
+import utilidades.Datas;
 import utilidades.Icones;
 import utilidades.Imagens;
 import utilidades.Medidas;
 import utilidades.OutlineJLabel;
 
-public class TelaNovoCanal extends TelaPadrao {
+public class TelaCanal extends TelaPadrao {
 
 	private JTextField tfNome;
 	private JTextField tfTipo;
@@ -40,20 +44,30 @@ public class TelaNovoCanal extends TelaPadrao {
 	private OutlineJLabel lbTitulo;
 	private JButton botaoCadastrar;
 	private Usuario usuarioLogado;
+	private boolean detalhe;
 
-	public TelaNovoCanal(Usuario usuarioLogado) {
+	public TelaCanal(Usuario usuarioLogado) {
 		super("Novo Canal");
 		this.canal = null;
 		this.usuarioLogado = usuarioLogado;
 		adicionarBotoes();
 	}
 
-	public TelaNovoCanal(Canal canal, Usuario usuarioLogado) {
+	public TelaCanal(Usuario usuarioLogado, Canal canal, boolean detalhe) {
 		super("Edicao de Canal");
 		this.canal = canal;
 		this.usuarioLogado = usuarioLogado;
+		this.detalhe = detalhe;
 		adicionarBotoes();
 		preencherCampos();
+	}
+
+	public boolean isDetalhe() {
+		return detalhe;
+	}
+
+	public void setDetalhe(boolean detalhe) {
+		this.detalhe = detalhe;
 	}
 
 	public JTextField getTfNome() {
@@ -193,7 +207,7 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	private void adiconarLabels() {
-		lbTitulo = Componentes.addJLabel(this, "Novo Canal", 390, 30, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+		lbTitulo = Componentes.addJLabel(this, "Cadastro", 408, 30, Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
 
 		Componentes.addJLabel(this, "Nome", 240, 130, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
@@ -266,13 +280,47 @@ public class TelaNovoCanal extends TelaPadrao {
 	}
 
 	private void preencherCampos() {
-
-		botaoCadastrar.setText("Salvar");
-
 		lbTitulo.setVisible(false);
-		Componentes.addJLabel(this, "Edicao de Canal", 335, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
-				.setOutlineColor(Color.WHITE);
-		;
+
+		if (detalhe) {
+			botaoCadastrar.setVisible(false);
+			Componentes.addJLabel(this, "Detalhes", 408, 30, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
+					.setOutlineColor(Color.WHITE);
+
+			Date dataCadastro = Date.from(canal.getDataDeCadastro().atZone(ZoneId.systemDefault()).toInstant());
+			Componentes.addJLabel(this, "Cadastrado em " + Datas.formatar(dataCadastro), 240, 390,
+					Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+
+			tfNome.setEnabled(false);
+			tfNumeroOuLink.setEnabled(false);
+			rb1.setEnabled(false);
+			rb2.setEnabled(false);
+			cbTv.setEnabled(false);
+			cbBroadcasting.setEnabled(false);
+
+			if (canal.getDataDeAtualizacao() != null) {
+				Date dataAtualizacao = Date
+						.from(canal.getDataDeAtualizacao().atZone(ZoneId.systemDefault()).toInstant());
+				Componentes.addJLabel(this, "Atualizado em " + Datas.formatar(dataAtualizacao), 240, 425,
+						Medidas.COMPRIMENTO_310, Medidas.ALTURA_30);
+
+			}
+
+			JButton botaoExcluir = Componentes.addJButton(this, "Excluir", 310, 490, Medidas.COMPRIMENTO_130,
+					Medidas.ALTURA_30);
+			OuvinteBotoesTelaDetalhes ouvinteTelaDetalhe = new OuvinteBotoesTelaDetalhes(this);
+			botaoExcluir.addActionListener(ouvinteTelaDetalhe);
+
+			JButton botaoEditar = Componentes.addJButton(this, "Editar", 450, 490, Medidas.COMPRIMENTO_130,
+					Medidas.ALTURA_30);
+			botaoEditar.addActionListener(ouvinteTelaDetalhe);
+		} else {
+
+			botaoCadastrar.setText("Salvar");
+
+			Componentes.addJLabel(this, "Edicao", 408, 30, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30)
+					.setOutlineColor(Color.WHITE);
+		}
 
 		tfNome.setText(canal.getNome());
 		String numeroOuLink = null;

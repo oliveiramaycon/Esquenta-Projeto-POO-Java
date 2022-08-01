@@ -114,7 +114,7 @@ public class TelaListagemCanais extends TelaPadrao {
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
-		lbTitulo = Componentes.addJLabel(this, "Canais", 408, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		lbTitulo = Componentes.addJLabel(this, "Canais", 408, 30, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
 		Componentes.addJLabel(this, "Canais cadastrados: " + central.getCanais().size(), 30, 490, 400,
 				Medidas.ALTURA_30);

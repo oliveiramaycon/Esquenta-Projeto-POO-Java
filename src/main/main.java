@@ -5,7 +5,8 @@ import telas.usuario.TelaCadastroDeUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
-public class main {
+public class Main {
+
 	public static void main(String[] args) {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
@@ -17,5 +18,4 @@ public class main {
 		}
 
 	}
-
 }

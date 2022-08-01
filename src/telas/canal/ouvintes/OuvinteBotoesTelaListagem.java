@@ -5,9 +5,8 @@ import java.awt.event.ActionListener;
 
 import modelo.canal.Canal;
 import modelo.exceptions.RegistroNaoEncontradoException;
-import telas.canal.TelaDetalheCanal;
+import telas.canal.TelaCanal;
 import telas.canal.TelaListagemCanais;
-import telas.canal.TelaNovoCanal;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
@@ -43,9 +42,9 @@ public class OuvinteBotoesTelaListagem implements ActionListener {
 			} catch (RegistroNaoEncontradoException e1) {
 				e1.printStackTrace();
 			}
-			new TelaDetalheCanal(telaListagem.getUsuarioLogado(), canalSelecionado);
+			new TelaCanal( telaListagem.getUsuarioLogado(), canalSelecionado, true);
 		} else {
-			new TelaNovoCanal(telaListagem.getUsuarioLogado());
+			new TelaCanal(telaListagem.getUsuarioLogado());
 		}
 
 	}

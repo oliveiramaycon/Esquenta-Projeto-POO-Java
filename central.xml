@@ -2,15 +2,16 @@
 <utilidades.CentralDeInformacoes>
   <programas>
     <modelo.programa.SeriesRegulares>
-      <id>1659164138469</id>
+      <id>1659164139755</id>
       <nome>asdda</nome>
       <tipo>SERIES_REGULARES</tipo>
       <canal class="modelo.canal.CanalDeTv">
-        <nome>sbt</nome>
+        <nome>sbteeweeeeeeeeee</nome>
         <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
         <id>1659162898033</id>
         <programas/>
         <dataDeCadastro>2022-07-30T03:34:58.0367856</dataDeCadastro>
+        <dataDeAtualizacao>2022-08-01T01:04:24.5212005</dataDeAtualizacao>
         <dono>
           <nome>mamaco</nome>
           <email>a@gmail.com</email>
@@ -19,7 +20,7 @@
           <confirmacaoDeSenha>Mamaco1</confirmacaoDeSenha>
           <programasFavoritos/>
         </dono>
-        <numeroCanal>1</numeroCanal>
+        <numeroCanal>12</numeroCanal>
       </canal>
       <status>EXIBICAO</status>
       <favorito>NAO_FAVORITO</favorito>
@@ -32,22 +33,25 @@
       <genero>COMEDIA</genero>
       <estilo>LIVE_ACTION</estilo>
     </modelo.programa.SeriesRegulares>
-    <modelo.programa.SeriesRegulares>
-      <id>1659164139755</id>
-      <nome>asdda</nome>
-      <tipo>SERIES_REGULARES</tipo>
-      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.SeriesRegulares/canal"/>
-      <status>EXIBICAO</status>
-      <favorito>NAO_FAVORITO</favorito>
-      <horario>13:23</horario>
-      <temporadas>233</temporadas>
-      <diasDaSemana reference="../../modelo.programa.SeriesRegulares/diasDaSemana"/>
-      <genero>COMEDIA</genero>
-      <estilo>LIVE_ACTION</estilo>
-    </modelo.programa.SeriesRegulares>
   </programas>
   <canais>
     <modelo.canal.CanalDeTv reference="../../programas/modelo.programa.SeriesRegulares/canal"/>
+    <modelo.canal.CanalDeTv>
+      <nome>eee</nome>
+      <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
+      <id>1659325062720</id>
+      <programas/>
+      <dataDeCadastro>2022-08-01T00:37:42.7200777</dataDeCadastro>
+      <dono>
+        <nome>mamaco</nome>
+        <email>a@gmail.com</email>
+        <login>mamaco</login>
+        <senha>Mamaco1</senha>
+        <confirmacaoDeSenha>Mamaco1</confirmacaoDeSenha>
+        <programasFavoritos/>
+      </dono>
+      <numeroCanal>2222</numeroCanal>
+    </modelo.canal.CanalDeTv>
   </canais>
   <usuariosCadastrados>
     <modelo.usuario.Usuario>

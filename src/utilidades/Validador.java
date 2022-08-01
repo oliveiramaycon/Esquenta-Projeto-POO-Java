@@ -1,11 +1,11 @@
 package utilidades;
 
 import modelo.canal.exceptions.CamposIncompletosException;
-import telas.canal.TelaNovoCanal;
+import telas.canal.TelaCanal;
 
 public class Validador {
 
-	public static boolean validarPreenchimentoCanal(TelaNovoCanal telaNovoCanal)
+	public static boolean validarPreenchimentoCanal(TelaCanal telaNovoCanal)
 			throws CamposIncompletosException, NumberFormatException {
 
 		String nome = telaNovoCanal.getTfNome().getText().trim();
