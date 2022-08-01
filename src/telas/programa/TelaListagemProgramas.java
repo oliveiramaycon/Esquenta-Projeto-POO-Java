@@ -71,7 +71,6 @@ public class TelaListagemProgramas extends TelaPadrao {
 		this.usuario = usuario;
 		addTabela();
 		adicionarBotoes();
-		System.out.println("Listagem: " + usuario);
 	}
 
 	public void adicionarComponentesGraficos() {

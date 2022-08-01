@@ -5,33 +5,69 @@ import java.awt.Graphics;
 
 import javax.swing.JLabel;
 
+/**
+ * @author Maycon
+ * @version 30/07/2022
+ * 
+ * 
+ * 
+ */
 public class OutlineJLabel extends JLabel {
+
+	/**
+	 * serial id
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * cor de contorno
+	 */
+	private Color outlineColor = Color.GRAY.brighter();
+
+	/**
+	 * flag que marca se a contorno esta colorida
+	 */
+	private boolean isPaintingOutline = false;
+
+	/**
+	 * flag que marca a transparencia
+	 */
+	private boolean forceTransparent = false;
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	private Color outlineColor = Color.GRAY.brighter();
-	private boolean isPaintingOutline = false;
-	private boolean forceTransparent = false;
-
 	public OutlineJLabel() {
 		super();
 	}
 
+	/**
+	 * @param text texto do componente
+	 * 
+	 */
 	public OutlineJLabel(String text) {
 		super(text);
 	}
 
+	/**
+	 * @param text                texto do componente
+	 * 
+	 * @param horizontalAlignment alinhamento
+	 */
 	public OutlineJLabel(String text, int horizontalAlignment) {
 		super(text, horizontalAlignment);
 	}
 
+	/**
+	 * @return retorna a cor de contorno
+	 */
 	public Color getOutlineColor() {
 		return outlineColor;
 	}
 
+	/**
+	 * @param outlineColor cor do contorno
+	 */
 	public void setOutlineColor(Color outlineColor) {
 		this.outlineColor = outlineColor;
 		this.invalidate();

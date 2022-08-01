@@ -50,7 +50,7 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 		adicionarTextFields();
 	}
 
-	public void adicionarBackground() {
+	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
 		setContentPane(background);
 	}

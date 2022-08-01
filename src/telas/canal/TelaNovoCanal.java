@@ -170,12 +170,12 @@ public class TelaNovoCanal extends TelaPadrao {
 		addComboBoxes();
 	}
 
-	public void adicionarBackground() {
+	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
 		setContentPane(background);
 	}
 
-	public void adicionarMenu() {
+	private void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
 
@@ -211,7 +211,7 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	}
 
-	public void adicionarRadios() {
+	private void adicionarRadios() {
 		rb1 = Componentes.addRadioButton(this, "Televisao", 240, 233, 170, Medidas.ALTURA_30);
 		rb1.setSelected(true);
 		rb2 = Componentes.addRadioButton(this, "Broadcasting", 410, 233, 230, Medidas.ALTURA_30);
@@ -224,14 +224,14 @@ public class TelaNovoCanal extends TelaPadrao {
 		group.add(rb2);
 	}
 
-	public void addComboBoxCanaisTelevisao() {
+	private void addComboBoxCanaisTelevisao() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
 		cbTv = Componentes.inserirComboBox(this, central.obterTiposDeCanaisTelevisivos(), 240, 270, 400,
 				Medidas.ALTURA_30);
 
 	}
 
-	public void addComboBoxCanaisBroadcasting() {
+	private void addComboBoxCanaisBroadcasting() {
 		CentralDeInformacoes central = new CentralDeInformacoes();
 		cbBroadcasting = Componentes.inserirComboBox(this, central.obterTiposDeCanaisBroadcasting(), 240, 270, 400,
 				Medidas.ALTURA_30);
@@ -239,7 +239,7 @@ public class TelaNovoCanal extends TelaPadrao {
 
 	}
 
-	public void addComboBoxes() {
+	private void addComboBoxes() {
 		addComboBoxCanaisBroadcasting();
 		addComboBoxCanaisTelevisao();
 	}
@@ -265,7 +265,7 @@ public class TelaNovoCanal extends TelaPadrao {
 		return tipo;
 	}
 
-	public void preencherCampos() {
+	private void preencherCampos() {
 
 		botaoCadastrar.setText("Salvar");
 

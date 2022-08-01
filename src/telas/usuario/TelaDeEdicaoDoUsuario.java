@@ -1,9 +1,10 @@
-package telas;
+package telas.usuario;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import telas.TelaPadrao;
 import telas.ouvintes.OuvinteDoBotaoMudarDados;
 import utilidades.Componentes;
 import utilidades.Imagens;
@@ -50,7 +51,7 @@ public class TelaDeEdicaoDoUsuario extends TelaPadrao {
 
 	}
 
-	public void adicionarBackground() {
+	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_CADASTRO);
 		setContentPane(background);
 	}

@@ -8,9 +8,28 @@ import javax.swing.Icon;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+/**
+ * @author Maycon
+ * @version 30/07/2022
+ * 
+
+ * 
+ */	
 public class IconJTextField extends JTextField {
+	
+	/**
+	 * espacamento
+	 */
 	private static final int ICON_SPACING = 4;
+	
+	/**
+	 * borda
+	 */
 	private Border mBorder;
+	
+	/**
+	 * icone
+	 */
 	private Icon mIcon;
 
 	@Override
@@ -27,7 +46,10 @@ public class IconJTextField extends JTextField {
 			super.setBorder(compoud);
 		}
 	}
-
+	/**
+	 * @param graphics
+	 * graficos
+	 */
 	@Override
 	protected void paintComponent(Graphics graphics) {
 		super.paintComponent(graphics);
@@ -37,7 +59,10 @@ public class IconJTextField extends JTextField {
 			mIcon.paintIcon(this, graphics, iconInsets.left, iconInsets.top);
 		}
 	}
-
+	/**
+	 * @param icon
+	 * icone que aparecera alinhado a esquerda no JTextField
+	 */
 	public void setIcon(Icon icon) {
 		mIcon = icon;
 		resetBorder();

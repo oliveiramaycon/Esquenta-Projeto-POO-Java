@@ -101,16 +101,16 @@ public class TelaListagemCanais extends TelaPadrao {
 		adicionarTextField();
 	}
 
-	public void adicionarBackground() {
+	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LISTAGEM);
 		setContentPane(background);
 	}
 
-	public void adicionarMenu() {
+	private void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
 
-	public void adiconarLabels() {
+	private void adiconarLabels() {
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 
@@ -120,18 +120,18 @@ public class TelaListagemCanais extends TelaPadrao {
 				Medidas.ALTURA_30);
 	}
 
-	public void adicionarTabela() {
+	private void adicionarTabela() {
 		tabelaListagem = Componentes.addTabelaTodosCanais(this, this.usuarioLogado, tfPesquisa, 30, 130, 800, 350);
 	}
 
-	public void adicionarTextField() {
+	private void adicionarTextField() {
 		tfPesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 100, Medidas.COMPRIMENTO_310, 25);
 		tfPesquisa.setForeground(Color.GRAY);
 		tfPesquisa.setToolTipText("Realize uma busca");
 
 	}
 
-	public void adicionarBotoes() {
+	private void adicionarBotoes() {
 
 		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);

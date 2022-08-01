@@ -51,11 +51,11 @@ public class TelaHome extends TelaPadrao {
 		setContentPane(background);
 	}
 
-	public void adicionarMenu() {
+	private void adicionarMenu() {
 		Componentes.addMenuPadrao(this).setBounds(719, 0, 45, 30);
 	}
 
-	public void adicionarBotoes() {
+	private void adicionarBotoes() {
 
 		JPanel painel = new JPanel(new GridLayout(2, 4, 1, 5));
 		painel.setBackground(Color.decode("#fff4e2"));
@@ -75,14 +75,13 @@ public class TelaHome extends TelaPadrao {
 		CentralDeInformacoes central = p.recuperarCentral("central");
 
 		public void actionPerformed(ActionEvent e) {
-			// TODO: ACHAR UMA FORMA DE RESGATAR O USUARIO ATIVO
 			dispose();
 			new TelaListagemProgramas(central.getUsuariosCadastrados().get(0));
 		}
 
 	}
 
-	public void adiconarLabels() {
+	private void adiconarLabels() {
 
 		Componentes.addJLabel(this, "BEM VINDO(a)", 318, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30)
 				.setOutlineColor(Color.WHITE);

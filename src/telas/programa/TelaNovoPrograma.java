@@ -187,8 +187,6 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 		usuarioAtivo = central.getUsuariosCadastrados().get(0);
-		System.out.println("Cadastro: " + usuarioAtivo);
-	
 	}
 
 	public TelaNovoPrograma(ProgramaDeTv programa) {
@@ -197,7 +195,6 @@ public class TelaNovoPrograma extends TelaPadrao {
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 		usuarioAtivo = central.getUsuariosCadastrados().get(0);
 		dia = new DayOfWeek[7];
-		System.out.println("Cadastro: " + usuarioAtivo);
 	}
 
 	public TelaNovoPrograma() {
@@ -206,7 +203,6 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes central = persistencia.recuperarCentral("central");
 		usuarioAtivo = central.getUsuariosCadastrados().get(0);
-		System.out.println("Cadastro: " + usuarioAtivo);
 	}
 
 	@Override
@@ -221,7 +217,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		adicionarCheckBox();
 	}
 
-	public void adicionarMenu() {
+	private void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
 
@@ -289,7 +285,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		group.add(rb3);
 	}
 
-	public void adiconarLabels() {
+	private void adiconarLabels() {
 		Componentes.addJLabel(this, "Novo Programa", 368, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Nome", 250, 102, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Canal", 250, 195, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);

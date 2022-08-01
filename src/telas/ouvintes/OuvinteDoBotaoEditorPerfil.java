@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import telas.TelaDeEdicaoDoUsuario;
+import telas.usuario.TelaDeEdicaoDoUsuario;
 
 public class OuvinteDoBotaoEditorPerfil implements ActionListener {
 

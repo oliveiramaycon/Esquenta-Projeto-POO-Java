@@ -51,7 +51,7 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 		System.out.println("Detalhe: " + usuarioAtivo);
 	}
 
-	public void adicionarMenu() {
+	private void adicionarMenu() {
 		Componentes.addMenuPadrao(this);
 	}
 

@@ -51,7 +51,7 @@ public class TelaInicial extends TelaPadrao {
 		adicionarTextFields();
 	}
 
-	public void adicionarBackground() {
+	private void adicionarBackground() {
 		JLabel background = new JLabel(Imagens.BACKGROUND_TELA_LOGIN);
 		setContentPane(background);
 	}
@@ -77,7 +77,7 @@ public class TelaInicial extends TelaPadrao {
 
 	}
 
-	public void adicionarBotoes() {
+	private void adicionarBotoes() {
 		OuvinteBotaoEntrar ouvinteBotaoEntrar = new OuvinteBotaoEntrar(this);
 		JButton botaoEntrar = Componentes.addJButton(this, "Entrar", 620, 490, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
@@ -100,7 +100,7 @@ public class TelaInicial extends TelaPadrao {
 
 	}
 
-	public void adicionarTextFields() {
+	private void adicionarTextFields() {
 
 		tfLogin = Componentes.addJTextField(this, 550, 232, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 

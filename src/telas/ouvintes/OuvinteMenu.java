@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import telas.TelaDeEdicaoDoUsuario;
 import telas.usuario.TelaCadastroDeUsuario;
+import telas.usuario.TelaDeEdicaoDoUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Componentes;
 import utilidades.Persistencia;

@@ -45,11 +45,28 @@ import telas.ouvintes.OuvinteHandCursor;
 import telas.ouvintes.OuvinteMenu;
 import telas.programa.TelaNovoPrograma;
 
+/**
+ * @author Maycon
+ * @version 30/07/2022
+ * 
+
+ * 
+ */	
+
+
 public class Componentes {
 
 	/**
+	 * @param args
+	 * @throws FileNotFoundException
+	 */	
+	
+	/**
 	 * @param tela
 	 *JFrame que representa a tela onde o componente sera exibido
+	 * 
+	 * @param nome
+	 * representa o texto sobre o componente
 	 * 
 	 * @param x
 	 * representa a coordenada no eixo x
@@ -433,7 +450,7 @@ public class Componentes {
 	 * @param dados
 	 * valores exibidos no componente
 	 * 
-	 * * @param x
+	 * @param x
 	 * representa a coordenada no eixo x
 	 * 
 	 * @param y

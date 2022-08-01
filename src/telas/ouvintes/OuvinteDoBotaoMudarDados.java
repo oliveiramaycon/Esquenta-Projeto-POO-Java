@@ -15,8 +15,8 @@ import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
 import modelo.usuario.exceptions.SenhaSemMinusculosException;
 import modelo.usuario.exceptions.SenhaSemNumerosException;
 import modelo.usuario.exceptions.ValidadorDeEmailExecption;
-import telas.TelaDeEdicaoDoUsuario;
 import telas.TelaInicial;
+import telas.usuario.TelaDeEdicaoDoUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
