@@ -7,6 +7,7 @@ import modelo.programa.ProgramaDeTv;
 import telas.programa.TelaDetalhePrograma;
 import telas.programa.TelaListagemProgramas;
 import utilidades.CentralDeInformacoes;
+import utilidades.Componentes;
 import utilidades.Persistencia;
 
 public class OuvinteBotaoDetalhesPrograma implements ActionListener {
@@ -19,14 +20,21 @@ public class OuvinteBotaoDetalhesPrograma implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		Persistencia p = new Persistencia();
-		CentralDeInformacoes central = p.recuperarCentral("central");
 		int indexLinha = tela.getTabelaListagem().getSelectedRow();
-		ProgramaDeTv programa = central.getProgramas().get(indexLinha);
-		central.getProgramas().remove(indexLinha);
-		p.salvarCentral(central, "central");
-		tela.dispose();
-		new TelaDetalhePrograma(indexLinha, programa, tela.getUsuario());
+
+		if (indexLinha == -1) {
+			Componentes.msgFalha(tela, "Selecione um programa!");
+		} else {
+			Persistencia p = new Persistencia();
+			CentralDeInformacoes central = p.recuperarCentral("central");
+
+			ProgramaDeTv programa = central.getProgramas().get(indexLinha);
+			central.getProgramas().remove(indexLinha);
+			p.salvarCentral(central, "central");
+			tela.dispose();
+			new TelaDetalhePrograma(indexLinha, programa, tela.getUsuario());
+
+		}
 	}
 
 }
