@@ -227,13 +227,13 @@ public class TelaNovoPrograma extends TelaPadrao {
 	}
 
 	private void adicionarCheckBox() {
-		cbSegunda = Componentes.addCheckBox(this, "Segunda-Feira", 250, 360, 120, Medidas.ALTURA_30);
-		terca = Componentes.addCheckBox(this, "Terca-Feira", 370, 360, 120, Medidas.ALTURA_30);
-		quarta = Componentes.addCheckBox(this, "Quarta-Feira", 490, 360, 120, Medidas.ALTURA_30);
-		quinta = Componentes.addCheckBox(this, "Quinta-Feira", 250, 390, 120, Medidas.ALTURA_30);
-		sexta = Componentes.addCheckBox(this, "Sexta-Feira", 370, 390, 120, Medidas.ALTURA_30);
-		sabado = Componentes.addCheckBox(this, "Sabado", 490, 390, 120, Medidas.ALTURA_30);
-		domingo = Componentes.addCheckBox(this, "Domingo", 250, 420, 360, Medidas.ALTURA_30);
+		cbSegunda = Componentes.addCheckBox(this, "Segunda-Feira", 250, 345, 120, Medidas.ALTURA_30);
+		terca = Componentes.addCheckBox(this, "Terca-Feira", 370, 345, 120, Medidas.ALTURA_30);
+		quarta = Componentes.addCheckBox(this, "Quarta-Feira", 490, 345, 120, Medidas.ALTURA_30);
+		quinta = Componentes.addCheckBox(this, "Quinta-Feira", 250, 375, 120, Medidas.ALTURA_30);
+		sexta = Componentes.addCheckBox(this, "Sexta-Feira", 370, 375, 120, Medidas.ALTURA_30);
+		sabado = Componentes.addCheckBox(this, "Sabado", 490, 375, 120, Medidas.ALTURA_30);
+		domingo = Componentes.addCheckBox(this, "Domingo", 250, 405, 360, Medidas.ALTURA_30);
 		OuvinteCheckBoxDiaDaSemana ouvinte = new OuvinteCheckBoxDiaDaSemana(this);
 		cbSegunda.addActionListener(ouvinte);
 		terca.addActionListener(ouvinte);
@@ -255,7 +255,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		OuvinteBotaoVoltar ouvinteBotaoVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar.addActionListener(ouvinteBotaoVoltar);
 
-		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 700, 450, Medidas.COMPRIMENTO_130,
+		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 370, Medidas.FORM_FOOTER+25, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarPrograma ouvinteCadastrarPrograma = new OuvinteBotaoCadastrarPrograma(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarPrograma);
@@ -294,13 +294,13 @@ public class TelaNovoPrograma extends TelaPadrao {
 		Componentes.addJLabel(this, "Novo Programa", 368, 20, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Nome", 250, 102, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Canal", 250, 195, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Horario", 250, 270, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Horario", 250, 255, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		Componentes.addJLabel(this, "Status", 395, 195, 110, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Temporada", 510, 270, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Dias de Transmissao", 250, 330, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		genero = Componentes.addJLabel(this, "Genero", 500, 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		estilo = Componentes.addJLabel(this, "Estilo", 250, 450, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		data = Componentes.addJLabel(this, "Data de retorno", 360, 270, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Temporada", 510, 255, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Dias de Transmissao", 250, 315, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		genero = Componentes.addJLabel(this, "Genero", 460, 435, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		estilo = Componentes.addJLabel(this, "Estilo", 250, 435, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		data = Componentes.addJLabel(this, "Data de retorno", 360, 255, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		data.setVisible(false);
 
 		apresentadores = Componentes.addJLabel(this, "Apresentadores", 250, 455, Medidas.COMPRIMENTO_255,
@@ -313,7 +313,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 			MaskFormatter mascaraHorario = new MaskFormatter("##:##");
 			mascaraHorario.setValidCharacters("0123456789");
 			tfhorario = new JFormattedTextField(mascaraHorario);
-			tfhorario.setBounds(250, 300, 90, Medidas.ALTURA_30);
+			tfhorario.setBounds(250, 285, 90, Medidas.ALTURA_30);
 			add(tfhorario);
 			tfhorario.setHorizontalAlignment(JLabel.CENTER);
 		} catch (ParseException e) {
@@ -322,7 +322,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 			MaskFormatter mascaraData = new MaskFormatter("##/##/####");
 			mascaraData.setValidCharacters("0123456789");
 			dataRetorno = new JFormattedTextField(mascaraData);
-			dataRetorno.setBounds(360, 300, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+			dataRetorno.setBounds(360, 285, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 			add(dataRetorno);
 			dataRetorno.setVisible(false);
 			dataRetorno.setHorizontalAlignment(JLabel.CENTER);
@@ -336,7 +336,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 			MaskFormatter mascaraTemporada = new MaskFormatter("###");
 			mascaraTemporada.setValidCharacters("0123456789");
 			tfTemporada = new JFormattedTextField(mascaraTemporada);
-			tfTemporada.setBounds(510, 300, 100, Medidas.ALTURA_30);
+			tfTemporada.setBounds(516, 285, 100, Medidas.ALTURA_30);
 			add(tfTemporada);
 			tfTemporada.setHorizontalAlignment(JLabel.CENTER);
 		} catch (Exception e) {
@@ -360,10 +360,10 @@ public class TelaNovoPrograma extends TelaPadrao {
 		status.addActionListener(ouvinteComboBoxHiato);
 
 		ArrayList<String> generosTxt = central.obterGeneroDePrograma();
-		generos = Componentes.inserirComboBox(this, generosTxt, 500, 480, 150, Medidas.ALTURA_30);
+		generos = Componentes.inserirComboBox(this, generosTxt, 460, 465, 150, Medidas.ALTURA_30);
 
 		ArrayList<String> estilosTxt = central.obterEstilosDePrograma();
-		estilos = Componentes.inserirComboBox(this, estilosTxt, 250, 480, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		estilos = Componentes.inserirComboBox(this, estilosTxt, 250, 465, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 
 	}
 }

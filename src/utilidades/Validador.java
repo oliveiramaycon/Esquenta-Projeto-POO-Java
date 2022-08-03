@@ -1,6 +1,6 @@
 package utilidades;
 
-import modelo.canal.exceptions.CamposIncompletosException;
+import modelo.exceptions.CamposIncompletosException;
 import telas.canal.TelaCanal;
 
 public class Validador {

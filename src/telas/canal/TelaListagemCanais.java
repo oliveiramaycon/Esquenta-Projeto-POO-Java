@@ -118,35 +118,31 @@ public class TelaListagemCanais extends TelaPadrao {
 
 		lbTitulo = Componentes.addJLabel(this, "Canais", 408, 30, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		lbTitulo.setOutlineColor(Color.WHITE);
-		Componentes.addJLabel(this, "Canais cadastrados: " + central.getCanais().size(), 30, 490, 400,
+		Componentes.addJLabel(this, "Canais cadastrados: " + central.getCanais().size(), 30, Medidas.DEFAULT_Y_FOOTER, 400,
 				Medidas.ALTURA_30);
 	}
 
 	private void adicionarTabela() {
-		tabelaListagem = Componentes.addTabelaTodosCanais(this, this.usuarioLogado, tfPesquisa, 30, 130, 800, 350);
-		
-		
+		tabelaListagem = Componentes.addTabelaTodosCanais(this, this.usuarioLogado, tfPesquisa, 30, 130, 825, 370);
 	}
 
 	private void adicionarTextField() {
-		tfPesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 100, Medidas.COMPRIMENTO_310, 25);
+		tfPesquisa = Componentes.addJTextFieldComIcone(this, Icones.LUPA, 30, 100, 280, 25);
 		tfPesquisa.setForeground(Color.GRAY);
 		tfPesquisa.setToolTipText("Realize uma busca");
-
 	}
 
 	private void adicionarBotoes() {
-
 		JButton botaoVoltar = Componentes.addJButton(this, "Voltar", Icones.VOLTAR, 20, 20, Medidas.COMPRIMENTO_50,
 				Medidas.ALTURA_30);
 		botaoVoltar.addActionListener(new OuvinteBotaoVoltarParaHome(this, usuarioLogado));
 
-		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 800, 95, 30, Medidas.ALTURA_30);
+		botaoAddCanal = Componentes.addJButton(this, "", Icones.ADICIONAR, 805, 95, Medidas.COMPRIMENTO_50, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteAdd = new OuvinteBotoesTelaListagem(this);
 		botaoAddCanal.addActionListener(ouvinteAdd);
 		botaoAddCanal.setToolTipText("Novo Canal");
 
-		botaoDetalhes = Componentes.addJButton(this, "Detalhes", 700, 490, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		botaoDetalhes = Componentes.addJButton(this, "Detalhes", 725, Medidas.DEFAULT_Y_FOOTER, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		OuvinteBotoesTelaListagem ouvinteDetalhes = new OuvinteBotoesTelaListagem(this);
 		botaoDetalhes.addActionListener(ouvinteDetalhes);
 		if(tabelaListagem.getModel().getRowCount() == 0){

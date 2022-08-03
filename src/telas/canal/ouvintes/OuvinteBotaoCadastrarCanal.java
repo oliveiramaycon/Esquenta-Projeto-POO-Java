@@ -8,7 +8,7 @@ import modelo.canal.Canal;
 import modelo.canal.CanalBroadcasting;
 import modelo.canal.CanalDeTv;
 import modelo.canal.enums.TipoCanal;
-import modelo.canal.exceptions.CamposIncompletosException;
+import modelo.exceptions.CamposIncompletosException;
 import modelo.exceptions.RegistroExistenteException;
 import modelo.exceptions.RegistroNaoEncontradoException;
 import telas.canal.TelaCanal;

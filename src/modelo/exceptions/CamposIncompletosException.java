@@ -1,4 +1,4 @@
-package modelo.canal.exceptions;
+package modelo.exceptions;
 
 public class CamposIncompletosException extends Exception {
 

@@ -56,7 +56,7 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-		JButton botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 390, 470, Medidas.COMPRIMENTO_130,
+		JButton botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 370, Medidas.FORM_FOOTER, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastroDeUsuario ouvinteCadastrarUsuario = new OuvinteBotaoCadastroDeUsuario(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarUsuario);
@@ -64,24 +64,21 @@ public class TelaCadastroDeUsuario extends TelaPadrao {
 	}
 
 	private void adiconarLabels() {
-		Componentes.addJLabel(this, "CADASTRO", 390, 20, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Nome:", 320, 150, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Email:", 320, 215, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Login:", 320, 270, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-
-		Componentes.addJLabel(this, "Senha:", 320, 340, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		Componentes.addJLabel(this, "Confirme a senha:", 320, 405, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-
+		Componentes.addJLabel(this, "CADASTRO", 385, 25, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Nome:", Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_1, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Email:", Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_2, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Login:", Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_3, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Senha:", Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_4, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		Componentes.addJLabel(this, "Confirme a senha:", Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_5, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 	}
 
 	private void adicionarTextFields() {
+		tfNome = Componentes.addJTextField(this, Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_1+Medidas.FIELD_MARGIN_TOP, Medidas.COMPRIMENTO_400, Medidas.ALTURA_30);
+		tfEmail = Componentes.addJTextField(this, Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_2+Medidas.FIELD_MARGIN_TOP, Medidas.COMPRIMENTO_400, Medidas.ALTURA_30);
+		tfLogin = Componentes.addJTextField(this, Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_3+Medidas.FIELD_MARGIN_TOP, Medidas.COMPRIMENTO_400, Medidas.ALTURA_30);
 
-		tfNome = Componentes.addJTextField(this, 320, 180, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		tfEmail = Componentes.addJTextField(this, 320, 242, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		tfLogin = Componentes.addJTextField(this, 320, 302, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-
-		tfSenha = Componentes.addJTextField(this, 320, 370, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
-		tfConfirmacaoDeSenha = Componentes.addJTextField(this, 320, 430, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
+		tfSenha = Componentes.addJTextField(this, Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_4+Medidas.FIELD_MARGIN_TOP, Medidas.COMPRIMENTO_400, Medidas.ALTURA_30);
+		tfConfirmacaoDeSenha = Componentes.addJTextField(this, Medidas.FORM_DEFAULT_X, Medidas.FORM_Y_5+Medidas.FIELD_MARGIN_TOP, Medidas.COMPRIMENTO_400, Medidas.ALTURA_30);
 	}
 
 }

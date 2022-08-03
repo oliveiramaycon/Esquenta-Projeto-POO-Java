@@ -28,10 +28,10 @@ public class OuvinteBotoesTelaDetalhes implements ActionListener {
 
 		String txtBotao = e.getActionCommand();
 
-		tela.dispose();
+		
 		if (txtBotao.equals("Editar")) {
 			new TelaCanal( tela.getUsuarioLogado(), tela.getCanal(), false);
-
+			tela.dispose();
 		} else {
 			int opcao = Componentes.showConfirmDialog(tela, "Tem certeza?", "Exlusao");
 			if (opcao == JOptionPane.YES_OPTION) {
@@ -42,6 +42,7 @@ public class OuvinteBotoesTelaDetalhes implements ActionListener {
 					central.excluirCanal(tela.getCanal().getId());
 					persistencia.salvarCentral(central, "central");
 					Componentes.msgSucesso(tela, "Excluido com sucesso!");
+					tela.dispose();
 					new TelaListagemCanais(tela.getUsuarioLogado());
 				} catch (RegistroNaoEncontradoException e1) {
 
