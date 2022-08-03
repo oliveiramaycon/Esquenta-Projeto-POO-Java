@@ -3,6 +3,7 @@ package telas.programa.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,16 +29,18 @@ public class OuvinteBotaoExcluirPrograma implements ActionListener {
 		if (indexLinha == -1) {
 			Componentes.msgFalha(tela, "Selecione um programa!");
 		} else {
-
-			Persistencia p = new Persistencia();
-			CentralDeInformacoes central = p.recuperarCentral("central");
-			ProgramaDeTv programa = central.getProgramas().get(indexLinha);
-			central.getProgramas().remove(indexLinha);
-			modelo = tela.getModelo();
-			tabela = tela.getTabelaListagem();
-			modelo.removeRow(indexLinha);
-			tabela.repaint();
-			p.salvarCentral(central, "central");
+			int opcao = Componentes.showConfirmDialog(tela, "Tem certeza?", "Exlusao");
+			if (opcao == JOptionPane.YES_OPTION) {
+				Persistencia p = new Persistencia();
+				CentralDeInformacoes central = p.recuperarCentral("central");
+				ProgramaDeTv programa = central.getProgramas().get(indexLinha);
+				central.getProgramas().remove(indexLinha);
+				modelo = tela.getModelo();
+				tabela = tela.getTabelaListagem();
+				modelo.removeRow(indexLinha);
+				tabela.repaint();
+				p.salvarCentral(central, "central");
+			}
 		}
 	}
 
