@@ -255,7 +255,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		OuvinteBotaoVoltar ouvinteBotaoVoltar = new OuvinteBotaoVoltar();
 		botaoVoltar.addActionListener(ouvinteBotaoVoltar);
 
-		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 370, Medidas.FORM_FOOTER+25, Medidas.COMPRIMENTO_130,
+		botaoCadastrar = Componentes.addJButton(this, "Cadastrar", 370, Medidas.FORM_FOOTER+10, Medidas.COMPRIMENTO_130,
 				Medidas.ALTURA_30);
 		OuvinteBotaoCadastrarPrograma ouvinteCadastrarPrograma = new OuvinteBotaoCadastrarPrograma(this);
 		botaoCadastrar.addActionListener(ouvinteCadastrarPrograma);
@@ -303,7 +303,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 		data = Componentes.addJLabel(this, "Data de retorno", 360, 255, Medidas.COMPRIMENTO_255, Medidas.ALTURA_30);
 		data.setVisible(false);
 
-		apresentadores = Componentes.addJLabel(this, "Apresentadores", 250, 455, Medidas.COMPRIMENTO_255,
+		apresentadores = Componentes.addJLabel(this, "Apresentadores", 250, 435, Medidas.COMPRIMENTO_255,
 				Medidas.ALTURA_30);
 		apresentadores.setVisible(false);
 	}
@@ -341,7 +341,7 @@ public class TelaNovoPrograma extends TelaPadrao {
 			tfTemporada.setHorizontalAlignment(JLabel.CENTER);
 		} catch (Exception e) {
 		}
-		tfApresentadores = Componentes.addJTextField(this, 250, 485, 360, Medidas.ALTURA_30);
+		tfApresentadores = Componentes.addJTextField(this, 250, 465, 360, Medidas.ALTURA_30);
 		OuvinteFocoApresentadores ouvinteFocoApresentadores = new OuvinteFocoApresentadores(this);
 		tfApresentadores.addFocusListener(ouvinteFocoApresentadores);
 		tfApresentadores.setVisible(false);

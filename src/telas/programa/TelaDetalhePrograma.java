@@ -49,7 +49,6 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 		deixarPreenchido();
 		adicionarMenu();
 		repaint();
-		System.out.println("Detalhe: " + usuarioAtivo);
 	}
 
 	private void adicionarMenu() {
@@ -93,6 +92,8 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 		JCheckBox sabado = getSabado();
 		JCheckBox domingo = getDomingo();
 
+		String apresentadorTxt = "";
+		
 		DayOfWeek[] dias = getDia();
 		if (programaSelecionado.getDiasDaSemana().contains(DayOfWeek.MONDAY)) {
 			cbSegunda.setSelected(true);
@@ -137,25 +138,32 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 			estilos.setVisible(true);
 
 		} else {
+			ProgramasContinuos programa  = (ProgramasContinuos) programaSelecionado;
+			
+			 for(String a :programa.getApresentadores()) {
+				 apresentadorTxt += a+ ", "; 
+			 }
 			if (programaSelecionado instanceof RealityShows) {
 				rb2.setSelected(true);
 				rb1.setEnabled(false);
 				rb3.setEnabled(false);
+				
 
 			}
 			if (programaSelecionado instanceof ProgramasContinuos) {
 				rb3.setSelected(true);
 				rb1.setEnabled(false);
 				rb2.setEnabled(false);
+				
+				
 			}
-			apresentadores.setText(getTfApresentadores().getText());
+			apresentadores.setText(apresentadorTxt);
 			genero.setVisible(false);
 			generos.setVisible(false);
 			estilo.setVisible(false);
 			estilos.setVisible(false);
 			apresentador.setVisible(true);
 			apresentadores.setVisible(true);
-
 		}
 
 	}

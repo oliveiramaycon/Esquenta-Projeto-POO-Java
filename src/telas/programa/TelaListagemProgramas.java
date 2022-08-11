@@ -47,30 +47,9 @@ public class TelaListagemProgramas extends TelaPadrao {
 	private JButton botaoAddPrograma;
 	private JButton botaoDetalhes;
 	private JButton botaoDeletar;
-	private JRadioButton favorito;
-	private JComboBox<String> canais;
-	private JComboBox<String> tipo;
-	private JComboBox<String> status;
 	private JTextField pesquisa;
 	private JTable tabelaListagem;
 	private DefaultTableModel modelo;
-	
-
-	public JRadioButton getFavorito() {
-		return favorito;
-	}
-
-	public JComboBox<String> getCanais() {
-		return canais;
-	}
-
-	public JComboBox<String> getTipo() {
-		return tipo;
-	}
-
-	public JComboBox<String> getStatus() {
-		return status;
-	}
 
 	public DefaultTableModel getModelo() {
 		return modelo;
@@ -112,8 +91,6 @@ public class TelaListagemProgramas extends TelaPadrao {
 		adicionarMenu();
 		adicionarLabels();
 		addTextField();
-		addRadioButton();
-		addComboBox();
 	}
 
 	private void adicionarMenu() {
@@ -169,26 +146,6 @@ public class TelaListagemProgramas extends TelaPadrao {
 		lbTitulo.setOutlineColor(Color.WHITE);
 		Componentes.addJLabel(this, "Programas cadastrados: " + central.getProgramas().size(), 30, Medidas.DEFAULT_Y_FOOTER, 400,
 				Medidas.ALTURA_30);
-	}
-
-	private void addComboBox() {
-		Persistencia p = new Persistencia();
-		CentralDeInformacoes central = p.recuperarCentral("central");
-		String espacoVazio = "";
-		ArrayList<String> statusTxt = central.obterTiposDeStatus();
-		statusTxt.add(0, espacoVazio);
-		status = Componentes.inserirComboBox(this, statusTxt, 420, 95, 100, Medidas.ALTURA_30);
-		ArrayList<String> tiposTxt = central.obterTiposDeProgramas();
-		tiposTxt.add(0, espacoVazio);
-		tipo = Componentes.inserirComboBox(this, tiposTxt, 530, 95, 120, 30);
-		ArrayList<String> canaisTxt = central.obterCanaisNome();
-		canaisTxt.add(0, espacoVazio);
-		canais = Componentes.inserirComboBox(this, canaisTxt, 660, 95, 120, 30);
-
-	}
-
-	private void addRadioButton() {
-		favorito = Componentes.addRadioButton(this, "favoritos", 330, 95, 80, Medidas.ALTURA_30);
 	}
 
 	private void addTabela() {
