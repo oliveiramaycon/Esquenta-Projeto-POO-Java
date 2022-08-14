@@ -57,7 +57,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener {
 		boolean validandoHorario = false;
 
 		// TESTANDO SE HORA É VALIDA
-		if (!horario.trim().isEmpty()) {
+		if (!horario.trim().equals(":")) {
 			String[] hora = horario.split(":");
 			int horas = Integer.parseInt(hora[0]);
 			int minutos = Integer.parseInt(hora[1]);
@@ -98,7 +98,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener {
 		
 		Boolean campoPreenchido = false;
 		boolean apresentadorPreenchido = false;
-		if (!nomeDoPrograma.trim().isEmpty() || !horario.trim().isEmpty() || !temporada.trim().isEmpty()) {
+		if (!nomeDoPrograma.trim().isEmpty() || !horario.trim().equals(":") || !temporada.trim().isEmpty()) {
 			campoPreenchido = true;
 		}
 		
@@ -123,7 +123,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener {
 			programa.setFavorito(favoritado);
 		}
 
-		if (status == Status.HIATO && !dataRetorno.isEmpty())
+		if (status == Status.HIATO && !dataRetorno.trim().equals("//"))
 			temData = true;
 		else if (status != Status.HIATO)
 			temData = true;

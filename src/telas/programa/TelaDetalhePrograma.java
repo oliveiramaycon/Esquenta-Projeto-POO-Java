@@ -92,6 +92,7 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 		JCheckBox sabado = getSabado();
 		JCheckBox domingo = getDomingo();
 
+		//aqui recebemos o texto dos apresentadores
 		String apresentadorTxt = "";
 		
 		DayOfWeek[] dias = getDia();
@@ -138,11 +139,12 @@ public class TelaDetalhePrograma extends TelaNovoPrograma {
 			estilos.setVisible(true);
 
 		} else {
+			//utilizando a concatenacao para ter os apresentadores
 			ProgramasContinuos programa  = (ProgramasContinuos) programaSelecionado;
-			
 			 for(String a :programa.getApresentadores()) {
 				 apresentadorTxt += a+ ", "; 
 			 }
+			 
 			if (programaSelecionado instanceof RealityShows) {
 				rb2.setSelected(true);
 				rb1.setEnabled(false);
