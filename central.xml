@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<utilidades.CentralDeInformacoes>
+  <programas>
+    <modelo.programa.ProgramasContinuos>
+      <id>1660234201751</id>
+      <nome>programa</nome>
+      <tipo>PROGRAMA_CONTINUO</tipo>
+      <canal class="modelo.canal.CanalDeTv">
+        <nome>Sbt</nome>
+        <tipoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoCanal>
+        <id>1660226197726</id>
+        <programas/>
+        <dataDeCadastro>2022-08-11T10:56:37.7429135</dataDeCadastro>
+        <dono>
+          <nome>Hicaro</nome>
+          <email>projetoseriespoo@gmail.com</email>
+          <login>hicaro</login>
+          <senha>Hicaro123</senha>
+          <confirmacaoDeSenha>Hicaro123</confirmacaoDeSenha>
+          <programasFavoritos/>
+        </dono>
+        <numeroCanal>2</numeroCanal>
+      </canal>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>20:00</horario>
+      <temporadas>001</temporadas>
+      <diasDaSemana>
+        <day-of-week>TUESDAY</day-of-week>
+        <day-of-week>FRIDAY</day-of-week>
+      </diasDaSemana>
+      <apresentadores>
+        <string>Teste</string>
+        <string>ana</string>
+      </apresentadores>
+    </modelo.programa.ProgramasContinuos>
+    <modelo.programa.SeriesRegulares>
+      <id>1660508054099</id>
+      <nome>Teste</nome>
+      <tipo>SERIES_REGULARES</tipo>
+      <canal class="modelo.canal.CanalDeTv" reference="../../modelo.programa.ProgramasContinuos/canal"/>
+      <status>EXIBICAO</status>
+      <favorito>NAO_FAVORITO</favorito>
+      <horario>20:22</horario>
+      <temporadas>002</temporadas>
+      <diasDaSemana>
+        <day-of-week>TUESDAY</day-of-week>
+        <day-of-week>FRIDAY</day-of-week>
+      </diasDaSemana>
+      <genero>COMEDIA</genero>
+      <estilo>LIVE_ACTION</estilo>
+    </modelo.programa.SeriesRegulares>
+  </programas>
+  <canais>
+    <modelo.canal.CanalDeTv reference="../../programas/modelo.programa.ProgramasContinuos/canal"/>
+  </canais>
+  <usuariosCadastrados>
+    <modelo.usuario.Usuario>
+      <nome>Hicaro</nome>
+      <email>projetoseriespoo@gmail.com</email>
+      <login>hicaro</login>
+      <senha>Hicaro123</senha>
+      <confirmacaoDeSenha>Hicaro123</confirmacaoDeSenha>
+      <programasFavoritos/>
+    </modelo.usuario.Usuario>
+  </usuariosCadastrados>
+</utilidades.CentralDeInformacoes>
