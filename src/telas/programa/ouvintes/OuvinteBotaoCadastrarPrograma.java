@@ -125,6 +125,7 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener {
 
 		if (status == Status.HIATO && !dataRetorno.trim().equals("//"))
 			temData = true;
+		
 		else if (status != Status.HIATO)
 			temData = true;
 
@@ -135,7 +136,6 @@ public class OuvinteBotaoCadastrarPrograma implements ActionListener {
 				} catch (ApresentadorJaCadastrado e1) {
 					Componentes.msgFalha(telaPrograma, e1.getMessage());
 				}
-
 			}
 		}
 

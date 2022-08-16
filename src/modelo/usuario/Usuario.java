@@ -169,8 +169,8 @@ public class Usuario {
 		// String email = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
 		// Pattern patternEmail = Pattern.compile(email,Pattern.CASE_INSENSITIVE);
 		// Matcher procura = patternEmail.matcher(userEmail);
-		// return procura.find();
-		String regex = "[A-Za-z0-9]+@+gmail.com$";
+	//	"[A-Za-z0-9]+@+gmail.com"
+		String regex = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$";
 
 		if (userEmail.matches(regex)) {
 			return true;
