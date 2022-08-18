@@ -20,11 +20,14 @@ import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
 import modelo.usuario.Usuario;
 
 public class CentralDeInformacoes {
-
+	
 	private ArrayList<ProgramaDeTv> programas = new ArrayList<ProgramaDeTv>();
 	private ArrayList<Canal> canais = new ArrayList<Canal>();
 	private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
-
+	private Usuario editor;
+	
+	
+	
 	public ArrayList<ProgramaDeTv> getProgramas() {
 		return programas;
 	}
@@ -297,21 +300,25 @@ public class CentralDeInformacoes {
 	}
 
 	// METODO SO SERVE PRA MODIFICAR A SENHA DO USUARIO:
-	public void editarUsuario(int buscador, String novoLogin, String novoNome) {
-		Usuario editor = buscarDados(buscador);
-		editor.setLogin(novoLogin);
-		editor.setNome(novoNome);
-	}
-
-	public void editarUsuario(int buscador, String novaSenha, String novaConfirmacao, String nadaFeito) {
-		Usuario editor = buscarDados(buscador);
-		editor.setSenha(novaSenha);
-		editor.setConfirmacaoDeSenha(novaConfirmacao);
-	}
-
-	public void editarUsuario(int buscador, String novoEmail) {
-		Usuario editor = buscarDados(buscador);
-		editor.setEmail(novoEmail);
+	
+	public Usuario editarUsuario(ArrayList<String> opcoes, String novoNome, String novoEmail,String novoLogin,String novaSenha, String novaConfirmacao) {
+		editor = usuariosCadastrados.get(0); 
+		
+		if(opcoes.contains("1")) {
+			editor.setNome(novoNome);
+			System.out.println(editor.getNome());
+		}
+		if(opcoes.contains("2")) {
+			editor.setEmail(novoEmail);			
+		}
+		if(opcoes.contains("3")) {
+			editor.setLogin(novoLogin);			
+		}
+		if(opcoes.contains("4")) {
+			editor.setSenha(novaSenha);
+			editor.setConfirmacaoDeSenha(novaConfirmacao);
+		}
+	return editor;	
 	}
 
 	// REMOCAO DO USUARIO:

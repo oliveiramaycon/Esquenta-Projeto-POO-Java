@@ -3,18 +3,15 @@ package telas.usuario.ouvintes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import modelo.exceptions.UsuarioExistenteException;
 import modelo.usuario.Usuario;
+import modelo.usuario.ValidadorUsuario;
 import modelo.usuario.exceptions.LoginComEspacosException;
-import modelo.usuario.exceptions.LoginComMenosCaracterisException;
-import modelo.usuario.exceptions.LoginComNumerosException;
-import modelo.usuario.exceptions.SenhaCurtaException;
 import modelo.usuario.exceptions.SenhaNaoIgualAConfirmacao;
 import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
 import modelo.usuario.exceptions.SenhaSemMinusculosException;
 import modelo.usuario.exceptions.SenhaSemNumerosException;
+import modelo.usuario.exceptions.StringComMenosCarecterisExecption;
 import modelo.usuario.exceptions.ValidadorDeEmailExecption;
 import telas.TelaInicial;
 import telas.usuario.TelaCadastroDeUsuario;
@@ -48,18 +45,16 @@ public class OuvinteBotaoCadastroDeUsuario implements ActionListener {
 		boolean usuarioEvalido = false;
 
 		try {
-			usuario.validadorDeLogin(usuario.getLogin());
-			usuario.validadorDeSenha(usuario.getSenha(), usuario.getConfirmacaoDeSenha());
-			usuario.validadorDeEmail(usuario.getEmail());
+			ValidadorUsuario.validadorDeLogin(usuario.getLogin());
+			ValidadorUsuario.validadorDeSenha(usuario.getSenha(), usuario.getConfirmacaoDeSenha());
+			ValidadorUsuario.verificaEmail(usuario.getEmail());
 			usuarioEvalido = true;
 
-		} catch (LoginComEspacosException | LoginComMenosCaracterisException | LoginComNumerosException e1) {
-			JOptionPane.showMessageDialog(telaCadastro, e1.getMessage());
-		} catch (SenhaCurtaException | SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption
-				| SenhaSemNumerosException | SenhaNaoIgualAConfirmacao e2) {
-			JOptionPane.showMessageDialog(telaCadastro, e2.getMessage());
-		} catch (ValidadorDeEmailExecption e3) {
-			JOptionPane.showMessageDialog(telaCadastro, e3.getMessage());
+		} catch (LoginComEspacosException | StringComMenosCarecterisExecption 
+		 |  SenhaSemMinusculosException | SenhaSemCaracterMaiusculaExecption
+		 | SenhaSemNumerosException | SenhaNaoIgualAConfirmacao 
+		 |ValidadorDeEmailExecption e1) {
+			Componentes.msgSucesso(telaCadastro, e1.getMessage());
 		}
 
 		// -----------------------------------------ADICAO DO USUARIO:

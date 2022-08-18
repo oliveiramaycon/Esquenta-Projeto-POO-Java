@@ -6,15 +6,6 @@ import modelo.programa.ProgramaDeTv;
 import modelo.programa.enums.EnumFavorito;
 import modelo.programa.exceptions.ProgramaJaAdicionado;
 import modelo.programa.exceptions.ProgramaNaoFavoritado;
-import modelo.usuario.exceptions.LoginComEspacosException;
-import modelo.usuario.exceptions.LoginComMenosCaracterisException;
-import modelo.usuario.exceptions.LoginComNumerosException;
-import modelo.usuario.exceptions.SenhaCurtaException;
-import modelo.usuario.exceptions.SenhaNaoIgualAConfirmacao;
-import modelo.usuario.exceptions.SenhaSemCaracterMaiusculaExecption;
-import modelo.usuario.exceptions.SenhaSemMinusculosException;
-import modelo.usuario.exceptions.SenhaSemNumerosException;
-import modelo.usuario.exceptions.ValidadorDeEmailExecption;
 
 public class Usuario {
 
@@ -81,103 +72,6 @@ public class Usuario {
 	public Usuario() {
 	}
 
-	/*
-	 * ----------------------------------------------------EXCEPTIONS DE VALIDACAO
-	 * DE LOGIN E SENHA E E-MAIL:
-	 */
-
-	public void validadorDeLogin(String login)
-			throws LoginComEspacosException, LoginComMenosCaracterisException, LoginComNumerosException {
-		if (login.contains(" ")) {
-			throw new LoginComEspacosException();
-		}
-		if (login.length() < 5) {
-			throw new LoginComMenosCaracterisException();
-		}
-
-	}
-
-	public void validadorDeSenha(String senha, String confirmado)
-			throws SenhaCurtaException, SenhaSemMinusculosException, SenhaSemCaracterMaiusculaExecption,
-			SenhaSemNumerosException, SenhaNaoIgualAConfirmacao {
-		if (senha.length() < 5) {
-			throw new SenhaCurtaException();
-		}
-		verificarLetraMinuscula(senha);
-		verificarLetraMaiuscula(senha);
-		verificarNumeros(senha);
-		verificadorDeSenhaNaoIgual(senha, confirmado);
-	}
-
-	public void validadorDeEmail(String Email) throws ValidadorDeEmailExecption {
-		verificaEmail(Email);
-	}
-
-	/*
-	 * -----------------------------------------------------METODOS UTEIS PARA O
-	 * USUARIO:
-	 */
-
-	public boolean verificarLetraMinuscula(String s) throws SenhaSemMinusculosException {
-		for (int c = 0; c < s.length(); c++) {
-			if (Character.isLowerCase(s.charAt(c))) {
-				return true;
-			}
-		}
-		throw new SenhaSemMinusculosException();
-	}
-
-	public boolean verificarLetraMaiuscula(String s) throws SenhaSemCaracterMaiusculaExecption {
-		boolean achei = false;
-		for (int c = 0; c < s.length(); c++) {
-			if (Character.isUpperCase(s.charAt(c))) {
-				return true;
-			}
-		}
-		throw new SenhaSemCaracterMaiusculaExecption();
-	}
-
-	public boolean verificarNumeros(String s) throws SenhaSemNumerosException {
-		for (int c = 0; c < s.length(); c++) {
-			if (Character.isDigit(s.charAt(c))) {
-				return true;
-			}
-		}
-		throw new SenhaSemNumerosException();
-	}
-
-	public boolean verificadorDeSenhaNaoIgual(String senha, String confirmacao) throws SenhaNaoIgualAConfirmacao {
-		if (senha.equals(confirmacao)) {
-			return true;
-		}
-		throw new SenhaNaoIgualAConfirmacao();
-	}
-
-// Refazer codigo para confirma a senha:
-//	//public boolean verificaIgualdade(String s) throws SenhaIgualALoginException {
-//		//boolean achei = false;
-//		//for (int c = 0; c < s.length() - 1; c++) {
-//			if (s.charAt(c) == s.charAt(c + 1)) {
-//				return true;
-//			}
-//		}
-//		throw new SenhaIgualALoginException();
-//	}
-
-	// VERIFICA O EMAIL PARA PROCURAR CARACTERS VALIDOS:
-	public boolean verificaEmail(String userEmail) throws ValidadorDeEmailExecption {
-		// String email = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
-		// Pattern patternEmail = Pattern.compile(email,Pattern.CASE_INSENSITIVE);
-		// Matcher procura = patternEmail.matcher(userEmail);
-	//	"[A-Za-z0-9]+@+gmail.com"
-		String regex = "^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$";
-
-		if (userEmail.matches(regex)) {
-			return true;
-		} else {
-			throw new ValidadorDeEmailExecption();
-		}
-	}
 
 	public boolean addPrograma(ProgramaDeTv p) throws ProgramaJaAdicionado, ProgramaNaoFavoritado {
 		if (p.getFavorito() == EnumFavorito.NAO_FAVORITO)
