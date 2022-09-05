@@ -1,6 +1,7 @@
 package main;
 
-import telas.usuario.TelaDeEdicaoDoUsuario;
+import telas.TelaInicial;
+import telas.usuario.TelaCadastroDeUsuario;
 import utilidades.CentralDeInformacoes;
 import utilidades.Persistencia;
 
@@ -10,12 +11,11 @@ public class Programa {
 		Persistencia p = new Persistencia();
 		CentralDeInformacoes central = p.recuperarCentral("central");
 
-		//if (central.getUsuariosCadastrados().size() > 0) {
-			//new TelaInicial();
-		//} else {
-		//	new TelaCadastroDeUsuario();
-		//}
-	new	TelaDeEdicaoDoUsuario();
+		if (central.getUsuariosCadastrados().size() > 0) {
+			new TelaInicial();
+		} else {
+			new TelaCadastroDeUsuario();
+		}
 	}
 
 }
