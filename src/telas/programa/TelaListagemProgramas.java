@@ -107,10 +107,16 @@ public class TelaListagemProgramas extends TelaPadrao {
 	}
 
 	private void adicionarBotoes() {
-
+		Persistencia p = new Persistencia();
+		CentralDeInformacoes central = p.recuperarCentral("central");
+		
 		botaoAddPrograma = Componentes.addJButton(this, "Programa", Icones.ADICIONAR, 805, 95, Medidas.COMPRIMENTO_50, Medidas.ALTURA_30);
 		OuvinteBotaoAdicionarPrograma addPrograma = new OuvinteBotaoAdicionarPrograma(this);
 		botaoAddPrograma.addActionListener(addPrograma);
+		if(central.getCanais().size() == 0)
+			botaoAddPrograma.setVisible(false);
+		else
+			botaoAddPrograma.setVisible(true);
 
 		botaoDetalhes = Componentes.addJButton(this, "detalhes", 725, Medidas.DEFAULT_Y_FOOTER, Medidas.COMPRIMENTO_130, Medidas.ALTURA_30);
 		OuvinteBotaoDetalhesPrograma ouvinteDetalhes = new OuvinteBotaoDetalhesPrograma(this);
