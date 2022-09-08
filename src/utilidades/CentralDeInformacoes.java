@@ -1,65 +1,77 @@
 package utilidades;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 
-import excecoes.FalhaNoCadastroException;
-import excecoes.RegistroExistenteException;
-import excecoes.RegistroNaoEncontradoException;
-import excecoes.SemProgramaNaDataAtualException;
-import excecoes.TipoDeProgramaNaoExisteException;
-import excecoes.UsuarioExistenteException;
-import modelo.Canal;
-import modelo.ProgramaDeTv;
-import modelo.TipoPrograma;
-import modelo.Usuario;
+import modelo.canal.Canal;
+import modelo.canal.enums.TipoCanal;
+import modelo.exceptions.FalhaNoCadastroException;
+import modelo.exceptions.RegistroExistenteException;
+import modelo.exceptions.RegistroNaoEncontradoException;
+import modelo.exceptions.UsuarioExistenteException;
+import modelo.programa.ProgramaDeTv;
+import modelo.programa.enums.Estilo;
+import modelo.programa.enums.Genero;
+import modelo.programa.enums.Status;
+import modelo.programa.enums.TipoPrograma;
+import modelo.programa.exceptions.ProgramaJaAdicionado;
+import modelo.programa.exceptions.SemProgramaNaDataAtualException;
+import modelo.programa.exceptions.TipoDeProgramaNaoExisteException;
+import modelo.usuario.Usuario;
 
 public class CentralDeInformacoes {
-
+	
 	private ArrayList<ProgramaDeTv> programas = new ArrayList<ProgramaDeTv>();
 	private ArrayList<Canal> canais = new ArrayList<Canal>();
 	private ArrayList<Usuario> usuariosCadastrados = new ArrayList<Usuario>();
-
+	private Usuario editor;
+	
 	
 	
 	public ArrayList<ProgramaDeTv> getProgramas() {
 		return programas;
 	}
+
 	public void setProgramas(ArrayList<ProgramaDeTv> programas) {
 		this.programas = programas;
 	}
+
 	public ArrayList<Canal> getCanais() {
 		return canais;
 	}
+
 	public void setCanais(ArrayList<Canal> canais) {
 		this.canais = canais;
 	}
+
 	public ArrayList<Usuario> getUsuariosCadastrados() {
 		return usuariosCadastrados;
 	}
+
 	public void setUsuariosCadastrados(ArrayList<Usuario> usuariosCadastrados) {
 		this.usuariosCadastrados = usuariosCadastrados;
 	}
-	
+
 	/*
-	 *  ---------------------------------------------- MÉTODOS UTILITÁRIOS RELACIONADO A ENTENDIDADE PROGRAMA
+	 * ---------------------------------------------- Mï¿½TODOS UTILITï¿½RIOS
+	 * RELACIONADO A ENTENDIDADE PROGRAMA
 	 */
-	
-	
+
 	public void AdicionarProgramaDeTv(ProgramaDeTv programa) throws FalhaNoCadastroException {
 		FalhaNoCadastroException falha = new FalhaNoCadastroException();
-		
+
 		if (recuperarProgramaDetvPeloId(programa.getId()) != null) {
 			String msg = "\nID duplicado!";
 			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
 		}
 
 		if (programa.getCanal() == null) {
-			String msg = "\nÉ necessário informar um canal";
+			String msg = "\nï¿½ necessï¿½rio informar um canal";
 			throw new FalhaNoCadastroException(falha.getMessage().concat(msg));
 		}
 
 		programas.add(programa);
-		
+
 	}
 
 	public ProgramaDeTv recuperarProgramaDetvPeloId(long id) {
@@ -72,10 +84,19 @@ public class CentralDeInformacoes {
 		return null;
 	}
 
+	public boolean buscarProgramaPeloNome(String buscar) throws ProgramaJaAdicionado {
+		for (ProgramaDeTv programa : programas) {
+			if (programa.getNome().equals(buscar)) {
+				throw new ProgramaJaAdicionado();
+			}
+		}
+		return false;
+	}
+
 	public void exibirProgramas() {
 		System.out.println(programas.toString());
 	}
-	
+
 	public void exibirTiposDeProgramas() {
 		System.out.println(obterTiposDeProgramas().toString());
 	}
@@ -88,7 +109,7 @@ public class CentralDeInformacoes {
 				programasEncontrados.add(programa);
 			}
 		}
-		
+
 		return programasEncontrados;
 	}
 
@@ -100,7 +121,7 @@ public class CentralDeInformacoes {
 			System.out.println(programasDeMesmoTipo.toString());
 		}
 	}
-	
+
 	public ArrayList<ProgramaDeTv> buscarProgramasPorCanal(String nomeDoCanal) {
 		ArrayList<ProgramaDeTv> programasEncontrados = new ArrayList<ProgramaDeTv>();
 
@@ -111,50 +132,79 @@ public class CentralDeInformacoes {
 		}
 		return programasEncontrados;
 	}
-	
+
+	public ArrayList<String> obterCanaisNome() {
+		ArrayList<String> nomes = new ArrayList<>();
+		for (Canal canal : getCanais()) {
+			nomes.add(canal.toString());
+		}
+		return nomes;
+	}
+
+	public ArrayList<String> obterTiposDeStatus() {
+		ArrayList<String> tipos = new ArrayList<>();
+		for (Status status : Status.values())
+			tipos.add(status.toString());
+		return tipos;
+
+	}
+
+	public ArrayList<String> obterGeneroDePrograma() {
+		ArrayList<String> generos = new ArrayList<>();
+		for (Genero genero : Genero.values())
+			generos.add(genero.toString());
+		return generos;
+	}
+
+	public ArrayList<String> obterEstilosDePrograma() {
+		ArrayList<String> estilos = new ArrayList<>();
+		for (Estilo genero : Estilo.values())
+			estilos.add(genero.toString());
+		return estilos;
+	}
+
 	public ArrayList<String> obterTiposDeProgramas() {
 		ArrayList<String> tipos = new ArrayList<String>();
 		for (TipoPrograma tipo : TipoPrograma.values()) {
 			tipos.add(tipo.toString());
 		}
-		
+
 		return tipos;
 	}
 
 	public void hasTipoPrograma(TipoPrograma tipoPrograma) throws TipoDeProgramaNaoExisteException {
-		
-		if(!obterTiposDeProgramas().contains(tipoPrograma.toString())) {
-			throw new TipoDeProgramaNaoExisteException();			
-		} 
+
+		if (!obterTiposDeProgramas().contains(tipoPrograma.toString())) {
+			throw new TipoDeProgramaNaoExisteException();
+		}
 	}
-	
+
 	public ArrayList<ProgramaDeTv> obterProgramasComTransmissaoNaDataAtual() throws SemProgramaNaDataAtualException {
 		ArrayList<ProgramaDeTv> programasDoDia = new ArrayList<ProgramaDeTv>();
 		String diaDaSemana = Datas.obterDiaDaSemana();
 		for (ProgramaDeTv programa : programas) {
-			
+
 			if (programa.getDiasDaSemana().contains(diaDaSemana)) {
 				programasDoDia.add(programa);
 			}
 		}
-		if(programasDoDia.isEmpty()) {
+		if (programasDoDia.isEmpty()) {
 			throw new SemProgramaNaDataAtualException();
 		}
 		return programasDoDia;
 	}
-	
-	
 
 	/*
-	 *  ---------------------------------------------- MÉTODOS UTILITÁRIOS RELACIONADO A ENTENDIDADE PROGRAMA
+	 * ---------------------------------------------- Mï¿½TODOS UTILITï¿½RIOS
+	 * RELACIONADO A ENTENDIDADE CANAL
 	 */
-	
+
 	public void adicionarCanal(Canal canal) throws RegistroExistenteException {
 		try {
 			recuperarCanalPeloNome(canal.getNome());
 			throw new RegistroExistenteException();
-			
-		}catch(RegistroNaoEncontradoException e){
+
+		} catch (RegistroNaoEncontradoException e) {
 			canais.add(canal);
 		}
 	}
@@ -166,6 +216,21 @@ public class CentralDeInformacoes {
 			}
 		}
 		throw new RegistroNaoEncontradoException();
+	}
+
+	public Canal recuperarCanalPeloId(long id) throws RegistroNaoEncontradoException {
+		for (Canal canal : canais) {
+			if (canal.getId() == id) {
+				return canal;
+			}
+		}
+		throw new RegistroNaoEncontradoException();
+	}
+
+	public Canal excluirCanal(long id) throws RegistroNaoEncontradoException {
+		Canal canalRecuperado = recuperarCanalPeloId(id);
+		canais.remove(canalRecuperado);
+		return canalRecuperado;
 	}
 
 	public void exibirCanais() {
@@ -180,17 +245,124 @@ public class CentralDeInformacoes {
 		}
 		System.out.print(nomeDosCanais.toString());
 	}
-	
-	
+
+	public ArrayList<String> obterTiposDeCanaisTelevisivos() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		for (TipoCanal tipo : TipoCanal.values()) {
+			if (tipo.toString().endsWith("TELEVISAO")) {
+				tipos.add(tipo.toString());
+			}
+		}
+
+		return tipos;
+	}
+
+	public ArrayList<String> obterTiposDeCanais() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		tipos.add("");
+		for (TipoCanal tipo : TipoCanal.values()) {
+			tipos.add(tipo.toString());
+		}
+		return tipos;
+	}
+
+	public ArrayList<String> obterTiposDeCanaisBroadcasting() {
+		ArrayList<String> tipos = new ArrayList<String>();
+		for (TipoCanal tipo : TipoCanal.values()) {
+			if (tipo.toString().endsWith("BROADCASTING")) {
+				tipos.add(tipo.toString());
+			}
+		}
+
+		return tipos;
+	}
+
 	/*
-	 * ---------------------------------------
+	 * ---------------------------------------ENTIDADE DO USUARIO ENTRADA E REMOCAO
+	 * DE DADOS:
 	 */
-	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException{
+
+	// CRIEI PARA A VERIFICACAO DE USUARIO NA ARRY
+	public Usuario validarEntrada(String login) {
+		Usuario novoUsuario = null;
+
 		for (Usuario u : usuariosCadastrados) {
-			if(u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
+			if (u.getLogin().equals(login)) {
+				novoUsuario = u;
+			}
+		}
+		return novoUsuario;
+	}
+
+	public Usuario buscarDados(int buscador) {
+		return usuariosCadastrados.get(buscador);
+
+	}
+
+	// METODO SO SERVE PRA MODIFICAR A SENHA DO USUARIO:
+	
+	public Usuario editarUsuario(ArrayList<String> opcoes, String novoNome, String novoEmail,String novoLogin,String novaSenha, String novaConfirmacao) {
+		editor = usuariosCadastrados.get(0); 
+		
+		if(opcoes.contains("1")) {
+			editor.setNome(novoNome);
+			System.out.println(editor.getNome());
+		}
+		if(opcoes.contains("2")) {
+			editor.setEmail(novoEmail);			
+		}
+		if(opcoes.contains("3")) {
+			editor.setLogin(novoLogin);			
+		}
+		if(opcoes.contains("4")) {
+			editor.setSenha(novaSenha);
+			editor.setConfirmacaoDeSenha(novaConfirmacao);
+		}
+	return editor;	
+	}
+
+	// REMOCAO DO USUARIO:
+	public Usuario removerDados(int remover) {
+		Usuario novo = buscarDados(remover);
+		usuariosCadastrados.remove(novo);
+		return novo;
+	}
+
+	public void adicionarUsuario(Usuario usuario) throws UsuarioExistenteException {
+		for (Usuario u : usuariosCadastrados) {
+			if (u.getLogin().equals(usuario.getLogin()) && u.getSenha().equals(usuario.getSenha())) {
 				throw new UsuarioExistenteException();
 			}
 		}
 		usuariosCadastrados.add(usuario);
+	}
+
+	public ArrayList<String> mudarDiaDaSemana(ArrayList<DayOfWeek> dia) {
+		ArrayList<String> diasPtBr = new ArrayList<>();
+		if (dia.contains(DayOfWeek.MONDAY))
+			diasPtBr.add("Segunda-Feira");
+		if (dia.contains(DayOfWeek.TUESDAY))
+			diasPtBr.add("Terca-Feira");
+		if (dia.contains(DayOfWeek.WEDNESDAY))
+			diasPtBr.add("Quarta-Feira");
+		if (dia.contains(DayOfWeek.THURSDAY))
+			diasPtBr.add("Quinta-Feira");
+		if (dia.contains(DayOfWeek.FRIDAY))
+			diasPtBr.add("Sexta-Feira");
+		if (dia.contains(DayOfWeek.SATURDAY))
+			diasPtBr.add("Sabado");
+		if (dia.contains(DayOfWeek.SUNDAY))
+			diasPtBr.add("Domingo");
+		return diasPtBr;
+	}
+	
+	public static ArrayList<String> passandoArrayCanalParaString(ArrayList<Canal> array) {
+		ArrayList<String> ArrayConvertida = new ArrayList<>();
+
+		for (Canal c : array) {
+			ArrayConvertida.add(c.getNome());
+
+		}
+		return ArrayConvertida;
 	}
 }

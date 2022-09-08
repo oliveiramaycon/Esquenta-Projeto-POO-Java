@@ -5,8 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import telas.TelaCadastroDeUsuario;
-import telas.TelaHome;
+import telas.usuario.TelaCadastroDeUsuario;
+import utilidades.CentralDeInformacoes;
+import utilidades.Persistencia;
 
 public class OuvintBotoesTelaInicial implements ActionListener {
 
@@ -16,25 +17,25 @@ public class OuvintBotoesTelaInicial implements ActionListener {
 		this.tela = tela;
 	}
 
+	Persistencia persistencia = new Persistencia();
+	CentralDeInformacoes central = persistencia.recuperarCentral("central");
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
 		case "Entrar":
-			// TODO: realizar validação
-			new TelaHome();
+			// TODO: realizar validacao
+//			new TelaHome();
 			tela.dispose();
 			break;
 		case "Cadastre-se":
-			//TODO: cadastrar usuário
+
 			new TelaCadastroDeUsuario();
 			tela.dispose();
 			break;
 		case "Esqueceu a senha?":
-			//TODO: fazer tela
-			break;
-		case "Catálogo":
-			//TODO: fazer tela
+			// TODO: fazer inputDialog
 			break;
 		}
 
